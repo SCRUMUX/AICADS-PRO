@@ -68,6 +68,10 @@ export interface NavbarBlockProps {
    * @internal Storybook/demo only — opens services panel on mount.
    */
   defaultServicesOpen?: boolean;
+  /**
+   * @internal Storybook/demo only — opens mobile drawer on mount.
+   */
+  defaultMobileOpen?: boolean;
   /** Label of nav item that opens mega menu. Default: first link with `megaMenu: true`. */
   servicesTriggerLabel?: string;
   /** Social icons — above-fold strip below navbar (hidden on scroll); mobile drawer only otherwise. */
@@ -81,4 +85,5 @@ export interface NavbarBlockProps {
 /** @internal Storybook-only props extension. */
 export interface NavbarBlockStoryProps extends NavbarBlockProps {
   defaultServicesOpen?: boolean;
+  defaultMobileOpen?: boolean;
 }

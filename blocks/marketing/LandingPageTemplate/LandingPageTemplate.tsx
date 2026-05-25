@@ -12,6 +12,9 @@ import { TestimonialsBlock, type TestimonialsBlockProps } from '../TestimonialsB
 import { FAQBlock, type FAQBlockProps } from '../FAQBlock';
 import { HowItWorksBlock, type HowItWorksBlockProps } from '../HowItWorksBlock';
 import { NewsletterBlock, type NewsletterBlockProps } from '../NewsletterBlock';
+import { EventsBlock, type EventsBlockProps } from '../EventsBlock';
+import { ServicesBlock, type ServicesBlockProps } from '../ServicesBlock';
+import { SolutionsBlock, type SolutionsBlockProps } from '../SolutionsBlock';
 import { MarketingAboveFold } from '../../_shared/MarketingAboveFold';
 
 export interface LandingPageTemplateProps {
@@ -27,6 +30,9 @@ export interface LandingPageTemplateProps {
   howItWorks?: HowItWorksBlockProps;
   faq?: FAQBlockProps;
   newsletter?: NewsletterBlockProps;
+  events?: EventsBlockProps;
+  services?: ServicesBlockProps;
+  solutions?: SolutionsBlockProps;
   className?: string;
 }
 
@@ -55,6 +61,9 @@ export const LandingPageTemplate: React.FC<LandingPageTemplateProps> = ({
   howItWorks,
   faq,
   newsletter,
+  events,
+  services,
+  solutions,
   className,
 }) => {
   const heroProps = resolveAboveFoldHero(hero, navbar);
@@ -70,6 +79,9 @@ export const LandingPageTemplate: React.FC<LandingPageTemplateProps> = ({
       ) : (
         <HeroBlock {...heroProps} />
       )}
+      {events && <EventsBlock {...events} />}
+      {solutions && <SolutionsBlock {...solutions} />}
+      {services && <ServicesBlock {...services} />}
       {logoCloud && <LogoCloudBlock {...logoCloud} />}
       {stats && <StatsBlock {...stats} />}
       <FeaturesBlock {...features} />

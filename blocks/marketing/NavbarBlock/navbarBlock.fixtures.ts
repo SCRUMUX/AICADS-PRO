@@ -45,11 +45,12 @@ export const aicadsProNavbarFixture: NavbarBlockProps = {
       id: 'blocks',
       label: 'Блоки',
       items: [
-        { label: 'HeroBlock', href: '/blocks/hero', description: 'Above-the-fold секции landing' },
-        { label: 'FeaturesBlock', href: '/blocks/features', description: 'Сетка преимуществ продукта' },
-        { label: 'NavbarBlock', href: '/blocks/navbar', description: 'Enterprise navigation + mega menu' },
-        { label: 'PricingBlock', href: '/blocks/pricing', description: 'Тарифные планы и сравнение' },
-        { label: 'LandingPageTemplate', href: '/blocks/landing', description: 'Полная marketing-страница' },
+        { label: 'HeroBlock', href: '/blocks/hero', description: 'Enterprise / page hero + metrics band' },
+        { label: 'EventsBlock', href: '/blocks/events', description: 'Brand band с carousel навигацией' },
+        { label: 'SolutionsBlock', href: '/blocks/solutions', description: 'Кейсы внедрения — mosaic grid + hover' },
+        { label: 'ServicesBlock', href: '/blocks/services', description: 'Catalog с tabs и show-more pagination' },
+        { label: 'NavbarBlock', href: '/blocks/navbar', description: 'Overlay navbar + services mega menu' },
+        { label: 'LandingPageTemplate', href: '/blocks/landing', description: 'Полная enterprise landing-страница' },
       ],
     },
     {

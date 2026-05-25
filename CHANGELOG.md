@@ -5,10 +5,26 @@ Format follows [Semantic Versioning](https://semver.org/).
 
 ## [0.7.2] — 2026-05-25
 
-> **CI / API surface fix** — `api:check` passes on Node 22+.
+> **Enterprise navbar polish** — AICADS PRO mobile drawer, demo content, and distribution on `AICADS-PRO`.
+
+### Added
+
+- **`NavbarBlock` enterprise variant** — overlay/solid scroll surfaces, in-tree services mega menu, above-fold social rail, full-screen mobile drawer.
+- **`marketingDemoContent.ts`** — shared AICADS-themed hero, features, CTA, footer, and partner logos for Storybook.
+- **`defaultMobileOpen`** — Storybook-only prop to QA mobile drawer without interaction.
+- **GitHub Pages Storybook** — live catalog at [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/).
+
+### Changed
+
+- **Mobile drawer insets** — header and body use `--grid-mobile-offset` / `--grid-tablet-offset` (same rhythm as `BLOCK_CONTENT_CLASS` on landing pages); fixes invalid `--space-grid-mobile-offset` token.
+- **Demo copy** — navbar fixtures, landing stories, and pattern manifests use AICADS PRO content instead of cloud/hosting placeholders.
+- **Repository distribution** — install URL points to `SCRUMUX/AICADS-PRO` (`git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.2`).
 
 ### Fixed
 
+- **`LandingPageTemplate`** — missing `cn` import broke overlay landing at runtime.
+- **Navbar scroll detection** — listens to Storybook scroll roots; social icons without borders at 40×40 tap target.
+- **Mobile drawer UX** — services expand/collapse animation, focus return to menu button, scroll lock, link tap closes drawer, 44×44 close control, Russian aria labels.
 - **`tsconfig.api.json`** — include `@types/node` for dev-only `process.env` guards.
 - **Radix adapters** — strip incompatible HTML attrs before spreading onto Radix roots (`radixDomProps.ts`).
 - **`Rating`** — focus handler no longer reads `clientX` from `FocusEvent`.

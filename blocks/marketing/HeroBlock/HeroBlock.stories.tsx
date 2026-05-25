@@ -1,4 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { MarketingAboveFold } from '../../_shared/MarketingAboveFold';
+import { NavbarBlock } from '../NavbarBlock/NavbarBlock';
+import { aicadsProNavbarFixture } from '../NavbarBlock/navbarBlock.fixtures';
+import {
+  aicadsEnterpriseHeroDemoContent,
+  aicadsPageHeroDemoContent,
+  withEnterpriseHeroMedia,
+} from '../marketingDemoContent';
 import { HeroBlock } from './HeroBlock';
 import { marketingBlockParameters } from '../../_shared/blockStoryViewports';
 
@@ -33,17 +41,74 @@ export const Mobile: Story = { parameters: { viewport: { defaultViewport: 'mobil
 export const Tablet: Story = { parameters: { viewport: { defaultViewport: 'tablet' } } };
 export const Desktop: Story = { parameters: { viewport: { defaultViewport: 'desktop' } } };
 
+/** Cortel-style enterprise hero — split stage + bottom metrics band. */
+export const Enterprise: Story = {
+  args: aicadsEnterpriseHeroDemoContent,
+  render: (args) => <HeroBlock {...withEnterpriseHeroMedia(args)} />,
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+export const EnterpriseMobile: Story = {
+  args: aicadsEnterpriseHeroDemoContent,
+  render: (args) => <HeroBlock {...withEnterpriseHeroMedia(args)} />,
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+};
+
+/** With overlay enterprise navbar — matches AicadsProEnterprise landing above-fold. */
+export const EnterpriseWithNavbar: Story = {
+  args: aicadsEnterpriseHeroDemoContent,
+  render: (args) => (
+    <div className="min-h-[120vh]">
+      <NavbarBlock {...aicadsProNavbarFixture} />
+      <MarketingAboveFold underFixedNavbar>
+        <HeroBlock {...withEnterpriseHeroMedia(args)} className="!bg-transparent" />
+      </MarketingAboveFold>
+    </div>
+  ),
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+export const EnterpriseWithNavbarMobile: Story = {
+  ...EnterpriseWithNavbar,
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+};
+
+/** Inner-page hero — breadcrumbs → badge → title (Cortel case study). */
+export const Page: Story = {
+  args: aicadsPageHeroDemoContent,
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+export const PageMobile: Story = {
+  args: aicadsPageHeroDemoContent,
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+};
+
+/** Page hero with overlay enterprise navbar. */
+export const PageWithNavbar: Story = {
+  args: aicadsPageHeroDemoContent,
+  render: (args) => (
+    <div className="min-h-[120vh]">
+      <NavbarBlock {...aicadsProNavbarFixture} />
+      <MarketingAboveFold underFixedNavbar>
+        <HeroBlock {...args} className="!bg-transparent" />
+      </MarketingAboveFold>
+    </div>
+  ),
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
 export const SplitWithMedia: Story = {
   args: {
     variant: 'split',
     align: 'left',
     badge: 'Pattern Layer v0.7',
-    media: mediaPlaceholder,
     stats: [
       { value: '12', label: 'Marketing blocks' },
       { value: '57', label: 'Primitives' },
       { value: '14', label: 'Patterns' },
     ],
   },
+  render: (args) => <HeroBlock {...args} media={mediaPlaceholder} />,
   parameters: { viewport: { defaultViewport: 'desktop' } },
 };

@@ -1,14 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LandingPageTemplate } from './LandingPageTemplate';
+import type { LandingPageTemplateProps } from './LandingPageTemplate';
 import { marketingBlockParameters } from '../../_shared/blockStoryViewports';
 import { aicadsProNavbarFixture } from '../NavbarBlock/navbarBlock.fixtures';
 import {
   aicadsEnterpriseCtaDemo,
+  aicadsEnterpriseEventsDemo,
   aicadsEnterpriseFeaturesDemo,
   aicadsEnterpriseFooterDemo,
-  aicadsEnterpriseHeroDemo,
-  aicadsPartnerLogos,
+  aicadsEnterpriseHeroDemoContent,
+  aicadsEnterprisePricingDemo,
+  aicadsPartnerLogosList,
+  aicadsServicesDemoContent,
+  aicadsSolutionsDemoContent,
+  withEnterpriseHeroMedia,
 } from '../marketingDemoContent';
+import { withServiceCardMedia } from '../servicesDemoMedia';
+import { withSolutionCardCovers } from '../solutionsDemoMedia';
 
 const heroMedia = (
   <div
@@ -18,6 +26,17 @@ const heroMedia = (
     Dashboard preview
   </div>
 );
+
+const defaultPricing: LandingPageTemplateProps['pricing'] = {
+  title: 'Pricing',
+  subtitle: 'Start free, scale when you need more.',
+  highlightedIndex: 1,
+  tiers: [
+    { name: 'Free', price: '$0', period: 'mo', features: ['Core primitives', '5 blocks'], actionLabel: 'Start' },
+    { name: 'Pro', price: '$29', period: 'mo', features: ['All blocks', 'Pattern manifest', 'Storybook kit'], actionLabel: 'Upgrade' },
+    { name: 'Team', price: '$99', period: 'mo', features: ['SSO', 'Custom patterns'], actionLabel: 'Contact' },
+  ],
+};
 
 const meta: Meta<typeof LandingPageTemplate> = {
   title: 'Screens/Marketing Landing',
@@ -43,16 +62,7 @@ const meta: Meta<typeof LandingPageTemplate> = {
         { title: 'Consumer-ready', description: 'Import @ai-ds/core/blocks/* in any project.', icon: '📦' },
       ],
     },
-    pricing: {
-      title: 'Pricing',
-      subtitle: 'Start free, scale when you need more.',
-      highlightedIndex: 1,
-      tiers: [
-        { name: 'Free', price: '$0', period: 'mo', features: ['Core primitives', '5 blocks'], actionLabel: 'Start' },
-        { name: 'Pro', price: '$29', period: 'mo', features: ['All blocks', 'Pattern manifest', 'Storybook kit'], actionLabel: 'Upgrade' },
-        { name: 'Team', price: '$99', period: 'mo', features: ['SSO', 'Custom patterns'], actionLabel: 'Contact' },
-      ],
-    },
+    pricing: defaultPricing,
     cta: {
       title: 'Ship your next landing in minutes',
       description: 'One import. Five sections. Consistent rhythm.',
@@ -115,7 +125,6 @@ export const SaaSFull: Story = {
       badge: 'v0.7',
       title: 'Ship SaaS landings without layout drift',
       subtitle: 'Pattern blocks + section tokens keep AI-generated pages on rhythm.',
-      media: heroMedia,
       stats: [
         { value: '12', label: 'Blocks' },
         { value: '14', label: 'Patterns' },
@@ -124,7 +133,7 @@ export const SaaSFull: Story = {
       secondaryAction: { label: 'Browse Storybook', href: '#' },
     },
     logoCloud: {
-      logos: [...aicadsPartnerLogos],
+      logos: aicadsPartnerLogosList,
     },
     stats: {
       stats: [
@@ -163,29 +172,66 @@ export const SaaSFull: Story = {
       subtitle: 'Monthly pattern releases and migration guides.',
     },
   },
+  render: (args) => (
+    <LandingPageTemplate {...args} hero={{ ...args.hero, media: heroMedia }} />
+  ),
   parameters: { viewport: { defaultViewport: 'desktop' } },
 };
 
 /** AICADS PRO enterprise landing — overlay navbar + brand hero. */
-const aicadsProEnterpriseArgs: Story['args'] = {
+const aicadsProEnterpriseArgs: LandingPageTemplateProps = {
   navbar: aicadsProNavbarFixture,
-  hero: aicadsEnterpriseHeroDemo,
+  hero: aicadsEnterpriseHeroDemoContent,
+  events: aicadsEnterpriseEventsDemo,
   features: aicadsEnterpriseFeaturesDemo,
+  pricing: aicadsEnterprisePricingDemo,
   cta: aicadsEnterpriseCtaDemo,
   footer: aicadsEnterpriseFooterDemo,
 };
 
+function renderEnterpriseLanding(args: LandingPageTemplateProps) {
+  return (
+    <LandingPageTemplate
+      {...args}
+      hero={withEnterpriseHeroMedia(args.hero)}
+      solutions={withSolutionCardCovers(aicadsSolutionsDemoContent)}
+      services={withServiceCardMedia(aicadsServicesDemoContent)}
+    />
+  );
+}
+
 export const AicadsProEnterprise: Story = {
-  args: aicadsProEnterpriseArgs,
-  parameters: { viewport: { defaultViewport: 'desktop' } },
+  render: () =>
+    renderEnterpriseLanding({
+      ...aicadsProEnterpriseArgs,
+      hero: aicadsEnterpriseHeroDemoContent,
+    }),
+  parameters: {
+    viewport: { defaultViewport: 'desktop' },
+    controls: { disable: true },
+  },
 };
 
 export const AicadsProEnterpriseMobile: Story = {
-  args: aicadsProEnterpriseArgs,
-  parameters: { viewport: { defaultViewport: 'mobile' } },
+  render: () =>
+    renderEnterpriseLanding({
+      ...aicadsProEnterpriseArgs,
+      hero: aicadsEnterpriseHeroDemoContent,
+    }),
+  parameters: {
+    viewport: { defaultViewport: 'mobile' },
+    controls: { disable: true },
+  },
 };
 
 export const AicadsProEnterpriseTablet: Story = {
-  args: aicadsProEnterpriseArgs,
-  parameters: { viewport: { defaultViewport: 'tablet' } },
+  render: () =>
+    renderEnterpriseLanding({
+      ...aicadsProEnterpriseArgs,
+      hero: aicadsEnterpriseHeroDemoContent,
+    }),
+  parameters: {
+    viewport: { defaultViewport: 'tablet' },
+    controls: { disable: true },
+  },
 };

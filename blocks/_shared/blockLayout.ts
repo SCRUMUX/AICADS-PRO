@@ -9,13 +9,18 @@ import { cn } from '../../components/primitives/_shared';
  * - Center alignment is reserved for standalone hero pattern `marketing.hero.centered` only.
  */
 
+/** Horizontal inset only — matches landing page rhythm (no max-width). */
+export const BLOCK_HORIZONTAL_INSET_CLASS = cn(
+  'px-[var(--grid-mobile-offset)]',
+  'tablet:px-[var(--grid-tablet-offset)]',
+  'desktop:px-[var(--grid-desktop-offset)]',
+);
+
 /** Shared page content shell — all sections share this horizontal box. */
 export const BLOCK_CONTENT_CLASS = cn(
   'mx-auto w-full box-border',
   'max-w-[var(--grid-desktop-breakpoint)]',
-  'px-[var(--grid-mobile-offset)]',
-  'tablet:px-[var(--grid-tablet-offset)]',
-  'desktop:px-[var(--grid-desktop-offset)]',
+  BLOCK_HORIZONTAL_INSET_CLASS,
 );
 
 /** Readable prose width, anchored to the content column start (not centered). */
@@ -44,6 +49,29 @@ export const BLOCK_GRID_ITEM_CLASS = 'min-w-0 h-full';
 export const BLOCK_SPLIT_CLASS = cn(
   BLOCK_GRID_BASE_CLASS,
   'grid-cols-1 min-[1024px]:grid-cols-2 min-[1024px]:items-center',
+);
+
+/** Events featured band — narrow title/nav column + wide event content (Cortel). */
+export const EVENTS_FEATURED_SPLIT_CLASS = cn(
+  BLOCK_GRID_BASE_CLASS,
+  'grid-cols-1 min-[1024px]:grid-cols-[minmax(0,var(--space-280))_minmax(0,1fr)]',
+  'min-[1024px]:items-center min-[1024px]:gap-[var(--space-80)]',
+);
+
+/** Solutions desktop mosaic — 12-col: row1 (4+4+4), row2 (6+3+3) (Cortel). */
+export const SOLUTIONS_DESKTOP_GRID_CLASS = cn(
+  BLOCK_GRID_BASE_CLASS,
+  'grid-cols-12',
+);
+
+/** Solutions mobile/tablet — horizontal case-study scroll strip. */
+export const SOLUTIONS_SCROLL_STRIP_CLASS = cn(
+  'flex w-full min-w-0 overflow-x-auto',
+  'h-[var(--space-360)]',
+  'gap-[var(--grid-mobile-gutter)]',
+  'tablet:gap-[var(--grid-tablet-gutter)]',
+  '[&>*]:min-w-[var(--space-320)] [&>*]:max-w-[var(--space-320)] [&>*]:shrink-0',
+  'snap-x snap-mandatory [&>*]:snap-start',
 );
 
 /** Logo cloud — equal tiles across the full content width. */

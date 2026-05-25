@@ -28,6 +28,26 @@
       "uxReference": "shadcn:hero-02",
       "whenToUse": "Split hero with media column and optional stats row"
     },
+    "marketing.hero.enterprise": {
+      "block": "HeroBlock",
+      "recipe": "section.hero",
+      "category": "marketing",
+      "variant": "enterprise",
+      "primitives": ["SectionHeader", "Button", "Paragraph", "Badge"],
+      "storyReference": "Blocks/Marketing/HeroBlock/Enterprise",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "B2B enterprise above-fold — split stage (headline + CTA + media), bottom metrics band with inline description (Cortel-style)"
+    },
+    "marketing.hero.page": {
+      "block": "HeroBlock",
+      "recipe": "section.hero.page",
+      "category": "marketing",
+      "variant": "page",
+      "primitives": ["Breadcrumb", "Badge", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/HeroBlock/Page",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Inner page hero — breadcrumb trail, category badge, and display title on brand band (case study / detail pages)"
+    },
     "marketing.navbar.sticky": {
       "block": "NavbarBlock",
       "recipe": "section.navbar",
@@ -128,6 +148,32 @@
       "storyReference": "Blocks/Marketing/NewsletterBlock",
       "whenToUse": "Email capture with inline input and submit"
     },
+    "marketing.events.featured": {
+      "block": "EventsBlock",
+      "recipe": "section.events",
+      "category": "marketing",
+      "primitives": ["Tag", "Button", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/EventsBlock",
+      "whenToUse": "Brand band after hero — split layout with carousel nav, format/date tags, and event title"
+    },
+    "marketing.services.catalog": {
+      "block": "ServicesBlock",
+      "recipe": "section.services",
+      "category": "marketing",
+      "primitives": ["Tab", "Card", "Button", "Image", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/ServicesBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Services/practices catalog — sticky title + category tabs, 3-card grid, show-more pagination, hover lift cards"
+    },
+    "marketing.solutions.showcase": {
+      "block": "SolutionsBlock",
+      "recipe": "section.solutions",
+      "category": "marketing",
+      "primitives": ["Card", "Button", "Badge", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/SolutionsBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Case study showcase — muted band, 2-row mosaic grid (3 equal + 6/3/3), mobile scroll strip, inverse hover reveal with brand gradient cover"
+    },
     "marketing.footer.minimal": {
       "block": "FooterBlock",
       "recipe": "section.footer",
@@ -169,10 +215,13 @@
       "component": "LandingPageTemplate"
     },
     "marketing.landing.enterprise": {
-      "description": "Enterprise AICADS showcase landing — overlay navbar, brand hero, features, CTA, footer",
+      "description": "Enterprise AICADS showcase landing — overlay navbar, brand hero, events, features, CTA, footer",
       "sections": [
         "marketing.navbar.enterprise",
-        "marketing.hero.centered",
+        "marketing.hero.enterprise",
+        "marketing.events.featured",
+        "marketing.solutions.showcase",
+        "marketing.services.catalog",
         "marketing.features.grid",
         "marketing.cta.band",
         "marketing.footer.minimal"

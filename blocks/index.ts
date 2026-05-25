@@ -6,7 +6,7 @@
  */
 
 export { HeroBlock } from './marketing/HeroBlock';
-export type { HeroBlockProps, HeroBlockAction, HeroStat } from './marketing/HeroBlock';
+export type { HeroBlockProps, HeroBlockAction, HeroStat, HeroBreadcrumbItem } from './marketing/HeroBlock';
 
 export { FeaturesBlock } from './marketing/FeaturesBlock';
 export type { FeaturesBlockProps, FeatureItem } from './marketing/FeaturesBlock';
@@ -51,6 +51,24 @@ export type { HowItWorksBlockProps, HowItWorksStep } from './marketing/HowItWork
 
 export { NewsletterBlock } from './marketing/NewsletterBlock';
 export type { NewsletterBlockProps } from './marketing/NewsletterBlock';
+
+export { EventsBlock } from './marketing/EventsBlock';
+export type { EventsBlockProps, EventItem, EventFormat } from './marketing/EventsBlock';
+
+export { ServicesBlock } from './marketing/ServicesBlock';
+export type {
+  ServicesBlockProps,
+  ServiceCategory,
+  ServiceItem,
+  ServiceItemAction,
+} from './marketing/ServicesBlock';
+
+export { SolutionsBlock } from './marketing/SolutionsBlock';
+export type {
+  SolutionsBlockProps,
+  SolutionItem,
+  SolutionsViewAllAction,
+} from './marketing/SolutionsBlock';
 
 export { LandingPageTemplate } from './marketing/LandingPageTemplate';
 export type { LandingPageTemplateProps } from './marketing/LandingPageTemplate';

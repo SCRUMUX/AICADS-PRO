@@ -66,7 +66,7 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>((props, ref)
           style={style}
         >
           {(title || showClose) && (
-            <div className="flex items-center justify-between gap-[var(--space-8)] p-[var(--space-inset-l)] border-b border-[var(--color-divider)] shrink-0">
+            <div className="flex items-center justify-between gap-[var(--space-8)] p-[var(--space-inset-l)] border-b border-[var(--color-border-base)] shrink-0">
               {title ? (
                 <VaulDrawer.Title className="text-style-h4 text-[var(--color-text-primary)]">
                   {title}

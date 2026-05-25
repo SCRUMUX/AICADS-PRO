@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { MarketingAboveFold } from '../../_shared/MarketingAboveFold';
+import { BLOCK_HORIZONTAL_INSET_CLASS } from '../../_shared/blockLayout';
+import { cn } from '../../../components/primitives/_shared';
 import { HeroBlock } from '../HeroBlock/HeroBlock';
 import { NavbarBlock } from './NavbarBlock';
 import type { NavbarBlockProps } from './NavbarBlock.types';
@@ -18,8 +19,11 @@ function NavbarScrollFrame(props: NavbarBlockProps) {
         <HeroBlock {...demoHero} className="!bg-transparent" />
       </MarketingAboveFold>
       <div
-        className="bg-[var(--color-surface-1)] text-[var(--color-text-primary)]"
-        style={{ padding: 'var(--space-section-y-xl) var(--grid-desktop-offset)' }}
+        className={cn(
+          'bg-[var(--color-surface-1)] text-[var(--color-text-primary)]',
+          'py-[var(--space-section-y-xl)]',
+          BLOCK_HORIZONTAL_INSET_CLASS,
+        )}
       >
         <p className="text-style-body max-w-[var(--space-paragraph-max-tablet)]">
           Прокрутите страницу: navbar остаётся закреплённым; иконки соцсетей видны только до скролла под bar.
@@ -67,9 +71,17 @@ export const Desktop: Story = { parameters: { viewport: { defaultViewport: 'desk
 export const Tablet: Story = { parameters: { viewport: { defaultViewport: 'tablet' } } };
 export const Mobile: Story = { parameters: { viewport: { defaultViewport: 'mobile' } } };
 
+/** Mobile drawer open on load — verify insets, services panel, and CTA stack. */
+export const MobileMenuOpen: Story = {
+  args: aicadsProNavbarFixture,
+  render: (args) => <NavbarScrollFrame {...args} defaultMobileOpen />,
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+};
+
 /** Services mega menu open on load — verify tabbed panel without clicking. */
 export const ServicesMenuOpen: Story = {
-  args: { ...aicadsProNavbarFixture, defaultServicesOpen: true },
+  args: aicadsProNavbarFixture,
+  render: (args) => <NavbarScrollFrame {...args} defaultServicesOpen />,
   parameters: { viewport: { defaultViewport: 'desktop' } },
 };
 

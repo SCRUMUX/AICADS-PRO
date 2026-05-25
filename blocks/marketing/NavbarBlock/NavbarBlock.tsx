@@ -151,13 +151,15 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
     phone,
     className,
     defaultServicesOpen = false,
+    defaultMobileOpen = false,
   } = props;
 
   const chromeRef = useRef<HTMLDivElement>(null);
   const servicesTriggerRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(defaultServicesOpen);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(defaultMobileOpen);
   const [chromeHeight, setChromeHeight] = useState(0);
 
   const triggerLabel =
@@ -234,7 +236,7 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
     servicesOpen ? 'z-[calc(var(--z-modal)+2)]' : 'z-[var(--z-header)]',
     'w-full overflow-visible transition-[background-color,box-shadow,border-color] duration-200',
     NAVBAR_SURFACE.header[surface],
-    !servicesOpen && NAVBAR_SURFACE.chromeBorder[surface],
+    !servicesOpen && !scrolled && NAVBAR_SURFACE.chromeBorder[surface],
     className,
   );
 
@@ -367,13 +369,17 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
                 </div>
 
                 <button
+                  ref={mobileMenuButtonRef}
                   type="button"
                   className={cn(
                     'inline-flex h-[var(--space-44)] w-[var(--space-44)] shrink-0 items-center justify-center rounded-[var(--radius-medium)] min-[768px]:hidden',
+                    'transition-opacity duration-200 hover:opacity-80',
+                    'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
                     textClass,
                   )}
-                  aria-label="Open menu"
+                  aria-label="Открыть меню"
                   aria-expanded={mobileOpen}
+                  aria-haspopup="dialog"
                   onClick={() => setMobileOpen(true)}
                 >
                   <MenuIcon />
@@ -428,6 +434,7 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
       <NavbarMobileMenu
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
+        returnFocusRef={mobileMenuButtonRef}
         logo={logo}
         links={links}
         servicesMenu={servicesMenu}

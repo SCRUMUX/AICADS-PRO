@@ -7,6 +7,7 @@ import type { CSSProperties } from 'react';
 
 export type SpacingRecipeId =
   | 'section.hero'
+  | 'section.hero.page'
   | 'section.features'
   | 'section.pricing'
   | 'section.cta'
@@ -18,6 +19,9 @@ export type SpacingRecipeId =
   | 'section.faq'
   | 'section.steps'
   | 'section.newsletter'
+  | 'section.events'
+  | 'section.services'
+  | 'section.solutions'
   | 'section.app-shell';
 
 export type RecipeMaxWidth = 'mobile' | 'tablet' | 'desktop' | 'full';
@@ -34,6 +38,11 @@ export const SPACING_RECIPES: Record<SpacingRecipeId, SpacingRecipe> = {
   'section.hero': {
     sectionPaddingY: 'var(--space-section-y-xl)',
     innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.hero.page': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-m)',
     maxWidth: 'desktop',
   },
   'section.features': {
@@ -89,6 +98,21 @@ export const SPACING_RECIPES: Record<SpacingRecipeId, SpacingRecipe> = {
   'section.newsletter': {
     sectionPaddingY: 'var(--space-section-y-m)',
     innerGap: 'var(--space-section-content-m)',
+    maxWidth: 'desktop',
+  },
+  'section.events': {
+    sectionPaddingY: 'var(--space-section-y-s)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.services': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.solutions': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
     maxWidth: 'desktop',
   },
   'section.app-shell': {
