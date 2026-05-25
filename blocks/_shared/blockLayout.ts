@@ -37,6 +37,27 @@ import { cn } from '../../components/primitives/_shared';
  * - NewsletterBlock — prose + form, no card wrapper
  * - HowItWorksBlock — rounded-full step index badges
  *
+ * Inset contract (inner padding per card tier):
+ * | Tier      | Class                              | Tokens                                      |
+ * |-----------|------------------------------------|---------------------------------------------|
+ * | compact   | BLOCK_CARD_COMPACT_INSET_CLASS     | `--space-inset-l`                           |
+ * | standard  | BLOCK_CARD_STANDARD_INSET_CLASS    | `--space-inset-l` → desktop `--space-inset-xl` |
+ *
+ * Radius roles (interactive UI — not card outer shell):
+ * | Role              | Class / component              | Token              |
+ * |-------------------|--------------------------------|--------------------|
+ * | Text CTA          | BlockAction / Button           | `--radius-button`  |
+ * | Icon chip         | BLOCK_CHROME_ICON_CHIP_CLASS   | `--radius-medium`  |
+ * | Square nav control| BLOCK_CHROME_SQUARE_CONTROL_CLASS | `--radius-medium` |
+ * | Card outer shell  | BLOCK_CARD_*_SHELL             | section → large    |
+ * | Meta pill / arrow | *_PILL_CLASS, SOLUTION_ARROW_* | `--radius-large`   |
+ * | Step badge        | HowItWorks only                | `rounded-full`     |
+ *
+ * Horizontal edge exceptions (intentional full-bleed / bleed-out):
+ * - Partners marquee — PARTNERS_MARQUEE_VIEWPORT_CLASS
+ * - Blog mobile scroll strip — BLOG_SCROLL_STRIP_CLASS (negative margin)
+ * - Default — all card grids stay inside BLOCK_CONTENT_CLASS
+ *
  * Block audit matrix (recipe / story): all 25 blocks use SectionShell + per-block stories;
  * LandingPageTemplate composes the full landing reference screen.
  *
@@ -46,8 +67,17 @@ import { cn } from '../../components/primitives/_shared';
 /** Standard card — responsive radius only (no border/fill). */
 export const BLOCK_CARD_STANDARD_RADIUS_CLASS = cn(
   'rounded-[var(--radius-section)]',
-  'min-[1024px]:rounded-[var(--radius-large)]',
+  'desktop:rounded-[var(--radius-large)]',
 );
+
+/** Standard card tier — inner padding (mobile inset-l, desktop inset-xl). */
+export const BLOCK_CARD_STANDARD_INSET_CLASS = cn(
+  'p-[var(--space-inset-l)]',
+  'desktop:p-[var(--space-inset-xl)]',
+);
+
+/** Compact card tier — inner padding. */
+export const BLOCK_CARD_COMPACT_INSET_CLASS = 'p-[var(--space-inset-l)]';
 
 /** Compact card — feature grids, pricing tiers, catalog links. */
 export const BLOCK_CARD_COMPACT_CLASS = cn(
@@ -76,7 +106,7 @@ export const BLOCK_CARD_PROMINENT_SHELL_CLASS = cn(
 /** Events list row card — compact tier. */
 export const BLOCK_EVENT_LIST_CARD_CLASS = cn(
   BLOCK_CARD_COMPACT_CLASS,
-  'p-[var(--space-inset-l)]',
+  BLOCK_CARD_COMPACT_INSET_CLASS,
 );
 
 /** Hero split media frame — compact tier. */
@@ -106,13 +136,22 @@ export const BLOCK_SUPPORT_CONTACT_ROW_CLASS = cn(
 /** Support stat card shell — standard tier + inset. */
 export const BLOCK_SUPPORT_STAT_CARD_SHELL_CLASS = cn(
   BLOCK_CARD_STANDARD_SHELL_CLASS,
-  'relative overflow-hidden p-[var(--space-inset-l)] min-[1024px]:p-[var(--space-inset-xl)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'relative overflow-hidden',
 );
 
-/** Blog chrome controls — standard tier (nav + view-all). */
+/** Blog view-all link — standard card shell (prominent chrome). */
 export const BLOCK_BLOG_CHROME_CONTROL_CLASS = cn(
   BLOCK_CARD_STANDARD_SHELL_CLASS,
   'inline-flex items-center justify-center transition-colors duration-200',
+  'hover:border-[var(--color-brand-primary)]',
+);
+
+/** Square icon nav control — blog prev/next (radius-medium, not card shell). */
+export const BLOCK_CHROME_SQUARE_CONTROL_CLASS = cn(
+  'inline-flex items-center justify-center rounded-[var(--radius-medium)]',
+  'border border-solid border-[var(--color-border-base)] bg-[var(--color-surface-1)]',
+  'transition-colors duration-200',
   'hover:border-[var(--color-brand-primary)]',
 );
 
@@ -161,7 +200,7 @@ export const SOLUTION_CATEGORY_PILL_CLASS = cn(
   'text-style-caption-xs text-[var(--color-text-secondary)]',
   'h-[var(--space-28)] px-[var(--space-3)] gap-[var(--space-1)]',
   'transition-colors duration-200',
-  'min-[1024px]:group-hover:bg-[var(--color-surface-1)] min-[1024px]:group-hover:text-[var(--color-brand-primary)]',
+  'desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-brand-primary)]',
 );
 
 /** Solution card meta pill (client, date). */
@@ -171,7 +210,7 @@ export const SOLUTION_META_PILL_CLASS = cn(
   'text-style-caption-xs text-[var(--color-text-secondary)]',
   'h-[var(--space-22)] px-[var(--space-3)]',
   'transition-colors duration-200',
-  'min-[1024px]:group-hover:bg-[var(--color-surface-1)] min-[1024px]:group-hover:text-[var(--color-text-primary)]',
+  'desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-text-primary)]',
 );
 
 /** Solution card corner arrow button. */
@@ -181,7 +220,7 @@ export const SOLUTION_ARROW_BUTTON_CLASS = cn(
   'rounded-[var(--radius-large)] border border-transparent',
   'bg-[var(--color-brand-primary)] text-[var(--color-text-on-brand)]',
   'transition-colors duration-200',
-  'min-[1024px]:group-hover:border-[var(--color-border-base)] min-[1024px]:group-hover:bg-[var(--color-surface-1)] min-[1024px]:group-hover:text-[var(--color-brand-primary)]',
+  'desktop:group-hover:border-[var(--color-border-base)] desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-brand-primary)]',
 );
 
 /** Glass chrome — sticky/floating UI (showcase preview, bordered panels). */
@@ -242,7 +281,7 @@ export const BLOCK_GLASS_PANEL_CLASS = BLOCK_GLASS_CHROME_PANEL_CLASS;
 /** Standard card media — blog / service cover image slot. */
 export const BLOCK_CARD_MEDIA_CLASS = cn(
   'aspect-[416/270] w-full shrink-0 rounded-[var(--radius-section)] object-cover',
-  'min-[1024px]:rounded-[var(--radius-large)]',
+  'desktop:rounded-[var(--radius-large)]',
 );
 
 /** Horizontal inset only — matches landing page rhythm (no max-width). */
@@ -634,7 +673,8 @@ export const WHY_US_ROW_BOTTOM_CLASS = cn(
 );
 
 export const WHY_US_CARD_CLASS = cn(
-  'flex min-h-[var(--space-302)] flex-col justify-between p-[var(--space-32)]',
+  'flex min-h-[var(--space-302)] flex-col justify-between',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
   BLOCK_CARD_PROMINENT_SHELL_CLASS,
   'min-[1024px]:h-full',
   'min-[1024px]:border min-[1024px]:border-solid min-[1024px]:border-[var(--color-border-base)]',
@@ -658,7 +698,8 @@ export const WHY_US_CARD_DESCRIPTION_CLASS = cn(
 export const WHY_US_CARD_ICON_SLOT_CLASS = 'mt-[var(--space-16)] flex self-end';
 
 export const WHY_US_FEATURED_CLASS = cn(
-  'relative flex overflow-hidden rounded-[var(--radius-large)] p-[var(--space-32)]',
+  'relative flex overflow-hidden rounded-[var(--radius-large)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
   'h-[var(--space-296)] min-[1024px]:h-full',
 );
 
@@ -682,61 +723,62 @@ export const CHOOSE_US_TITLE_CLASS = cn(
 );
 
 export const CHOOSE_US_BODY_CLASS = cn(
-  'mt-[var(--space-28)] flex w-full min-w-0 flex-col gap-[var(--space-16)]',
-  'min-[1024px]:mt-[var(--space-42)] min-[1024px]:flex-row',
+  'mt-[var(--space-28)] grid w-full min-w-0 grid-cols-1 gap-[var(--space-16)]',
+  'desktop:mt-[var(--space-42)] desktop:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] desktop:items-stretch',
 );
 
 export const CHOOSE_US_CARD_LIST_CLASS = cn(
-  'm-0 flex w-full min-w-0 list-none flex-col gap-[var(--space-16)] p-0',
-  'min-[1024px]:max-w-[var(--space-848)] min-[1024px]:flex-row min-[1024px]:flex-wrap',
+  'm-0 grid w-full min-w-0 list-none grid-cols-1 gap-[var(--space-16)] p-0',
+  'desktop:grid-cols-6',
 );
 
 export const CHOOSE_US_CARD_CLASS = cn(
-  'relative flex flex-col gap-[var(--space-12)] p-[var(--space-24)]',
+  'relative flex flex-col gap-[var(--space-12)]',
   BLOCK_CARD_STANDARD_SHELL_CLASS,
-  'min-[1024px]:p-[var(--space-32)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
 );
 
 export const CHOOSE_US_CARD_WIDE_CLASS = cn(
-  'min-[1024px]:h-[var(--space-272)] min-[1024px]:w-[var(--space-416)]',
+  'desktop:col-span-3 desktop:min-h-[var(--space-272)]',
 );
 
 export const CHOOSE_US_CARD_NARROW_CLASS = cn(
-  'min-[1024px]:h-[var(--space-320)] min-[1024px]:w-[var(--space-272)]',
+  'desktop:col-span-2 desktop:min-h-[var(--space-320)]',
 );
 
 export const CHOOSE_US_CARD_TITLE_CLASS = cn(
   'm-0 min-h-[var(--space-50)] whitespace-pre-line font-medium text-style-h4 text-[var(--color-text-primary)]',
-  'min-[1024px]:h-auto min-[1024px]:whitespace-normal min-[1024px]:text-style-body-lg',
+  'desktop:h-auto desktop:whitespace-normal desktop:text-style-body-lg',
 );
 
 export const CHOOSE_US_CARD_DESCRIPTION_CLASS = cn(
   'm-0 font-normal text-style-body text-[var(--color-text-secondary)]',
-  'min-[1024px]:text-style-body-sm',
+  'desktop:text-style-body-sm',
 );
 
 export const CHOOSE_US_CARD_ICON_SLOT_CLASS = cn(
-  'absolute right-[var(--space-24)] top-[var(--space-24)]',
+  'absolute right-[var(--space-inset-l)] top-[var(--space-inset-l)]',
   'flex h-[var(--space-50)] w-[var(--space-50)] items-center justify-center',
-  'min-[1024px]:bottom-[var(--space-32)] min-[1024px]:right-[var(--space-32)] min-[1024px]:top-auto',
-  'min-[1024px]:h-[var(--space-100)] min-[1024px]:w-[var(--space-100)]',
+  'desktop:bottom-[var(--space-inset-xl)] desktop:right-[var(--space-inset-xl)] desktop:top-auto',
+  'desktop:h-[var(--space-100)] desktop:w-[var(--space-100)]',
 );
 
 export const CHOOSE_US_FEATURED_CLASS = cn(
-  'relative flex h-[var(--space-300)] w-full flex-col justify-end overflow-hidden',
-  'rounded-[var(--radius-section)] p-[var(--space-24)] text-[var(--color-text-on-brand)]',
-  'min-[1024px]:h-[var(--space-608)] min-[1024px]:w-[var(--space-416)] min-[1024px]:rounded-[var(--radius-large)]',
-  'min-[1024px]:gap-[var(--space-16)] min-[1024px]:p-[var(--space-32)]',
+  'relative flex h-[var(--space-300)] w-full shrink-0 flex-col justify-end overflow-hidden',
+  'rounded-[var(--radius-section)] text-[var(--color-text-on-brand)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'desktop:h-auto desktop:min-h-[var(--space-608)] desktop:rounded-[var(--radius-large)]',
+  'desktop:gap-[var(--space-16)]',
 );
 
 export const CHOOSE_US_FEATURED_TITLE_CLASS = cn(
   'm-0 font-medium text-style-h3 text-[var(--color-text-on-brand)]',
-  'min-[1024px]:text-style-h2',
+  'desktop:text-style-h2',
 );
 
 export const CHOOSE_US_FEATURED_DESCRIPTION_CLASS = cn(
   'm-0 font-normal text-style-body text-[var(--color-text-on-brand)]',
-  'min-[1024px]:max-w-[var(--space-300)] min-[1024px]:text-style-body-sm',
+  'desktop:max-w-[var(--space-300)] desktop:text-style-body-sm',
 );
 
 /** Process timeline — Cortel vmware «Как выглядит процесс». */
@@ -778,8 +820,8 @@ export const PROCESS_STEP_MARKER_CLASS = cn(
 
 export const PROCESS_STEP_CARD_CLASS = cn(
   BLOCK_CARD_STANDARD_SHELL_CLASS,
-  'p-[var(--space-32)]',
-  'min-[1024px]:min-h-[var(--space-240)] min-[1024px]:max-w-[var(--space-320)] min-[1024px]:p-[var(--space-24)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'min-[1024px]:min-h-[var(--space-240)] min-[1024px]:max-w-[var(--space-320)]',
 );
 
 export const PROCESS_STEP_TITLE_CLASS = cn(
@@ -809,7 +851,8 @@ export const FAQ_ENTERPRISE_ITEM_CLASS = cn(
 
 export const FAQ_ENTERPRISE_TRIGGER_CLASS = cn(
   'flex w-full min-w-0 items-center gap-[var(--space-16)] border-0 bg-transparent text-left',
-  'p-[var(--space-24)] min-[1024px]:gap-[var(--space-24)] min-[1024px]:px-[var(--space-32)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'min-[1024px]:gap-[var(--space-24)]',
   'cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-primary)]',
 );
 
@@ -828,7 +871,7 @@ export const FAQ_ENTERPRISE_QUESTION_CLASS = cn(
 );
 
 export const FAQ_ENTERPRISE_ANSWER_CLASS = cn(
-  'px-[var(--space-20)] pb-[var(--space-24)] pt-[var(--space-8)] text-style-body text-[var(--color-text-secondary)]',
-  'min-[1024px]:px-[var(--space-32)] min-[1024px]:pb-[var(--space-32)] min-[1024px]:pt-[var(--space-8)]',
+  'px-[var(--space-inset-l)] pb-[var(--space-inset-l)] pt-[var(--space-8)] text-style-body text-[var(--color-text-secondary)]',
+  'desktop:px-[var(--space-inset-xl)] desktop:pb-[var(--space-inset-xl)] desktop:pt-[var(--space-8)]',
   '[&_a]:text-[var(--color-brand-primary)] [&_a]:no-underline [&_a]:hover:underline',
 );

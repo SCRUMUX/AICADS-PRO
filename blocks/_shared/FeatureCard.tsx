@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '../../components/primitives/_shared';
-import { BLOCK_CARD_COMPACT_CLASS } from './blockLayout';
+import { BLOCK_CARD_COMPACT_CLASS, BLOCK_CARD_COMPACT_INSET_CLASS } from './blockLayout';
 
 export interface FeatureCardProps {
   title: string;
@@ -20,11 +20,11 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
     className={cn(
       'flex flex-col h-full w-full min-w-0',
       BLOCK_CARD_COMPACT_CLASS,
+      BLOCK_CARD_COMPACT_INSET_CLASS,
       'transition-colors duration-150 hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-surface-1)]',
       className,
     )}
     style={{
-      padding: 'var(--space-inset-xl)',
       gap: 'var(--space-section-stack-m)',
     }}
   >

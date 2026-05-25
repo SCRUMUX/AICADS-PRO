@@ -58,7 +58,37 @@ For `marketing.navbar.enterprise` with `overlay: true`:
 - Reference payloads: **`aicadsProNavbarFixture`**, **`aicadsProEnterpriseLandingArgs`**, **`aicadsEnterpriseHeroDemoContent`** from `@ai-ds/core/blocks`.
 - Navbar **services mega-menu** uses opaque `surface-1` (readable dropdown); scrim uses `BLOCK_GLASS_SCRIM_CLASS`.
 
-Grids use 3-up from **1024px** so cards never orphan on typical desktop widths.
+Grids use 3-up from **1024px** so cards never orphan on typical desktop widths. **Fixed-width mosaics** (ChooseUs) activate at **`desktop` (1440px)** so card grids stay inside `BLOCK_CONTENT_CLASS` gutters.
+
+### Card inset contract
+
+Defined in [`blockLayout.ts`](../blocks/_shared/blockLayout.ts):
+
+| Tier | Class | Padding tokens |
+|------|-------|----------------|
+| compact | `BLOCK_CARD_COMPACT_INSET_CLASS` | `--space-inset-l` |
+| standard | `BLOCK_CARD_STANDARD_INSET_CLASS` | `--space-inset-l` → `desktop` `--space-inset-xl` |
+
+Use these on every standard/compact card shell — do not mix raw `--space-24` / `--space-32` for inner padding.
+
+### Radius roles (interactive UI)
+
+| Role | Class / component | Token |
+|------|-------------------|-------|
+| Text CTA | `BlockAction` / `Button` | `--radius-button` |
+| Icon chip | `BLOCK_CHROME_ICON_CHIP_CLASS` | `--radius-medium` |
+| Square nav control | `BLOCK_CHROME_SQUARE_CONTROL_CLASS` | `--radius-medium` |
+| Card outer shell | `BLOCK_CARD_*_SHELL` | `--radius-section` → `desktop` `--radius-large` |
+| Meta pill / arrow | `SOLUTION_*_PILL_CLASS`, `SOLUTION_ARROW_BUTTON_CLASS` | `--radius-large` |
+| Step badge | HowItWorks only | `rounded-full` |
+
+### Horizontal edge exceptions
+
+Intentional breaks from the content column edge (not bugs):
+
+- **Partners** — `PARTNERS_MARQUEE_VIEWPORT_CLASS` full-bleed marquee strip
+- **Blog mobile** — `BLOG_SCROLL_STRIP_CLASS` negative horizontal margin for scroll peek
+- **Default** — all card grids and panels stay inside `BLOCK_CONTENT_CLASS`
 
 ## Pattern manifest
 

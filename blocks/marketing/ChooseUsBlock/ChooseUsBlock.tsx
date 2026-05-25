@@ -51,9 +51,14 @@ export const ChooseUsBlock: React.FC<ChooseUsBlockProps> = ({
       appearance="muted"
       className={cn(
         'bg-[var(--color-surface-2)]',
-        '!pt-[var(--space-80)] !pb-[var(--space-64)] min-[1024px]:!pt-[var(--space-112)] min-[1024px]:!pb-[var(--space-80)]',
+        '[--choose-us-pt:var(--space-80)] [--choose-us-pb:var(--space-64)]',
+        'desktop:[--choose-us-pt:var(--space-112)] desktop:[--choose-us-pb:var(--space-80)]',
         className,
       )}
+      style={{
+        paddingTop: 'var(--choose-us-pt)',
+        paddingBottom: 'var(--choose-us-pb)',
+      }}
       aria-label="Why choose us"
     >
       <ChooseUsTitle title={title} titleAccent={titleAccent} />

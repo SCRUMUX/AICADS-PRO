@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlockAction } from '../../_shared/BlockAction';
-import { BLOCK_CARD_STANDARD_INTERACTIVE_CLASS } from '../../_shared/blockLayout';
+import { BLOCK_CARD_STANDARD_INTERACTIVE_CLASS, BLOCK_CARD_STANDARD_INSET_CLASS } from '../../_shared/blockLayout';
 import { Image } from '../../../components/primitives/Image';
 import { cn } from '../../../components/primitives/_shared';
 import type { ServiceItemAction } from './ServicesBlock.types';
@@ -56,9 +56,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       <div className="w-full shrink-0 overflow-hidden">{media}</div>
 
       <div
-        className="flex min-h-0 flex-1 flex-col"
+        className={cn('flex min-h-0 flex-1 flex-col', BLOCK_CARD_STANDARD_INSET_CLASS)}
         style={{
-          padding: 'var(--space-inset-l)',
           gap: 'var(--space-section-stack-m)',
         }}
       >

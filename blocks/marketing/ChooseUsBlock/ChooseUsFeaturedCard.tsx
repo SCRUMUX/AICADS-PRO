@@ -20,7 +20,7 @@ function ChooseUsFeaturedTitle({
   return (
     <h3 className={CHOOSE_US_FEATURED_TITLE_CLASS}>
       {before}
-      <br className="min-[1024px]:hidden" />
+      <br className="desktop:hidden" />
       {titleBreakBefore}
       {after}
     </h3>
@@ -72,14 +72,14 @@ export const ChooseUsFeaturedCard: React.FC<ChooseUsFeaturedCardProps> = ({
 }) => (
   <article className={cn(CHOOSE_US_FEATURED_CLASS, className)}>
     {media ? (
-      <div className="absolute inset-0">{media}</div>
+      <div className="absolute inset-[-1px]">{media}</div>
     ) : imageSrc || imageSrcMobile ? (
       <>
         {imageSrcMobile ? (
           <img
             src={imageSrcMobile}
             alt={imageAlt}
-            className="absolute inset-0 h-full w-full object-cover min-[1024px]:hidden"
+            className="absolute inset-[-1px] h-[calc(100%+2px)] w-[calc(100%+2px)] object-cover desktop:hidden"
           />
         ) : null}
         {imageSrc ? (
@@ -87,8 +87,8 @@ export const ChooseUsFeaturedCard: React.FC<ChooseUsFeaturedCardProps> = ({
             src={imageSrc}
             alt={imageAlt}
             className={cn(
-              'absolute inset-0 h-full w-full object-cover',
-              imageSrcMobile ? 'max-lg:hidden' : undefined,
+              'absolute inset-[-1px] h-[calc(100%+2px)] w-[calc(100%+2px)] object-cover',
+              imageSrcMobile ? 'hidden desktop:block' : undefined,
             )}
           />
         ) : null}
@@ -101,7 +101,7 @@ export const ChooseUsFeaturedCard: React.FC<ChooseUsFeaturedCardProps> = ({
       <DefaultFeaturedMedia />
     )}
 
-    <div className="relative z-10 flex flex-col gap-[var(--space-8)] min-[1024px]:gap-[var(--space-16)]">
+    <div className="relative z-10 flex flex-col gap-[var(--space-8)] desktop:gap-[var(--space-16)]">
       <ChooseUsFeaturedTitle title={title} titleBreakBefore={titleBreakBefore} />
       <p className={CHOOSE_US_FEATURED_DESCRIPTION_CLASS}>{description}</p>
     </div>

@@ -3,6 +3,29 @@
 All notable changes to @ai-ds/core are documented here.
 Format follows [Semantic Versioning](https://semver.org/).
 
+## [0.7.4] — 2026-05-25
+
+> **Card inset & radius contract** — unified padding tiers, ChooseUs grid fix, Solutions hover stability.
+
+### Added
+
+- **Inset contract** — `BLOCK_CARD_STANDARD_INSET_CLASS`, `BLOCK_CARD_COMPACT_INSET_CLASS` for consistent inner padding per card tier.
+- **Square chrome control** — `BLOCK_CHROME_SQUARE_CONTROL_CLASS` for blog prev/next (`--radius-medium`, not card shell).
+
+### Changed
+
+- **ChooseUsBlock** — CSS grid mosaic (`desktop:` breakpoint, 6-col fr tracks); featured panel `shrink-0` + media bleed; section padding via CSS vars (no `!pt/!pb`).
+- **SolutionCard** — hover hides body via opacity (reserved `min-h`); footer pinned in grid; desktop hover breakpoint aligned with gutters.
+- **Card padding migration** — ChooseUs, WhyUs, Process, FAQ, Solutions, Trust, Services, Testimonials, Pricing, FeatureCard use shared inset classes.
+- **Blog nav** — prev/next buttons use square chrome (`radius-medium`) instead of standard card shell.
+- **Card radius** — outer shell responsive radius switches at `desktop` (1440px) alongside content gutters.
+- **Docs** — `pattern-layer.md`: inset tier table, radius roles, horizontal edge exceptions.
+
+### Fixed
+
+- **ChooseUs layout** — no overflow/wrap at 1024–1439px; mosaic activates at desktop width only.
+- **Solutions hover jump** — footer/arrow no longer reflows when description fades on hover.
+
 ## [0.7.3] — 2026-05-25
 
 > **Pre-release block unification** — enterprise above-fold contract, shared card/glass micro-classes, consumer enterprise fixtures.

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BLOCK_CARD_STANDARD_RADIUS_CLASS,
   BLOCK_CARD_STANDARD_SHELL_CLASS,
+  BLOCK_CARD_STANDARD_INSET_CLASS,
   BLOCK_SURFACE_MEDIA_SLOT_CLASS,
 } from '../../_shared/blockLayout';
 import { cn } from '../../../components/primitives/_shared';
@@ -13,8 +14,8 @@ export interface TrustPillarCardProps extends TrustPillarItem {
 
 const PILLAR_LAYOUT_CLASS = cn(
   'relative flex min-h-[var(--space-160)] w-full min-w-0 flex-col justify-between overflow-hidden',
-  'p-[var(--space-inset-l)]',
-  'min-[1024px]:h-full min-[1024px]:justify-end min-[1024px]:p-[var(--space-inset-xl)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'min-[1024px]:h-full min-[1024px]:justify-end',
 );
 export const TrustPillarCard: React.FC<TrustPillarCardProps> = ({
   title,

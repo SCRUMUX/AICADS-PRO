@@ -9,6 +9,7 @@ import {
   BLOG_SCROLL_VIEWPORT_CLASS,
   BLOCK_BLOG_CHROME_CONTROL_CLASS,
   BLOCK_CHROME_ICON_CHIP_CLASS,
+  BLOCK_CHROME_SQUARE_CONTROL_CLASS,
 } from '../../_shared/blockLayout';
 import { cn } from '../../../components/primitives/_shared';
 import { useMinBreakpoint } from '../../../hooks/useBreakpoint';
@@ -19,7 +20,7 @@ import type { BlogBlockProps } from './BlogBlock.types';
 export type { BlogBlockProps, BlogPostItem, BlogViewAllAction } from './BlogBlock.types';
 
 const BLOG_NAV_BUTTON_CLASS = cn(
-  BLOCK_BLOG_CHROME_CONTROL_CLASS,
+  BLOCK_CHROME_SQUARE_CONTROL_CLASS,
   'h-[var(--space-40)] w-[var(--space-40)] shrink-0 text-[var(--color-text-primary)]',
   'hover:bg-[var(--color-brand-primary)] hover:text-[var(--color-text-on-brand)]',
   'disabled:pointer-events-none disabled:opacity-40',

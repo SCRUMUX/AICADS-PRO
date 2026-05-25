@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BLOCK_CARD_STANDARD_SHELL_CLASS,
+  BLOCK_CARD_STANDARD_INSET_CLASS,
   SOLUTION_ARROW_BUTTON_CLASS,
   SOLUTION_CATEGORY_PILL_CLASS,
   SOLUTION_META_PILL_CLASS,
@@ -20,7 +21,7 @@ const META_PILL_CLASS = SOLUTION_META_PILL_CLASS;
 const CARD_SHELL_CLASS = cn(
   'group relative flex h-full w-full min-w-0 cursor-pointer overflow-hidden',
   BLOCK_CARD_STANDARD_SHELL_CLASS,
-  'p-[var(--space-inset-l)]',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
   'transition-[border-color,box-shadow] duration-200 ease-out',
   'hover:border-transparent',
   'no-underline text-inherit',
@@ -31,7 +32,7 @@ const ARROW_BUTTON_CLASS = SOLUTION_ARROW_BUTTON_CLASS;
 const CATEGORY_ICON_CLASS = cn(
   'h-[var(--space-16)] w-[var(--space-16)] text-[var(--color-brand-primary)]',
   'transition-colors duration-200',
-  'min-[1024px]:group-hover:text-[var(--color-brand-primary)]',
+  'desktop:group-hover:text-[var(--color-brand-primary)]',
 );
 
 function SolutionCardCover({
@@ -45,7 +46,7 @@ function SolutionCardCover({
         className={cn(
           'absolute inset-0 z-0 bg-gradient-to-br from-[var(--color-brand-primary)] to-[var(--color-brand-hover)]',
           'opacity-[0.08] transition-opacity duration-200',
-          'min-[1024px]:group-hover:opacity-100',
+          'desktop:group-hover:opacity-100',
         )}
         aria-hidden="true"
       />
@@ -56,7 +57,7 @@ function SolutionCardCover({
           className={cn(
             'absolute inset-0 z-[1] h-full w-full object-cover',
             'opacity-[0.22] transition-opacity duration-200',
-            'min-[1024px]:group-hover:opacity-70 min-[1024px]:group-hover:mix-blend-overlay',
+            'desktop:group-hover:opacity-70 desktop:group-hover:mix-blend-overlay',
           )}
         />
       ) : null}
@@ -64,7 +65,7 @@ function SolutionCardCover({
         <div
           className={cn(
             'absolute inset-0 z-[1] opacity-0 transition-opacity duration-200',
-            'min-[1024px]:group-hover:opacity-100',
+            'desktop:group-hover:opacity-100',
           )}
         >
           {cover}
@@ -89,7 +90,7 @@ function SolutionCardBody({ item }: { item: SolutionItem }) {
           'm-0 mt-[var(--space-section-stack-m)] font-medium text-[var(--color-text-primary)]',
           'text-style-h3 min-[1024px]:text-style-h4',
           'transition-colors duration-200',
-          'min-[1024px]:group-hover:text-[var(--color-text-on-brand)]',
+          'desktop:group-hover:text-[var(--color-text-on-brand)]',
         )}
       >
         {item.title}
@@ -99,8 +100,9 @@ function SolutionCardBody({ item }: { item: SolutionItem }) {
         <div
           className={cn(
             'mt-[var(--space-section-stack-m)] overflow-hidden text-[var(--color-text-secondary)]',
-            'text-style-body-sm min-[1024px]:max-h-[var(--space-80)] min-[1024px]:text-style-body',
-            'min-[1024px]:group-hover:hidden',
+            'text-style-body-sm desktop:min-h-[var(--space-80)] desktop:text-style-body',
+            'desktop:transition-opacity desktop:duration-200',
+            'desktop:group-hover:pointer-events-none desktop:group-hover:opacity-0',
           )}
         >
           {bodyLines.map((line, index) => (
@@ -169,15 +171,15 @@ export const SolutionCard: React.FC<SolutionCardProps> = (props) => {
         className={cn(
           'pointer-events-none absolute inset-0 z-[2] bg-[var(--color-surface-1)]',
           'opacity-100 transition-opacity duration-200',
-          'min-[1024px]:group-hover:opacity-0',
+          'desktop:group-hover:opacity-0',
         )}
         aria-hidden="true"
       />
-      <div className="relative z-[3] flex h-full min-h-0 flex-col justify-between">
-        <div>
+      <div className="relative z-[3] grid h-full min-h-0 grid-rows-[1fr_auto]">
+        <div className="min-h-0">
           <SolutionCardBody item={item} />
         </div>
-        <div className="mt-[var(--space-section-content-m)]">
+        <div className="mt-[var(--space-section-content-m)] self-end">
           <SolutionCardFooter client={client} date={date} />
         </div>
       </div>

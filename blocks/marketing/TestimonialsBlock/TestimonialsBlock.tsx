@@ -2,7 +2,7 @@ import React from 'react';
 import { SectionShell } from '../../_shared/SectionShell';
 import { BlockSectionHeader } from '../../_shared/BlockSectionHeader';
 import { BlockGrid } from '../../_shared/BlockGrid';
-import { BLOCK_CARD_STANDARD_SHELL_CLASS } from '../../_shared/blockLayout';
+import { BLOCK_CARD_STANDARD_SHELL_CLASS, BLOCK_CARD_STANDARD_INSET_CLASS } from '../../_shared/blockLayout';
 import { cn } from '../../../components/primitives/_shared';
 import { Paragraph } from '../../../components/primitives/Paragraph';
 
@@ -34,8 +34,9 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
           className={cn(
             'flex flex-col h-full w-full min-w-0',
             BLOCK_CARD_STANDARD_SHELL_CLASS,
+            BLOCK_CARD_STANDARD_INSET_CLASS,
           )}
-          style={{ padding: 'var(--space-inset-xl)', gap: 'var(--space-section-stack-m)' }}
+          style={{ gap: 'var(--space-section-stack-m)' }}
         >
           <blockquote className="m-0 text-style-body-md text-[var(--color-text-primary)]">
             &ldquo;{item.quote}&rdquo;
