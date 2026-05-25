@@ -8,7 +8,7 @@ monorepo playground.
 
 ```bash
 # 1. Install the design system (pin a git tag)
-npm install git+https://github.com/SCRUMUX/AICADS-.git#vX.Y.Z
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#vX.Y.Z
 
 # 2. Copy template files into your app
 cp -r templates/consumer-storybook/.storybook ./.storybook

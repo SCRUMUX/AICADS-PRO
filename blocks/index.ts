@@ -21,7 +21,18 @@ export { FooterBlock } from './marketing/FooterBlock';
 export type { FooterBlockProps, FooterColumn, FooterSocialLink } from './marketing/FooterBlock';
 
 export { NavbarBlock } from './marketing/NavbarBlock';
-export type { NavbarBlockProps, NavbarLink } from './marketing/NavbarBlock';
+export type {
+  NavbarBlockProps,
+  NavbarLink,
+  NavbarBlockStoryProps,
+  NavbarServiceCategory,
+  NavbarServiceItem,
+  NavbarSocialLink,
+  NavbarPhoneInfo,
+  NavbarCta,
+  NavbarSocialIcon,
+} from './marketing/NavbarBlock';
+export { aicadsProNavbarFixture } from './marketing/NavbarBlock';
 
 export { LogoCloudBlock } from './marketing/LogoCloudBlock';
 export type { LogoCloudBlockProps, LogoCloudItem } from './marketing/LogoCloudBlock';

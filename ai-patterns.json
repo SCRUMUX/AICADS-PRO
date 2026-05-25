@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/ai-patterns-v1.schema.json",
   "name": "@ai-ds/core",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "description": "AICADS pattern manifest — distributable blocks, spacing recipes, and page templates for AI/Replit assemblers.",
   "conventions": {
     "blockImport": "import { HeroBlock } from '@ai-ds/core/blocks/HeroBlock'",
@@ -35,6 +35,15 @@
       "primitives": ["Link", "Button"],
       "storyReference": "Blocks/Marketing/NavbarBlock",
       "whenToUse": "Top navigation with logo, links, and optional CTA"
+    },
+    "marketing.navbar.enterprise": {
+      "block": "NavbarBlock",
+      "recipe": "section.navbar",
+      "category": "marketing",
+      "variant": "enterprise",
+      "primitives": ["Button", "Tabs", "Tab", "Drawer"],
+      "storyReference": "Blocks/Marketing/NavbarBlock/ServicesMenuOpen",
+      "whenToUse": "Sticky overlay navbar with phone block, account/lead CTAs, static social rail below header, and tabbed services mega menu (desktop/tablet/mobile drawer)"
     },
     "marketing.logos.cloud": {
       "block": "LogoCloudBlock",
@@ -158,6 +167,19 @@
         "marketing.footer.minimal"
       ],
       "component": "LandingPageTemplate"
+    },
+    "marketing.landing.enterprise": {
+      "description": "Enterprise AICADS showcase landing — overlay navbar, brand hero, features, CTA, footer",
+      "sections": [
+        "marketing.navbar.enterprise",
+        "marketing.hero.centered",
+        "marketing.features.grid",
+        "marketing.cta.band",
+        "marketing.footer.minimal"
+      ],
+      "component": "LandingPageTemplate",
+      "fixtureReference": "aicadsProNavbarFixture",
+      "notes": "Use LandingPageTemplate with navbar.overlay=true; hero.appearance auto-coerces to brand when overlay is set."
     }
   }
 }

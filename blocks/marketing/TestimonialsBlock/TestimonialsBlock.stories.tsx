@@ -10,12 +10,12 @@ const meta: Meta<typeof TestimonialsBlock> = {
       {
         quote: 'We stopped hand-rolling landing spacing. AICADS blocks gave us a consistent rhythm overnight.',
         author: 'Alex Kim',
-        role: 'Design Lead, Acme',
+        role: 'Design Lead, Pattern Labs',
       },
       {
         quote: 'Storybook + ai-patterns.json is exactly what our AI assembler needed.',
         author: 'Jordan Lee',
-        role: 'Staff Engineer, Globex',
+        role: 'Staff Engineer, Token Studio',
       },
       {
         quote: 'Pricing and hero sections look production-ready on mobile without custom CSS.',

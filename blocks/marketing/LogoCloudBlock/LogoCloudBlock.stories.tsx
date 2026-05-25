@@ -6,7 +6,7 @@ const meta: Meta<typeof LogoCloudBlock> = {
   component: LogoCloudBlock,
   parameters: { layout: 'fullscreen' },
   args: {
-    logos: ['Acme', 'Globex', 'Umbrella', 'Initech', 'Hooli', 'Massive Dynamic'],
+    logos: ['Pattern Labs', 'Token Studio', 'UI Platform', 'Design Ops', 'Product DS', 'Flow Team'],
   },
 };
 export default meta;

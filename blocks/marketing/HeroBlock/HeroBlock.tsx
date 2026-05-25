@@ -24,6 +24,8 @@ export interface HeroBlockProps {
   badge?: string;
   align?: 'center' | 'left';
   variant?: 'centered' | 'split';
+  /** Full-bleed section background — use `brand` with overlay enterprise navbar. */
+  appearance?: 'base' | 'surface' | 'muted' | 'brand' | 'inverse';
   /** Shown in split layout or as bleedMedia in centered layout. */
   media?: React.ReactNode;
   stats?: HeroStat[];
@@ -38,6 +40,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   badge,
   align = 'center',
   variant = 'centered',
+  appearance = 'base',
   media,
   stats,
   primaryAction,
@@ -46,6 +49,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
 }) => {
   const centered = variant === 'centered' && align === 'center';
   const split = variant === 'split';
+  const onBrand = appearance === 'brand';
 
   const actions = (primaryAction || secondaryAction) && (
     <div
@@ -59,6 +63,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
           href={primaryAction.href}
           appearance="brand"
           size="lg"
+          onBrand={onBrand}
         />
       )}
       {secondaryAction && (
@@ -68,6 +73,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
           href={secondaryAction.href}
           appearance="outline"
           size="lg"
+          onBrand={onBrand}
         />
       )}
     </div>
@@ -81,10 +87,20 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
           className={cn('flex flex-col', centered && 'items-center text-center')}
           style={{ gap: 'var(--space-section-stack-s)' }}
         >
-          <span className="text-style-h2 font-semibold text-[var(--color-text-primary)]">
+          <span
+            className={cn(
+              'text-style-h2 font-semibold',
+              onBrand ? 'text-inherit' : 'text-[var(--color-text-primary)]',
+            )}
+          >
             {stat.value}
           </span>
-          <span className="text-style-body-sm text-[var(--color-text-secondary)]">
+          <span
+            className={cn(
+              'text-style-body-sm',
+              onBrand ? 'text-inherit opacity-90' : 'text-[var(--color-text-secondary)]',
+            )}
+          >
             {stat.label}
           </span>
         </div>
@@ -101,7 +117,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
       style={{ gap: 'var(--space-section-content-m)' }}
     >
       {badge && !split && (
-        <Badge appearance="brand" size="md">
+        <Badge appearance={onBrand ? 'outline' : 'brand'} size="md">
           {badge}
         </Badge>
       )}
@@ -111,6 +127,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
         subtitle={subtitle}
         align={centered ? 'center' : 'left'}
         titleScale="display"
+        onBrand={onBrand}
       />
       {actions}
       {statsRow}
@@ -120,6 +137,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   return (
     <SectionShell
       recipe="section.hero"
+      appearance={appearance}
       className={className}
       aria-label="Hero"
       bleedMedia={!split && media ? media : undefined}

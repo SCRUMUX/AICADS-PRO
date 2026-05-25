@@ -1,6 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LandingPageTemplate } from './LandingPageTemplate';
 import { marketingBlockParameters } from '../../_shared/blockStoryViewports';
+import { aicadsProNavbarFixture } from '../NavbarBlock/navbarBlock.fixtures';
+import {
+  aicadsEnterpriseCtaDemo,
+  aicadsEnterpriseFeaturesDemo,
+  aicadsEnterpriseFooterDemo,
+  aicadsEnterpriseHeroDemo,
+  aicadsPartnerLogos,
+} from '../marketingDemoContent';
 
 const heroMedia = (
   <div
@@ -91,6 +99,7 @@ export const Desktop: Story = { parameters: { viewport: { defaultViewport: 'desk
 export const SaaSFull: Story = {
   args: {
     navbar: {
+      variant: 'default',
       logo: 'AICADS',
       links: [
         { label: 'Features', href: '#features' },
@@ -115,7 +124,7 @@ export const SaaSFull: Story = {
       secondaryAction: { label: 'Browse Storybook', href: '#' },
     },
     logoCloud: {
-      logos: ['Acme', 'Globex', 'Initech', 'Umbrella', 'Stark'],
+      logos: [...aicadsPartnerLogos],
     },
     stats: {
       stats: [
@@ -155,4 +164,28 @@ export const SaaSFull: Story = {
     },
   },
   parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+/** AICADS PRO enterprise landing — overlay navbar + brand hero. */
+const aicadsProEnterpriseArgs: Story['args'] = {
+  navbar: aicadsProNavbarFixture,
+  hero: aicadsEnterpriseHeroDemo,
+  features: aicadsEnterpriseFeaturesDemo,
+  cta: aicadsEnterpriseCtaDemo,
+  footer: aicadsEnterpriseFooterDemo,
+};
+
+export const AicadsProEnterprise: Story = {
+  args: aicadsProEnterpriseArgs,
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+export const AicadsProEnterpriseMobile: Story = {
+  args: aicadsProEnterpriseArgs,
+  parameters: { viewport: { defaultViewport: 'mobile' } },
+};
+
+export const AicadsProEnterpriseTablet: Story = {
+  args: aicadsProEnterpriseArgs,
+  parameters: { viewport: { defaultViewport: 'tablet' } },
 };

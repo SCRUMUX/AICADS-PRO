@@ -72,7 +72,7 @@ export default preview;
 
 ## Checklist B — npm install (new consumer project)
 
-- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-.git#v0.7.0`
+- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.2`
 - [ ] Copy [`templates/consumer-storybook/`](../templates/consumer-storybook/) into your app
 - [ ] Install devDependencies from template `package.json`
 - [ ] Add runtime deps: `react`, `react-dom`, `vaul`, `sonner` (or rely on `@ai-ds/core` transitive deps + explicit vaul for Storybook CSS path)

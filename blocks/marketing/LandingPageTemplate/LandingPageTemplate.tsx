@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from '../../../components/primitives/_shared';
 import { HeroBlock, type HeroBlockProps } from '../HeroBlock';
 import { FeaturesBlock, type FeaturesBlockProps } from '../FeaturesBlock';
 import { PricingBlock, type PricingBlockProps } from '../PricingBlock';
@@ -11,6 +12,7 @@ import { TestimonialsBlock, type TestimonialsBlockProps } from '../TestimonialsB
 import { FAQBlock, type FAQBlockProps } from '../FAQBlock';
 import { HowItWorksBlock, type HowItWorksBlockProps } from '../HowItWorksBlock';
 import { NewsletterBlock, type NewsletterBlockProps } from '../NewsletterBlock';
+import { MarketingAboveFold } from '../../_shared/MarketingAboveFold';
 
 export interface LandingPageTemplateProps {
   hero: HeroBlockProps;
@@ -26,6 +28,14 @@ export interface LandingPageTemplateProps {
   faq?: FAQBlockProps;
   newsletter?: NewsletterBlockProps;
   className?: string;
+}
+
+function resolveAboveFoldHero(hero: HeroBlockProps, navbar?: NavbarBlockProps): HeroBlockProps {
+  if (!navbar?.overlay) return hero;
+  return {
+    ...hero,
+    appearance: hero.appearance ?? 'brand',
+  };
 }
 
 /**
@@ -46,21 +56,32 @@ export const LandingPageTemplate: React.FC<LandingPageTemplateProps> = ({
   faq,
   newsletter,
   className,
-}) => (
-  <div className={className}>
-    {navbar && <NavbarBlock {...navbar} />}
-    <HeroBlock {...hero} />
-    {logoCloud && <LogoCloudBlock {...logoCloud} />}
-    {stats && <StatsBlock {...stats} />}
-    <FeaturesBlock {...features} />
-    {howItWorks && <HowItWorksBlock {...howItWorks} />}
-    <PricingBlock {...pricing} />
-    {testimonials && <TestimonialsBlock {...testimonials} />}
-    {faq && <FAQBlock {...faq} />}
-    <CTABlock {...cta} />
-    {newsletter && <NewsletterBlock {...newsletter} />}
-    <FooterBlock {...footer} />
-  </div>
-);
+}) => {
+  const heroProps = resolveAboveFoldHero(hero, navbar);
+  const useAboveFold = Boolean(navbar?.overlay);
+
+  return (
+    <div className={className}>
+      {navbar && <NavbarBlock {...navbar} />}
+      {useAboveFold ? (
+        <MarketingAboveFold underFixedNavbar={Boolean(navbar?.sticky ?? true)}>
+          <HeroBlock {...heroProps} className={cn('!bg-transparent', heroProps.className)} />
+        </MarketingAboveFold>
+      ) : (
+        <HeroBlock {...heroProps} />
+      )}
+      {logoCloud && <LogoCloudBlock {...logoCloud} />}
+      {stats && <StatsBlock {...stats} />}
+      <FeaturesBlock {...features} />
+      {howItWorks && <HowItWorksBlock {...howItWorks} />}
+      <PricingBlock {...pricing} />
+      {testimonials && <TestimonialsBlock {...testimonials} />}
+      {faq && <FAQBlock {...faq} />}
+      <CTABlock {...cta} />
+      {newsletter && <NewsletterBlock {...newsletter} />}
+      <FooterBlock {...footer} />
+    </div>
+  );
+};
 
 LandingPageTemplate.displayName = 'LandingPageTemplate';

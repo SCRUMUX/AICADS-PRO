@@ -8,6 +8,8 @@ export interface BlockActionProps {
   href?: string;
   appearance?: 'brand' | 'outline' | 'base';
   size?: 'sm' | 'md' | 'lg';
+  /** Use on brand section backgrounds (hero band, CTA band). */
+  onBrand?: boolean;
   className?: string;
 }
 
@@ -18,6 +20,15 @@ const LINK_APPEARANCE: Record<NonNullable<BlockActionProps['appearance']>, strin
     'bg-transparent text-[var(--color-text-primary)] border border-[var(--color-border-base)] hover:bg-[var(--color-surface-2)]',
   base:
     'bg-[var(--color-surface-2)] text-[var(--color-text-primary)] border border-[var(--color-border-base)] hover:bg-[var(--color-surface-3)]',
+};
+
+const ON_BRAND_LINK_APPEARANCE: Record<NonNullable<BlockActionProps['appearance']>, string> = {
+  brand:
+    'bg-[var(--color-surface-1)] text-[var(--color-text-primary)] border border-transparent hover:bg-[var(--color-surface-2)]',
+  outline:
+    'bg-transparent text-[var(--color-text-on-brand)] border border-[var(--color-text-on-brand)]/40 hover:bg-[var(--color-text-on-brand)]/10',
+  base:
+    'bg-[var(--color-text-on-brand)]/15 text-[var(--color-text-on-brand)] border border-[var(--color-text-on-brand)]/25 hover:bg-[var(--color-text-on-brand)]/25',
 };
 
 const LINK_SIZE: Record<NonNullable<BlockActionProps['size']>, string> = {
@@ -33,8 +44,11 @@ export const BlockAction: React.FC<BlockActionProps> = ({
   href,
   appearance = 'brand',
   size = 'lg',
+  onBrand = false,
   className,
 }) => {
+  const appearanceClasses = onBrand ? ON_BRAND_LINK_APPEARANCE[appearance] : LINK_APPEARANCE[appearance];
+
   if (href) {
     return (
       <a
@@ -42,7 +56,7 @@ export const BlockAction: React.FC<BlockActionProps> = ({
         onClick={onClick}
         className={cn(
           'inline-flex items-center justify-center font-medium no-underline transition-colors duration-150',
-          LINK_APPEARANCE[appearance],
+          appearanceClasses,
           LINK_SIZE[size],
           className,
         )}

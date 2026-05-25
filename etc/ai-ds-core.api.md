@@ -51,6 +51,9 @@ export type AccordionSize = 'sm' | 'md' | 'lg';
 // @public
 export type AccordionState = 'open' | 'closed';
 
+// @public
+export const aicadsProNavbarFixture: NavbarBlockProps;
+
 // @public (undocumented)
 export const Alert: React_2.ForwardRefExoticComponent<AlertProps & React_2.RefAttributes<HTMLDivElement>>;
 
@@ -1130,6 +1133,7 @@ export interface HeroBlockAction {
 export interface HeroBlockProps {
     // (undocumented)
     align?: 'center' | 'left';
+    appearance?: 'base' | 'surface' | 'muted' | 'brand' | 'inverse';
     // (undocumented)
     badge?: string;
     // (undocumented)
@@ -1538,26 +1542,98 @@ export const NavbarBlock: React_2.FC<NavbarBlockProps>;
 
 // @public (undocumented)
 export interface NavbarBlockProps {
+    accountCta?: NavbarCta;
     // (undocumented)
     className?: string;
-    // (undocumented)
-    cta?: {
-        label: string;
-        href?: string;
-        onClick?: () => void;
-    };
+    cta?: NavbarCta;
+    // @internal
+    defaultServicesOpen?: boolean;
     // (undocumented)
     links: NavbarLink[];
+    logo: React_2.ReactNode;
+    overlay?: boolean;
     // (undocumented)
-    logo: string;
+    phone?: NavbarPhoneInfo;
+    servicesMenu?: NavbarServiceCategory[];
+    servicesTriggerLabel?: string;
+    showSocialRail?: boolean;
+    socialLinks?: NavbarSocialLink[];
     // (undocumented)
     sticky?: boolean;
+    variant?: 'default' | 'enterprise';
+}
+
+// Warning: (ae-internal-missing-underscore) The name "NavbarBlockStoryProps" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export interface NavbarBlockStoryProps extends NavbarBlockProps {
+    // (undocumented)
+    defaultServicesOpen?: boolean;
+}
+
+// @public (undocumented)
+export interface NavbarCta {
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    icon?: 'user' | 'send';
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    onClick?: () => void;
 }
 
 // @public (undocumented)
 export interface NavbarLink {
     // (undocumented)
+    href?: string;
+    // (undocumented)
+    label: string;
+    megaMenu?: boolean;
+}
+
+// @public (undocumented)
+export interface NavbarPhoneInfo {
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    number: string;
+    // (undocumented)
+    status?: {
+        label: string;
+        href: string;
+    };
+}
+
+// @public (undocumented)
+export interface NavbarServiceCategory {
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    items: NavbarServiceItem[];
+    // (undocumented)
+    label: string;
+}
+
+// @public (undocumented)
+export interface NavbarServiceItem {
+    // (undocumented)
+    description?: string;
+    // (undocumented)
     href: string;
+    // (undocumented)
+    label: string;
+}
+
+// @public (undocumented)
+export type NavbarSocialIcon = 'telegram' | 'phone' | 'vk' | 'youtube';
+
+// @public (undocumented)
+export interface NavbarSocialLink {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    icon: NavbarSocialIcon;
     // (undocumented)
     label: string;
 }

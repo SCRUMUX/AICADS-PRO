@@ -45,6 +45,15 @@ Defined in [`blockLayout.ts`](../blocks/_shared/blockLayout.ts) — B2B SaaS bas
 - **Logo cloud** — equal-height tiles in a 5-column grid (`LogoMark`), not floating uppercase labels
 - **Exception** — `marketing.hero.centered` uses `align="center"` on hero only; `marketing.landing.saas` uses split/start hero throughout
 
+### Enterprise overlay navbar + brand hero
+
+For `marketing.navbar.enterprise` with `overlay: true`:
+
+- **`LandingPageTemplate`** wraps navbar + hero in [`MarketingAboveFold`](../blocks/_shared/MarketingAboveFold.tsx) — one brand background behind sticky header and hero (not negative-margin overlap).
+- Set **`hero.appearance: 'brand'`** (auto-applied when `navbar.overlay` is true and hero appearance is omitted).
+- Static **social rail** sits between header and hero in the DOM; hidden below 768px (icons remain in the mobile drawer).
+- Use **`aicadsProNavbarFixture`** from `@ai-ds/core/blocks` as the reference payload; see `pageTemplates.marketing.landing.enterprise` in the manifest.
+
 Grids use 3-up from **1024px** so cards never orphan on typical desktop widths.
 
 ## Pattern manifest
