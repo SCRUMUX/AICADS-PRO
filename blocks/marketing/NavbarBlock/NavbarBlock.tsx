@@ -11,7 +11,9 @@ import { NavbarMobileMenu } from './NavbarMobileMenu';
 import { ChevronDownIcon, MenuIcon, SendIcon, UserIcon } from './NavbarIcons';
 import {
   NAVBAR_SURFACE,
+  NAVBAR_BRAND_BLEED_EXTRA,
   NAVBAR_CHROME_HEIGHT_FALLBACK,
+  NAVBAR_CHROME_MIN_HEIGHT,
   bindScroll,
   getScrollTop,
   resolveNavbarSurface,
@@ -157,41 +159,46 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
   const chromeRef = useRef<HTMLDivElement>(null);
   const servicesTriggerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
-  const [scrolled, setScrolled] = useState(false);
+  const [pastBrandFold, setPastBrandFold] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(defaultServicesOpen);
   const [mobileOpen, setMobileOpen] = useState(defaultMobileOpen);
   const [chromeHeight, setChromeHeight] = useState(0);
 
   const triggerLabel =
     servicesTriggerLabel ?? links.find((l) => l.megaMenu)?.label ?? 'Компоненты';
-  const surface = resolveNavbarSurface(overlay, scrolled, servicesOpen);
+  const surface = resolveNavbarSurface(overlay, pastBrandFold, servicesOpen);
   const textClass = NAVBAR_SURFACE.text[surface];
-  /** Above-fold only — below navbar bar, hidden on scroll (not part of sticky chrome). */
+  /** Above-fold only — below navbar bar, hidden once user leaves brand first screen. */
   const showAboveFoldSocial =
     overlay &&
-    !scrolled &&
+    !pastBrandFold &&
     !servicesOpen &&
     showSocialRail &&
     socialLinks.length > 0;
 
-  const effectiveChromeHeight = Math.max(chromeHeight, 64);
+  const effectiveChromeHeight = Math.max(chromeHeight, NAVBAR_CHROME_MIN_HEIGHT);
 
   const aboveFoldBandHeight = showAboveFoldSocial
     ? `calc(${effectiveChromeHeight}px + ${SOCIAL_RAIL_FLOW_HEIGHT})`
     : `${effectiveChromeHeight}px`;
 
   useLayoutEffect(() => {
-    const syncScroll = () => setScrolled(getScrollTop() > 8);
+    const syncScroll = () => {
+      const scrollTop = getScrollTop();
+      const viewport = window.innerHeight || document.documentElement.clientHeight || 800;
+      const foldEnd = Math.max(viewport - effectiveChromeHeight, viewport * 0.72);
+      setPastBrandFold(scrollTop > foldEnd);
+    };
     syncScroll();
     return bindScroll(syncScroll);
-  }, []);
+  }, [effectiveChromeHeight]);
 
   useLayoutEffect(() => {
     const node = chromeRef.current;
     if (!node) return;
 
     const syncHeight = () => {
-      const next = node.getBoundingClientRect().height;
+      const next = Math.ceil(node.getBoundingClientRect().height);
       setChromeHeight((prev) => (Math.abs(prev - next) > 0.5 ? next : prev));
     };
 
@@ -204,7 +211,7 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
       ro.disconnect();
       window.removeEventListener('resize', syncHeight);
     };
-  }, [servicesOpen, scrolled, surface]);
+  }, [servicesOpen, pastBrandFold, surface]);
 
   useEffect(() => {
     if (!servicesOpen) return;
@@ -234,9 +241,8 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
   const chromeShellClass = cn(
     sticky && 'fixed inset-x-0 top-0',
     servicesOpen ? 'z-[calc(var(--z-modal)+2)]' : 'z-[var(--z-header)]',
-    'w-full overflow-visible transition-[background-color,box-shadow,border-color] duration-200',
+    'w-full overflow-visible transition-[background-color,box-shadow,border-color,backdrop-filter] duration-200',
     NAVBAR_SURFACE.header[surface],
-    !servicesOpen && !scrolled && NAVBAR_SURFACE.chromeBorder[surface],
     className,
   );
 
@@ -276,12 +282,12 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
 
   return (
     <>
-      <div className="relative w-full">
-        {overlay && !scrolled ? (
+      <div className="relative isolate z-[var(--z-header)] w-full">
+        {overlay && !pastBrandFold ? (
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-0 bg-[var(--color-brand-primary)]"
-            style={{ height: aboveFoldBandHeight }}
+            className="pointer-events-none fixed inset-x-0 top-[-1px] z-[calc(var(--z-header)-1)] bg-[var(--color-brand-primary)]"
+            style={{ height: `calc(${aboveFoldBandHeight} + ${NAVBAR_BRAND_BLEED_EXTRA})` }}
           />
         ) : null}
 
@@ -399,31 +405,20 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
           ) : null}
         </div>
 
-        {showAboveFoldSocial ? (
-          <div
-            className="pointer-events-none absolute inset-x-0 z-[calc(var(--z-header)-1)]"
-            style={{ top: effectiveChromeHeight }}
-          >
-            <div className="pointer-events-auto">
-              <NavbarSocialRail links={socialLinks} surface="overlay" />
-            </div>
-          </div>
-        ) : null}
-
         {sticky ? (
-          <div
-            aria-hidden="true"
-            className="pointer-events-none w-full"
-            style={{
-              height: showAboveFoldSocial
-                ? `calc(${effectiveChromeHeight}px + ${SOCIAL_RAIL_FLOW_HEIGHT})`
-                : effectiveChromeHeight,
-              minHeight: showAboveFoldSocial
-                ? `calc(${NAVBAR_CHROME_HEIGHT_FALLBACK} + ${SOCIAL_RAIL_FLOW_HEIGHT})`
-                : NAVBAR_CHROME_HEIGHT_FALLBACK,
-              ['--navbar-chrome-height' as string]: `${effectiveChromeHeight}px`,
-            }}
-          />
+          <div className="relative z-[calc(var(--z-header)-1)] w-full">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none w-full shrink-0"
+              style={{
+                height: `${effectiveChromeHeight}px`,
+                minHeight: NAVBAR_CHROME_HEIGHT_FALLBACK,
+              }}
+            />
+            {showAboveFoldSocial ? (
+              <NavbarSocialRail links={socialLinks} surface="overlay" />
+            ) : null}
+          </div>
         ) : null}
       </div>
 

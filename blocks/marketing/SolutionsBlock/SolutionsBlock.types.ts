@@ -19,12 +19,21 @@ export interface SolutionItem {
   cover?: React.ReactNode;
 }
 
+export interface SolutionCatalogItem {
+  id?: string;
+  title: string;
+  description: string;
+  href?: string;
+  icon?: React.ReactNode;
+}
+
 export interface SolutionsViewAllAction {
   label?: string;
   href: string;
 }
 
-export interface SolutionsBlockProps {
+interface SolutionsShowcaseBlockProps {
+  variant?: 'showcase';
   title?: string;
   subtitle?: string;
   solutions: SolutionItem[];
@@ -33,3 +42,12 @@ export interface SolutionsBlockProps {
   viewAll?: SolutionsViewAllAction;
   className?: string;
 }
+
+interface SolutionsCatalogBlockProps {
+  variant: 'catalog';
+  /** Catalog page omits section title — hero carries «Решения» heading. */
+  items: SolutionCatalogItem[];
+  className?: string;
+}
+
+export type SolutionsBlockProps = SolutionsShowcaseBlockProps | SolutionsCatalogBlockProps;

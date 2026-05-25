@@ -13,7 +13,7 @@ const demoHero = aicadsEnterpriseHeroDemo;
 
 function NavbarScrollFrame(props: NavbarBlockProps) {
   return (
-    <div className="min-h-[200vh]">
+    <div className="min-h-[200vh] bg-[var(--color-brand-primary)]">
       <NavbarBlock {...props} />
       <MarketingAboveFold underFixedNavbar>
         <HeroBlock {...demoHero} className="!bg-transparent" />

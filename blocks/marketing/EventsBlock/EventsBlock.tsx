@@ -1,7 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { SectionShell } from '../../_shared/SectionShell';
 import { BlockSectionHeader } from '../../_shared/BlockSectionHeader';
-import { EVENTS_FEATURED_SPLIT_CLASS } from '../../_shared/blockLayout';
+import {
+  BLOCK_EVENT_LIST_CARD_CLASS,
+  BLOCK_ON_BRAND_ICON_BUTTON_CLASS,
+  EVENTS_FEATURED_SPLIT_CLASS,
+} from '../../_shared/blockLayout';
 import { Badge } from '../../../components/primitives/Badge';
 import { Divider } from '../../../components/primitives/Divider';
 import { Tag } from '../../../components/primitives/Tag';
@@ -29,6 +33,8 @@ export interface EventsBlockProps {
   variant?: 'featured' | 'list';
   /** Carousel prev/next in featured mode — default true. */
   showNavigation?: boolean;
+  /** Override SectionShell vertical padding (wins over recipe inline styles). */
+  sectionStyle?: React.CSSProperties;
   className?: string;
 }
 
@@ -42,16 +48,6 @@ const ON_BRAND_BAND_BORDER = 'border-b border-[var(--color-text-on-brand)]/20';
 
 const ON_BRAND_META_TAG_CLASS =
   'border-transparent bg-[var(--color-text-on-brand)]/15 text-[var(--color-text-on-brand)]';
-
-const ON_BRAND_NAV_BUTTON_CLASS = cn(
-  'inline-flex h-[var(--space-48)] w-[var(--space-48)] min-h-[var(--space-48)] min-w-[var(--space-48)]',
-  'items-center justify-center rounded-[var(--radius-medium)] border p-0',
-  'bg-[var(--color-text-on-brand)]/15 text-[var(--color-text-on-brand)]',
-  'border-[var(--color-text-on-brand)]/25',
-  'transition-colors duration-150',
-  'hover:enabled:bg-[var(--color-text-on-brand)]/25',
-  'disabled:cursor-not-allowed disabled:opacity-40',
-);
 
 function FormatDotIcon({ format }: { format: EventFormat }) {
   return (
@@ -139,7 +135,7 @@ function EventsNavigation({
         disabled={!canPrevious}
         onClick={onPrevious}
         aria-label="Предыдущее событие"
-        className={ON_BRAND_NAV_BUTTON_CLASS}
+        className={BLOCK_ON_BRAND_ICON_BUTTON_CLASS}
       >
         <ChevronLeftIcon />
       </button>
@@ -148,7 +144,7 @@ function EventsNavigation({
         disabled={!canNext}
         onClick={onNext}
         aria-label="Следующее событие"
-        className={ON_BRAND_NAV_BUTTON_CLASS}
+        className={BLOCK_ON_BRAND_ICON_BUTTON_CLASS}
       >
         <ChevronRightIcon />
       </button>
@@ -178,9 +174,8 @@ function ListEventRow({ event }: { event: EventItem }) {
   return (
     <article
       className={cn(
-        'flex w-full min-w-0 flex-col rounded-[var(--radius-medium)]',
-        'border border-[var(--color-border-base)] bg-[var(--color-surface-1)]',
-        'p-[var(--space-inset-l)]',
+        BLOCK_EVENT_LIST_CARD_CLASS,
+        'flex w-full min-w-0 flex-col',
         'gap-[var(--space-section-stack-m)]',
         'min-[768px]:flex-row min-[768px]:items-center min-[768px]:gap-0',
       )}
@@ -237,6 +232,7 @@ export const EventsBlock: React.FC<EventsBlockProps> = ({
   events,
   variant = 'featured',
   showNavigation = true,
+  sectionStyle,
   className,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -274,6 +270,7 @@ export const EventsBlock: React.FC<EventsBlockProps> = ({
     <SectionShell
       recipe="section.events"
       appearance="brand"
+      style={sectionStyle}
       className={cn(ON_BRAND_BAND_BORDER, className)}
       aria-label="Events"
     >

@@ -5,6 +5,7 @@
 ```ts
 
 import type { CSSProperties } from 'react';
+import { JSX as JSX_2 } from 'react/jsx-runtime';
 import { default as React_2 } from 'react';
 
 // @public (undocumented)
@@ -50,6 +51,15 @@ export type AccordionSize = 'sm' | 'md' | 'lg';
 
 // @public
 export type AccordionState = 'open' | 'closed';
+
+// @public (undocumented)
+export const aicadsEnterpriseHeroDemoContent: HeroBlockProps;
+
+// @public
+export const aicadsEnterpriseHeroMedia: JSX_2.Element;
+
+// @public
+export const aicadsProEnterpriseLandingArgs: LandingPageTemplateProps;
 
 // @public
 export const aicadsProNavbarFixture: NavbarBlockProps;
@@ -247,6 +257,51 @@ export interface BehaviorConfig {
 export type BehaviorId = string;
 
 // @public (undocumented)
+export const BlogBlock: React_2.FC<BlogBlockProps>;
+
+// @public (undocumented)
+export interface BlogBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    posts: BlogPostItem[];
+    showNavigation?: boolean;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    viewAll?: BlogViewAllAction;
+}
+
+// @public (undocumented)
+export interface BlogPostItem {
+    cover?: React_2.ReactNode;
+    // (undocumented)
+    date: string;
+    // (undocumented)
+    excerpt: string;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export interface BlogViewAllAction {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label?: string;
+}
+
+// @public (undocumented)
 export const BLUR_DEFAULTS: Record<BlurVariant, {
     blur: number;
 }>;
@@ -423,6 +478,56 @@ export type ChipSize = 'sm' | 'md' | 'lg';
 export type ChipState = 'base' | 'selected' | 'disabled' | 'exclude';
 
 // @public (undocumented)
+export const ChooseUsBlock: React_2.FC<ChooseUsBlockProps>;
+
+// @public (undocumented)
+export interface ChooseUsBlockProps {
+    // (undocumented)
+    cards: ChooseUsCardItem[];
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    featured: ChooseUsFeaturedItem;
+    // (undocumented)
+    title?: string;
+    titleAccent?: string;
+}
+
+// @public (undocumented)
+export interface ChooseUsCardItem {
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    icon?: React_2.ReactNode;
+    // (undocumented)
+    id?: string;
+    size: ChooseUsCardSize;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export type ChooseUsCardSize = 'wide' | 'narrow';
+
+// @public (undocumented)
+export interface ChooseUsFeaturedItem {
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    imageSrcMobile?: string;
+    // (undocumented)
+    media?: React_2.ReactNode;
+    // (undocumented)
+    title: string;
+    // (undocumented)
+    titleBreakBefore?: string;
+}
+
+// @public (undocumented)
 export const CircularProgress: React_2.ForwardRefExoticComponent<CircularProgressProps & React_2.RefAttributes<SVGSVGElement>>;
 
 // @public (undocumented)
@@ -500,6 +605,54 @@ export const COMPONENT_STATE_MACHINES: Record<string, {
         trigger: string;
     }>;
 }>;
+
+// @public (undocumented)
+export const ContactHeroBlock: React_2.FC<ContactHeroBlockProps>;
+
+// @public (undocumented)
+export interface ContactHeroBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    consentLabel?: React_2.ReactNode;
+    // (undocumented)
+    defaultValues?: Partial<ContactHeroFormValues>;
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    labels?: ContactHeroFormLabels;
+    // (undocumented)
+    onChange?: (values: ContactHeroFormValues) => void;
+    // (undocumented)
+    onSubmit?: (values: ContactHeroFormValues) => void;
+    // (undocumented)
+    submitLabel?: string;
+    // (undocumented)
+    title?: string;
+    values?: Partial<ContactHeroFormValues>;
+}
+
+// @public (undocumented)
+export interface ContactHeroFormLabels {
+    // (undocumented)
+    company?: string;
+    // (undocumented)
+    name?: string;
+    // (undocumented)
+    phone?: string;
+}
+
+// @public (undocumented)
+export interface ContactHeroFormValues {
+    // (undocumented)
+    company: string;
+    // (undocumented)
+    consent: boolean;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    phone: string;
+}
 
 // @public (undocumented)
 export const CONTAINER_DEFAULTS: Record<ContainerType, Partial<ContainerConfig>>;
@@ -831,6 +984,7 @@ export interface EventsBlockProps {
     className?: string;
     // (undocumented)
     events: EventItem[];
+    sectionStyle?: React_2.CSSProperties;
     showNavigation?: boolean;
     // (undocumented)
     subtitle?: string;
@@ -852,12 +1006,15 @@ export interface FAQBlockProps {
     subtitle?: string;
     // (undocumented)
     title?: string;
+    variant?: 'default' | 'enterprise';
 }
 
 // @public (undocumented)
 export interface FAQItem {
     // (undocumented)
-    answer: string;
+    answer: React_2.ReactNode;
+    // (undocumented)
+    id?: string;
     // (undocumented)
     question: string;
 }
@@ -914,22 +1071,58 @@ export const FooterBlock: React_2.FC<FooterBlockProps>;
 export interface FooterBlockProps {
     // (undocumented)
     className?: string;
+    columns?: FooterColumn[];
     // (undocumented)
-    columns: FooterColumn[];
+    contacts?: FooterContactItem[];
     // (undocumented)
     copyright?: string;
     // (undocumented)
+    legalLinks?: FooterLegalLink[];
+    // (undocumented)
+    logo?: React_2.ReactNode;
+    // (undocumented)
+    logoHref?: string;
+    navLinks?: FooterLink[];
+    // (undocumented)
+    showBackToTop?: boolean;
+    // (undocumented)
     socialLinks?: FooterSocialLink[];
+    variant?: 'minimal' | 'enterprise';
 }
 
 // @public (undocumented)
 export interface FooterColumn {
-    // Warning: (ae-forgotten-export) The symbol "FooterLink" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     links: FooterLink[];
     // (undocumented)
     title: string;
+}
+
+// @public (undocumented)
+export interface FooterContactItem {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    value: string;
+}
+
+// @public (undocumented)
+export interface FooterLegalLink {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label: string;
+    multiline?: boolean;
+}
+
+// @public (undocumented)
+export interface FooterLink {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label: string;
 }
 
 // @public (undocumented)
@@ -1176,6 +1369,7 @@ export interface HeroBlockProps {
     breadcrumbs?: HeroBreadcrumbItem[];
     // (undocumented)
     className?: string;
+    fillViewport?: boolean;
     media?: React_2.ReactNode;
     // (undocumented)
     primaryAction?: HeroBlockAction;
@@ -1184,10 +1378,12 @@ export interface HeroBlockProps {
     // (undocumented)
     stats?: HeroStat[];
     // (undocumented)
+    style?: React_2.CSSProperties;
+    // (undocumented)
     subtitle?: string;
     // (undocumented)
     title: string;
-    variant?: 'centered' | 'split' | 'enterprise' | 'page';
+    variant?: 'centered' | 'split' | 'enterprise' | 'page' | 'solutions';
 }
 
 // @public (undocumented)
@@ -1364,7 +1560,13 @@ export const LandingPageTemplate: React_2.FC<LandingPageTemplateProps>;
 // @public (undocumented)
 export interface LandingPageTemplateProps {
     // (undocumented)
+    blog?: BlogBlockProps;
+    // (undocumented)
+    chooseUs?: ChooseUsBlockProps;
+    // (undocumented)
     className?: string;
+    // (undocumented)
+    contactHero?: ContactHeroBlockProps;
     // (undocumented)
     cta: CTABlockProps;
     // (undocumented)
@@ -1386,15 +1588,31 @@ export interface LandingPageTemplateProps {
     // (undocumented)
     newsletter?: NewsletterBlockProps;
     // (undocumented)
+    partners?: PartnersBlockProps;
+    // (undocumented)
     pricing: PricingBlockProps;
+    // (undocumented)
+    process?: ProcessBlockProps;
     // (undocumented)
     services?: ServicesBlockProps;
     // (undocumented)
+    showcasePanel?: ShowcasePanelBlockProps;
+    // (undocumented)
     solutions?: SolutionsBlockProps;
+    solutionsCatalog?: Extract<SolutionsBlockProps, {
+        variant: 'catalog';
+    }>;
+    solutionsPageHero?: HeroBlockProps;
     // (undocumented)
     stats?: StatsBlockProps;
     // (undocumented)
+    support?: SupportBlockProps;
+    // (undocumented)
     testimonials?: TestimonialsBlockProps;
+    // (undocumented)
+    trust?: TrustBlockProps;
+    // (undocumented)
+    whyUs?: WhyUsBlockProps;
 }
 
 // @public (undocumented)
@@ -1826,6 +2044,35 @@ export type ParagraphSize = 'sm' | 'md' | 'lg';
 // @public
 export function parseTokenReference(ref: string): TokenReference | null;
 
+// @public (undocumented)
+export interface PartnerItem {
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    logo?: React_2.ReactNode;
+    // (undocumented)
+    name: string;
+}
+
+// @public (undocumented)
+export const PartnersBlock: React_2.FC<PartnersBlockProps>;
+
+// @public (undocumented)
+export interface PartnersBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    partners: PartnerItem[];
+    speed?: number;
+    // (undocumented)
+    title?: string;
+}
+
 // @public
 export interface PayloadSchema {
     properties?: Record<string, 'string' | 'number' | 'boolean' | 'object' | 'array'>;
@@ -1912,6 +2159,32 @@ export interface PricingTier {
     period?: string;
     // (undocumented)
     price: string;
+}
+
+// @public (undocumented)
+export const ProcessBlock: React_2.FC<ProcessBlockProps>;
+
+// @public (undocumented)
+export interface ProcessBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    steps: ProcessStepItem[];
+    // (undocumented)
+    title?: string;
+}
+
+// @public (undocumented)
+export interface ProcessStepItem {
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    id?: string;
+    number?: string;
+    // (undocumented)
+    title: string;
+    // (undocumented)
+    titleBreakBefore?: string;
 }
 
 // @public (undocumented)
@@ -2296,6 +2569,47 @@ export function setTheme(mode: 'light' | 'dark'): void;
 export function setTokenValue(ref: TokenReference, value: string): void;
 
 // @public (undocumented)
+export interface ShowcasePanelAction {
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    onClick?: () => void;
+}
+
+// @public (undocumented)
+export const ShowcasePanelBlock: React_2.FC<ShowcasePanelBlockProps>;
+
+// @public (undocumented)
+export interface ShowcasePanelBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    panels: ShowcasePanelItem[];
+    // (undocumented)
+    title?: string;
+    titleBreakBefore?: string;
+}
+
+// @public (undocumented)
+export interface ShowcasePanelItem {
+    // (undocumented)
+    action?: ShowcasePanelAction;
+    // (undocumented)
+    bullets: string[];
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    preview?: React_2.ReactNode;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
 export const SkeletonCard: React_2.MemoExoticComponent<React_2.ForwardRefExoticComponent<SkeletonCardProps & React_2.RefAttributes<HTMLDivElement>>>;
 
 // @public (undocumented)
@@ -2417,6 +2731,20 @@ export type SliderSize = 'sm' | 'md' | 'lg';
 export type SliderThumbs = '1' | '2';
 
 // @public (undocumented)
+export interface SolutionCatalogItem {
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    icon?: React_2.ReactNode;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
 export interface SolutionItem {
     category: string;
     // (undocumented)
@@ -2443,20 +2771,11 @@ export interface SolutionItem {
 // @public (undocumented)
 export const SolutionsBlock: React_2.FC<SolutionsBlockProps>;
 
+// Warning: (ae-forgotten-export) The symbol "SolutionsShowcaseBlockProps" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "SolutionsCatalogBlockProps" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface SolutionsBlockProps {
-    // (undocumented)
-    className?: string;
-    desktopVisibleCount?: number;
-    // (undocumented)
-    solutions: SolutionItem[];
-    // (undocumented)
-    subtitle?: string;
-    // (undocumented)
-    title?: string;
-    // (undocumented)
-    viewAll?: SolutionsViewAllAction;
-}
+export type SolutionsBlockProps = SolutionsShowcaseBlockProps | SolutionsCatalogBlockProps;
 
 // @public (undocumented)
 export interface SolutionsViewAllAction {
@@ -2525,7 +2844,7 @@ export interface SpacingRecipe {
 }
 
 // @public (undocumented)
-export type SpacingRecipeId = 'section.hero' | 'section.hero.page' | 'section.features' | 'section.pricing' | 'section.cta' | 'section.footer' | 'section.navbar' | 'section.logos' | 'section.stats' | 'section.testimonials' | 'section.faq' | 'section.steps' | 'section.newsletter' | 'section.events' | 'section.services' | 'section.solutions' | 'section.app-shell';
+export type SpacingRecipeId = 'section.hero' | 'section.hero.page' | 'section.features' | 'section.pricing' | 'section.cta' | 'section.footer' | 'section.navbar' | 'section.logos' | 'section.stats' | 'section.testimonials' | 'section.faq' | 'section.steps' | 'section.newsletter' | 'section.events' | 'section.services' | 'section.solutions' | 'section.trust' | 'section.support' | 'section.showcase-panel' | 'section.blog' | 'section.partners' | 'section.contact-hero' | 'section.why-us' | 'section.choose-us' | 'section.process' | 'section.app-shell';
 
 // @public (undocumented)
 export type SpacingSide = 'top' | 'right' | 'bottom' | 'left' | 'x' | 'y' | 'all';
@@ -2636,6 +2955,59 @@ export interface StatsBlockProps {
     subtitle?: string;
     // (undocumented)
     title?: string;
+}
+
+// @public (undocumented)
+export const SupportBlock: React_2.FC<SupportBlockProps>;
+
+// @public (undocumented)
+export interface SupportBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    contacts: SupportContactItem[];
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    mobileCover?: React_2.ReactNode;
+    // (undocumented)
+    mobileImageAlt?: string;
+    mobileImageSrc?: string;
+    stats: SupportStatItem[];
+    titleAccent?: string;
+    // (undocumented)
+    titleLine1?: string;
+    // (undocumented)
+    titleLine2?: string;
+}
+
+// @public (undocumented)
+export interface SupportContactItem {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    icon?: React_2.ReactNode;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    value: string;
+}
+
+// @public (undocumented)
+export interface SupportStatItem {
+    cover?: React_2.ReactNode;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    value: string;
 }
 
 // @public
@@ -3014,6 +3386,51 @@ export interface TooltipProps {
     position?: TooltipPosition;
 }
 
+// @public (undocumented)
+export const TrustBlock: React_2.FC<TrustBlockProps>;
+
+// @public (undocumented)
+export interface TrustBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    pillars: TrustPillarItem[];
+    // (undocumented)
+    standards: TrustStandardItem[];
+    // (undocumented)
+    standardsTitle?: string;
+    // (undocumented)
+    title?: string;
+}
+
+// @public (undocumented)
+export interface TrustPillarItem {
+    cover?: React_2.ReactNode;
+    // (undocumented)
+    description: string;
+    featured?: boolean;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export interface TrustStandardItem {
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    title: string;
+}
+
 // @public
 export function unregisterBehavior(id: BehaviorId): void;
 
@@ -3045,6 +3462,52 @@ export interface ValidationResult {
 
 // @public (undocumented)
 export const VERSION = "0.7.0";
+
+// @public (undocumented)
+export const WhyUsBlock: React_2.FC<WhyUsBlockProps>;
+
+// @public (undocumented)
+export interface WhyUsBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    featured: WhyUsFeaturedItem;
+    primaryCards: WhyUsCardItem[];
+    secondaryCards: WhyUsCardItem[];
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    titleBreakBefore?: string;
+}
+
+// @public (undocumented)
+export interface WhyUsCardItem {
+    // (undocumented)
+    description: string;
+    icon?: React_2.ReactNode;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export interface WhyUsFeaturedItem {
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    media?: React_2.ReactNode;
+    // (undocumented)
+    title: string;
+    titleBreakBefore?: string;
+    // (undocumented)
+    videoPoster?: string;
+    // (undocumented)
+    videoSrc?: string;
+}
+
+// @public (undocumented)
+export function withEnterpriseHeroMedia(hero: HeroBlockProps): HeroBlockProps;
 
 // @public (undocumented)
 export const Z_INDEX_LAYERS: {

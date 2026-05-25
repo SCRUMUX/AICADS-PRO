@@ -79,10 +79,24 @@
       }
     },
     "blur": {
-      "description": "Background blur effects",
+      "description": "Background blur and glass fill effects",
       "tokens": {
         "effect_blur_background": {
-          "usage": "Transparent panels with background blur (sticky headers, etc.)",
+          "usage": "Legacy blur radius alias — prefer effect_glass_* fill tokens",
+          "backdropBlur": 8,
+          "unit": "px",
+          "backgroundFill": "#FFFFFF",
+          "backgroundOpacity": 0.20
+        },
+        "effect_glass_chrome": {
+          "usage": "Sticky headers, floating panels over content (navbar solid, showcase preview)",
+          "backdropBlur": 8,
+          "unit": "px",
+          "backgroundFillToken": "color_surface_1",
+          "backgroundOpacity": 0.95
+        },
+        "effect_glass_scrim": {
+          "usage": "Modal/drawer backdrop with blur (navbar mobile overlay)",
           "backdropBlur": 8,
           "unit": "px",
           "backgroundFill": "#FFFFFF",

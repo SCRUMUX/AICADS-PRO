@@ -1,28 +1,32 @@
 import React from 'react';
 import { SectionShell } from '../../_shared/SectionShell';
 import { BlockAction } from '../../_shared/BlockAction';
-import { SOLUTIONS_DESKTOP_GRID_CLASS, SOLUTIONS_SCROLL_STRIP_CLASS } from '../../_shared/blockLayout';
+import {
+  SOLUTIONS_CATALOG_GRID_CLASS,
+  SOLUTIONS_DESKTOP_GRID_CLASS,
+  SOLUTIONS_SCROLL_STRIP_CLASS,
+} from '../../_shared/blockLayout';
 import { cn } from '../../../components/primitives/_shared';
 import { SolutionCard } from './SolutionCard';
+import { SolutionCatalogCard } from './SolutionCatalogCard';
 import { getSolutionGridSpanClass } from './solutionsGrid';
 import type { SolutionsBlockProps } from './SolutionsBlock.types';
 
 export type {
   SolutionsBlockProps,
   SolutionItem,
+  SolutionCatalogItem,
   SolutionsViewAllAction,
 } from './SolutionsBlock.types';
 
-export const SolutionsBlock: React.FC<SolutionsBlockProps> = ({
+function SolutionsShowcaseBlock({
   title = 'Реализованные решения',
   subtitle,
   solutions,
   desktopVisibleCount = 6,
   viewAll,
   className,
-}) => {
-  if (solutions.length === 0) return null;
-
+}: Extract<SolutionsBlockProps, { variant?: 'showcase' }>) {
   const desktopItems = solutions.slice(0, desktopVisibleCount);
   const viewAllLabel = viewAll?.label ?? 'Смотреть все паттерны';
 
@@ -82,6 +86,39 @@ export const SolutionsBlock: React.FC<SolutionsBlockProps> = ({
       ) : null}
     </SectionShell>
   );
+}
+
+function SolutionsCatalogBlock({
+  items,
+  className,
+}: Extract<SolutionsBlockProps, { variant: 'catalog' }>) {
+  return (
+    <SectionShell
+      recipe="section.solutions"
+      appearance="base"
+      className={cn(
+        '!pt-[var(--space-32)] !pb-[var(--space-80)] min-[1024px]:!pt-[var(--space-32)]',
+        className,
+      )}
+      aria-label="Solutions catalog"
+    >
+      <ul className={SOLUTIONS_CATALOG_GRID_CLASS}>
+        {items.map((item) => (
+          <SolutionCatalogCard key={item.id ?? item.title} {...item} />
+        ))}
+      </ul>
+    </SectionShell>
+  );
+}
+
+export const SolutionsBlock: React.FC<SolutionsBlockProps> = (props) => {
+  if (props.variant === 'catalog') {
+    if (props.items.length === 0) return null;
+    return <SolutionsCatalogBlock {...props} />;
+  }
+
+  if (!props.solutions || props.solutions.length === 0) return null;
+  return <SolutionsShowcaseBlock {...props} />;
 };
 
 SolutionsBlock.displayName = 'SolutionsBlock';

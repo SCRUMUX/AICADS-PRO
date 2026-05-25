@@ -3,6 +3,29 @@
 All notable changes to @ai-ds/core are documented here.
 Format follows [Semantic Versioning](https://semver.org/).
 
+## [0.7.3] — 2026-05-25
+
+> **Pre-release block unification** — enterprise above-fold contract, shared card/glass micro-classes, consumer enterprise fixtures.
+
+### Added
+
+- **Block style micro-classes** — `BLOCK_CHROME_ICON_CHIP_CLASS`, `BLOCK_ON_BRAND_ICON_BUTTON_CLASS`, blog/solution pill helpers, `BLOCK_HERO_ENTERPRISE_MEDIA_WRAP_CLASS`, `BLOCK_SUPPORT_MOBILE_HERO_SHELL_CLASS`.
+- **Enterprise landing exports** — `aicadsProEnterpriseLandingArgs`, `aicadsEnterpriseHeroDemoContent`, `withEnterpriseHeroMedia` from `@ai-ds/core/blocks`.
+- **Consumer Storybook smokes** — `LandingEnterpriseConsumer`, `NavbarBlockConsumer` in `templates/consumer-storybook/fixture`.
+
+### Changed
+
+- **Card tier migration** — Events carousel, Blog, Solutions, Trust pillar chips use shared `blockLayout` classes.
+- **HeroBlock solutions** — section padding via CSS variables + inline `style` (no Tailwind `!pt/!pb` overrides).
+- **Effects/tokens** — enterprise CTA hover uses `shadow-elevation-2`; navbar min chrome documents `--space-64`; demo SVG palette via `DEMO_PALETTE`.
+- **Docs** — `pattern-layer.md` and `storybook-parity.md` sync with MAF/navbar stacking contract and marketing spot-check stories.
+- **Public API** — `HeroBlockProps.fillViewport`, `style`; `EventsBlockProps.sectionStyle`.
+
+### Fixed
+
+- **Enterprise above-fold** — navbar stacking (`--z-header`), glass overlay/solid, first-screen layout (approved in audit).
+- **WhyUs decorative blur** — `WHY_US_DECORATIVE_HIGHLIGHT_CLASS` with tokenized blur radius.
+
 ## [0.7.2] — 2026-05-25
 
 > **Enterprise navbar polish** — AICADS PRO mobile drawer, demo content, and distribution on `AICADS-PRO`.

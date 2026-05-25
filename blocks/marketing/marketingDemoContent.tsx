@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '../../components/primitives/_shared';
 import type { HeroBlockProps } from './HeroBlock';
 import type { FeaturesBlockProps } from './FeaturesBlock';
 import type { PricingBlockProps } from './PricingBlock';
@@ -8,28 +7,109 @@ import type { FooterBlockProps } from './FooterBlock';
 import type { EventsBlockProps } from './EventsBlock';
 import type { ServicesBlockProps, ServiceItem } from './ServicesBlock';
 import type { SolutionsBlockProps, SolutionItem } from './SolutionsBlock';
+import type { TrustBlockProps, TrustPillarItem, TrustStandardItem } from './TrustBlock';
+import type { SupportBlockProps, SupportContactItem, SupportStatItem } from './SupportBlock';
+import type { ShowcasePanelBlockProps, ShowcasePanelItem } from './ShowcasePanelBlock';
+import type { BlogBlockProps, BlogPostItem } from './BlogBlock';
+import type { PartnersBlockProps, PartnerItem } from './PartnersBlock';
+import type { ContactHeroBlockProps } from './ContactHeroBlock';
+import type { WhyUsBlockProps } from './WhyUsBlock';
+import type { ChooseUsBlockProps } from './ChooseUsBlock';
+import type { ProcessBlockProps } from './ProcessBlock';
+import type { FAQBlockProps } from './FAQBlock';
 
-/** Abstract illustration slot — enterprise hero media column (Cortel-style blocks). */
+/** Abstract illustration — thin isometric UI layers (depth via faces, one contact shadow). */
 export const aicadsEnterpriseHeroMedia = (
   <div
-    className="relative flex h-[var(--space-280)] w-full max-w-[var(--space-480)] items-end justify-end"
+    className="relative flex h-[var(--space-360)] w-full max-w-[var(--space-480)] items-center justify-end"
     aria-hidden="true"
   >
-    {[0.55, 0.78, 1].map((scale, index) => (
-      <div
-        key={scale}
-        className={cn(
-          'rounded-[var(--radius-medium)] border border-[var(--color-text-on-brand)]/30',
-          'bg-[var(--color-text-on-brand)]/10',
-        )}
-        style={{
-          width: 'var(--space-80)',
-          height: `calc(var(--space-160) * ${scale})`,
-          marginLeft: index > 0 ? 'calc(var(--space-4) * -2)' : undefined,
-          zIndex: index,
-        }}
-      />
-    ))}
+    <svg
+      viewBox="0 0 480 400"
+      fill="none"
+      className="h-full w-full max-w-[var(--space-480)]"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id="aicadsHeroPlateTop" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="white" stopOpacity="0.88" />
+          <stop offset="100%" stopColor="white" stopOpacity="0.42" />
+        </linearGradient>
+        <linearGradient id="aicadsHeroPlateEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="white" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="white" stopOpacity="0.14" />
+        </linearGradient>
+        <linearGradient id="aicadsHeroContactShadow" x1="50%" y1="0%" x2="50%" y2="100%">
+          <stop offset="0%" stopColor="black" stopOpacity="0" />
+          <stop offset="55%" stopColor="black" stopOpacity="0.08" />
+          <stop offset="100%" stopColor="black" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      {/* Single ground contact — whole stack sits on one plane */}
+      <ellipse cx="252" cy="334" rx="152" ry="14" fill="black" fillOpacity="0.1" />
+
+      {/* Back plate — tokens grid */}
+      <g opacity="0.92">
+        <path d="M108 248 L228 188 L348 248 L228 308 Z" fill="url(#aicadsHeroPlateTop)" />
+        <path d="M228 188 L348 248 L348 256 L228 196 Z" fill="url(#aicadsHeroPlateEdge)" />
+        <path d="M108 248 L228 188 L348 248 L228 308 Z" fill="none" stroke="white" strokeOpacity="0.55" strokeWidth="1.25" />
+        <path d="M138 258 L258 198" stroke="white" strokeOpacity="0.12" strokeWidth="1" />
+        <path d="M168 268 L288 208" stroke="white" strokeOpacity="0.12" strokeWidth="1" />
+        <path d="M198 278 L318 218" stroke="white" strokeOpacity="0.12" strokeWidth="1" />
+        <path d="M148 244 L268 184" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
+        <path d="M178 274 L298 214" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
+      </g>
+
+      {/* Mid plate — component shell */}
+      <g transform="translate(0 -36)">
+        <path
+          d="M228 248 L228 256 L108 316 L108 308 Z"
+          fill="url(#aicadsHeroContactShadow)"
+        />
+        <path d="M148 208 L268 148 L388 208 L268 268 Z" fill="url(#aicadsHeroPlateTop)" />
+        <path d="M268 148 L388 208 L388 216 L268 156 Z" fill="url(#aicadsHeroPlateEdge)" />
+        <path d="M148 208 L268 148 L388 208 L268 268 Z" fill="none" stroke="white" strokeOpacity="0.68" strokeWidth="1.5" />
+        <rect x="188" y="188" width="96" height="56" rx="10" fill="white" fillOpacity="0.06" stroke="white" strokeOpacity="0.32" strokeWidth="1.25" />
+        <rect x="204" y="204" width="44" height="44" rx="8" stroke="white" strokeOpacity="0.38" strokeWidth="1.25" />
+        <rect x="256" y="210" width="52" height="7" rx="3.5" fill="white" fillOpacity="0.48" />
+        <rect x="256" y="224" width="36" height="5" rx="2.5" fill="white" fillOpacity="0.26" />
+        <path d="M214 228 L234 218 L254 228 L234 238 Z" stroke="white" strokeOpacity="0.35" strokeWidth="1" />
+      </g>
+
+      {/* Front plate — pattern graph */}
+      <g transform="translate(24 -72)">
+        <path
+          d="M268 248 L268 256 L148 316 L148 308 Z"
+          fill="url(#aicadsHeroContactShadow)"
+        />
+        <path d="M188 168 L308 108 L428 168 L308 228 Z" fill="url(#aicadsHeroPlateTop)" />
+        <path d="M308 108 L428 168 L428 176 L308 116 Z" fill="url(#aicadsHeroPlateEdge)" />
+        <path d="M188 168 L308 108 L428 168 L308 228 Z" fill="none" stroke="white" strokeOpacity="0.82" strokeWidth="1.75" />
+        <path
+          d="M216 188 L248 172 L280 184 L312 168 L344 176"
+          stroke="white"
+          strokeOpacity="0.72"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="248" cy="172" r="3.5" fill="white" fillOpacity="0.9" />
+        <circle cx="312" cy="168" r="3.5" fill="white" fillOpacity="0.9" />
+        <path d="M216 200 H344" stroke="white" strokeOpacity="0.18" strokeWidth="1" strokeDasharray="4 5" />
+      </g>
+
+      {/* Accent — flat token ring, no shadow */}
+      <g opacity="0.7">
+        <circle cx="96" cy="132" r="40" stroke="white" strokeOpacity="0.28" strokeWidth="1.25" strokeDasharray="4 6" />
+        <circle cx="96" cy="132" r="22" stroke="white" strokeOpacity="0.45" strokeWidth="1.25" />
+        <path d="M84 132 H108 M96 120 V144" stroke="white" strokeOpacity="0.55" strokeWidth="1.25" strokeLinecap="round" />
+      </g>
+
+      <g opacity="0.55">
+        <path d="M388 92 L420 76 L452 92 L420 108 Z" fill="white" fillOpacity="0.07" stroke="white" strokeOpacity="0.24" strokeWidth="1" />
+      </g>
+    </svg>
   </div>
 );
 
@@ -303,7 +383,10 @@ export const aicadsServicesDemoContent: Pick<ServicesBlockProps, 'title' | 'subt
   ],
 };
 
-export const aicadsSolutionsDemoContent: Pick<SolutionsBlockProps, 'title' | 'solutions' | 'viewAll'> = {
+export const aicadsSolutionsDemoContent: Pick<
+  Extract<SolutionsBlockProps, { variant?: 'showcase' }>,
+  'title' | 'solutions' | 'viewAll'
+> = {
   title: 'Реализованные решения',
   viewAll: { label: 'Смотреть все паттерны', href: '#patterns' },
   solutions: [
@@ -372,24 +455,500 @@ export const aicadsSolutionsDemoContent: Pick<SolutionsBlockProps, 'title' | 'so
   ] satisfies SolutionItem[],
 };
 
-export const aicadsEnterpriseFooterDemo: Pick<FooterBlockProps, 'columns' | 'copyright'> = {
-  columns: [
+export const aicadsSolutionsPageHeroDemoContent: HeroBlockProps = {
+  variant: 'solutions',
+  appearance: 'base',
+  breadcrumbs: [
+    { label: 'Главная', href: '#' },
+    { label: 'Решения' },
+  ],
+  title: 'Решения',
+  subtitle:
+    'Решения для построения, развития и защиты интерфейсов. Готовые pattern blocks и semantic primitives, которые адаптируются под задачи продукта и масштаб команды.',
+};
+
+export const aicadsSolutionsCatalogDemoContent: Extract<SolutionsBlockProps, { variant: 'catalog' }> = {
+  variant: 'catalog',
+  items: [
     {
-      title: 'Продукт',
-      links: [
-        { label: 'Примитивы', href: '#' },
-        { label: 'Блоки', href: '#' },
-      ],
+      id: 'patterns',
+      title: 'Marketing pattern blocks',
+      description: 'Готовые секции landing из ai-patterns.json без layout drift',
+      href: '#solutions/patterns',
     },
     {
-      title: 'Ресурсы',
-      links: [
-        { label: 'Storybook', href: '#' },
-        { label: 'GitHub', href: '#' },
-      ],
+      id: 'primitives',
+      title: 'Semantic UI primitives',
+      description: '57 components с contract-driven appearance и engine isolation',
+      href: '#solutions/primitives',
+    },
+    {
+      id: 'isolation',
+      title: 'Consumer isolation contract',
+      description: 'ESLint config блокирует прямой импорт Radix, cmdk и sonner',
+      href: '#solutions/isolation',
+    },
+    {
+      id: 'tokens',
+      title: 'Design tokens & Tailwind',
+      description: 'Единый rhythm через CSS variables и section recipes',
+      href: '#solutions/tokens',
+    },
+    {
+      id: 'storybook',
+      title: 'Storybook & VRT',
+      description: 'Visual regression для primitives и marketing blocks',
+      href: '#solutions/storybook',
+    },
+    {
+      id: 'manifest',
+      title: 'AI-native assembly',
+      description: 'ai-patterns.json и manifest для предсказуемой сборки страниц',
+      href: '#solutions/manifest',
     },
   ],
-  copyright: '© 2026 AICADS',
+};
+
+export const aicadsTrustDemoContent: Pick<
+  TrustBlockProps,
+  'title' | 'pillars' | 'standardsTitle' | 'standards'
+> = {
+  title: 'Надёжность и предсказуемость',
+  standardsTitle: 'Стандарты и контракты для consumer-проектов',
+  pillars: [
+    {
+      id: 'primitives',
+      featured: true,
+      title: '57+ primitives',
+      description:
+        'Contract-driven UI — tokens.css, JSON contracts и findClasses вместо magic numbers и layout drift.',
+    },
+    {
+      id: 'isolation',
+      title: 'Isolation contract',
+      description:
+        'ESLint config блокирует прямые импорты Radix, cmdk, vaul и других engines в consumer-коде.',
+    },
+    {
+      id: 'storybook',
+      title: 'Storybook parity',
+      description:
+        'Desktop, tablet и mobile viewports для каждого primitive и marketing block — единый source of truth.',
+    },
+    {
+      id: 'api-freeze',
+      title: 'API surface freeze',
+      description:
+        'api-extractor фиксирует public exports @ai-ds/core — изменения проходят review в CI.',
+    },
+  ] satisfies TrustPillarItem[],
+  standards: [
+    {
+      id: 'tokens',
+      title: 'tokens.css',
+      description: 'Единый token surface для CSS variables и Tailwind preset.',
+      href: '#tokens',
+    },
+    {
+      id: 'contracts',
+      title: 'Component contracts',
+      description: 'JSON schema и variant rules на каждый UI-primitive.',
+      href: '#contracts',
+    },
+    {
+      id: 'eslint',
+      title: 'ESLint config',
+      description: 'Isolation boundary проверяется в CI consumer-проектов.',
+      href: '#eslint',
+    },
+    {
+      id: 'api-extractor',
+      title: 'API Extractor',
+      description: 'Frozen public surface report в etc/ai-ds-core.api.md.',
+      href: '#api',
+    },
+    {
+      id: 'chromatic',
+      title: 'Chromatic VRT',
+      description: 'Visual regression на contract variants и marketing blocks.',
+      href: '#vrt',
+    },
+  ] satisfies TrustStandardItem[],
+};
+
+export const aicadsSupportDemoContent: Pick<
+  SupportBlockProps,
+  'titleLine1' | 'titleLine2' | 'titleAccent' | 'description' | 'stats' | 'contacts'
+> = {
+  titleLine1: 'В каждой интеграции,',
+  titleLine2: 'поддержка',
+  titleAccent: 'всегда на связи',
+  description:
+    'Maintainers @ai-ds/core работают вместе с вашими командами — от tokens.css и ESLint isolation до pattern blocks и Storybook parity. Документировано. Предсказуемо. С migration guides в каждом релизе.',
+  stats: [
+    {
+      id: 'response-time',
+      value: '<24 часа',
+      label: 'Столько времени нужно, чтобы взять запрос по интеграции в работу',
+    },
+    {
+      id: 'patterns',
+      value: '57+',
+      label: 'UI-примитивов с JSON-contracts и Storybook stories',
+    },
+    {
+      id: 'migrations',
+      value: '<2%',
+      label: 'Breaking changes без migration guide в CHANGELOG',
+    },
+  ] satisfies SupportStatItem[],
+  contacts: [
+    {
+      id: 'github',
+      label: 'GitHub',
+      value: 'Issues & Discussions',
+      href: 'https://github.com/SCRUMUX/AICADS-PRO',
+    },
+    {
+      id: 'docs',
+      label: 'Документация',
+      value: 'ARCHITECTURE.md',
+      href: '#architecture',
+    },
+    {
+      id: 'storybook',
+      label: 'Storybook',
+      value: 'Live preview',
+      href: 'https://scrumux.github.io/AICADS-PRO/',
+    },
+  ] satisfies SupportContactItem[],
+};
+
+export const aicadsShowcasePanelDemoContent: Pick<
+  ShowcasePanelBlockProps,
+  'title' | 'titleBreakBefore' | 'panels'
+> = {
+  title: 'Удобно управлять всеми primitives и blocks в одном Storybook',
+  titleBreakBefore: ' в одном Storybook',
+  panels: [
+    {
+      id: 'contracts',
+      title: 'Contract-driven preview без layout drift',
+      bullets: [
+        'tokens.css → Tailwind preset → findClasses — единая цепочка без magic numbers',
+        'JSON contract на каждый primitive: variants, states, spacing rules',
+        'Storybook stories как source of truth для desktop / tablet / mobile',
+        'Chromatic VRT ловит visual drift до merge в consumer-проект',
+        'ESLint config блокирует прямые импорты engines в app-коде',
+      ],
+      action: { label: 'В Storybook', href: 'https://scrumux.github.io/AICADS-PRO/' },
+    },
+    {
+      id: 'patterns',
+      title: 'Сборка landing из ai-patterns.json',
+      bullets: [
+        'pageTemplates задают section order — navbar → hero → blocks → footer',
+        '22 pattern blocks с recipes, primitives и storyReference',
+        'Spacing recipes resolve в SectionShell — один rhythm на всех breakpoints',
+        'Fixture references для enterprise navbar и demo content',
+        'AI-assembler выбирает blocks из manifest вместо импровизации layout',
+      ],
+      action: { label: 'Открыть manifest', href: '#patterns' },
+    },
+  ] satisfies ShowcasePanelItem[],
+};
+
+export const aicadsBlogDemoContent: Pick<BlogBlockProps, 'title' | 'subtitle' | 'posts' | 'viewAll'> = {
+  title: 'Блог',
+  subtitle:
+    'Гайды по интеграции @ai-ds/core: isolation contract, Storybook parity, Chromatic VRT и сборка landing из ai-patterns.json.',
+  viewAll: { label: 'Смотреть все статьи', href: '#blog' },
+  posts: [
+    {
+      id: 'isolation',
+      title: 'Isolation contract: почему consumer не импортирует Radix напрямую',
+      excerpt:
+        '_internal/ adapters — единственная точка касания engines. ESLint config блокирует @radix-ui, cmdk, sonner и cva в app-коде. Замена движка — без churn в продуктах.',
+      date: '12 мая 2026',
+      href: '#isolation',
+    },
+    {
+      id: 'storybook',
+      title: 'Storybook как source of truth для primitives и blocks',
+      excerpt:
+        'Каждый component и pattern block имеет storyReference в ai-patterns.json. Viewports desktop / tablet / mobile, engine-styles и marketing recipes — один preview для design и dev.',
+      date: '8 мая 2026',
+      href: '#storybook',
+    },
+    {
+      id: 'chromatic',
+      title: 'Chromatic VRT: ловим visual drift до merge',
+      excerpt:
+        'Contract variants и marketing blocks снимаются в CI. Diff по pixels до попадания в consumer — tokens.css, spacing recipes и hover states остаются предсказуемыми.',
+      date: '2 мая 2026',
+      href: '#chromatic',
+    },
+    {
+      id: 'patterns',
+      title: 'Сборка enterprise landing из ai-patterns.json',
+      excerpt:
+        'pageTemplates задают порядок секций: navbar → hero → events → solutions → support → trust → showcase → blog → features → CTA. Fixture content для Storybook и AI-assembler.',
+      date: '28 апр. 2026',
+      href: '#patterns',
+    },
+    {
+      id: 'contracts',
+      title: 'JSON contracts: variants, states и spacing rules',
+      excerpt:
+        'contracts/components/*.contract.json описывают публичный API каждого primitive. Tailwind preset и findClasses читают tokens.css — без magic numbers в consumer layout.',
+      date: '22 апр. 2026',
+      href: '#contracts',
+    },
+    {
+      id: 'distribution',
+      title: 'Git-distribution: npm package и GitHub Pages Storybook',
+      excerpt:
+        '@ai-ds/core публикуется с granular exports — components, blocks, hooks, eslint-config. Storybook deploy на push в main; migration guides в CHANGELOG на каждый breaking change.',
+      date: '15 апр. 2026',
+      href: '#distribution',
+    },
+  ] satisfies BlogPostItem[],
+};
+
+export const aicadsPartnersDemoContent: Pick<PartnersBlockProps, 'title' | 'partners'> = {
+  title: 'Стратегические партнеры',
+  partners: [
+    { id: 'radix', name: 'Radix UI', href: 'https://www.radix-ui.com/' },
+    { id: 'storybook', name: 'Storybook', href: 'https://storybook.js.org/' },
+    { id: 'chromatic', name: 'Chromatic', href: 'https://www.chromatic.com/' },
+    { id: 'github', name: 'GitHub', href: 'https://github.com/SCRUMUX/AICADS-PRO' },
+    { id: 'figma', name: 'Figma', href: '#figma' },
+    { id: 'eslint', name: 'ESLint', href: '#eslint' },
+    { id: 'tailwind', name: 'Tailwind CSS', href: '#tailwind' },
+    { id: 'typescript', name: 'TypeScript', href: 'https://www.typescriptlang.org/' },
+    { id: 'vite', name: 'Vite', href: 'https://vitejs.dev/' },
+    { id: 'api-extractor', name: 'API Extractor', href: '#api' },
+    { id: 'tokens', name: 'Design Tokens', href: '#tokens' },
+  ] satisfies PartnerItem[],
+};
+
+export const aicadsContactHeroDemoContent: Pick<
+  ContactHeroBlockProps,
+  'title' | 'description' | 'submitLabel'
+> = {
+  title: 'Поможем с дизайн-системой уже сегодня',
+  description:
+    'Оставьте контакты — расскажем, как AICADS ускорит разработку интерфейсов, снизит расходы на UI и обеспечит единый стандарт для продуктовых команд.',
+  submitLabel: 'Обсудить интеграцию',
+};
+
+export const aicadsWhyUsDemoContent: Pick<
+  WhyUsBlockProps,
+  'title' | 'titleBreakBefore' | 'primaryCards' | 'secondaryCards' | 'featured'
+> = {
+  title: 'Почему с AICADS работают продуктовые команды',
+  titleBreakBefore: ' продуктовые команды',
+  primaryCards: [
+    {
+      id: 'primitives',
+      title: '57 primitives',
+      description:
+        'Полный semantic surface с contract-driven appearance, Storybook coverage и API Extractor для стабильных интеграций.',
+    },
+    {
+      id: 'flexibility',
+      title: 'Удобство и гибкость',
+      description:
+        'Granular imports — blocks, components, hooks, tokens — без монолита и без прямой зависимости consumer-кода от Radix, cmdk или sonner.',
+    },
+  ],
+  secondaryCards: [
+    {
+      id: 'rhythm',
+      title: 'Production rhythm',
+      description:
+        'Named spacing recipes (`section.*`) вместо хардкода отступов — AI-assemblers и команды получают одинаковый vertical rhythm на landing.',
+    },
+    {
+      id: 'isolation',
+      title: 'Engine isolation',
+      description:
+        'Все behavior-движки живут в `_internal/` adapters — design system может менять engine layer без churn в продуктах.',
+    },
+    {
+      id: 'manifest',
+      title: 'AI-native manifest',
+      description:
+        '`ai-patterns.json` и ESLint config — assembler выбирает blocks из каталога, а не «придумывает» layout и spacing.',
+    },
+  ],
+  featured: {
+    title: '12 pattern blocks',
+    titleBreakBefore: ' pattern blocks',
+    description:
+      'Готовые marketing-секции с фиксированной структурой — от enterprise hero до contact form — для Storybook, Chromatic и consumer apps.',
+  },
+};
+
+export const aicadsChooseUsDemoContent: Pick<
+  ChooseUsBlockProps,
+  'title' | 'titleAccent' | 'cards' | 'featured'
+> = {
+  title: 'Почему нас выбирают',
+  titleAccent: 'нас выбирают',
+  cards: [
+    {
+      id: 'responsive',
+      size: 'wide',
+      title: 'Отзывчивость',
+      description:
+        'Вопросы по API, tokens и интеграции — наш приоритет. Быстро реагируем и находим рабочие решения для продуктовых команд.',
+    },
+    {
+      id: 'reliability',
+      size: 'wide',
+      title: 'Надёжность',
+      description:
+        'Semantic contracts, API Extractor и VRT — стабильный API surface, чтобы интерфейсы оставались предсказуемыми в production.',
+    },
+    {
+      id: 'expertise',
+      size: 'narrow',
+      title: 'Экспертиза',
+      description:
+        'Не просто библиотека компонентов — партнёры команд, помогающие достигать целей UI-стандартизации и design system maturity.',
+    },
+    {
+      id: 'flexibility',
+      size: 'narrow',
+      title: 'Гибкость и удобство',
+      description:
+        'Granular imports и ai-patterns — подключайте только нужные blocks и recipes без монолита и лишних зависимостей.',
+    },
+    {
+      id: 'speed',
+      size: 'narrow',
+      title: 'Скорость',
+      description:
+        'Готовые marketing blocks и Storybook fixtures ускоряют запуск landing и внутренних продуктов в кратчайшие сроки.',
+    },
+  ],
+  featured: {
+    title: 'Заботливая поддержка',
+    description:
+      'ESLint config, isolation contract и актуальная документация — дизайн-система всегда рядом, чтобы ваш продукт работал без сбоев.',
+  },
+};
+
+export const aicadsProcessDemoContent: Pick<ProcessBlockProps, 'title' | 'steps'> = {
+  title: 'Как выглядит процесс',
+  steps: [
+    {
+      id: 'audit',
+      title: 'Анализ UI-стека',
+      titleBreakBefore: ' UI-стека',
+      description: 'Оцениваем текущие primitives, tokens, Storybook coverage и точки расхождения с целевым design system.',
+    },
+    {
+      id: 'patterns',
+      title: 'Подбор паттернов',
+      description:
+        'Собираем landing из ai-patterns.json — выбираем blocks и section recipes под задачу продукта, без импровизации layout.',
+    },
+    {
+      id: 'integrate',
+      title: 'Интеграция @ai-ds/core',
+      description:
+        'Подключаем tokens, Tailwind preset, eslint-config и granular imports blocks/components — consumer-код остаётся изолирован от engines.',
+    },
+    {
+      id: 'support',
+      title: 'Сопровождение и VRT',
+      description:
+        'Storybook, Chromatic и API Extractor фиксируют visual/API surface — команда получает предсказуемый релизный цикл.',
+    },
+  ],
+};
+
+export const aicadsEnterpriseFaqDemo: Pick<FAQBlockProps, 'variant' | 'title' | 'items'> = {
+  variant: 'enterprise',
+  title: 'Частые вопросы',
+  items: [
+    {
+      id: 'consumer-radix',
+      question: 'Можно ли импортировать Radix или cmdk напрямую в продуктовый код?',
+      answer:
+        'Нет — consumer-проекты работают только через semantic surface AICADS (`Modal`, `CommandPalette`, `Checkbox` и т.д.). Behavior-движки изолированы в `_internal/` adapters и контролируются ESLint config из `@ai-ds/core`.',
+    },
+    {
+      id: 'ai-patterns',
+      question: 'Как AI-assembler выбирает blocks для landing?',
+      answer: (
+        <>
+          Через `ai-patterns.json` и page templates — assembler подставляет готовые секции (`marketing.hero.enterprise`,
+          `marketing.process.timeline` и др.) с фиксированными spacing recipes, вместо генерации layout с нуля.
+        </>
+      ),
+    },
+    {
+      id: 'tokens',
+      question: 'Можно ли переопределить design tokens под бренд продукта?',
+      answer:
+        'Да. CSS variables из `tokens.css` и Tailwind preset можно переопределить в consumer-теме — primitives и blocks сохранят contract-driven appearance при корректной подмене semantic tokens.',
+    },
+    {
+      id: 'storybook',
+      question: 'Нужен ли Storybook для интеграции AICADS?',
+      answer:
+        'Для runtime в production — нет. Storybook нужен для визуальной регрессии (Chromatic), документации blocks и проверки spacing recipes до релиза design system.',
+    },
+    {
+      id: 'granular-imports',
+      question: 'Можно ли подключать только часть пакета — например, один block?',
+      answer:
+        'Да. Granular exports `@ai-ds/core/blocks/HeroBlock`, `@ai-ds/core/components/Button` и `@ai-ds/core/hooks` позволяют импортировать только нужные секции без монолита.',
+    },
+    {
+      id: 'support',
+      question: 'Что происходит после первичной интеграции?',
+      answer:
+        'Команда получает API Extractor report, ESLint isolation rules и VRT baseline — обновления `@ai-ds/core` проходят через semver и contract checks, без скрытых breaking changes в consumer-коде.',
+    },
+  ],
+};
+
+export const aicadsEnterpriseFooterDemo: FooterBlockProps = {
+  variant: 'enterprise',
+  logo: 'AICADS PRO',
+  logoHref: '#',
+  copyright: '© AICADS, 2026. Все права защищены',
+  navLinks: [
+    { label: 'О системе', href: '#about' },
+    { label: 'Блоки', href: '#blocks' },
+    { label: 'Примитивы', href: '#primitives' },
+    { label: 'Storybook', href: '#storybook' },
+    { label: 'Паттерны', href: '#patterns' },
+    { label: 'Блог', href: '#blog' },
+  ],
+  contacts: [
+    { label: 'Единый контакт', value: 'hello@aicads.dev', href: 'mailto:hello@aicads.dev' },
+    { label: 'Техническая поддержка', value: 'support@aicads.dev', href: 'mailto:support@aicads.dev' },
+    { label: 'Интеграция и внедрение', value: 'sales@aicads.dev', href: 'mailto:sales@aicads.dev' },
+    { label: 'Telegram сообщества', value: '@aicads', href: 'https://t.me/aicads' },
+  ],
+  legalLinks: [
+    { label: 'Политика обработки ПДн', href: '#privacy' },
+    { label: 'Согласие на обработку ПДН', href: '#consent' },
+    { label: 'Документация API', href: '#api-docs' },
+    { label: 'Лицензия MIT', href: '#license' },
+    { label: 'Changelog', href: '#changelog' },
+    {
+      label: 'AICADS — открытая дизайн-система для продуктовых команд и AI-assemblers',
+      href: '#about-license',
+      multiline: true,
+    },
+  ],
+  showBackToTop: true,
 };
 
 /** Neutral partner names for logo cloud placeholders. */

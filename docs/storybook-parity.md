@@ -68,11 +68,12 @@ export default preview;
 - [ ] `npm run storybook` → http://localhost:6006/ (if the port is busy, Storybook auto-picks the next free port — `--ci` is enabled in the script)
 - [ ] Theme toolbar: Light / Dark switches `data-theme` on `<html>`
 - [ ] Spot-check: **Tooltip → FullMatrix**, **Tab → TicketTabGroup**, **Rating → Default**
+- [ ] Marketing spot-check: **Screens/Marketing Landing → Aicads Pro Enterprise**, **Blocks/Marketing/NavbarBlock → Desktop**, **Blocks/Marketing/HeroBlock → Enterprise With Navbar**
 - [ ] `npm run build-storybook` succeeds
 
 ## Checklist B — npm install (new consumer project)
 
-- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.2`
+- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.3`
 - [ ] Copy [`templates/consumer-storybook/`](../templates/consumer-storybook/) into your app
 - [ ] Install devDependencies from template `package.json`
 - [ ] Add runtime deps: `react`, `react-dom`, `vaul`, `sonner` (or rely on `@ai-ds/core` transitive deps + explicit vaul for Storybook CSS path)
@@ -80,7 +81,7 @@ export default preview;
 - [ ] `tailwind.config.cjs` → `require('@ai-ds/core/storybook/tailwind').default`
 - [ ] `postcss.config.cjs` → `require('@ai-ds/core/storybook/postcss')`
 - [ ] `npm run build-storybook`
-- [ ] Visual spot-check same stories as Checklist A
+- [ ] Visual spot-check: **Aicads Pro Enterprise** (desktop + mobile), **NavbarBlock Desktop**, **HeroBlock Enterprise With Navbar**
 
 ## Checklist C — Release to GitHub
 
@@ -115,7 +116,7 @@ npm run tokens:check   # CI gate — fails if tokens.css is stale
 
 Stories live under `components/primitives/**/*.stories.tsx` (~50+ files). Layout stories pattern is registered but no layout stories exist yet.
 
-## Baseline verification (2026-05-23)
+## Baseline verification (2026-05-25)
 
 | Check | Result |
 |-------|--------|

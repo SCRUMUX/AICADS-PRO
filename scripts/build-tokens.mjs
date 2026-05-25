@@ -233,6 +233,23 @@ function emitThemeBlock(selector, mode, includeEffects, effectMode = 'light') {
 
     if (effectMode === 'light') {
       lines.push(`  ${toCssName('effect_blur_background')}: ${effect.effect_blur_background?.backdropBlur ?? 8}px;`);
+
+      const glassChrome = effect.effect_glass_chrome;
+      if (glassChrome?.backgroundFillToken) {
+        const opacity = glassChrome.backgroundOpacity ?? 95;
+        lines.push(
+          `  ${toCssName('effect_glass_chrome_bg')}: color-mix(in srgb, var(${toCssName(glassChrome.backgroundFillToken)}) ${opacity}%, transparent);`,
+        );
+      }
+
+      const glassScrim = effect.effect_glass_scrim ?? effect.effect_blur_background;
+      if (glassScrim) {
+        const fill = glassScrim.backgroundFill ?? '#FFFFFF';
+        const opacity = glassScrim.backgroundOpacity ?? 20;
+        lines.push(
+          `  ${toCssName('effect_glass_scrim_bg')}: color-mix(in srgb, ${fill} ${opacity}%, transparent);`,
+        );
+      }
     }
 
     lines.push('');

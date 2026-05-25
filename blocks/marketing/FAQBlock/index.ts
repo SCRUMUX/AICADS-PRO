@@ -1,1 +1,2 @@
-export { FAQBlock, type FAQBlockProps, type FAQItem } from './FAQBlock';
+export { FAQBlock } from './FAQBlock';
+export type { FAQBlockProps, FAQItem } from './FAQBlock.types';

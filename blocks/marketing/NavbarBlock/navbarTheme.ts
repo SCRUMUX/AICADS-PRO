@@ -1,5 +1,10 @@
 /** Shared surface tokens for enterprise navbar sub-regions. */
 
+import {
+  BLOCK_GLASS_CHROME_NAVBAR_OVERLAY_CLASS,
+  BLOCK_GLASS_CHROME_NAVBAR_SOLID_CLASS,
+} from '../../_shared/blockLayout';
+
 export type NavbarSurface = 'overlay' | 'solid';
 
 export function resolveNavbarSurface(
@@ -12,9 +17,8 @@ export function resolveNavbarSurface(
 
 export const NAVBAR_SURFACE = {
   header: {
-    overlay: 'bg-transparent',
-    solid:
-      'bg-[var(--color-surface-1)]/95 shadow-elevation-1 backdrop-blur-[var(--effect-blur-background)]',
+    overlay: BLOCK_GLASS_CHROME_NAVBAR_OVERLAY_CLASS,
+    solid: BLOCK_GLASS_CHROME_NAVBAR_SOLID_CLASS,
   },
   text: {
     overlay: 'text-[var(--color-text-on-brand)]',
@@ -40,15 +44,22 @@ export const NAVBAR_SURFACE = {
       'text-[var(--color-text-primary)] rounded-[var(--radius-medium)] hover:bg-[var(--color-surface-2)]',
   },
   chromeBorder: {
-    overlay: 'border-b border-[var(--color-text-on-brand)]/25',
-    solid: 'border-b border-[var(--color-border-base)]',
+    overlay: '',
+    solid: '',
   },
 } as const;
 
 /** Measured chrome fallback until ResizeObserver runs (min-h-56 + vertical padding). */
 export const NAVBAR_CHROME_HEIGHT_FALLBACK = 'calc(var(--space-56) + var(--space-4) * 2)';
 
+/** Minimum fixed chrome height — mirrors `--space-64` for JS scroll/fold math. */
+export const NAVBAR_CHROME_MIN_HEIGHT = 64;
+
+/** Brand bleed extension below measured chrome — mirrors `--space-2`. */
+export const NAVBAR_BRAND_BLEED_EXTRA = 'var(--space-2)';
+
 const SCROLL_ROOT_IDS = ['storybook-root', 'root'] as const;
+const SCROLL_ROOT_SELECTORS = ['.sb-show-main', '.sb-main-padded', '[data-is-storybook="true"]'] as const;
 
 function readScrollTop(target: Element | Window): number {
   if (target === window) {
@@ -60,28 +71,36 @@ function readScrollTop(target: Element | Window): number {
 function collectScrollRoots(): (Element | Window)[] {
   if (typeof document === 'undefined') return [window];
 
-  return [
-    window,
-    document.documentElement,
-    document.body,
-    ...(SCROLL_ROOT_IDS.map((id) => document.getElementById(id)).filter(Boolean) as Element[]),
-  ];
+  const roots: (Element | Window)[] = [window, document.documentElement, document.body];
+
+  for (const id of SCROLL_ROOT_IDS) {
+    const el = document.getElementById(id);
+    if (el) roots.push(el);
+  }
+
+  for (const selector of SCROLL_ROOT_SELECTORS) {
+    document.querySelectorAll(selector).forEach((el) => roots.push(el));
+  }
+
+  return roots;
 }
 
 export function getScrollRoot(): Element | Window {
   for (const root of collectScrollRoots()) {
+    if (root === window) continue;
     const el = root as HTMLElement;
-    if (root !== window && el.scrollHeight > el.clientHeight) return root;
+    if (el.scrollHeight > el.clientHeight + 1) return root;
   }
   return window;
 }
 
+/** Max scroll offset across Storybook iframe roots and window. */
 export function getScrollTop(): number {
+  let max = 0;
   for (const root of collectScrollRoots()) {
-    const top = readScrollTop(root);
-    if (top > 0) return top;
+    max = Math.max(max, readScrollTop(root));
   }
-  return 0;
+  return max;
 }
 
 export function bindScroll(onScroll: () => void): () => void {

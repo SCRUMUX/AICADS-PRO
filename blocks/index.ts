@@ -18,7 +18,7 @@ export { CTABlock } from './marketing/CTABlock';
 export type { CTABlockProps, CTABlockAction } from './marketing/CTABlock';
 
 export { FooterBlock } from './marketing/FooterBlock';
-export type { FooterBlockProps, FooterColumn, FooterSocialLink } from './marketing/FooterBlock';
+export type { FooterBlockProps, FooterColumn, FooterSocialLink, FooterContactItem, FooterLegalLink, FooterLink } from './marketing/FooterBlock';
 
 export { NavbarBlock } from './marketing/NavbarBlock';
 export type {
@@ -67,8 +67,53 @@ export { SolutionsBlock } from './marketing/SolutionsBlock';
 export type {
   SolutionsBlockProps,
   SolutionItem,
+  SolutionCatalogItem,
   SolutionsViewAllAction,
 } from './marketing/SolutionsBlock';
 
+export { TrustBlock } from './marketing/TrustBlock';
+export type { TrustBlockProps, TrustPillarItem, TrustStandardItem } from './marketing/TrustBlock';
+
+export { SupportBlock } from './marketing/SupportBlock';
+export type { SupportBlockProps, SupportStatItem, SupportContactItem } from './marketing/SupportBlock';
+
+export { ShowcasePanelBlock } from './marketing/ShowcasePanelBlock';
+export type { ShowcasePanelBlockProps, ShowcasePanelItem, ShowcasePanelAction } from './marketing/ShowcasePanelBlock';
+
+export { BlogBlock } from './marketing/BlogBlock';
+export type { BlogBlockProps, BlogPostItem, BlogViewAllAction } from './marketing/BlogBlock';
+
+export { PartnersBlock } from './marketing/PartnersBlock';
+export type { PartnersBlockProps, PartnerItem } from './marketing/PartnersBlock';
+
+export { ContactHeroBlock } from './marketing/ContactHeroBlock';
+export type {
+  ContactHeroBlockProps,
+  ContactHeroFormLabels,
+  ContactHeroFormValues,
+} from './marketing/ContactHeroBlock';
+
+export { WhyUsBlock } from './marketing/WhyUsBlock';
+export type { WhyUsBlockProps, WhyUsCardItem, WhyUsFeaturedItem } from './marketing/WhyUsBlock';
+
+export { ChooseUsBlock } from './marketing/ChooseUsBlock';
+export type {
+  ChooseUsBlockProps,
+  ChooseUsCardItem,
+  ChooseUsFeaturedItem,
+  ChooseUsCardSize,
+} from './marketing/ChooseUsBlock';
+
+export { ProcessBlock } from './marketing/ProcessBlock';
+export type { ProcessBlockProps, ProcessStepItem } from './marketing/ProcessBlock';
+
 export { LandingPageTemplate } from './marketing/LandingPageTemplate';
 export type { LandingPageTemplateProps } from './marketing/LandingPageTemplate';
+
+/** Enterprise landing demo fixtures — reference payloads for consumer apps. */
+export {
+  aicadsEnterpriseHeroDemoContent,
+  aicadsEnterpriseHeroMedia,
+  withEnterpriseHeroMedia,
+} from './marketing/marketingDemoContent';
+export { aicadsProEnterpriseLandingArgs } from './marketing/enterpriseLandingFixtures';

@@ -5,6 +5,7 @@ import { Link } from '../../../components/primitives/Link';
 import { Tabs, TabList, Tab, TabPanel } from '../../../components/primitives/Tab';
 import {
   BLOCK_CONTENT_CLASS,
+  BLOCK_GLASS_SCRIM_CLASS,
   BLOCK_GRID_BASE_CLASS,
   BLOCK_GRID_COL_CLASS,
 } from '../../_shared/blockLayout';
@@ -50,9 +51,8 @@ function ServicesPanelBody({
       aria-label="Services menu"
       className={cn(
         'w-full border-t border-[var(--color-border-base)] bg-[var(--color-surface-1)] shadow-elevation-2',
-        'animate-fade-in overflow-y-auto',
+        'animate-fade-in overflow-y-auto max-h-[70dvh]',
       )}
-      style={{ maxHeight: '70dvh' }}
     >
       <div className={BLOCK_CONTENT_CLASS}>
         <div className="py-[var(--space-section-y-m)]">
@@ -114,7 +114,10 @@ export function NavbarServicesScrim({
     <button
       type="button"
       aria-label="Close services menu"
-      className="fixed left-0 right-0 bottom-0 z-[var(--z-modal)] bg-[color-mix(in_srgb,var(--color-text-primary)_35%,transparent)] backdrop-blur-[var(--effect-blur-background)]"
+      className={cn(
+        'fixed left-0 right-0 bottom-0 z-[var(--z-modal)]',
+        BLOCK_GLASS_SCRIM_CLASS,
+      )}
       style={{ top: topPx }}
       onClick={onClose}
     />,
@@ -124,6 +127,7 @@ export function NavbarServicesScrim({
 
 /**
  * Mega menu — inline (in-tree chrome expansion) or legacy portal layout.
+ * Panel surface is opaque `surface-1` (readable dropdown) — not BLOCK_GLASS_*; scrim uses BLOCK_GLASS_SCRIM_CLASS.
  */
 export const NavbarServicesPanel: React.FC<NavbarServicesPanelProps> = ({
   open,

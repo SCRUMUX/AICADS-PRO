@@ -4,14 +4,23 @@ import { BlockAction } from '../../_shared/BlockAction';
 import { BlockSectionHeader } from '../../_shared/BlockSectionHeader';
 import { BlockGrid } from '../../_shared/BlockGrid';
 import {
+  BLOCK_HERO_ENTERPRISE_MEDIA_WRAP_CLASS,
+  BLOCK_HERO_MEDIA_FRAME_CLASS,
   BLOCK_ACTIONS_ROW_CLASS,
   BLOCK_GRID_BASE_CLASS,
   BLOCK_SPLIT_CLASS,
+  SOLUTIONS_HERO_DESCRIPTION_CLASS,
+  SOLUTIONS_HERO_MEDIA_WRAP_CLASS,
+  SOLUTIONS_HERO_PANEL_CLASS,
+  SOLUTIONS_HERO_SHELL_CLASS,
+  SOLUTIONS_HERO_STAGE_CLASS,
+  SOLUTIONS_HERO_TITLE_CLASS,
 } from '../../_shared/blockLayout';
 import { Badge } from '../../../components/primitives/Badge';
 import { cn } from '../../../components/primitives/_shared';
 import { HeroMetricsBand } from './HeroMetricsBand';
 import { HeroBreadcrumb, type HeroBreadcrumbItem } from './HeroBreadcrumb';
+import { solutionsPageHeroMedia } from '../solutionsPageHeroMedia';
 
 export interface HeroBlockAction {
   label: string;
@@ -38,8 +47,9 @@ export interface HeroBlockProps {
    * `split` — two-column hero with media.
    * `enterprise` — Cortel-style B2B hero: split stage + bottom metrics band.
    * `page` — inner page hero: breadcrumbs → badge → title (Cortel case study).
+   * `solutions` — Cortel /solutions page: muted panel + breadcrumb + title + description + decorative media.
    */
-  variant?: 'centered' | 'split' | 'enterprise' | 'page';
+  variant?: 'centered' | 'split' | 'enterprise' | 'page' | 'solutions';
   /** Full-bleed section background — use `brand` with overlay enterprise navbar. */
   appearance?: 'base' | 'surface' | 'muted' | 'brand' | 'inverse';
   /** Shown in split / enterprise layout (right column on desktop). */
@@ -47,7 +57,10 @@ export interface HeroBlockProps {
   stats?: HeroStat[];
   primaryAction?: HeroBlockAction;
   secondaryAction?: HeroBlockAction;
+  /** When true (enterprise above-fold), stage fills remaining viewport height. */
+  fillViewport?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 function HeroActions({
@@ -80,6 +93,11 @@ function HeroActions({
           appearance={primaryAppearance}
           size="lg"
           onBrand={onBrand}
+          className={
+            enterprise && onBrand
+              ? 'transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[var(--color-text-on-brand)] hover:bg-[var(--color-text-on-brand)]/14 hover:shadow-elevation-2 active:translate-y-0'
+              : undefined
+          }
         />
       ) : null}
       {secondaryAction ? (
@@ -134,6 +152,30 @@ function HeroPageLayout({
   );
 }
 
+function HeroSolutionsLayout({
+  title,
+  subtitle,
+  breadcrumbs = [],
+  media = solutionsPageHeroMedia,
+}: Pick<HeroBlockProps, 'title' | 'subtitle' | 'breadcrumbs' | 'media'>) {
+  return (
+    <div className={SOLUTIONS_HERO_SHELL_CLASS}>
+      <div className={SOLUTIONS_HERO_STAGE_CLASS}>
+        <div className={SOLUTIONS_HERO_PANEL_CLASS}>
+          {breadcrumbs.length > 0 ? (
+            <HeroBreadcrumb items={breadcrumbs} onBrand={false} separator="dot" />
+          ) : null}
+          <div className="relative z-[3] min-w-0 min-[1024px]:max-w-[var(--space-584)]">
+            <h1 className={SOLUTIONS_HERO_TITLE_CLASS}>{title}</h1>
+            {subtitle ? <p className={SOLUTIONS_HERO_DESCRIPTION_CLASS}>{subtitle}</p> : null}
+          </div>
+        </div>
+        {media ? <div className={SOLUTIONS_HERO_MEDIA_WRAP_CLASS}>{media}</div> : null}
+      </div>
+    </div>
+  );
+}
+
 function HeroEnterpriseLayout({
   title,
   subtitle,
@@ -143,28 +185,32 @@ function HeroEnterpriseLayout({
   primaryAction,
   secondaryAction,
   onBrand,
+  fillViewport,
 }: Pick<
   HeroBlockProps,
-  'title' | 'subtitle' | 'badge' | 'stats' | 'media' | 'primaryAction' | 'secondaryAction'
+  'title' | 'subtitle' | 'badge' | 'stats' | 'media' | 'primaryAction' | 'secondaryAction' | 'fillViewport'
 > & { onBrand: boolean }) {
   return (
     <div
-      className="flex w-full min-w-0 flex-col"
+      className={cn(
+        'flex w-full min-w-0 flex-col',
+        fillViewport && 'min-h-0 flex-1 justify-between',
+      )}
       style={{
-        minHeight: 'var(--space-360)',
-        gap: 'var(--space-section-y-l)',
+        minHeight: fillViewport ? undefined : 'var(--space-360)',
+        gap: 'var(--space-section-content-l)',
       }}
     >
-      <div className="flex min-h-0 flex-1 flex-col justify-start">
+      <div className="flex min-h-0 flex-1 flex-col justify-center">
         <div
           className={cn(
             BLOCK_GRID_BASE_CLASS,
-            'grid-cols-1 min-[1024px]:grid-cols-2 min-[1024px]:items-end',
+            'grid-cols-1 min-[1024px]:grid-cols-2 min-[1024px]:items-center',
           )}
         >
           <div
-            className="flex w-full min-w-0 flex-col items-start text-left"
-            style={{ gap: 'var(--space-section-content-xl)' }}
+            className="flex w-full min-w-0 flex-col items-start justify-center text-left"
+            style={{ gap: 'var(--space-section-content-l)' }}
           >
             {badge ? (
               <Badge appearance={onBrand ? 'outline' : 'brand'} size="md">
@@ -190,14 +236,19 @@ function HeroEnterpriseLayout({
           </div>
 
           {media ? (
-            <div className="hidden w-full min-w-0 min-[1024px]:flex min-[1024px]:items-end min-[1024px]:justify-end">
+            <div className={BLOCK_HERO_ENTERPRISE_MEDIA_WRAP_CLASS}>
               {media}
             </div>
           ) : null}
         </div>
       </div>
 
-      <HeroMetricsBand stats={stats} description={subtitle} onBrand={onBrand} />
+      <HeroMetricsBand
+        stats={stats}
+        description={subtitle}
+        onBrand={onBrand}
+        className="pt-[var(--space-section-content-m)]"
+      />
     </div>
   );
 }
@@ -214,15 +265,18 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   stats,
   primaryAction,
   secondaryAction,
+  fillViewport = false,
   className,
+  style,
 }) => {
   const page = variant === 'page';
+  const solutions = variant === 'solutions';
   const enterprise = variant === 'enterprise';
-  const centered = !enterprise && !page && variant === 'centered' && align === 'center';
+  const centered = !enterprise && !page && !solutions && variant === 'centered' && align === 'center';
   const split = variant === 'split';
   const resolvedAppearance = page && appearance === 'base' ? 'brand' : appearance;
   const onBrandResolved = resolvedAppearance === 'brand';
-  const heroRecipe = page ? 'section.hero.page' : 'section.hero';
+  const heroRecipe = page ? 'section.hero.page' : solutions ? 'section.hero.page' : 'section.hero';
 
   const actions = (
     <HeroActions
@@ -233,7 +287,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
     />
   );
 
-  const statsRow = stats && stats.length > 0 && !enterprise && !page && (
+  const statsRow = stats && stats.length > 0 && !enterprise && !page && !solutions && (
     <BlockGrid columns={Math.min(stats.length, 4) as 1 | 2 | 3 | 4}>
       {stats.map((stat) => (
         <div
@@ -262,7 +316,9 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
     </BlockGrid>
   );
 
-  const copy = page ? (
+  const copy = solutions ? (
+    <HeroSolutionsLayout title={title} subtitle={subtitle} breadcrumbs={breadcrumbs} media={media} />
+  ) : page ? (
     <HeroPageLayout
       title={title}
       badge={badge}
@@ -279,6 +335,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
       primaryAction={primaryAction}
       secondaryAction={secondaryAction}
       onBrand={onBrandResolved}
+      fillViewport={fillViewport}
     />
   ) : (
     <div
@@ -306,25 +363,41 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
     </div>
   );
 
+  const solutionsShellStyle: React.CSSProperties | undefined = solutions
+    ? {
+        paddingTop: 'var(--solutions-hero-pt)',
+        paddingBottom: 'var(--solutions-hero-pb)',
+      }
+    : undefined;
+
   return (
     <SectionShell
       recipe={heroRecipe}
-      appearance={resolvedAppearance}
-      className={className}
+      appearance={solutions ? 'base' : resolvedAppearance}
+      parallax={onBrandResolved && page ? 'hero' : false}
+      growContent={enterprise && fillViewport}
+      className={cn(
+        enterprise && '!bg-transparent',
+        enterprise && fillViewport && 'flex min-h-0 flex-1 flex-col',
+        solutions &&
+          'overflow-visible [--solutions-hero-pt:var(--space-32)] [--solutions-hero-pb:var(--space-32)] min-[1024px]:[--solutions-hero-pt:var(--space-48)] min-[1024px]:[--solutions-hero-pb:var(--space-80)]',
+        className,
+      )}
+      style={{ ...solutionsShellStyle, ...style }}
       aria-label="Hero"
-      bleedMedia={!split && !enterprise && !page && media ? media : undefined}
+      bleedMedia={!split && !enterprise && !page && !solutions && media ? media : undefined}
     >
       {split ? (
         <div className={BLOCK_SPLIT_CLASS}>
           {copy}
           {media ? (
-            <div className="w-full min-w-0 overflow-hidden rounded-[var(--radius-medium)] border border-[var(--color-border-base)] bg-[var(--color-surface-2)]">
+            <div className={BLOCK_HERO_MEDIA_FRAME_CLASS}>
               {media}
             </div>
           ) : null}
         </div>
       ) : (
-        copy
+        <div className={cn(enterprise && fillViewport && 'flex min-h-0 flex-1 flex-col')}>{copy}</div>
       )}
     </SectionShell>
   );

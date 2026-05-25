@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FAQBlock } from './FAQBlock';
+import { marketingBlockParameters } from '../../_shared/blockStoryViewports';
+import { aicadsEnterpriseFaqDemo } from '../marketingDemoContent';
 
 const meta: Meta<typeof FAQBlock> = {
   title: 'Blocks/Marketing/FAQBlock',
   component: FAQBlock,
-  parameters: { layout: 'fullscreen' },
+  parameters: marketingBlockParameters,
   args: {
     subtitle: 'Everything you need to know about AICADS pattern blocks.',
     items: [
@@ -30,6 +32,31 @@ export default meta;
 
 type Story = StoryObj<typeof FAQBlock>;
 
+export const Default: Story = {
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
 export const Mobile: Story = { parameters: { viewport: { defaultViewport: 'mobile' } } };
 export const Tablet: Story = { parameters: { viewport: { defaultViewport: 'tablet' } } };
 export const Desktop: Story = { parameters: { viewport: { defaultViewport: 'desktop' } } };
+
+/** Cortel vmware-style FAQ — grey card items, plus toggle, single collapsible. */
+export const Enterprise: Story = {
+  args: aicadsEnterpriseFaqDemo,
+  parameters: { viewport: { defaultViewport: 'desktop' }, controls: { disable: true } },
+};
+
+export const EnterpriseMobile: Story = {
+  args: aicadsEnterpriseFaqDemo,
+  parameters: { viewport: { defaultViewport: 'mobile' }, controls: { disable: true } },
+};
+
+export const EnterpriseTablet: Story = {
+  args: aicadsEnterpriseFaqDemo,
+  parameters: { viewport: { defaultViewport: 'tablet' }, controls: { disable: true } },
+};
+
+export const EnterpriseDesktop: Story = {
+  args: aicadsEnterpriseFaqDemo,
+  parameters: { viewport: { defaultViewport: 'desktop' }, controls: { disable: true } },
+};

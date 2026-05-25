@@ -22,6 +22,15 @@ export type SpacingRecipeId =
   | 'section.events'
   | 'section.services'
   | 'section.solutions'
+  | 'section.trust'
+  | 'section.support'
+  | 'section.showcase-panel'
+  | 'section.blog'
+  | 'section.partners'
+  | 'section.contact-hero'
+  | 'section.why-us'
+  | 'section.choose-us'
+  | 'section.process'
   | 'section.app-shell';
 
 export type RecipeMaxWidth = 'mobile' | 'tablet' | 'desktop' | 'full';
@@ -112,6 +121,51 @@ export const SPACING_RECIPES: Record<SpacingRecipeId, SpacingRecipe> = {
   },
   'section.solutions': {
     sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.trust': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.support': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.showcase-panel': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.blog': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.partners': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'full',
+  },
+  'section.contact-hero': {
+    sectionPaddingY: 'var(--space-section-y-m)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.why-us': {
+    sectionPaddingY: 'var(--space-section-y-m)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.choose-us': {
+    sectionPaddingY: 'var(--space-section-y-m)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.process': {
+    sectionPaddingY: 'var(--space-section-y-m)',
     innerGap: 'var(--space-section-content-l)',
     maxWidth: 'desktop',
   },

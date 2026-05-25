@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlockAction } from '../../_shared/BlockAction';
+import { BLOCK_CARD_STANDARD_INTERACTIVE_CLASS } from '../../_shared/blockLayout';
 import { Image } from '../../../components/primitives/Image';
 import { cn } from '../../../components/primitives/_shared';
 import type { ServiceItemAction } from './ServicesBlock.types';
@@ -47,10 +48,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   return (
     <article
       className={cn(
-        'group flex h-full w-full min-w-0 flex-col overflow-hidden rounded-[var(--radius-medium)]',
-        'border border-[var(--color-border-base)] bg-[var(--color-surface-1)]',
-        'transition-[transform,box-shadow,border-color] duration-200 ease-out',
-        'hover:-translate-y-[var(--space-2)] hover:border-[var(--color-brand-primary)] hover:shadow-elevation-2',
+        'group flex h-full w-full min-w-0 flex-col overflow-hidden',
+        BLOCK_CARD_STANDARD_INTERACTIVE_CLASS,
         className,
       )}
     >

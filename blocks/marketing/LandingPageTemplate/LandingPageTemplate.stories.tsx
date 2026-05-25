@@ -3,20 +3,36 @@ import { LandingPageTemplate } from './LandingPageTemplate';
 import type { LandingPageTemplateProps } from './LandingPageTemplate';
 import { marketingBlockParameters } from '../../_shared/blockStoryViewports';
 import { aicadsProNavbarFixture } from '../NavbarBlock/navbarBlock.fixtures';
+import { aicadsProEnterpriseLandingArgs } from '../enterpriseLandingFixtures';
 import {
-  aicadsEnterpriseCtaDemo,
-  aicadsEnterpriseEventsDemo,
-  aicadsEnterpriseFeaturesDemo,
-  aicadsEnterpriseFooterDemo,
   aicadsEnterpriseHeroDemoContent,
-  aicadsEnterprisePricingDemo,
   aicadsPartnerLogosList,
   aicadsServicesDemoContent,
   aicadsSolutionsDemoContent,
+  aicadsSolutionsCatalogDemoContent,
+  aicadsSolutionsPageHeroDemoContent,
+  aicadsSupportDemoContent,
+  aicadsShowcasePanelDemoContent,
+  aicadsBlogDemoContent,
+  aicadsPartnersDemoContent,
+  aicadsContactHeroDemoContent,
+  aicadsWhyUsDemoContent,
+  aicadsChooseUsDemoContent,
+  aicadsProcessDemoContent,
+  aicadsEnterpriseFaqDemo,
+  aicadsTrustDemoContent,
   withEnterpriseHeroMedia,
 } from '../marketingDemoContent';
 import { withServiceCardMedia } from '../servicesDemoMedia';
 import { withSolutionCardCovers } from '../solutionsDemoMedia';
+import { withSolutionCatalogIcons } from '../SolutionsBlock/solutionsCatalogDemoMedia';
+import { withTrustFeaturedCover } from '../trustDemoMedia';
+import { withSupportDemoMedia } from '../supportDemoMedia';
+import { withShowcasePanelDemoMedia } from '../showcasePanelDemoMedia';
+import { withBlogDemoMedia } from '../blogDemoMedia';
+import { withPartnersDemoMedia } from '../partnersDemoMedia';
+import { withWhyUsDemoIcons } from '../whyUsDemoMedia';
+import { chooseUsFeaturedDemoMedia, withChooseUsDemoIcons } from '../chooseUsDemoMedia';
 
 const heroMedia = (
   <div
@@ -178,16 +194,7 @@ export const SaaSFull: Story = {
   parameters: { viewport: { defaultViewport: 'desktop' } },
 };
 
-/** AICADS PRO enterprise landing — overlay navbar + brand hero. */
-const aicadsProEnterpriseArgs: LandingPageTemplateProps = {
-  navbar: aicadsProNavbarFixture,
-  hero: aicadsEnterpriseHeroDemoContent,
-  events: aicadsEnterpriseEventsDemo,
-  features: aicadsEnterpriseFeaturesDemo,
-  pricing: aicadsEnterprisePricingDemo,
-  cta: aicadsEnterpriseCtaDemo,
-  footer: aicadsEnterpriseFooterDemo,
-};
+const aicadsProEnterpriseArgs: LandingPageTemplateProps = aicadsProEnterpriseLandingArgs;
 
 function renderEnterpriseLanding(args: LandingPageTemplateProps) {
   return (
@@ -195,7 +202,25 @@ function renderEnterpriseLanding(args: LandingPageTemplateProps) {
       {...args}
       hero={withEnterpriseHeroMedia(args.hero)}
       solutions={withSolutionCardCovers(aicadsSolutionsDemoContent)}
+      solutionsPageHero={aicadsSolutionsPageHeroDemoContent}
+      solutionsCatalog={withSolutionCatalogIcons({ ...aicadsSolutionsCatalogDemoContent })}
       services={withServiceCardMedia(aicadsServicesDemoContent)}
+      support={withSupportDemoMedia(aicadsSupportDemoContent)}
+      chooseUs={withChooseUsDemoIcons({
+        ...aicadsChooseUsDemoContent,
+        featured: {
+          ...aicadsChooseUsDemoContent.featured,
+          media: chooseUsFeaturedDemoMedia,
+        },
+      })}
+      trust={withTrustFeaturedCover(aicadsTrustDemoContent)}
+      showcasePanel={withShowcasePanelDemoMedia(aicadsShowcasePanelDemoContent)}
+      contactHero={aicadsContactHeroDemoContent}
+      whyUs={withWhyUsDemoIcons(aicadsWhyUsDemoContent)}
+      process={aicadsProcessDemoContent}
+      faq={aicadsEnterpriseFaqDemo}
+      partners={withPartnersDemoMedia(aicadsPartnersDemoContent)}
+      blog={withBlogDemoMedia(aicadsBlogDemoContent)}
     />
   );
 }
@@ -207,6 +232,7 @@ export const AicadsProEnterprise: Story = {
       hero: aicadsEnterpriseHeroDemoContent,
     }),
   parameters: {
+    ...marketingBlockParameters,
     viewport: { defaultViewport: 'desktop' },
     controls: { disable: true },
   },
@@ -219,6 +245,7 @@ export const AicadsProEnterpriseMobile: Story = {
       hero: aicadsEnterpriseHeroDemoContent,
     }),
   parameters: {
+    ...marketingBlockParameters,
     viewport: { defaultViewport: 'mobile' },
     controls: { disable: true },
   },
@@ -231,6 +258,7 @@ export const AicadsProEnterpriseTablet: Story = {
       hero: aicadsEnterpriseHeroDemoContent,
     }),
   parameters: {
+    ...marketingBlockParameters,
     viewport: { defaultViewport: 'tablet' },
     controls: { disable: true },
   },

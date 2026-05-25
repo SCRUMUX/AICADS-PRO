@@ -5,8 +5,10 @@ import { aicadsProNavbarFixture } from '../NavbarBlock/navbarBlock.fixtures';
 import {
   aicadsEnterpriseHeroDemoContent,
   aicadsPageHeroDemoContent,
+  aicadsSolutionsPageHeroDemoContent,
   withEnterpriseHeroMedia,
 } from '../marketingDemoContent';
+import { solutionsPageHeroMedia } from '../solutionsPageHeroMedia';
 import { HeroBlock } from './HeroBlock';
 import { marketingBlockParameters } from '../../_shared/blockStoryViewports';
 
@@ -69,7 +71,15 @@ export const EnterpriseWithNavbar: Story = {
 };
 
 export const EnterpriseWithNavbarMobile: Story = {
-  ...EnterpriseWithNavbar,
+  args: aicadsEnterpriseHeroDemoContent,
+  render: (args) => (
+    <div className="min-h-[120vh]">
+      <NavbarBlock {...aicadsProNavbarFixture} />
+      <MarketingAboveFold underFixedNavbar>
+        <HeroBlock {...withEnterpriseHeroMedia(args)} className="!bg-transparent" />
+      </MarketingAboveFold>
+    </div>
+  ),
   parameters: { viewport: { defaultViewport: 'mobile' } },
 };
 
@@ -77,6 +87,19 @@ export const EnterpriseWithNavbarMobile: Story = {
 export const Page: Story = {
   args: aicadsPageHeroDemoContent,
   parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+/** Cortel /solutions page hero — muted panel, breadcrumb, title + description, decorative media. */
+export const SolutionsPage: Story = {
+  args: aicadsSolutionsPageHeroDemoContent,
+  render: (args) => <HeroBlock {...args} media={solutionsPageHeroMedia} />,
+  parameters: { viewport: { defaultViewport: 'desktop' } },
+};
+
+export const SolutionsPageMobile: Story = {
+  args: aicadsSolutionsPageHeroDemoContent,
+  render: (args) => <HeroBlock {...args} media={solutionsPageHeroMedia} />,
+  parameters: { viewport: { defaultViewport: 'mobile' } },
 };
 
 export const PageMobile: Story = {

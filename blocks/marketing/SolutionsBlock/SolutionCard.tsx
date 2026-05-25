@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  BLOCK_CARD_STANDARD_SHELL_CLASS,
+  SOLUTION_ARROW_BUTTON_CLASS,
+  SOLUTION_CATEGORY_PILL_CLASS,
+  SOLUTION_META_PILL_CLASS,
+} from '../../_shared/blockLayout';
 import { cn } from '../../../components/primitives/_shared';
 import { ArrowUpRightIcon, SolutionCategoryIcon } from './SolutionsBlockIcons';
 import type { SolutionItem } from './SolutionsBlock.types';
@@ -7,41 +13,20 @@ export interface SolutionCardProps extends SolutionItem {
   className?: string;
 }
 
-const CATEGORY_PILL_CLASS = cn(
-  'inline-flex w-fit max-w-full items-center text-nowrap',
-  'rounded-[var(--radius-large)] bg-[var(--color-surface-2)]',
-  'text-style-caption-xs text-[var(--color-text-secondary)]',
-  'h-[var(--space-28)] px-[var(--space-3)] gap-[var(--space-1)]',
-  'transition-colors duration-200',
-  'min-[1024px]:group-hover:bg-[var(--color-surface-1)] min-[1024px]:group-hover:text-[var(--color-brand-primary)]',
-);
+const CATEGORY_PILL_CLASS = SOLUTION_CATEGORY_PILL_CLASS;
 
-const META_PILL_CLASS = cn(
-  'inline-flex w-fit max-w-full items-center text-nowrap',
-  'rounded-[var(--radius-large)] bg-[var(--color-surface-2)]',
-  'text-style-caption-xs text-[var(--color-text-secondary)]',
-  'h-[var(--space-22)] px-[var(--space-3)]',
-  'transition-colors duration-200',
-  'min-[1024px]:group-hover:bg-[var(--color-surface-1)] min-[1024px]:group-hover:text-[var(--color-text-primary)]',
-);
+const META_PILL_CLASS = SOLUTION_META_PILL_CLASS;
 
 const CARD_SHELL_CLASS = cn(
   'group relative flex h-full w-full min-w-0 cursor-pointer overflow-hidden',
-  'rounded-[var(--radius-section)] border border-[var(--color-border-base)] bg-[var(--color-surface-1)]',
+  BLOCK_CARD_STANDARD_SHELL_CLASS,
   'p-[var(--space-inset-l)]',
   'transition-[border-color,box-shadow] duration-200 ease-out',
   'hover:border-transparent',
   'no-underline text-inherit',
 );
 
-const ARROW_BUTTON_CLASS = cn(
-  'inline-flex shrink-0 items-center justify-center',
-  'h-[var(--space-32)] w-[var(--space-32)]',
-  'rounded-[var(--radius-large)] border border-transparent',
-  'bg-[var(--color-brand-primary)] text-[var(--color-text-on-brand)]',
-  'transition-colors duration-200',
-  'min-[1024px]:group-hover:border-[var(--color-border-base)] min-[1024px]:group-hover:bg-[var(--color-surface-1)] min-[1024px]:group-hover:text-[var(--color-brand-primary)]',
-);
+const ARROW_BUTTON_CLASS = SOLUTION_ARROW_BUTTON_CLASS;
 
 const CATEGORY_ICON_CLASS = cn(
   'h-[var(--space-16)] w-[var(--space-16)] text-[var(--color-brand-primary)]',
@@ -59,7 +44,7 @@ function SolutionCardCover({
       <div
         className={cn(
           'absolute inset-0 z-0 bg-gradient-to-br from-[var(--color-brand-primary)] to-[var(--color-brand-hover)]',
-          'opacity-0 transition-opacity duration-200',
+          'opacity-[0.08] transition-opacity duration-200',
           'min-[1024px]:group-hover:opacity-100',
         )}
         aria-hidden="true"
@@ -69,9 +54,9 @@ function SolutionCardCover({
           src={imageSrc}
           alt={imageAlt ?? ''}
           className={cn(
-            'absolute inset-0 z-[1] h-full w-full object-cover mix-blend-overlay',
-            'opacity-0 transition-opacity duration-200',
-            'min-[1024px]:group-hover:opacity-60',
+            'absolute inset-0 z-[1] h-full w-full object-cover',
+            'opacity-[0.22] transition-opacity duration-200',
+            'min-[1024px]:group-hover:opacity-70 min-[1024px]:group-hover:mix-blend-overlay',
           )}
         />
       ) : null}

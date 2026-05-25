@@ -352,6 +352,14 @@ module.exports = {
           '0%':   { height: 'var(--radix-accordion-content-height, auto)', opacity: '1' },
           '100%': { height: '0', opacity: '0' },
         },
+        'partners-marquee-left': {
+          '0%':   { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'partners-marquee-right': {
+          '0%':   { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
         shimmer:          'shimmer 1.5s ease-in-out infinite',
@@ -366,6 +374,8 @@ module.exports = {
         'check-pop':      'check-pop 200ms ease-out',
         'accordion-open': 'accordion-open 200ms ease-out',
         'accordion-close':'accordion-close 200ms ease-out',
+        'partners-marquee-left':  'partners-marquee-left linear infinite',
+        'partners-marquee-right': 'partners-marquee-right linear infinite',
       },
     },
   },

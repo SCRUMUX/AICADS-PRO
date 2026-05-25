@@ -121,7 +121,16 @@
       "category": "marketing",
       "primitives": ["Accordion", "Paragraph"],
       "storyReference": "Blocks/Marketing/FAQBlock",
-      "whenToUse": "FAQ section with collapsible answers"
+      "whenToUse": "FAQ section with collapsible answers — default compact accordion"
+    },
+    "marketing.faq.enterprise": {
+      "block": "FAQBlock",
+      "recipe": "section.faq",
+      "category": "marketing",
+      "primitives": ["Accordion", "Paragraph"],
+      "storyReference": "Blocks/Marketing/FAQBlock",
+      "uxReference": "cortel.cloud/importozameshhenie-vmware",
+      "whenToUse": "FAQ card accordion — muted rounded items, plus toggle button, Cortel vmware landing"
     },
     "marketing.cta.banner": {
       "block": "CTABlock",
@@ -174,6 +183,96 @@
       "uxReference": "cortel.cloud",
       "whenToUse": "Case study showcase — muted band, 2-row mosaic grid (3 equal + 6/3/3), mobile scroll strip, inverse hover reveal with brand gradient cover"
     },
+    "marketing.solutions.catalog": {
+      "block": "SolutionsBlock",
+      "recipe": "section.solutions",
+      "category": "marketing",
+      "primitives": ["Card", "Link", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/SolutionsBlock",
+      "uxReference": "cortel.cloud/solutions",
+      "whenToUse": "Solutions catalog page — hero muted panel (variant solutions) + equal 3-col bordered cards with icon, title, description, arrow CTA on hover"
+    },
+    "marketing.trust.security": {
+      "block": "TrustBlock",
+      "recipe": "section.trust",
+      "category": "marketing",
+      "primitives": ["Card", "Link", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/TrustBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Reliability band — featured brand pillar + 3 white cards, gradient divider, sidebar + 3-col standards link grid"
+    },
+    "marketing.support.always-on": {
+      "block": "SupportBlock",
+      "recipe": "section.support",
+      "category": "marketing",
+      "primitives": ["Card", "Link", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/SupportBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Support band — split header, image stat cards (featured + 2 side), contact channel rows; mobile stacked stats hero"
+    },
+    "marketing.showcase.panel": {
+      "block": "ShowcasePanelBlock",
+      "recipe": "section.showcase-panel",
+      "category": "marketing",
+      "primitives": ["Accordion", "Button", "SectionHeader", "Image"],
+      "storyReference": "Blocks/Marketing/ShowcasePanelBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Interactive product panel — flex accordion cards on the left (expand/push in fixed frame), crossfade UI preview on the right; mobile inline preview per panel"
+    },
+    "marketing.blog.slider": {
+      "block": "BlogBlock",
+      "recipe": "section.blog",
+      "category": "marketing",
+      "primitives": ["Card", "Link", "SectionHeader", "Image"],
+      "storyReference": "Blocks/Marketing/BlogBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Blog band — split header with view-all + prev/next, horizontal card slider with image, excerpt fade, date pill and arrow link; mobile edge-bleed scroll"
+    },
+    "marketing.partners.marquee": {
+      "block": "PartnersBlock",
+      "recipe": "section.partners",
+      "category": "marketing",
+      "primitives": ["Image", "Link"],
+      "storyReference": "Blocks/Marketing/PartnersBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Strategic partners band — centered title, dual infinite marquee rows (opposite directions), white logo tiles with grayscale-to-color hover, edge gradient fades"
+    },
+    "marketing.contact.hero": {
+      "block": "ContactHeroBlock",
+      "recipe": "section.contact-hero",
+      "category": "marketing",
+      "primitives": ["Button", "Checkbox", "Input"],
+      "storyReference": "Blocks/Marketing/ContactHeroBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Brand contact hero — parallax background, split title + glass form (name, phone, company), white submit CTA, consent checkbox"
+    },
+    "marketing.why-us.grid": {
+      "block": "WhyUsBlock",
+      "recipe": "section.why-us",
+      "category": "marketing",
+      "primitives": ["Card", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/WhyUsBlock",
+      "uxReference": "cortel.cloud/importozameshhenie-vmware",
+      "whenToUse": "Credibility grid — title with break, row1 (2 bordered cards + 2fr featured media), row2 (3 cards + mobile featured), muted-to-white section bg"
+    },
+    "marketing.choose-us.mosaic": {
+      "block": "ChooseUsBlock",
+      "recipe": "section.choose-us",
+      "category": "marketing",
+      "primitives": ["Card", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/ChooseUsBlock",
+      "uxReference": "cortel.cloud/company",
+      "whenToUse": "Company credibility mosaic — title with brand accent, 5-card wrap (2 wide + 3 narrow) + featured support panel on muted bg"
+    },
+    "marketing.process.timeline": {
+      "block": "ProcessBlock",
+      "recipe": "section.process",
+      "category": "marketing",
+      "primitives": ["Card", "SectionHeader"],
+      "storyReference": "Blocks/Marketing/ProcessBlock",
+      "uxReference": "cortel.cloud/importozameshhenie-vmware",
+      "whenToUse": "Process timeline — numbered steps with dot markers, bordered cards, vertical mobile / horizontal desktop with gradient track"
+    },
     "marketing.footer.minimal": {
       "block": "FooterBlock",
       "recipe": "section.footer",
@@ -182,6 +281,15 @@
       "storyReference": "Blocks/Marketing/FooterBlock",
       "uxReference": "shadcn:footer-01",
       "whenToUse": "Site footer with link columns, social links, and copyright"
+    },
+    "marketing.footer.enterprise": {
+      "block": "FooterBlock",
+      "recipe": "section.footer",
+      "category": "marketing",
+      "primitives": ["Link", "Paragraph"],
+      "storyReference": "Blocks/Marketing/FooterBlock",
+      "uxReference": "cortel.cloud",
+      "whenToUse": "Brand footer after contact hero — gradient divider, logo column, 3-col nav/contacts/legal grid, back-to-top"
     }
   },
   "pageTemplates": {
@@ -221,10 +329,21 @@
         "marketing.hero.enterprise",
         "marketing.events.featured",
         "marketing.solutions.showcase",
+        "marketing.solutions.catalog",
         "marketing.services.catalog",
+        "marketing.support.always-on",
+        "marketing.choose-us.mosaic",
+        "marketing.trust.security",
+        "marketing.showcase.panel",
+        "marketing.partners.marquee",
+        "marketing.blog.slider",
         "marketing.features.grid",
         "marketing.cta.band",
-        "marketing.footer.minimal"
+        "marketing.why-us.grid",
+        "marketing.process.timeline",
+        "marketing.faq.enterprise",
+        "marketing.contact.hero",
+        "marketing.footer.enterprise"
       ],
       "component": "LandingPageTemplate",
       "fixtureReference": "aicadsProNavbarFixture",

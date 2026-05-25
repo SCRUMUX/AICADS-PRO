@@ -3,6 +3,7 @@ import { SectionShell } from '../../_shared/SectionShell';
 import { BlockAction } from '../../_shared/BlockAction';
 import { BlockSectionHeader } from '../../_shared/BlockSectionHeader';
 import { BlockGrid } from '../../_shared/BlockGrid';
+import { BLOCK_CARD_COMPACT_CLASS } from '../../_shared/blockLayout';
 import { Paragraph } from '../../../components/primitives/Paragraph';
 import { Badge } from '../../../components/primitives/Badge';
 import { Divider } from '../../../components/primitives/Divider';
@@ -45,10 +46,11 @@ export const PricingBlock: React.FC<PricingBlockProps> = ({
           <div
             key={tier.name}
             className={cn(
-              'flex flex-col h-full w-full min-w-0 rounded-[var(--radius-medium)] border border-solid',
+              'flex flex-col h-full w-full min-w-0',
+              BLOCK_CARD_COMPACT_CLASS,
               highlighted
                 ? 'border-[var(--color-brand-primary)] bg-[var(--color-surface-2)] shadow-elevation-2'
-                : 'border-[var(--color-border-base)] bg-[var(--color-surface-1)]',
+                : '',
             )}
             style={{ padding: 'var(--space-inset-xl)', gap: 'var(--space-section-stack-m)' }}
           >

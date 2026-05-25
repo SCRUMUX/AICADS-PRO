@@ -13,9 +13,11 @@
  *   - `*.stories.tsx` / `*.stories.ts` — Storybook demos may show raw colours
  *     as labels; these are policed separately by 10.8.
  *   - `scripts/**`, `node_modules/**`.
+ *   - `blocks/marketing/demo-assets/**` — SVG placeholder literals.
  *
  * Files INCLUDED:
  *   - `components/primitives/**` (including `_shared/` and `_internal/`).
+ *   - `blocks/**` (marketing blocks and shared layout helpers).
  */
 
 'use strict';
@@ -66,15 +68,25 @@ function isHardcodedPixelString(value) {
   return /\d+(?:\.\d+)?(?:px|rem|em)?/.test(value);
 }
 
+function normalizePath(filename) {
+  return filename.replace(/\\/g, '/');
+}
+
 function isStoryOrSkippedFile(filename) {
+  const f = normalizePath(filename);
   return (
-    /\.stories\.(t|j)sx?$/.test(filename) ||
-    /[\\/](scripts|node_modules|dist|storybook-static|playground[\\/]\.storybook)[\\/]/.test(filename)
+    /\.stories\.(t|j)sx?$/.test(f) ||
+    /\/(scripts|node_modules|dist|storybook-static|playground\/\.storybook)\//.test(f) ||
+    /\/blocks\/marketing\/demo-assets\//.test(f)
   );
 }
 
-function isInPrimitives(filename) {
-  return /[\\/]components[\\/]primitives[\\/]/.test(filename);
+function isLintTarget(filename) {
+  const f = normalizePath(filename);
+  return (
+    /\/components\/primitives\//.test(f) ||
+    /\/blocks\//.test(f)
+  );
 }
 
 module.exports = {
@@ -101,7 +113,7 @@ module.exports = {
   create(context) {
     const filename = context.getFilename();
     if (isStoryOrSkippedFile(filename)) return {};
-    if (!isInPrimitives(filename)) return {};
+    if (!isLintTarget(filename)) return {};
 
     return {
       // 1. Inline style={{ ... }}

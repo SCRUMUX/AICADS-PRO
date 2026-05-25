@@ -11,3 +11,4 @@ export { useLocalStorage } from './useLocalStorage';
 export { useMediaQuery } from './useMediaQuery';
 export { useScrollLock } from './useScrollLock';
 export { useIntersectionObserver } from './useIntersectionObserver';
+export { useParallaxOffset } from './useParallaxOffset';

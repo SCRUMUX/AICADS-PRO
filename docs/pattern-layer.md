@@ -49,10 +49,14 @@ Defined in [`blockLayout.ts`](../blocks/_shared/blockLayout.ts) — B2B SaaS bas
 
 For `marketing.navbar.enterprise` with `overlay: true`:
 
-- **`LandingPageTemplate`** wraps navbar + hero in [`MarketingAboveFold`](../blocks/_shared/MarketingAboveFold.tsx) — one brand background behind sticky header and hero (not negative-margin overlap).
+- **DOM order:** `NavbarBlock` → `MarketingAboveFold` (hero + optional events band). Navbar wrapper uses `--z-header`; MAF uses `z-0` so fixed chrome paints above the brand shell.
+- **`MarketingAboveFold`** applies negative top margin (`-mt`) so brand background bleeds under the fixed header; navbar brand bleed uses `fixed` positioning aligned to the chrome band.
 - Set **`hero.appearance: 'brand'`** (auto-applied when `navbar.overlay` is true and hero appearance is omitted).
-- Static **social rail** sits between header and hero in the DOM; hidden below 768px (icons remain in the mobile drawer).
-- Use **`aicadsProNavbarFixture`** from `@ai-ds/core/blocks` as the reference payload; see `pageTemplates.marketing.landing.enterprise` in the manifest.
+- **`hero.fillViewport: true`** on enterprise above-fold — hero stage fills remaining viewport height inside MAF (`SectionShell.growContent`).
+- **`events.sectionStyle`** — optional padding override on the events band (e.g. tighter gap to hero on enterprise landing).
+- Static **social rail** sits in the navbar flow band; hidden below 768px (icons remain in the mobile drawer).
+- Reference payloads: **`aicadsProNavbarFixture`**, **`aicadsProEnterpriseLandingArgs`**, **`aicadsEnterpriseHeroDemoContent`** from `@ai-ds/core/blocks`.
+- Navbar **services mega-menu** uses opaque `surface-1` (readable dropdown); scrim uses `BLOCK_GLASS_SCRIM_CLASS`.
 
 Grids use 3-up from **1024px** so cards never orphan on typical desktop widths.
 

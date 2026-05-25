@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../../components/primitives/_shared';
+import { solutionDemoImage } from './demo-assets/solutionDemoImages';
 import type { SolutionsBlockProps } from './SolutionsBlock/SolutionsBlock.types';
 
 const SOLUTION_COVER_TONES = [
@@ -17,7 +18,7 @@ function SolutionCoverPattern() {
       className="pointer-events-none absolute bottom-0 right-0 h-[55%] w-[45%] opacity-[0.18]"
       style={{
         backgroundImage:
-          'repeating-linear-gradient(-35deg, transparent, transparent 10px, var(--color-text-on-brand) 10px, var(--color-text-on-brand) 11px)',
+          'repeating-linear-gradient(-35deg, transparent, transparent var(--space-10), var(--color-text-on-brand) var(--space-10), var(--color-text-on-brand) calc(var(--space-10) + var(--space-1)))',
       }}
       aria-hidden="true"
     />
@@ -34,15 +35,24 @@ export function solutionCoverPlaceholder(index: number) {
   );
 }
 
-/** Attach demo cover layers for Storybook render() — keep out of CSF args. */
-export function withSolutionCardCovers(props: SolutionsBlockProps): SolutionsBlockProps {
+/** Attach demo cover + imageSrc for Storybook render() — keep out of CSF args. */
+export function withSolutionCardCovers(
+  props: Extract<SolutionsBlockProps, { variant?: 'showcase' }>,
+): Extract<SolutionsBlockProps, { variant?: 'showcase' }> {
   let coverIndex = 0;
 
   return {
     ...props,
-    solutions: props.solutions.map((item) => ({
-      ...item,
-      cover: item.cover ?? (item.imageSrc ? undefined : solutionCoverPlaceholder(coverIndex++)),
-    })),
+    solutions: props.solutions.map((item, index) => {
+      const imageSrc = item.imageSrc ?? solutionDemoImage(item.id ?? '', index);
+      const imageAlt = item.imageAlt ?? `${item.title} — preview`;
+
+      return {
+        ...item,
+        imageSrc,
+        imageAlt,
+        cover: item.cover ?? (imageSrc ? undefined : solutionCoverPlaceholder(coverIndex++)),
+      };
+    }),
   };
 }

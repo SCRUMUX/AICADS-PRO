@@ -29,6 +29,16 @@ export const EXPECTED_BLOCKS = [
   'NewsletterBlock',
   'EventsBlock',
   'ServicesBlock',
+  'SolutionsBlock',
+  'TrustBlock',
+  'SupportBlock',
+  'ShowcasePanelBlock',
+  'BlogBlock',
+  'PartnersBlock',
+  'ContactHeroBlock',
+  'WhyUsBlock',
+  'ChooseUsBlock',
+  'ProcessBlock',
   'LandingPageTemplate',
 ];
 

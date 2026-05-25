@@ -10,11 +10,18 @@ export interface HeroBreadcrumbItem {
 export interface HeroBreadcrumbProps {
   items: HeroBreadcrumbItem[];
   onBrand?: boolean;
+  /** Cortel inner pages use a dot; case-study pages use chevron. */
+  separator?: 'chevron' | 'dot';
   className?: string;
 }
 
 /** Compact breadcrumb trail for inner-page hero (Cortel case study header). */
-export function HeroBreadcrumb({ items, onBrand = false, className }: HeroBreadcrumbProps) {
+export function HeroBreadcrumb({
+  items,
+  onBrand = false,
+  separator = 'chevron',
+  className,
+}: HeroBreadcrumbProps) {
   if (items.length === 0) return null;
 
   const linkClass = cn(
@@ -22,31 +29,42 @@ export function HeroBreadcrumb({ items, onBrand = false, className }: HeroBreadc
     onBrand ? 'text-[var(--color-text-on-brand)]/70' : 'text-[var(--color-text-secondary)]',
   );
 
-  const currentClass = cn(
-    'text-style-caption',
-    onBrand ? 'text-[var(--color-text-on-brand)]' : 'text-[var(--color-text-primary)]',
+  const separatorClass = cn(
+    'shrink-0 text-style-caption',
+    onBrand ? 'text-[var(--color-text-on-brand)]/50' : 'text-[var(--color-text-muted)]',
   );
 
   return (
     <nav
       aria-label="breadcrumb"
       className={cn('flex w-full min-w-0 flex-wrap items-center', className)}
-      style={{ gap: 'var(--space-1)' }}
+      style={{ gap: separator === 'dot' ? 'var(--space-8)' : 'var(--space-1)' }}
     >
       {items.map((item, index) => {
         const isLast = index === items.length - 1;
+        const currentClass = cn(
+          'text-style-caption',
+          onBrand
+            ? 'text-[var(--color-text-on-brand)]'
+            : isLast
+              ? 'text-[var(--color-brand-primary)]'
+              : 'text-[var(--color-text-primary)]',
+        );
 
         return (
           <React.Fragment key={`${item.label}-${index}`}>
             {index > 0 ? (
-              <ChevronRightIcon
-                size={12}
-                className={cn(
-                  'shrink-0',
-                  onBrand ? 'text-[var(--color-text-on-brand)]/50' : 'text-[var(--color-text-muted)]',
-                )}
-                aria-hidden="true"
-              />
+              separator === 'dot' ? (
+                <span className={separatorClass} aria-hidden="true">
+                  •
+                </span>
+              ) : (
+                <ChevronRightIcon
+                  size={12}
+                  className={separatorClass}
+                  aria-hidden="true"
+                />
+              )
             ) : null}
 
             {item.href && !isLast ? (

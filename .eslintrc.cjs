@@ -79,6 +79,17 @@ module.exports = {
       },
     },
     {
+      // Marketing blocks — same token enforcement as primitives (Phase 3 complete).
+      files: ['blocks/**/*.{ts,tsx}'],
+      excludedFiles: [
+        '**/*.stories.{ts,tsx}',
+        'blocks/marketing/demo-assets/**',
+      ],
+      rules: {
+        'no-hardcoded-tokens': 'error',
+      },
+    },
+    {
       // Storybook kit loads engine CSS via Vite aliases — not consumer-facing imports.
       files: ['storybook/**/*.{ts,tsx}'],
       rules: {
