@@ -127,6 +127,8 @@ behavior adapters).
 
 ## Playground (Storybook)
 
+**Live:** [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/) — deployed from `main` via GitHub Actions.
+
 Local verification workspace (not published in npm `files`, but stories ship with `@ai-ds/core`):
 
 ```bash
