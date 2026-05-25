@@ -803,6 +803,43 @@ export interface EmptyStateProps extends React_2.HTMLAttributes<HTMLDivElement> 
 export type EmptyStateSize = 'sm' | 'md' | 'lg';
 
 // @public (undocumented)
+export type EventFormat = 'online' | 'offline' | 'hybrid';
+
+// @public (undocumented)
+export interface EventItem {
+    // (undocumented)
+    date: string;
+    // (undocumented)
+    format: EventFormat;
+    formatLabel?: string;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    location?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export const EventsBlock: React_2.FC<EventsBlockProps>;
+
+// @public (undocumented)
+export interface EventsBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    events: EventItem[];
+    showNavigation?: boolean;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    title?: string;
+    variant?: 'featured' | 'list';
+}
+
+// @public (undocumented)
 export const FAQBlock: React_2.FC<FAQBlockProps>;
 
 // @public (undocumented)
@@ -1136,6 +1173,7 @@ export interface HeroBlockProps {
     appearance?: 'base' | 'surface' | 'muted' | 'brand' | 'inverse';
     // (undocumented)
     badge?: string;
+    breadcrumbs?: HeroBreadcrumbItem[];
     // (undocumented)
     className?: string;
     media?: React_2.ReactNode;
@@ -1149,8 +1187,15 @@ export interface HeroBlockProps {
     subtitle?: string;
     // (undocumented)
     title: string;
+    variant?: 'centered' | 'split' | 'enterprise' | 'page';
+}
+
+// @public (undocumented)
+export interface HeroBreadcrumbItem {
     // (undocumented)
-    variant?: 'centered' | 'split';
+    href?: string;
+    // (undocumented)
+    label: string;
 }
 
 // @public (undocumented)
@@ -1323,6 +1368,8 @@ export interface LandingPageTemplateProps {
     // (undocumented)
     cta: CTABlockProps;
     // (undocumented)
+    events?: EventsBlockProps;
+    // (undocumented)
     faq?: FAQBlockProps;
     // (undocumented)
     features: FeaturesBlockProps;
@@ -1340,6 +1387,10 @@ export interface LandingPageTemplateProps {
     newsletter?: NewsletterBlockProps;
     // (undocumented)
     pricing: PricingBlockProps;
+    // (undocumented)
+    services?: ServicesBlockProps;
+    // (undocumented)
+    solutions?: SolutionsBlockProps;
     // (undocumented)
     stats?: StatsBlockProps;
     // (undocumented)
@@ -1547,6 +1598,8 @@ export interface NavbarBlockProps {
     className?: string;
     cta?: NavbarCta;
     // @internal
+    defaultMobileOpen?: boolean;
+    // @internal
     defaultServicesOpen?: boolean;
     // (undocumented)
     links: NavbarLink[];
@@ -1567,6 +1620,8 @@ export interface NavbarBlockProps {
 //
 // @internal
 export interface NavbarBlockStoryProps extends NavbarBlockProps {
+    // (undocumented)
+    defaultMobileOpen?: boolean;
     // (undocumented)
     defaultServicesOpen?: boolean;
 }
@@ -2177,6 +2232,63 @@ export type SelectSize = 'sm' | 'md' | 'lg';
 // @public (undocumented)
 export type SelectState = 'base' | 'hover' | 'focus' | 'disabled';
 
+// @public (undocumented)
+export interface ServiceCategory {
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    items: ServiceItem[];
+    // (undocumented)
+    label: string;
+}
+
+// @public (undocumented)
+export interface ServiceItem {
+    // (undocumented)
+    action?: ServiceItemAction;
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    image?: React_2.ReactNode;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export interface ServiceItemAction {
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    onClick?: () => void;
+}
+
+// @public (undocumented)
+export const ServicesBlock: React_2.FC<ServicesBlockProps>;
+
+// @public (undocumented)
+export interface ServicesBlockProps {
+    // (undocumented)
+    categories: ServiceCategory[];
+    // (undocumented)
+    className?: string;
+    pageSize?: number;
+    // (undocumented)
+    showMoreLabel?: string;
+    stickyHeader?: boolean;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    title?: string;
+}
+
 // @public
 export function setTheme(mode: 'light' | 'dark'): void;
 
@@ -2304,6 +2416,56 @@ export type SliderSize = 'sm' | 'md' | 'lg';
 // @public (undocumented)
 export type SliderThumbs = '1' | '2';
 
+// @public (undocumented)
+export interface SolutionItem {
+    category: string;
+    // (undocumented)
+    categoryIcon?: React_2.ReactNode;
+    // (undocumented)
+    client: string;
+    cover?: React_2.ReactNode;
+    // (undocumented)
+    date: string;
+    description?: string;
+    highlights?: string[];
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    imageAlt?: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export const SolutionsBlock: React_2.FC<SolutionsBlockProps>;
+
+// @public (undocumented)
+export interface SolutionsBlockProps {
+    // (undocumented)
+    className?: string;
+    desktopVisibleCount?: number;
+    // (undocumented)
+    solutions: SolutionItem[];
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    viewAll?: SolutionsViewAllAction;
+}
+
+// @public (undocumented)
+export interface SolutionsViewAllAction {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label?: string;
+}
+
 // @public
 export const SPACE_PRIMITIVES: {
     readonly 1: 1;
@@ -2363,7 +2525,7 @@ export interface SpacingRecipe {
 }
 
 // @public (undocumented)
-export type SpacingRecipeId = 'section.hero' | 'section.features' | 'section.pricing' | 'section.cta' | 'section.footer' | 'section.navbar' | 'section.logos' | 'section.stats' | 'section.testimonials' | 'section.faq' | 'section.steps' | 'section.newsletter' | 'section.app-shell';
+export type SpacingRecipeId = 'section.hero' | 'section.hero.page' | 'section.features' | 'section.pricing' | 'section.cta' | 'section.footer' | 'section.navbar' | 'section.logos' | 'section.stats' | 'section.testimonials' | 'section.faq' | 'section.steps' | 'section.newsletter' | 'section.events' | 'section.services' | 'section.solutions' | 'section.app-shell';
 
 // @public (undocumented)
 export type SpacingSide = 'top' | 'right' | 'bottom' | 'left' | 'x' | 'y' | 'all';
