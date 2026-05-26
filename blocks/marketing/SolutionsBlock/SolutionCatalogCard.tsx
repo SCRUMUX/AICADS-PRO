@@ -31,7 +31,7 @@ export const SolutionCatalogCard: React.FC<SolutionCatalogCardProps> = ({
       </div>
       <p className={SOLUTIONS_CATALOG_DESCRIPTION_CLASS}>{description}</p>
       <span className={SOLUTIONS_CATALOG_ARROW_CLASS} aria-hidden="true">
-        <ArrowUpRightIcon className="h-[var(--space-16)] w-[var(--space-16)] min-[1024px]:h-[var(--space-20)] min-[1024px]:w-[var(--space-20)]" />
+        <ArrowUpRightIcon className="h-[var(--space-16)] w-[var(--space-16)] min-[1024px]:h-[var(--space-18)] min-[1024px]:w-[var(--space-18)]" />
       </span>
     </>
   );

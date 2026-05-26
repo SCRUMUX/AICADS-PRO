@@ -66,6 +66,7 @@ export default preview;
 - [ ] `npm ci` (root)
 - [ ] `cd playground && npm ci`
 - [ ] `npm run storybook` → http://localhost:6006/ (if the port is busy, Storybook auto-picks the next free port — `--ci` is enabled in the script)
+- [ ] **Do not** open `playground/storybook-static/index.html` in the browser — static build needs `npm run storybook:build` then a static server, or use `npm run storybook` for dev
 - [ ] Theme toolbar: Light / Dark switches `data-theme` on `<html>`
 - [ ] Spot-check: **Tooltip → FullMatrix**, **Tab → TicketTabGroup**, **Rating → Default**
 - [ ] Marketing spot-check: **Screens/Marketing Landing → Aicads Pro Enterprise**, **Blocks/Marketing/NavbarBlock → Desktop**, **Blocks/Marketing/HeroBlock → Enterprise With Navbar**
@@ -73,7 +74,7 @@ export default preview;
 
 ## Checklist B — npm install (new consumer project)
 
-- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.3`
+- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5`
 - [ ] Copy [`templates/consumer-storybook/`](../templates/consumer-storybook/) into your app
 - [ ] Install devDependencies from template `package.json`
 - [ ] Add runtime deps: `react`, `react-dom`, `vaul`, `sonner` (or rely on `@ai-ds/core` transitive deps + explicit vaul for Storybook CSS path)
@@ -116,7 +117,7 @@ npm run tokens:check   # CI gate — fails if tokens.css is stale
 
 Stories live under `components/primitives/**/*.stories.tsx` (~50+ files). Layout stories pattern is registered but no layout stories exist yet.
 
-## Baseline verification (2026-05-25)
+## Baseline verification (2026-05-25, v0.7.5)
 
 | Check | Result |
 |-------|--------|

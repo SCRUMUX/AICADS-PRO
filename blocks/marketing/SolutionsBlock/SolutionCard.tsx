@@ -119,14 +119,14 @@ function SolutionCardBody({ item }: { item: SolutionItem }) {
 function SolutionCardFooter({ client, date }: Pick<SolutionItem, 'client' | 'date'>) {
   return (
     <div className="flex w-full items-end justify-between gap-[var(--space-section-stack-s)]">
-      <div className="flex min-w-0 flex-wrap items-center" style={{ gap: 'var(--space-1)' }}>
+      <div className="flex min-w-0 flex-wrap items-center gap-[var(--space-2)]">
         <span className={META_PILL_CLASS}>{client}</span>
         <time className={META_PILL_CLASS} dateTime={date}>
           {date}
         </time>
       </div>
       <span className={ARROW_BUTTON_CLASS} aria-hidden="true">
-        <ArrowUpRightIcon />
+        <ArrowUpRightIcon className="h-[var(--space-16)] w-[var(--space-16)]" />
       </span>
     </div>
   );

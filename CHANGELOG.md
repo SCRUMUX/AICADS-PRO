@@ -3,6 +3,28 @@
 All notable changes to @ai-ds/core are documented here.
 Format follows [Semantic Versioning](https://semver.org/).
 
+## [0.7.5] — 2026-05-25
+
+> **Chrome polish & Storybook dev** — round ↗ arrow controls, meta pill contract, ChooseUs/Solutions layout fixes, reliable local Storybook startup.
+
+### Added
+
+- **`BlockArrowUpRightIcon`** — shared straight ↗ arrow with `group-hover:rotate-45` ([`blocks/_shared/BlockArrowIcons.tsx`](blocks/_shared/BlockArrowIcons.tsx)).
+- **`BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS`** — pill-shaped ↗ control for Blog, Solutions, Trust, FAQ.
+- **`BLOCK_META_PILL_CLASS`** — shared meta pill chrome for Solutions catalog and similar labels.
+- **`docs/getting-started.md`** — clone, install, consumer Storybook, AI assembly guide.
+
+### Changed
+
+- **Blog / Solutions / Trust / FAQ** — migrated ↗ and nav controls to round arrow chrome; chevron nav retains pill + brand hover.
+- **Solutions catalog** — standard card inset tier; meta pills use `BLOCK_META_PILL_CLASS`.
+- **ChooseUs** — icon/body flex layout (no absolute overlap).
+- **README** — v0.7.5 install ref, quick-start intro, technical overview; consumer template pin `#v0.7.5`.
+
+### Fixed
+
+- **Local Storybook** — `scripts/storybook-dev.mjs` frees busy port 6006 and runs with `--ci` (no interactive Y/n exit).
+
 ## [0.7.4] — 2026-05-25
 
 > **Card inset & radius contract** — unified padding tiers, ChooseUs grid fix, Solutions hover stability.

@@ -1,5 +1,7 @@
 import React from 'react';
-import { BLOCK_CARD_COMPACT_CLASS } from '../../_shared/blockLayout';
+import {
+  BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS,
+} from '../../_shared/blockLayout';
 import { cn } from '../../../components/primitives/_shared';
 import { ArrowUpRightIcon } from './TrustBlockIcons';
 import type { TrustStandardItem } from './TrustBlock.types';
@@ -9,11 +11,8 @@ export interface TrustStandardLinkProps extends TrustStandardItem {
 }
 
 const LINK_ARROW_CLASS = cn(
-  'inline-flex shrink-0 items-center justify-center',
+  BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS,
   'h-[var(--space-24)] w-[var(--space-24)] min-[1024px]:h-[var(--space-32)] min-[1024px]:w-[var(--space-32)]',
-  BLOCK_CARD_COMPACT_CLASS,
-  'text-[var(--color-text-primary)] transition-colors duration-200',
-  'group-hover:border-[var(--color-brand-primary)] group-hover:bg-[var(--color-brand-primary)] group-hover:text-[var(--color-text-on-brand)]',
 );
 
 export const TrustStandardLink: React.FC<TrustStandardLinkProps> = ({
@@ -34,7 +33,7 @@ export const TrustStandardLink: React.FC<TrustStandardLinkProps> = ({
       </span>
       {href ? (
         <span className={LINK_ARROW_CLASS} aria-hidden="true">
-          <ArrowUpRightIcon />
+          <ArrowUpRightIcon className="h-[var(--space-14)] w-[var(--space-14)] min-[1024px]:h-[var(--space-16)] min-[1024px]:w-[var(--space-16)]" />
         </span>
       ) : null}
     </>

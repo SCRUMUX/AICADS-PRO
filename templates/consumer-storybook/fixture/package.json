@@ -6,7 +6,7 @@
   "scripts": {
     "prestorybook": "node ../../../scripts/storybook-prep.mjs templates/consumer-storybook/fixture",
     "prebuild-storybook": "node ../../../scripts/storybook-prep.mjs templates/consumer-storybook/fixture",
-    "storybook": "storybook dev -p 6006 --no-open",
+    "storybook": "node ../../../scripts/storybook-dev.mjs .",
     "build-storybook": "storybook build"
   },
   "dependencies": {

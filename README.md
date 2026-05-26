@@ -1,13 +1,22 @@
-# @ai-ds/core v0.7.2
+# @ai-ds/core v0.7.5
 
-AI Design System — reusable architectural core. Token-driven,
-contract-driven, source-first React primitives **and pattern blocks**
-powered by Radix UI / cmdk / vaul / sonner under the hood.
+**AICADS PRO** — token-driven React design system: 57+ primitives (buttons, forms, modals) and 24 marketing blocks (Hero, Navbar, Solutions, FAQ…).
+
+**Why:** one token-driven UI for products and AI page assembly. Behavior engines (Radix, vaul, sonner) stay behind the semantic API — your app never imports them directly.
+
+**Quick start:**
+
+1. `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5`
+2. `import '@ai-ds/core/tokens'`
+3. Browse Storybook: [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/) or run locally (see [Getting started](./docs/getting-started.md))
+4. For landing pages — import blocks from `@ai-ds/core/blocks/*` using the catalog at `@ai-ds/core/patterns`
+
+Full setup guide: [docs/getting-started.md](./docs/getting-started.md)
 
 ## Installation
 
 ```bash
-npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.2
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5
 ```
 
 ## Importing components
@@ -79,44 +88,49 @@ Theme switch:
 <html data-theme="dark">  … </html>
 ```
 
-## What changed in v0.5.0
+## What's new in v0.7.5
 
-v0.5.0 is the **System Optimization Layer** — strict token-driven UI,
-single Radix-aligned scrollbar, CI-enforced architectural invariants.
+- **Round ↗ arrow controls** — `BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS` + `BlockArrowUpRightIcon` with 45° rotate on hover (Blog, Solutions, Trust, FAQ).
+- **Meta pill contract** — `BLOCK_META_PILL_CLASS` for Solutions catalog and similar chrome.
+- **ChooseUs / Solutions polish** — icon/body layout fix; catalog cards use standard inset tier.
+- **Storybook dev** — `scripts/storybook-dev.mjs` frees busy ports and runs with `--ci` (no interactive prompt).
 
-| Area                        | Change                                                                                       |
-| --------------------------- | -------------------------------------------------------------------------------------------- |
-| Toast                       | Custom `<Toast>` **removed**; only `toast()` + `<Toaster>` (sonner) remain                   |
-| ScrollBar                   | `@deprecated`; use [`ScrollArea`](./components/primitives/_shared/ScrollArea.tsx); removal in v0.6 |
-| Tokens                      | All inline pixel literals replaced with `var(--space-*)` / `var(--radius-*)` / `var(--font-size-*)` |
-| Skeletons                   | One contract drives Card / Chart / List / Page / Table sizes                                 |
-| Tab × Tabs                  | Active-state styling fully derives from `Tab.contract.json` × Radix `data-state`             |
-| Storybook                   | All hex/RGB literals in stories swapped for design tokens; new `StoryFrame` wrapper          |
-| Figma plugin                | Embedded `ai-manifest.json` snapshot + Strict-mode validation of generation specs            |
-| ESLint (consumer)           | Shareable config `@ai-ds/core/eslint-config` blocks direct Radix/cmdk/vaul/sonner imports    |
-| CI guards                   | `npm run lint` + `manifest:check` + `api:check` + Chromatic VRT (0.2% threshold)             |
+See [CHANGELOG.md](./CHANGELOG.md#075--2026-05-25) for full release notes.
 
-See [docs/migrations/v0.4-to-v0.5.md](./docs/migrations/v0.4-to-v0.5.md)
-for the one-page migration guide and
-[CHANGELOG.md](./CHANGELOG.md#050--2026-05-22) for the full release notes.
+## Technical overview
 
-### What changed in v0.4.0
+**Architecture**
 
-The behavior layer of every interactive primitive is now powered by
-**Radix UI**, **cmdk**, **vaul** or **sonner** — without changing the
-public API. See [CHANGELOG.md](./CHANGELOG.md#040--2026-05-22) for the
-full list. The isolation contract that keeps these libraries hidden from
-consumers is documented in [ARCHITECTURE.md](./ARCHITECTURE.md).
+```
+Consumer app
+  └─ @ai-ds/core/components/*     ← public primitives (contract-driven styling)
+  └─ @ai-ds/core/blocks/*          ← composed marketing sections
+  └─ @ai-ds/core/tokens            ← CSS variables (ai-ds-spec.json → tokens.css)
+  └─ @ai-ds/core/patterns          ← ai-patterns.json (35 patterns, 3 page templates)
+  └─ @ai-ds/core/manifest          ← ai-manifest.json (63 components, engines map)
+  └─ @ai-ds/core/eslint-config     ← blocks direct Radix/cmdk/vaul/sonner imports
 
-| Layer | What |
-|---|---|
-| Form controls (`Checkbox`, `RadioButton`/`RadioGroup`, `Switch`, `Slider`, `RangeSlider`, `Select`) | Radix form primitives |
-| Overlays (`Popover`, `Tooltip`, `Modal`, `Dropdown`) | Radix Popover / Tooltip / Dialog |
-| Disclosure (`Accordion`, `Tab`+`Tabs`+`TabList`+`TabPanel`) | Radix Accordion / Tabs |
-| Search (`Autocomplete`, new `CommandPalette`) | cmdk |
-| `Drawer` | vaul |
-| `Toaster` / `toast()` | sonner |
-| `ScrollArea` | Radix Scroll Area |
+Internal (never import from consumer):
+  components/primitives/_internal/  ← Radix, cmdk, vaul, sonner adapters
+```
+
+**Distribution:** source-first TypeScript; consumers bundle via Vite/Next. Versioned git tags (`#v0.7.5`).
+
+**Quality gates (CI on every PR/push to main):**
+
+- ESLint: `no-restricted-imports` + `no-hardcoded-tokens` on primitives/blocks
+- `manifest:check`, `tokens:check`, `patterns:check`, `api:check`
+- Storybook build: monorepo playground + consumer fixture
+
+**Pattern layer:** blocks use [`SectionShell`](./blocks/_shared/SectionShell.tsx) + spacing recipes. Layout contract in [`blockLayout.ts`](./blocks/_shared/blockLayout.ts) — content column, card inset tiers, chrome radius roles. Details: [docs/pattern-layer.md](./docs/pattern-layer.md).
+
+**AI integration:**
+
+- `ai-manifest.json` — semantic roles + behavior engines + contract paths per primitive
+- `ai-patterns.json` — block variants, primitives used, Storybook refs, page template section order
+- Contracts in `contracts/components/` drive tokenized appearance
+
+**Enterprise reference:** `marketing.landing.enterprise` page template — overlay navbar, brand hero, events, solutions catalog, trust, blog slider, contact hero, enterprise footer.
 
 ## Architecture
 
@@ -127,16 +141,28 @@ behavior adapters).
 
 ## Playground (Storybook)
 
-**Live:** [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/) — deployed from `main` via GitHub Actions.
+**Live (GitHub Pages):** [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/) — deployed from `main` via GitHub Actions.
 
-Local verification workspace (not published in npm `files`, but stories ship with `@ai-ds/core`):
+### Local dev (verified)
+
+From repo root:
 
 ```bash
-npm ci              # installs @ai-ds/core behavior engines (vaul, sonner, …)
-cd playground
 npm ci
-npm run storybook   # default :6006; if busy, auto-picks next port (--ci)
+cd playground && npm ci && cd ..
+npm run storybook
 ```
+
+Open **http://localhost:6006/** only after the terminal shows `Storybook … started`.
+
+Consumer fixture (optional):
+
+```bash
+cd templates/consumer-storybook/fixture && npm ci && cd ../../..
+npm run storybook:consumer
+```
+
+**Common mistakes:** opening `playground/storybook-static/index.html` directly (blank/broken UI); running Storybook without `playground/npm ci`; consumer Storybook without port cleanup (fixed — all paths use `scripts/storybook-dev.mjs` with port cleanup + `--ci`).
 
 From the repo root you can also run `npm run storybook` (delegates to `playground/`).
 

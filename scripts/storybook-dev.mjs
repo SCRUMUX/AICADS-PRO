@@ -1,13 +1,23 @@
 #!/usr/bin/env node
 /**
  * Start Storybook on a fixed port after freeing stale listeners (Windows-friendly).
+ *
+ * Usage:
+ *   node scripts/storybook-dev.mjs              # playground (monorepo catalog)
+ *   node scripts/storybook-dev.mjs .          # current dir (consumer fixture)
+ *   node scripts/storybook-dev.mjs path/to/project
  */
 import { execSync, spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const PORT = process.env.STORYBOOK_PORT ?? '6006';
-const playgroundDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'playground');
+const repoRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const defaultProjectDir = path.join(repoRoot, 'playground');
+const projectArg = process.argv[2];
+const projectDir = projectArg
+  ? path.resolve(process.cwd(), projectArg)
+  : defaultProjectDir;
 
 function killPort(port) {
   if (process.platform !== 'win32') {
@@ -42,12 +52,17 @@ function killPort(port) {
 
 killPort(PORT);
 
-console.log(`Starting Storybook on http://localhost:${PORT}/`);
+console.log(`Starting Storybook in ${projectDir}`);
+console.log(`Local: http://localhost:${PORT}/`);
 
-const result = spawnSync('npx', ['storybook', 'dev', '-p', PORT, '--no-open'], {
-  cwd: playgroundDir,
-  stdio: 'inherit',
-  shell: true,
-});
+const result = spawnSync(
+  'npx',
+  ['storybook', 'dev', '-p', PORT, '--no-open', '--ci'],
+  {
+    cwd: projectDir,
+    stdio: 'inherit',
+    shell: true,
+  },
+);
 
 process.exit(result.status ?? 1);

@@ -1,6 +1,6 @@
 {
   "name": "@ai-ds/core",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "AI Design System — reusable architectural core (tokens, contracts, components, hooks, pattern blocks, Figma plugin). Powered by Radix UI / cmdk / vaul / sonner under the hood; consumers see only the AICADS semantic surface.",
   "type": "module",
   "main": "src/index.ts",
@@ -17,6 +17,7 @@
     "api:extract": "npm run api:build-dts && api-extractor run --local",
     "api:check": "npm run api:build-dts && api-extractor run",
     "storybook": "npm run storybook --prefix playground",
+    "storybook:consumer": "npm run storybook --prefix templates/consumer-storybook/fixture",
     "storybook:build": "npm run build-storybook --prefix playground"
   },
   "exports": {

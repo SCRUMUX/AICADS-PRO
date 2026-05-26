@@ -77,9 +77,10 @@ Use these on every standard/compact card shell — do not mix raw `--space-24` /
 |------|-------------------|-------|
 | Text CTA | `BlockAction` / `Button` | `--radius-button` |
 | Icon chip | `BLOCK_CHROME_ICON_CHIP_CLASS` | `--radius-medium` |
-| Square nav control | `BLOCK_CHROME_SQUARE_CONTROL_CLASS` | `--radius-medium` |
+| ↗ arrow control | `BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS` | `--radius-pill` + icon rotate 45° on hover |
+| Chevron nav | `BLOCK_CHROME_SQUARE_CONTROL_CLASS` | `--radius-pill` + brand fill on hover |
 | Card outer shell | `BLOCK_CARD_*_SHELL` | `--radius-section` → `desktop` `--radius-large` |
-| Meta pill / arrow | `SOLUTION_*_PILL_CLASS`, `SOLUTION_ARROW_BUTTON_CLASS` | `--radius-large` |
+| Meta pill | `BLOCK_META_PILL_CLASS`, `SOLUTION_*_PILL_CLASS` | `--radius-medium` / `--radius-large` |
 | Step badge | HowItWorks only | `rounded-full` |
 
 ### Horizontal edge exceptions

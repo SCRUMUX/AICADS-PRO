@@ -48,10 +48,10 @@ import { cn } from '../../components/primitives/_shared';
  * |-------------------|--------------------------------|--------------------|
  * | Text CTA          | BlockAction / Button           | `--radius-button`  |
  * | Icon chip         | BLOCK_CHROME_ICON_CHIP_CLASS   | `--radius-medium`  |
- * | Square nav control| BLOCK_CHROME_SQUARE_CONTROL_CLASS | `--radius-medium` |
+ * | Chevron nav       | BLOCK_CHROME_SQUARE_CONTROL_CLASS | `--radius-pill` |
+ * | ↗ arrow control   | BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS | `--radius-pill` + rotate |
  * | Card outer shell  | BLOCK_CARD_*_SHELL             | section → large    |
- * | Meta pill / arrow | *_PILL_CLASS, SOLUTION_ARROW_* | `--radius-large`   |
- * | Step badge        | HowItWorks only                | `rounded-full`     |
+ * | Meta pill         | BLOCK_META_PILL_CLASS, SOLUTION_*_PILL | `--radius-medium/large` |
  *
  * Horizontal edge exceptions (intentional full-bleed / bleed-out):
  * - Partners marquee — PARTNERS_MARQUEE_VIEWPORT_CLASS
@@ -147,12 +147,67 @@ export const BLOCK_BLOG_CHROME_CONTROL_CLASS = cn(
   'hover:border-[var(--color-brand-primary)]',
 );
 
-/** Square icon nav control — blog prev/next (radius-medium, not card shell). */
+/** Square icon nav control — blog prev/next chevrons. */
 export const BLOCK_CHROME_SQUARE_CONTROL_CLASS = cn(
-  'inline-flex items-center justify-center rounded-[var(--radius-medium)]',
+  'inline-flex items-center justify-center rounded-[var(--radius-pill)]',
   'border border-solid border-[var(--color-border-base)] bg-[var(--color-surface-1)]',
+  'text-[var(--color-text-primary)]',
+  'transition-[colors,transform] duration-200 ease-out',
+  'hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)] hover:text-[var(--color-text-on-brand)]',
+  'hover:scale-105',
+);
+
+/** Round ↗ arrow button — outline resting, brand fill + icon rotate on hover. */
+export const BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS = cn(
+  'group inline-flex shrink-0 items-center justify-center',
+  'h-[var(--space-32)] w-[var(--space-32)]',
+  'rounded-[var(--radius-pill)] border border-solid border-[var(--color-border-base)]',
+  'bg-[var(--color-surface-1)] text-[var(--color-text-primary)]',
+  'transition-[colors,transform] duration-200 ease-out',
+  'hover:border-transparent hover:bg-[var(--color-brand-primary)] hover:text-[var(--color-text-on-brand)]',
+  'hover:scale-105',
+);
+
+/** Round icon button on brand band — events carousel prev/next. */
+export const BLOCK_ON_BRAND_ICON_BUTTON_CLASS = cn(
+  'inline-flex h-[var(--space-48)] w-[var(--space-48)] min-h-[var(--space-48)] min-w-[var(--space-48)]',
+  'items-center justify-center rounded-[var(--radius-pill)] border p-0',
+  'bg-[var(--color-text-on-brand)]/15 text-[var(--color-text-on-brand)]',
+  'border-[var(--color-text-on-brand)]/25',
+  'transition-[colors,transform] duration-200 ease-out',
+  'hover:enabled:bg-[var(--color-text-on-brand)]/25 hover:enabled:scale-105',
+  'disabled:cursor-not-allowed disabled:opacity-40',
+);
+
+/** Meta / date pill — shared chip padding (blog date, solution meta). */
+export const BLOCK_META_PILL_CLASS = cn(
+  'inline-flex w-fit max-w-full items-center text-nowrap',
+  'rounded-[var(--radius-medium)] bg-[var(--color-surface-2)]',
+  'px-[var(--space-4)] text-style-caption-xs text-[var(--color-text-secondary)]',
+);
+
+/** Blog post date pill — compact surface chip. */
+export const BLOCK_BLOG_DATE_PILL_CLASS = cn(
+  BLOCK_META_PILL_CLASS,
+  'h-[var(--space-22)]',
+);
+
+/** Solution card category pill. */
+export const SOLUTION_CATEGORY_PILL_CLASS = cn(
+  BLOCK_META_PILL_CLASS,
+  'gap-[var(--space-2)] rounded-[var(--radius-large)]',
+  'h-[var(--space-28)]',
   'transition-colors duration-200',
-  'hover:border-[var(--color-brand-primary)]',
+  'desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-brand-primary)]',
+);
+
+/** Solution card meta pill (client, date). */
+export const SOLUTION_META_PILL_CLASS = cn(
+  BLOCK_META_PILL_CLASS,
+  'rounded-[var(--radius-large)]',
+  'h-[var(--space-22)]',
+  'transition-colors duration-200',
+  'desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-text-primary)]',
 );
 
 /** Small icon chip — blog view-all, trust pillar icon slot. */
@@ -161,30 +216,10 @@ export const BLOCK_CHROME_ICON_CHIP_CLASS = cn(
   'h-[var(--space-24)] w-[var(--space-24)] min-[1024px]:h-[var(--space-28)] min-[1024px]:w-[var(--space-28)]',
 );
 
-/** On-brand bordered icon button — events carousel prev/next. */
-export const BLOCK_ON_BRAND_ICON_BUTTON_CLASS = cn(
-  'inline-flex h-[var(--space-48)] w-[var(--space-48)] min-h-[var(--space-48)] min-w-[var(--space-48)]',
-  'items-center justify-center rounded-[var(--radius-medium)] border p-0',
-  'bg-[var(--color-text-on-brand)]/15 text-[var(--color-text-on-brand)]',
-  'border-[var(--color-text-on-brand)]/25',
-  'transition-colors duration-150',
-  'hover:enabled:bg-[var(--color-text-on-brand)]/25',
-  'disabled:cursor-not-allowed disabled:opacity-40',
-);
-
-/** Blog post date pill — compact surface chip. */
-export const BLOCK_BLOG_DATE_PILL_CLASS = cn(
-  'inline-flex h-[var(--space-22)] w-fit items-center text-nowrap',
-  'rounded-[var(--radius-medium)] bg-[var(--color-surface-2)]',
-  'px-[var(--space-3)] text-style-caption-xs text-[var(--color-text-secondary)]',
-);
-
-/** Blog post arrow link — compact interactive control. */
+/** Blog post ↗ link — round arrow control (inherits BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS). */
 export const BLOCK_BLOG_ARROW_LINK_CLASS = cn(
-  BLOCK_CARD_COMPACT_CLASS,
-  'inline-flex h-[var(--space-32)] w-[var(--space-32)] shrink-0 items-center justify-center',
-  'text-[var(--color-text-primary)] no-underline transition-colors duration-200',
-  'hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)] hover:text-[var(--color-text-on-brand)]',
+  BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS,
+  'no-underline',
 );
 
 /** Trust pillar / card media slot — compact tier fill. */
@@ -193,34 +228,13 @@ export const BLOCK_SURFACE_MEDIA_SLOT_CLASS = cn(
   'rounded-[var(--radius-medium)] bg-[var(--color-surface-2)]',
 );
 
-/** Solution card category pill. */
-export const SOLUTION_CATEGORY_PILL_CLASS = cn(
-  'inline-flex w-fit max-w-full items-center text-nowrap',
-  'rounded-[var(--radius-large)] bg-[var(--color-surface-2)]',
-  'text-style-caption-xs text-[var(--color-text-secondary)]',
-  'h-[var(--space-28)] px-[var(--space-3)] gap-[var(--space-1)]',
-  'transition-colors duration-200',
-  'desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-brand-primary)]',
-);
-
-/** Solution card meta pill (client, date). */
-export const SOLUTION_META_PILL_CLASS = cn(
-  'inline-flex w-fit max-w-full items-center text-nowrap',
-  'rounded-[var(--radius-large)] bg-[var(--color-surface-2)]',
-  'text-style-caption-xs text-[var(--color-text-secondary)]',
-  'h-[var(--space-22)] px-[var(--space-3)]',
-  'transition-colors duration-200',
-  'desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-text-primary)]',
-);
-
-/** Solution card corner arrow button. */
+/** Solution case card ↗ — round brand fill; hover deepens brand + icon rotate (card `group`). */
 export const SOLUTION_ARROW_BUTTON_CLASS = cn(
-  'inline-flex shrink-0 items-center justify-center',
-  'h-[var(--space-32)] w-[var(--space-32)]',
-  'rounded-[var(--radius-large)] border border-transparent',
-  'bg-[var(--color-brand-primary)] text-[var(--color-text-on-brand)]',
-  'transition-colors duration-200',
-  'desktop:group-hover:border-[var(--color-border-base)] desktop:group-hover:bg-[var(--color-surface-1)] desktop:group-hover:text-[var(--color-brand-primary)]',
+  'group inline-flex shrink-0 items-center justify-center',
+  'h-[var(--space-32)] w-[var(--space-32)] rounded-[var(--radius-pill)]',
+  'border border-transparent bg-[var(--color-brand-primary)] text-[var(--color-text-on-brand)]',
+  'transition-[colors,transform] duration-200 ease-out',
+  'desktop:group-hover:bg-[var(--color-brand-hover)] desktop:group-hover:scale-105',
 );
 
 /** Glass chrome — sticky/floating UI (showcase preview, bordered panels). */
@@ -362,13 +376,15 @@ export const SOLUTIONS_CATALOG_CARD_SHELL_CLASS = cn(
 
 export const SOLUTIONS_CATALOG_CARD_LINK_CLASS = cn(
   'group relative flex h-full w-full min-w-0 flex-col',
-  'gap-[var(--space-8)] p-[var(--space-32)] no-underline text-inherit',
+  'gap-[var(--space-8)] no-underline text-inherit',
+  BLOCK_CARD_STANDARD_INSET_CLASS,
   'min-[1024px]:gap-[var(--space-12)]',
 );
 
 export const SOLUTIONS_CATALOG_HEADER_ROW_CLASS = cn(
   'flex min-w-0 items-start gap-[var(--space-12)]',
-  'pr-[var(--space-48)] min-[1024px]:pr-[var(--space-56)]',
+  'pr-[calc(var(--space-32)+var(--space-inset-l))]',
+  'desktop:pr-[calc(var(--space-32)+var(--space-inset-xl))]',
 );
 
 export const SOLUTIONS_CATALOG_ICON_CLASS = 'shrink-0';
@@ -384,12 +400,11 @@ export const SOLUTIONS_CATALOG_DESCRIPTION_CLASS = cn(
 );
 
 export const SOLUTIONS_CATALOG_ARROW_CLASS = cn(
-  'absolute right-[var(--space-32)] top-[var(--space-32)]',
-  'inline-flex h-[var(--space-32)] w-[var(--space-32)] shrink-0 items-center justify-center',
-  'rounded-[var(--radius-medium)] border border-[var(--color-border-base)]',
-  'bg-[var(--color-surface-1)] text-[var(--color-text-primary)]',
-  'transition-colors duration-200',
+  BLOCK_CHROME_ROUND_ARROW_BUTTON_CLASS,
+  'absolute right-[var(--space-inset-l)] top-[var(--space-inset-l)]',
+  'desktop:right-[var(--space-inset-xl)] desktop:top-[var(--space-inset-xl)]',
   'group-hover:border-transparent group-hover:bg-[var(--color-brand-primary)] group-hover:text-[var(--color-text-on-brand)]',
+  'group-hover:scale-105',
 );
 
 /** Solutions page hero — Cortel /solutions muted panel + decorative media. */
@@ -733,9 +748,14 @@ export const CHOOSE_US_CARD_LIST_CLASS = cn(
 );
 
 export const CHOOSE_US_CARD_CLASS = cn(
-  'relative flex flex-col gap-[var(--space-12)]',
+  'flex min-h-0 flex-col justify-between',
   BLOCK_CARD_STANDARD_SHELL_CLASS,
   BLOCK_CARD_STANDARD_INSET_CLASS,
+);
+
+export const CHOOSE_US_CARD_BODY_CLASS = cn(
+  'flex min-w-0 flex-col gap-[var(--space-12)]',
+  'desktop:gap-[var(--space-8)]',
 );
 
 export const CHOOSE_US_CARD_WIDE_CLASS = cn(
@@ -747,8 +767,8 @@ export const CHOOSE_US_CARD_NARROW_CLASS = cn(
 );
 
 export const CHOOSE_US_CARD_TITLE_CLASS = cn(
-  'm-0 min-h-[var(--space-50)] whitespace-pre-line font-medium text-style-h4 text-[var(--color-text-primary)]',
-  'desktop:h-auto desktop:whitespace-normal desktop:text-style-body-lg',
+  'm-0 font-medium text-style-h4 text-[var(--color-text-primary)]',
+  'desktop:text-style-body-lg',
 );
 
 export const CHOOSE_US_CARD_DESCRIPTION_CLASS = cn(
@@ -757,10 +777,9 @@ export const CHOOSE_US_CARD_DESCRIPTION_CLASS = cn(
 );
 
 export const CHOOSE_US_CARD_ICON_SLOT_CLASS = cn(
-  'absolute right-[var(--space-inset-l)] top-[var(--space-inset-l)]',
-  'flex h-[var(--space-50)] w-[var(--space-50)] items-center justify-center',
-  'desktop:bottom-[var(--space-inset-xl)] desktop:right-[var(--space-inset-xl)] desktop:top-auto',
-  'desktop:h-[var(--space-100)] desktop:w-[var(--space-100)]',
+  'mt-[var(--space-16)] flex shrink-0 self-end',
+  'h-[var(--space-50)] w-[var(--space-50)]',
+  'desktop:mt-[var(--space-12)] desktop:h-[var(--space-100)] desktop:w-[var(--space-100)]',
 );
 
 export const CHOOSE_US_FEATURED_CLASS = cn(
@@ -858,11 +877,12 @@ export const FAQ_ENTERPRISE_TRIGGER_CLASS = cn(
 
 export const FAQ_ENTERPRISE_TOGGLE_CLASS = cn(
   'ml-auto flex h-[var(--space-32)] w-[var(--space-32)] shrink-0 items-center justify-center',
-  'rounded-[var(--radius-section)] border border-solid border-[var(--color-border-base)]',
+  'rounded-[var(--radius-pill)] border border-solid border-[var(--color-border-base)]',
   'bg-[var(--color-surface-1)] text-[var(--color-text-primary)]',
-  'transition-colors duration-200',
-  'group-hover:border-[var(--color-brand-primary)] group-hover:bg-[var(--color-brand-primary)] group-hover:text-[var(--color-text-on-brand)]',
-  'group-data-[state=open]:border-[var(--color-brand-primary)] group-data-[state=open]:bg-[var(--color-brand-primary)] group-data-[state=open]:text-[var(--color-text-on-brand)]',
+  'transition-[colors,transform] duration-200 ease-out',
+  'group-hover:border-transparent group-hover:bg-[var(--color-brand-primary)] group-hover:text-[var(--color-text-on-brand)]',
+  'group-hover:scale-105',
+  'group-data-[state=open]:border-transparent group-data-[state=open]:bg-[var(--color-brand-primary)] group-data-[state=open]:text-[var(--color-text-on-brand)]',
 );
 
 export const FAQ_ENTERPRISE_QUESTION_CLASS = cn(

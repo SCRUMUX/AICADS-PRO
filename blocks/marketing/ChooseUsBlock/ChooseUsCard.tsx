@@ -2,6 +2,7 @@ import React from 'react';
 import { cn } from '../../../components/primitives/_shared';
 import {
   CHOOSE_US_CARD_CLASS,
+  CHOOSE_US_CARD_BODY_CLASS,
   CHOOSE_US_CARD_DESCRIPTION_CLASS,
   CHOOSE_US_CARD_ICON_SLOT_CLASS,
   CHOOSE_US_CARD_TITLE_CLASS,
@@ -28,8 +29,10 @@ export const ChooseUsCard: React.FC<ChooseUsCardProps> = ({
       className,
     )}
   >
-    <h3 className={CHOOSE_US_CARD_TITLE_CLASS}>{title}</h3>
-    <p className={CHOOSE_US_CARD_DESCRIPTION_CLASS}>{description}</p>
+    <div className={CHOOSE_US_CARD_BODY_CLASS}>
+      <h3 className={CHOOSE_US_CARD_TITLE_CLASS}>{title}</h3>
+      <p className={CHOOSE_US_CARD_DESCRIPTION_CLASS}>{description}</p>
+    </div>
     {icon ? <div className={CHOOSE_US_CARD_ICON_SLOT_CLASS}>{icon}</div> : null}
   </li>
 );
