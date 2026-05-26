@@ -3,6 +3,14 @@
 All notable changes to @ai-ds/core are documented here.
 Format follows [Semantic Versioning](https://semver.org/).
 
+## [0.7.6] — 2026-05-26
+
+> **ContactHero form fields** — inputs blend with glass panel (no opaque field fill).
+
+### Fixed
+
+- **ContactHeroFormField** — removed 8% on-brand fill on field shells; border-only on glass panel; `-webkit-autofill` override so browser autofill does not paint solid boxes.
+
 ## [0.7.5] — 2026-05-25
 
 > **Chrome polish & Storybook dev** — round ↗ arrow controls, meta pill contract, ChooseUs/Solutions layout fixes, reliable local Storybook startup.

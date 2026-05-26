@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/ai-patterns-v1.schema.json",
   "name": "@ai-ds/core",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "AICADS pattern manifest — distributable blocks, spacing recipes, and page templates for AI/Replit assemblers.",
   "conventions": {
     "blockImport": "import { HeroBlock } from '@ai-ds/core/blocks/HeroBlock'",

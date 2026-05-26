@@ -1,7 +1,7 @@
 {
   "$schema": "https://aicads.dev/schema/ai-manifest-v1.json",
   "name": "@ai-ds/core",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "AICADS semantic AI manifest. Maps each public AICADS primitive to its semantic role, the backing behavior engine, and the contract files that drive its tokenized styling. Consumed by AI code generators, the Figma plugin and Replit-style automated assemblers.",
   "conventions": {
     "publicImport": "import { <Name> } from '@ai-ds/core/components/<Name>'",

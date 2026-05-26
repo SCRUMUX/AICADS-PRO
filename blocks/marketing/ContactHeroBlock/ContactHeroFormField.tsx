@@ -1,19 +1,23 @@
 import React, { useId, useState } from 'react';
 import { cn } from '../../../components/primitives/_shared';
 
-/** Nested field tint on brand glass panel — no backdrop-blur (see BLOCK_GLASS_BRAND_PANEL_CLASS). */
+/** Nested field on brand glass panel — border only, no opaque fill (inherits panel frost). */
 const FIELD_SHELL_CLASS = cn(
   'relative rounded-[var(--radius-section)] border border-solid',
   'h-[var(--space-50)] min-[1024px]:h-[var(--space-60)] min-[1024px]:rounded-[var(--radius-large)]',
-  'border-[color-mix(in_srgb,var(--color-text-on-brand)_8%,transparent)]',
-  'bg-[color-mix(in_srgb,var(--color-text-on-brand)_8%,transparent)]',
-  'transition-colors duration-200 ease-in hover:border-[var(--color-text-on-brand)]',
+  'border-[color-mix(in_srgb,var(--color-text-on-brand)_14%,transparent)]',
+  'bg-transparent',
+  'transition-[border-color] duration-200 ease-in',
+  'hover:border-[var(--color-text-on-brand)] focus-within:border-[var(--color-text-on-brand)]',
   'pt-[var(--space-16)] px-[var(--space-12)] min-[1024px]:pt-[var(--space-24)] min-[1024px]:px-[var(--space-20)]',
 );
 
 const FIELD_INPUT_CLASS = cn(
   'w-full border-none bg-transparent p-0 outline-none',
   'text-[var(--color-text-on-brand)] text-style-body min-[1024px]:text-style-body-lg',
+  'autofill:bg-transparent autofill:[-webkit-text-fill-color:var(--color-text-on-brand)]',
+  'autofill:shadow-[inset_0_0_0_1000px_transparent]',
+  'autofill:transition-[background-color] autofill:duration-[9999s]',
 );
 
 export interface ContactHeroFormFieldProps {

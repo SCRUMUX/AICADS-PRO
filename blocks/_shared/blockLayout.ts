@@ -29,7 +29,7 @@ import { cn } from '../../components/primitives/_shared';
  * | brand panel   | BLOCK_GLASS_BRAND_PANEL_CLASS | ContactHero form shell                      |
  * | scrim         | BLOCK_GLASS_SCRIM_CLASS         | Navbar mobile services overlay              |
  *
- * No glass: accordion items, card tiers, ContactHero field inputs (nested tint only).
+ * No glass: accordion items, card tiers, ContactHero field inputs (border-only on glass panel).
  * Opaque chrome (not glass): Navbar services mega-menu panel — readable dropdown surface.
  *
  * Card tier exceptions (intentional — no BLOCK_CARD_* shell):
