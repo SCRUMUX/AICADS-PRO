@@ -85,7 +85,8 @@ function isLintTarget(filename) {
   const f = normalizePath(filename);
   return (
     /\/components\/primitives\//.test(f) ||
-    /\/blocks\//.test(f)
+    /\/blocks\//.test(f) ||
+    /\/modules\/[^/]+\/ui\/src\//.test(f)
   );
 }
 

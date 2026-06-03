@@ -10,3 +10,11 @@ playground/node_modules/
 .DS_Store
 Thumbs.db
 storybook-dev-log.txt
+.synaptik/
+modules/synaptik-icon-builder/node_modules/
+modules/synaptik-icon-builder/dist/
+modules/synaptik-icon-builder/ui/node_modules/
+modules/synaptik-icon-builder/ui/dist/
+.env
+.env.local
+synaptik.local.env

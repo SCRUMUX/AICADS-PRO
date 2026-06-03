@@ -6,6 +6,22 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
 
+function resolveGeneratedIconsDir(opts) {
+  const raw = opts.generatedIconsDir?.trim();
+  if (!raw) {
+    return path.resolve(opts.projectRoot, '..', '..', 'generated-icons');
+  }
+  return path.isAbsolute(raw) ? raw : path.resolve(opts.projectRoot, raw);
+}
+
+function generatedIconsStoryGlobs(opts) {
+  const abs = resolveGeneratedIconsDir(opts);
+  const storybookDir = opts.storybookDir ?? path.join(opts.projectRoot, '.storybook');
+  const rel = path.relative(storybookDir, abs).replace(/\\/g, '/');
+  const prefix = rel.startsWith('.') ? rel : `./${rel}`;
+  return [`${prefix}/**/*.stories.@(ts|tsx)`];
+}
+
 function resolvePackageRoots(mode, storybookDir, projectRoot) {
   if (mode === 'monorepo') {
     return [path.resolve(storybookDir, '../..'), projectRoot];
@@ -29,7 +45,11 @@ function aliasEngineStyles(alias, importId, roots, resolveCss) {
 }
 
 function storyGlobs(opts) {
-  const { mode, extraStories = [] } = opts;
+  const { mode, extraStories = [], projectRoot, storybookDir, generatedIconsDir } = opts;
+  const generatedGlobs =
+    generatedIconsDir !== undefined
+      ? generatedIconsStoryGlobs({ projectRoot, storybookDir, generatedIconsDir })
+      : [];
 
   if (mode === 'monorepo') {
     return [
@@ -37,6 +57,7 @@ function storyGlobs(opts) {
       '../../layout/**/*.stories.@(ts|tsx)',
       '../../blocks/**/*.stories.@(ts|tsx)',
       '../src/**/*.stories.@(ts|tsx)',
+      ...generatedGlobs,
       ...extraStories,
     ];
   }
@@ -46,13 +67,18 @@ function storyGlobs(opts) {
     '../node_modules/@ai-ds/core/layout/**/*.stories.@(ts|tsx)',
     '../node_modules/@ai-ds/core/blocks/**/*.stories.@(ts|tsx)',
     '../src/**/*.stories.@(ts|tsx)',
+    ...generatedGlobs,
     ...extraStories,
   ];
 }
 
 export function createMainConfig(opts) {
-  const { storybookDir, projectRoot, mode } = opts;
+  const { storybookDir, projectRoot, mode, generatedIconsDir } = opts;
   const nodeModules = path.join(projectRoot, 'node_modules');
+  const iconsCatalogDir =
+    generatedIconsDir !== undefined
+      ? resolveGeneratedIconsDir({ projectRoot, generatedIconsDir })
+      : null;
 
   return {
     framework: {
@@ -83,6 +109,12 @@ export function createMainConfig(opts) {
         '@storybook/addon-viewport': path.join(nodeModules, '@storybook/addon-viewport'),
       };
 
+      cfg.assetsInclude = [
+        ...((cfg.assetsInclude) ?? []),
+        '**/*.png',
+        '**/*.webp',
+      ];
+
       const engineRoots = resolvePackageRoots(mode, storybookDir, projectRoot);
       const alias = cfg.resolve.alias;
       aliasEngineStyles(alias, 'vaul/style.css', engineRoots, (req) => {
@@ -111,6 +143,9 @@ export function createMainConfig(opts) {
           path.join(projectRoot, '..'),
           repoRoot,
         ];
+        if (iconsCatalogDir) {
+          cfg.server.fs.allow = [...cfg.server.fs.allow, iconsCatalogDir];
+        }
       }
 
       if (mode === 'consumer') {
@@ -131,6 +166,9 @@ export function createMainConfig(opts) {
         cfg.server = cfg.server ?? {};
         cfg.server.fs = cfg.server.fs ?? {};
         cfg.server.fs.allow = [...(cfg.server.fs.allow ?? []), coreRoot];
+        if (iconsCatalogDir) {
+          cfg.server.fs.allow = [...cfg.server.fs.allow, iconsCatalogDir];
+        }
       }
 
       return cfg;

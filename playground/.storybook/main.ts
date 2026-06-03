@@ -9,6 +9,7 @@ const config = createMainConfig({
   mode: 'monorepo',
   storybookDir,
   projectRoot,
+  generatedIconsDir: path.resolve(storybookDir, '../../generated-icons'),
 });
 
 export default config;

@@ -24,4 +24,6 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   /** Whether the alert is visible. Default true. */
   open?: boolean;
+  /** Accessible label for the close button when onClose is set. */
+  closeAriaLabel?: string;
 }

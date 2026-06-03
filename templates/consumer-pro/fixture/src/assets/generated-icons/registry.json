@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "icons": [
+    {
+      "projectSlug": "my-product",
+      "iconSlug": "_scaffold",
+      "name": "Scaffold",
+      "relativePath": "my-product/_scaffold"
+    }
+  ]
+}

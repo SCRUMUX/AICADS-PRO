@@ -21,7 +21,7 @@ If port 6006 is busy, `scripts/storybook-dev.mjs` frees it automatically and run
 ## 2. Install in your project
 
 ```bash
-npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6
 ```
 
 Import tokens once in your app entry:
@@ -65,6 +65,17 @@ Key files:
 
 Full checklists: [storybook-parity.md](./storybook-parity.md).
 
+### PRO landing + Synaptik raster icons
+
+For product repos that need AI-generated raster icons in Storybook and blocks:
+
+```bash
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6
+npm install "github:SCRUMUX/AICADS-PRO#v0.7.6&path:modules/synaptik-icon-builder"
+```
+
+Copy [`templates/consumer-pro/`](../templates/consumer-pro/) (Storybook + `src/assets/generated-icons/` + `synaptik.config.json`). Full workflow: [synaptik-pro-project.md](./synaptik-pro-project.md).
+
 ## 4. ESLint isolation (recommended)
 
 Block direct imports of Radix, cmdk, vaul, sonner in consumer code:
@@ -98,7 +109,25 @@ Never hand-roll section spacing — use blocks + recipes from `@ai-ds/core/recip
 
 See [pattern-layer.md](./pattern-layer.md) for layout contracts and page templates.
 
-## 6. Troubleshooting
+## 6. Synaptik AI icons
+
+**Product landing repos:** install `@ai-ds/synaptik` with core (same tag) — [synaptik-pro-project.md](./synaptik-pro-project.md).
+
+**AICADS-PRO contributors:** monorepo module — [synaptik-icon-builder.md](./synaptik-icon-builder.md).
+
+Raster icons publish to `generated-icons/` (monorepo) or `src/assets/generated-icons/` (consumer-pro). Separate from SVG icons at `@ai-ds/core/icons`.
+
+**Resume after clone** (when you have local `.synaptik/` sessions or need a fresh Storybook build):
+
+```bash
+npm ci && cd playground && npm ci && cd ..
+npm run synaptik:fix-stories   # restore published assets + regenerate stories
+npm run storybook:sync         # fix-stories + static build (or npm run storybook for dev)
+```
+
+Open Storybook → **Generated Icons → Synaptik guide** for launch steps and workflow.
+
+## 7. Troubleshooting
 
 | Symptom | Fix |
 |---------|-----|
@@ -106,5 +135,6 @@ See [pattern-layer.md](./pattern-layer.md) for layout contracts and page templat
 | Storybook port conflict | Use `@ai-ds/core/scripts/storybook-dev.mjs` (included in template) |
 | Consumer stories empty | Set `mode: 'consumer'` in `createMainConfig` |
 | Dark theme broken | Use `createPreview()` from `@ai-ds/core/storybook` |
+| No Generated Icons in Storybook | Run `synaptik publish`; check `generated-icons/{projectSlug}/Icons.stories.tsx` |
 
-More: [storybook-parity.md](./storybook-parity.md#troubleshooting).
+More: [storybook-parity.md](./storybook-parity.md#troubleshooting), [synaptik-icon-builder.md](./synaptik-icon-builder.md).

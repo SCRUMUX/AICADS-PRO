@@ -28,6 +28,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
     title = 'Alert title',
     paragraph = 'Alert message',
     onClose,
+    closeAriaLabel = 'Close alert',
     open = true,
     children,
     className,
@@ -105,7 +106,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) =
             width: 'var(--icon-size, 20px)',
             height: 'var(--icon-size, 20px)',
           }}
-          aria-label="Close alert"
+          aria-label={closeAriaLabel}
         >
           {closeIconContent}
         </button>

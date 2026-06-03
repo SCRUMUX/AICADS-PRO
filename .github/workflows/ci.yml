@@ -40,6 +40,17 @@ jobs:
       - name: Public API surface check
         run: npm run api:check
 
+      - name: Synaptik generated-icons registry check
+        run: node scripts/check-synaptik-registry.mjs
+
+      - name: Synaptik UI lint, test, build
+        working-directory: modules/synaptik-icon-builder/ui
+        run: |
+          npm ci
+          npm run lint
+          npm run test
+          npm run build
+
   storybook:
     name: Storybook build (playground)
     runs-on: ubuntu-latest
@@ -84,6 +95,33 @@ jobs:
 
       - name: Build consumer Storybook
         working-directory: templates/consumer-storybook/fixture
+        run: npm run build-storybook
+
+  storybook-consumer-pro:
+    name: Storybook build (consumer-pro + Synaptik scaffold)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install root deps
+        run: npm ci
+
+      - name: Build Synaptik CLI
+        working-directory: modules/synaptik-icon-builder
+        run: npm run build
+
+      - name: Install consumer-pro fixture deps
+        working-directory: templates/consumer-pro/fixture
+        run: npm install
+
+      - name: Build consumer-pro Storybook
+        working-directory: templates/consumer-pro/fixture
         run: npm run build-storybook
 
   # VRT runs in a dedicated workflow (.github/workflows/chromatic.yml) because

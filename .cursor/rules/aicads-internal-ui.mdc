@@ -1,0 +1,30 @@
+---
+description: AICADS rules for in-repo module UIs (modules/**/ui). Use with aicads-imports.mdc.
+globs:
+  - "modules/**/ui/**/*.{ts,tsx}"
+  - "modules/**/ui/**/*.css"
+alwaysApply: false
+---
+
+# Internal module UI (AICADS only)
+
+Applies to `modules/**/ui/` (e.g. Synaptik Icon Builder). Full guide: [docs/internal-ui.md](../../docs/internal-ui.md).
+
+## Must
+
+1. `import '@ai-ds/core/tokens'` in `main.tsx` (or entry).
+2. Tailwind: `presets: [require('@ai-ds/core/tailwind')]` — no parallel colour system.
+3. UI controls from `@ai-ds/core/components/*` (`Button`, `Card`, `Alert`, `Input`, `RadioButton`, `Accordion`, `Badge`, `Link`, …).
+4. Colours/spacing/radius only via `var(--*)` and `text-style-*` utilities — **no hex, no `#2563eb`, no `bg-blue-500`, no `p-[12px]` without tokens**.
+5. Run `npm run lint` in the UI package before finishing; fix `no-hardcoded-tokens` and `no-restricted-imports`.
+
+## Must not
+
+- Add or extend a large custom `styles.css` with hardcoded palette (`.btn-primary`, `.banner.error`, etc.).
+- Import Radix/cmdk/vaul/sonner/cva directly in module UI.
+- Use marketing **blocks** (`HeroBlock`, …) for tool/dashboard screens — primitives only.
+
+## Synaptik reference layout
+
+- Shared layout classes: `modules/synaptik-icon-builder/ui/src/layout.ts`
+- Strings: `ui/src/i18n/ru.ts` (logic unchanged when restyling)

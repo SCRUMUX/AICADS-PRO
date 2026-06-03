@@ -2,6 +2,8 @@ import type { StorybookConfig } from '@storybook/react-vite';
 import path from 'node:path';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
+import { buildStaleGeneratedIconsManagerHeadScript } from './generatedIconsRedirect';
+import { generatedIconsStoryGlobs, resolveGeneratedIconsDir } from './generatedIconsStories';
 
 export type StorybookMode = 'monorepo' | 'consumer';
 
@@ -14,6 +16,11 @@ export interface CreateMainConfigOptions {
   projectRoot: string;
   /** Optional extra story globs relative to projectRoot */
   extraStories?: string[];
+  /**
+   * Synaptik raster catalog directory (absolute or relative to projectRoot).
+   * When set, adds story globs and Vite `server.fs.allow` for PNG/WebP.
+   */
+  generatedIconsDir?: string;
 }
 
 function resolvePackageRoots(mode: StorybookMode, storybookDir: string, projectRoot: string): string[] {
@@ -44,7 +51,11 @@ function aliasEngineStyles(
 }
 
 function storyGlobs(opts: CreateMainConfigOptions): string[] {
-  const { mode, extraStories = [] } = opts;
+  const { mode, extraStories = [], projectRoot, storybookDir, generatedIconsDir } = opts;
+  const generatedGlobs =
+    generatedIconsDir !== undefined
+      ? generatedIconsStoryGlobs({ projectRoot, storybookDir, generatedIconsDir })
+      : [];
 
   if (mode === 'monorepo') {
     return [
@@ -52,6 +63,7 @@ function storyGlobs(opts: CreateMainConfigOptions): string[] {
       '../../layout/**/*.stories.@(ts|tsx)',
       '../../blocks/**/*.stories.@(ts|tsx)',
       '../src/**/*.stories.@(ts|tsx)',
+      ...generatedGlobs,
       ...extraStories,
     ];
   }
@@ -61,13 +73,18 @@ function storyGlobs(opts: CreateMainConfigOptions): string[] {
     '../node_modules/@ai-ds/core/layout/**/*.stories.@(ts|tsx)',
     '../node_modules/@ai-ds/core/blocks/**/*.stories.@(ts|tsx)',
     '../src/**/*.stories.@(ts|tsx)',
+    ...generatedGlobs,
     ...extraStories,
   ];
 }
 
 export function createMainConfig(opts: CreateMainConfigOptions): StorybookConfig {
-  const { storybookDir, projectRoot, mode } = opts;
+  const { storybookDir, projectRoot, mode, generatedIconsDir } = opts;
   const nodeModules = path.join(projectRoot, 'node_modules');
+  const iconsCatalogDir =
+    generatedIconsDir !== undefined
+      ? resolveGeneratedIconsDir({ projectRoot, generatedIconsDir })
+      : null;
 
   return {
     framework: {
@@ -78,6 +95,8 @@ export function createMainConfig(opts: CreateMainConfigOptions): StorybookConfig
     stories: storyGlobs(opts),
 
     addons: ['@storybook/addon-essentials', '@storybook/addon-viewport'],
+
+    managerHead: (head) => `${head}\n${buildStaleGeneratedIconsManagerHeadScript()}`,
 
     docs: {
       autodocs: false,
@@ -110,6 +129,12 @@ export function createMainConfig(opts: CreateMainConfigOptions): StorybookConfig
 
       const aliasMap = cfg.resolve.alias as Record<string, string>;
 
+      cfg.assetsInclude = [
+        ...((cfg.assetsInclude as string[] | undefined) ?? []),
+        '**/*.png',
+        '**/*.webp',
+      ];
+
       if (mode === 'monorepo') {
         const repoRoot = path.resolve(storybookDir, '../..');
         aliasMap['@ai-ds/core/tokens'] = path.join(repoRoot, 'config/css-variables/tokens.css');
@@ -128,6 +153,9 @@ export function createMainConfig(opts: CreateMainConfigOptions): StorybookConfig
           path.join(projectRoot, '..'),
           repoRoot,
         ];
+        if (iconsCatalogDir) {
+          cfg.server.fs.allow = [...cfg.server.fs.allow, iconsCatalogDir];
+        }
       }
 
       if (mode === 'consumer') {
@@ -148,6 +176,9 @@ export function createMainConfig(opts: CreateMainConfigOptions): StorybookConfig
         cfg.server = cfg.server ?? {};
         cfg.server.fs = cfg.server.fs ?? {};
         cfg.server.fs.allow = [...(cfg.server.fs.allow ?? []), coreRoot];
+        if (iconsCatalogDir) {
+          cfg.server.fs.allow = [...cfg.server.fs.allow, iconsCatalogDir];
+        }
       }
 
       return cfg;

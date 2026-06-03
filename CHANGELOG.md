@@ -7,8 +7,13 @@ Format follows [Semantic Versioning](https://semver.org/).
 
 > **ContactHero form fields** — inputs blend with glass panel (no opaque field fill).
 
+### Added
+
+- **Synaptik AI Icon Builder** — `modules/synaptik-icon-builder/`: URL/screenshot → Style DNA → icon concepts → Flux Schnell → `generated-icons/` + Storybook (`Generated Icons / {projectSlug}`). CLI: `npm run synaptik`, `render-all`, `publish-all`, optional Web UI. Docs: [docs/synaptik-icon-builder.md](docs/synaptik-icon-builder.md). CI: `synaptik:check`.
+
 ### Fixed
 
+- **Synaptik capture** — `page.evaluate` no longer references `MVP_DEFAULTS` in the browser (fixes `ReferenceError` on URL analyze). Clearer errors when Playwright Chromium is missing. `getWorkspaceRoot` skips `@synaptik/icon-builder-ui` and prefers `synaptik.config.json`.
 - **ContactHeroFormField** — removed 8% on-brand fill on field shells; border-only on glass panel; `-webkit-autofill` override so browser autofill does not paint solid boxes.
 
 ## [0.7.5] — 2026-05-25

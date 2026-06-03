@@ -8,16 +8,30 @@
  *   node scripts/storybook-dev.mjs path/to/project
  */
 import { execSync, spawnSync } from 'node:child_process';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const PORT = process.env.STORYBOOK_PORT ?? '6006';
 const repoRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultProjectDir = path.join(repoRoot, 'playground');
-const projectArg = process.argv[2];
-const projectDir = projectArg
-  ? path.resolve(process.cwd(), projectArg)
-  : defaultProjectDir;
+const cliArgs = process.argv.slice(2);
+let projectDir = defaultProjectDir;
+const extraArgs = [];
+
+for (const arg of cliArgs) {
+  const resolved = path.resolve(process.cwd(), arg);
+  const looksLikeDir =
+    arg === '.' ||
+    arg === '..' ||
+    (!arg.startsWith('-') &&
+      (fs.existsSync(resolved) || fs.existsSync(path.join(resolved, 'package.json'))));
+  if (looksLikeDir && projectDir === defaultProjectDir && !arg.startsWith('-')) {
+    projectDir = resolved;
+  } else {
+    extraArgs.push(arg);
+  }
+}
 
 function killPort(port) {
   if (process.platform !== 'win32') {
@@ -55,14 +69,29 @@ killPort(PORT);
 console.log(`Starting Storybook in ${projectDir}`);
 console.log(`Local: http://localhost:${PORT}/`);
 
-const result = spawnSync(
-  'npx',
-  ['storybook', 'dev', '-p', PORT, '--no-open', '--ci'],
-  {
+const storybookArgs = [
+  'storybook',
+  'dev',
+  '-p',
+  PORT,
+  '--host',
+  '127.0.0.1',
+  ...(extraArgs.includes('--smoke-test') ? [] : ['--no-open']),
+  ...extraArgs,
+];
+
+const result = spawnSync('npx', storybookArgs, {
     cwd: projectDir,
     stdio: 'inherit',
     shell: true,
+    env: { ...process.env, STORYBOOK: '1' },
   },
 );
 
+if (result.status !== 0) {
+  console.error('\nStorybook failed to start. Try from repo root:\n');
+  console.error('  npm run storybook:reset\n');
+  console.error('Or manually:\n');
+  console.error('  cd playground && npm ci && npm run storybook\n');
+}
 process.exit(result.status ?? 1);

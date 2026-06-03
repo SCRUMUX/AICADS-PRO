@@ -1,4 +1,4 @@
-# @ai-ds/core v0.7.5
+# @ai-ds/core v0.7.6
 
 **AICADS PRO** — token-driven React design system: 57+ primitives (buttons, forms, modals) and 24 marketing blocks (Hero, Navbar, Solutions, FAQ…).
 
@@ -6,7 +6,7 @@
 
 **Quick start:**
 
-1. `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5`
+1. `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6`
 2. `import '@ai-ds/core/tokens'`
 3. Browse Storybook: [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/) or run locally (see [Getting started](./docs/getting-started.md))
 4. For landing pages — import blocks from `@ai-ds/core/blocks/*` using the catalog at `@ai-ds/core/patterns`
@@ -16,7 +16,7 @@ Full setup guide: [docs/getting-started.md](./docs/getting-started.md)
 ## Installation
 
 ```bash
-npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6
 ```
 
 ## Importing components
@@ -155,11 +155,14 @@ npm run storybook
 
 Open **http://localhost:6006/** only after the terminal shows `Storybook … started`.
 
-Consumer fixture (optional):
+Consumer fixtures (optional):
 
 ```bash
 cd templates/consumer-storybook/fixture && npm ci && cd ../../..
 npm run storybook:consumer
+
+cd templates/consumer-pro/fixture && npm install && cd ../../..
+npm run storybook:consumer-pro
 ```
 
 **Common mistakes:** opening `playground/storybook-static/index.html` directly (blank/broken UI); running Storybook without `playground/npm ci`; consumer Storybook without port cleanup (fixed — all paths use `scripts/storybook-dev.mjs` with port cleanup + `--ci`).
@@ -170,7 +173,22 @@ From the repo root you can also run `npm run storybook` (delegates to `playgroun
 
 Copy [`templates/consumer-storybook/`](./templates/consumer-storybook/) into your app, install the pinned Storybook toolchain, and run `build-storybook`. Full parity checklists: [docs/storybook-parity.md](./docs/storybook-parity.md).
 
-CI builds both the monorepo playground and the consumer fixture on every PR.
+**PRO landing + Synaptik raster icons:** [`templates/consumer-pro/`](./templates/consumer-pro/) installs `@ai-ds/core` + `@ai-ds/synaptik` from the same tag. Guide: [docs/synaptik-pro-project.md](./docs/synaptik-pro-project.md).
+
+CI builds the monorepo playground, consumer-storybook, and consumer-pro fixtures on every PR.
+
+Storybook also includes **Generated Icons** (raster assets from Synaptik) when present under `generated-icons/`.
+
+## Synaptik AI Icon Builder (contributors)
+
+Repo-only module for AI-generated **raster** icons from a website URL or screenshots (Style DNA → concepts → Flux → Storybook). Does not replace SVG icons in `@ai-ds/core/icons`.
+
+```bash
+cp .env.example .env   # FAL_KEY, OPENAI_API_KEY or Anthropic
+npm run synaptik -- run --url https://example.com
+```
+
+Full guide: [docs/synaptik-icon-builder.md](./docs/synaptik-icon-builder.md).
 
 See also [CHANGELOG.md](./CHANGELOG.md) for release history and
 [components/primitives/_internal/README.md](./components/primitives/_internal/README.md)

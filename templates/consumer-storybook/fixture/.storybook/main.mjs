@@ -9,6 +9,8 @@ const config = createMainConfig({
   mode: 'consumer',
   storybookDir,
   projectRoot,
+  /** Monorepo fixture: Synaptik catalog at repo root (optional — omit in real consumer apps). */
+  generatedIconsDir: path.resolve(projectRoot, '../../../generated-icons'),
 });
 
 export default config;

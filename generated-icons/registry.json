@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "icons": [
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "co2-poteri-massy-pri-khranenii",
+      "name": "Co2PoteriMassyPriKhranenii",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/co2-poteri-massy-pri-khranenii"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "dannye-v-platformu",
+      "name": "DannyeVPlatformu",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/dannye-v-platformu"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "dinamika-po-mesyatsam",
+      "name": "DinamikaPoMesyatsam",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/dinamika-po-mesyatsam"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "etilen-khranenie-i-dozarivanie",
+      "name": "EtilenKhranenieIDozarivanie",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/etilen-khranenie-i-dozarivanie"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "izmerenie-mikroklimata",
+      "name": "IzmerenieMikroklimata",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/izmerenie-mikroklimata"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "mikroklimat-usloviya-khraneniya",
+      "name": "MikroklimatUsloviyaKhraneniya",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/mikroklimat-usloviya-khraneniya"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "nevernyj-moment-prodazhi",
+      "name": "NevernyjMomentProdazhi",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/nevernyj-moment-prodazhi"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "nevernyy-moment-prodazhi",
+      "name": "NevernyyMomentProdazhi",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/nevernyy-moment-prodazhi"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "ozonirovanie",
+      "name": "Ozonirovanie",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/ozonirovanie"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "parametry-stoimosti",
+      "name": "ParametryStoimosti",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/parametry-stoimosti"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "parametry-urozhaya",
+      "name": "ParametryUrozhaya",
+      "category": "Analytics",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/parametry-urozhaya"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "poteri-12-17",
+      "name": "Poteri1217",
+      "category": "Business",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/poteri-12-17"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "prorastanie-i-sozrevanie",
+      "name": "ProrastanieISozrevanie",
+      "category": "Performance",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/prorastanie-i-sozrevanie"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "sokhranost-urozhaya",
+      "name": "SokhranostUrozhaya",
+      "category": "AgroTech",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/sokhranost-urozhaya"
+    },
+    {
+      "projectSlug": "agriculture-technology",
+      "iconSlug": "usushka-i-porcha",
+      "name": "UsushkaIPorcha",
+      "category": "Performance",
+      "style": "Damiat",
+      "styleLabel": "Damiat",
+      "relativePath": "agriculture-technology/usushka-i-porcha"
+    }
+  ]
+}

@@ -19,13 +19,14 @@ components/**/*.stories.tsx              ──► Story catalog (shipped with p
 
 | Mode | Stories glob | Tokens import |
 |------|--------------|---------------|
-| `monorepo` | `../../components/**`, `../../blocks/**`, `../../layout/**` | `@ai-ds/core/tokens` |
+| `monorepo` | `../../components/**`, `../../blocks/**`, `../../layout/**`, `../../generated-icons/**` (Synaptik raster) | `@ai-ds/core/tokens` |
 | `consumer` | `node_modules/@ai-ds/core/components/**`, `node_modules/@ai-ds/core/blocks/**` | `@ai-ds/core/tokens` |
 
-CI runs **both** builds on every PR:
+CI runs **three** Storybook builds on every PR:
 
 - `playground` — monorepo path
 - `templates/consumer-storybook/fixture` — consumer path (`file:../../..`)
+- `templates/consumer-pro/fixture` — PRO + Synaptik scaffold (`src/assets/generated-icons`)
 
 ## Pinned toolchain
 
@@ -70,11 +71,12 @@ export default preview;
 - [ ] Theme toolbar: Light / Dark switches `data-theme` on `<html>`
 - [ ] Spot-check: **Tooltip → FullMatrix**, **Tab → TicketTabGroup**, **Rating → Default**
 - [ ] Marketing spot-check: **Screens/Marketing Landing → Aicads Pro Enterprise**, **Blocks/Marketing/NavbarBlock → Desktop**, **Blocks/Marketing/HeroBlock → Enterprise With Navbar**
+- [ ] (Optional) **Generated Icons / {projectSlug}** — after `synaptik publish`; see [synaptik-icon-builder.md](./synaptik-icon-builder.md)
 - [ ] `npm run build-storybook` succeeds
 
 ## Checklist B — npm install (new consumer project)
 
-- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.5`
+- [ ] `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6`
 - [ ] Copy [`templates/consumer-storybook/`](../templates/consumer-storybook/) into your app
 - [ ] Install devDependencies from template `package.json`
 - [ ] Add runtime deps: `react`, `react-dom`, `vaul`, `sonner` (or rely on `@ai-ds/core` transitive deps + explicit vaul for Storybook CSS path)
@@ -84,6 +86,19 @@ export default preview;
 - [ ] `npm run build-storybook`
 - [ ] Visual spot-check: **Aicads Pro Enterprise** (desktop + mobile), **NavbarBlock Desktop**, **HeroBlock Enterprise With Navbar**
 
+## Checklist D — Generated Icons (Synaptik raster) in Storybook
+
+- [ ] Run `synaptik publish` so `{outputDir}/{projectSlug}/` contains PNG/WebP + `icons.manifest.ts`
+- [ ] Commit catalog (monorepo: [generated-icons/README.md](../generated-icons/README.md); consumer-pro: `src/assets/generated-icons/`)
+- [ ] **Monorepo:** `npm run storybook` → sidebar **Generated Icons → Synaptik guide** (instructions) and **Generated Icons / {projectSlug}** (catalog)
+- [ ] **Resume after clone:** `npm run synaptik:fix-stories` if local `.synaptik/` exists; then `npm run storybook:sync` or `npm run storybook:build`
+- [ ] **Consumer PRO:** copy [`templates/consumer-pro/`](../templates/consumer-pro/); install `@ai-ds/core` + `@ai-ds/synaptik`; `synaptik.config.json` with `outputDir: src/assets/generated-icons`
+- [ ] **Consumer:** `createMainConfig({ generatedIconsDir: 'src/assets/generated-icons' })` (path relative to Storybook project root)
+- [ ] Before Storybook dev/build: `npx synaptik check --fix-stories` (or rely on `storybook-prep` when `synaptik.config.json` + `@ai-ds/synaptik` are present)
+- [ ] Sidebar: **Generated Icons → Synaptik guide** + **Generated Icons / {projectSlug}**
+- [ ] Optional: **Blocks/Marketing/FeaturesBlock/Synaptik** (template: `FeaturesBlockSynaptik.stories.tsx`)
+- [ ] `npm run synaptik:check` passes in CI (no FAL keys)
+
 ## Checklist C — Release to GitHub
 
 - [ ] `npm run lint`
@@ -91,6 +106,7 @@ export default preview;
 - [ ] `npm run tokens:check`
 - [ ] `cd playground && npm run build-storybook`
 - [ ] `cd templates/consumer-storybook/fixture && npm install && npm run build-storybook`
+- [ ] `npm run storybook:consumer-pro` (consumer-pro + empty generated-icons scaffold)
 - [ ] Bump version in `package.json` + CHANGELOG
 - [ ] `git tag vX.Y.Z && git push origin vX.Y.Z`
 - [ ] Fresh-dir smoke test: install tagged package, copy template, build

@@ -221,3 +221,33 @@ See [`docs/api-surface.md`](./docs/api-surface.md).
 ### Visual regression
 
 See [`docs/vrt.md`](./docs/vrt.md).
+
+### Synaptik generated-icons registry
+
+| Guard | Script | Fails on |
+| ----- | ------ | -------- |
+| Generated-icons registry | `npm run synaptik:check` | Missing PNG/WebP/meta or per-project `Icons.stories.tsx` vs `registry.json` |
+
+---
+
+## 9. Synaptik AI Icon Builder (repo only)
+
+`modules/synaptik-icon-builder/` is **not** published in `@ai-ds/core` `files`. It generates raster icons into `generated-icons/` for the playground Storybook catalog.
+
+```
+URL / screenshots
+  → Playwright capture (+ sharp palette in capture-report)
+  → Vision LLM (OpenAI or Anthropic) → style-dna.json (immutable)
+  → content-cards → concepts (with screenshots)
+  → Flux Schnell (fal.ai) → PNG/WebP
+  → publish → generated-icons/{projectSlug}/{iconSlug}/
+  → generated-icons/{projectSlug}/Icons.stories.tsx
+```
+
+- Sessions and secrets: `.synaptik/` (gitignored), keys in root `.env`
+- SVG primitives: unchanged at `components/icons/index.tsx`
+- **Raster runtime:** `GeneratedIcon` primitive + optional `iconSlug` on `FeaturesBlock` via `icons.manifest.ts` (AUTO-GENERATED on publish)
+- **Catalog:** `generated-icons/{projectSlug}/` (configurable via `synaptik.config.json` / `SYNAPTIK_ICONS_DIR`); Storybook via `createMainConfig({ generatedIconsDir })`
+- **CLI package name:** `@ai-ds/synaptik` in `modules/synaptik-icon-builder/` (private; not in `@ai-ds/core` npm `files`)
+- **Web UI** (`modules/synaptik-icon-builder/ui/`) — AICADS consumer only ([`docs/internal-ui.md`](./docs/internal-ui.md)): `@ai-ds/core/tokens`, Tailwind preset, `Button` / `Card` / `Alert` / etc.; `npm run synaptik:ui:lint`
+- Docs: [`docs/synaptik-icon-builder.md`](./docs/synaptik-icon-builder.md), [`modules/synaptik-icon-builder/PACKAGING.md`](./modules/synaptik-icon-builder/PACKAGING.md)
