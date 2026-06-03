@@ -17,6 +17,53 @@ export function slugifyBlockOrCardId(rawId: string | undefined, title: string, p
   return contentIdFromTitle(title, prefix);
 }
 
+/** Safe filename slug under concepts/ and prompts/. */
+export function safeCardFileSlug(cardId: string): string {
+  const base = slugify(cardId);
+  if (base && base !== 'icon') return base;
+  return contentIdFromTitle(cardId, 'card');
+}
+
+export type VisionBlockRaw = {
+  id?: string;
+  title: string;
+  description?: string;
+  cards: Array<{
+    id?: string;
+    title: string;
+    description?: string;
+    sourceRegion?: string;
+  }>;
+};
+
+/**
+ * Map vision/LLM blocks to ContentBlock[] with stable Cyrillic-safe ids (single entry point).
+ */
+export function mapVisionBlocksRaw(
+  rawBlocks: VisionBlockRaw[],
+  limits?: { maxBlocks?: number; maxCardsPerBlock?: number },
+): ContentBlock[] {
+  const maxBlocks = limits?.maxBlocks ?? rawBlocks.length;
+  const maxCardsPerBlock = limits?.maxCardsPerBlock ?? 99;
+
+  const drafts = rawBlocks.slice(0, maxBlocks).map((b, blockIndex) =>
+    ContentBlockSchema.parse({
+      id: slugifyBlockOrCardId(b.id, b.title, 'block'),
+      title: b.title,
+      description: b.description,
+      sortOrder: blockIndex,
+      cards: b.cards.slice(0, maxCardsPerBlock).map((c) => ({
+        id: slugifyBlockOrCardId(c.id, c.title, 'card'),
+        title: c.title,
+        description: c.description,
+        sourceRegion: c.sourceRegion,
+      })),
+    }),
+  );
+
+  return ensureUniqueBlockAndCardIds(drafts);
+}
+
 /**
  * Ensures unique block.id and card.id within a structure file.
  * Fixes Cyrillic collisions that all collapsed to "icon".
@@ -34,7 +81,7 @@ export function ensureUniqueBlockAndCardIds(blocks: ContentBlock[]): ContentBloc
     }
     usedBlockIds.add(blockId);
 
-    const cards = block.cards.map((c, cardIndex) => {
+    const cards = block.cards.map((c) => {
       let cardId = slugifyBlockOrCardId(
         c.id && c.id.length > 0 ? c.id : undefined,
         c.title,

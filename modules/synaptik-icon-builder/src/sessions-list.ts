@@ -17,7 +17,7 @@ import {
   StyleDNASchema,
 } from './types/index.js';
 import type { SessionPaths } from './paths.js';
-import { slugify } from './paths.js';
+import { safeCardFileSlug } from './utils/ensure-unique-content.js';
 import { getIconSetStyle } from './icon-set-styles/index.js';
 import { readIconStyleBible, resolveSessionIconSetStyleId } from './pipeline/icon-style-bible.js';
 import { loadManifestPages } from './pipeline/manifest-pages.js';
@@ -212,7 +212,7 @@ export function buildSessionUiState(sessionId: string): SessionUiState {
 
   const conceptCardIds: string[] = [];
   for (const card of cards) {
-    const conceptFile = path.join(paths.conceptsDir, `${slugify(card.id)}.json`);
+    const conceptFile = path.join(paths.conceptsDir, `${safeCardFileSlug(card.id)}.json`);
     if (fs.existsSync(conceptFile)) {
       conceptCardIds.push(card.id);
     }

@@ -9,6 +9,7 @@ import { fileExists, readJsonFile, writeJsonFile } from '../fs-json.js';
 import { SelectionsFileSchema } from '../types/index.js';
 import type { IconQualityWarning } from '../types/index.js';
 import { slugify, toPascalCase, type SessionPaths } from '../paths.js';
+import { safeCardFileSlug } from '../utils/ensure-unique-content.js';
 import {
   AssetMetaSchema,
   ContentCardsFileSchema,
@@ -169,7 +170,7 @@ export async function runRender(
   await sharp(best.buf).webp({ quality: 90 }).toFile(path.join(renderDir, 'icon.webp'));
 
   const sel = getSelectionForCard(paths, cardId);
-  const conceptFile = path.join(paths.conceptsDir, `${slugify(cardId)}.json`);
+  const conceptFile = path.join(paths.conceptsDir, `${safeCardFileSlug(cardId)}.json`);
   const set = readJsonFile(conceptFile, IconConceptSetSchema);
   const iconSetStyleId = resolveSessionIconSetStyleId(paths);
 

@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileExists, readJsonFile } from '../fs-json.js';
-import { slugify, type SessionPaths } from '../paths.js';
+import type { SessionPaths } from '../paths.js';
+import { safeCardFileSlug } from '../utils/ensure-unique-content.js';
 import {
   AssetMetaSchema,
   ContentCardsFileSchema,
@@ -40,7 +41,7 @@ export function printSessionStatus(paths: SessionPaths): void {
     console.log('\nCards:');
     for (const card of cards) {
       const sel = selections.find((s) => s.cardId === card.id);
-      const conceptFile = path.join(paths.conceptsDir, `${slugify(card.id)}.json`);
+      const conceptFile = path.join(paths.conceptsDir, `${safeCardFileSlug(card.id)}.json`);
       const hasConcepts = fs.existsSync(conceptFile);
       let rendered = false;
       let published = false;

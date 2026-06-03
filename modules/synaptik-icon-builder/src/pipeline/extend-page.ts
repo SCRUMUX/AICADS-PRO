@@ -6,14 +6,19 @@ import {
   visionJsonCompletion,
 } from '../adapters/vision/index.js';
 import { fileExists, readJsonFile, writeJsonFile } from '../fs-json.js';
+import { getPageCapturePaths, type SessionPaths } from '../paths.js';
 import {
-  getPageCapturePaths,
-  slugify,
-  type SessionPaths,
-} from '../paths.js';
+  ensureUniqueBlockAndCardIds,
+  mapVisionBlocksRaw,
+} from '../utils/ensure-unique-content.js';
+import {
+  auditContentStructure,
+  sanitizeContentStructure,
+  validateContentStructure,
+  writeStructureAudit,
+} from './validate-content-structure.js';
 import {
   CaptureReportSchema,
-  ContentBlockSchema,
   ContentCardsFileSchema,
   SessionManifestSchema,
   StyleDNASchema,
@@ -52,7 +57,8 @@ Rules:
 - BLOCK = large section (h2-level). CARD = item needing its own icon.
 - Respect maxBlocks and maxCardsPerBlock.
 - Use the site language for titles.
-- Prefer DOM draft when it lists real inner cards.`;
+- Prefer DOM draft when it lists real inner cards.
+- block.description = section intro; card.description = feature body (not block title).`;
 
 export interface ExtendPageResult {
   pageSlug: string;
@@ -152,19 +158,7 @@ ${report.extractedTextSample ?? ''}`,
     shots,
   );
 
-  let newBlocks: ContentBlock[] = raw.blocks.slice(0, maxBlocks).map((b) =>
-    ContentBlockSchema.parse({
-      id: slugify(b.id || b.title),
-      title: b.title,
-      description: b.description,
-      cards: b.cards.slice(0, maxCardsPerBlock).map((c) => ({
-        id: slugify(c.id || c.title),
-        title: c.title,
-        description: c.description,
-        sourceRegion: c.sourceRegion,
-      })),
-    }),
-  );
+  let newBlocks = mapVisionBlocksRaw(raw.blocks, { maxBlocks, maxCardsPerBlock });
 
   const sortStart = existing.length;
   newBlocks = namespaceBlocksForPage(
@@ -175,12 +169,12 @@ ${report.extractedTextSample ?? ''}`,
     sortStart,
   );
 
-  const merged = mergeContentBlocks(existing, newBlocks);
-  const { auditContentStructure, writeStructureAudit } = await import(
-    './validate-content-structure.js'
-  );
-  writeStructureAudit(paths, auditContentStructure(merged));
-  writeContentFromBlocks(paths, merged, { maxBlocks: merged.length, maxCardsPerBlock });
+  let blocks = mergeContentBlocks(existing, newBlocks);
+  blocks = sanitizeContentStructure(blocks);
+  blocks = ensureUniqueBlockAndCardIds(blocks);
+  validateContentStructure(blocks);
+  writeStructureAudit(paths, auditContentStructure(blocks));
+  writeContentFromBlocks(paths, blocks, { maxBlocks: blocks.length, maxCardsPerBlock });
 
   const afterCards = readJsonFile(paths.contentCards, ContentCardsFileSchema).cards;
   const newCardIds = afterCards.filter((c) => !beforeIds.has(c.id)).map((c) => c.id);

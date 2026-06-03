@@ -1,7 +1,8 @@
 import path from 'node:path';
 import { visionJsonCompletion } from '../adapters/vision/index.js';
 import { readJsonFile, writeJsonFile, fileExists } from '../fs-json.js';
-import { slugify, type SessionPaths } from '../paths.js';
+import type { SessionPaths } from '../paths.js';
+import { safeCardFileSlug } from '../utils/ensure-unique-content.js';
 import {
   ContentCardsFileSchema,
   StyleDNASchema,
@@ -46,7 +47,7 @@ function buildCardLines(cards: ContentCard[]): string {
 }
 
 export function getSemanticPath(paths: SessionPaths, cardId: string): string {
-  return path.join(paths.semanticDir, `${slugify(cardId)}.json`);
+  return path.join(paths.semanticDir, `${safeCardFileSlug(cardId)}.json`);
 }
 
 export function readCardSemantic(

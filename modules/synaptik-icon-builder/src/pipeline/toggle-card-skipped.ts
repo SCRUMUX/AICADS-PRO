@@ -1,4 +1,5 @@
-import { slugify, type SessionPaths } from '../paths.js';
+import type { SessionPaths } from '../paths.js';
+import { slugifyBlockOrCardId } from '../utils/ensure-unique-content.js';
 import { loadContentBlocks, writeContentFromBlocks } from './content-structure.js';
 
 export function setCardSkipped(
@@ -11,7 +12,9 @@ export function setCardSkipped(
   for (const block of blocks) {
     for (const card of block.cards) {
       const id =
-        card.id && card.id.length > 0 ? card.id : slugify(card.title) || card.title;
+        card.id && card.id.length > 0
+          ? card.id
+          : slugifyBlockOrCardId(undefined, card.title, 'card');
       if (id === cardId) {
         card.skipped = skipped;
         found = true;

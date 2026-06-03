@@ -14,6 +14,7 @@ Format follows [Semantic Versioning](https://semver.org/).
 ### Fixed
 
 - **Synaptik capture** — `page.evaluate` no longer references `MVP_DEFAULTS` in the browser (fixes `ReferenceError` on URL analyze). Clearer errors when Playwright Chromium is missing. `getWorkspaceRoot` skips `@synaptik/icon-builder-ui` and prefers `synaptik.config.json`.
+- **Synaptik content IDs** — vision analyze uses `mapVisionBlocksRaw` / `slugifyBlockOrCardId` (Cyrillic-safe `card-{hash}` ids, no empty/`icon` collisions). Concepts lookup via `resolveConceptsForCard`; concept/prompt/semantic paths use `safeCardFileSlug`. Structure audit flags invalid ids; extend-page merges sanitize + validate before write.
 - **ContactHeroFormField** — removed 8% on-brand fill on field shells; border-only on glass panel; `-webkit-autofill` override so browser autofill does not paint solid boxes.
 
 ## [0.7.5] — 2026-05-25

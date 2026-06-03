@@ -3,8 +3,12 @@ import {
   visionJsonCompletion,
 } from '../adapters/vision/index.js';
 import { fileExists, readJsonFile, writeJsonFile } from '../fs-json.js';
-import { slugify, type SessionPaths } from '../paths.js';
-import { ensureUniqueBlockAndCardIds } from '../utils/ensure-unique-content.js';
+import type { SessionPaths } from '../paths.js';
+import {
+  ensureUniqueBlockAndCardIds,
+  mapVisionBlocksRaw,
+  slugifyBlockOrCardId,
+} from '../utils/ensure-unique-content.js';
 import {
   blocksFromDomStructure,
   domHasUsableStructure,
@@ -13,6 +17,7 @@ import {
 import {
   auditContentStructure,
   sanitizeContentStructure,
+  validateContentStructure,
   writeStructureAudit,
 } from './validate-content-structure.js';
 import { reconcileAfterStructureWrite } from './catalog-reconcile.js';
@@ -51,7 +56,8 @@ Rules:
 - Each card needs a distinct id (kebab-case).
 - Respect maxBlocks and maxCardsPerBlock limits.
 - Use the site language for titles.
-- Prefer DOM draft structure when it lists real inner cards.`;
+- Prefer DOM draft structure when it lists real inner cards.
+- block.description = short section intro; card.description = feature subtitle/body (not the block title).`;
 
 export interface AnalyzeContentOptions {
   maxBlocks?: number;
@@ -77,10 +83,11 @@ export function flattenBlocksToCards(blocks: ContentBlock[]): ContentCard[] {
   const cards: ContentCard[] = [];
   for (const block of blocks) {
     for (const card of block.cards) {
-      const id =
-        card.id && card.id.length > 0
-          ? card.id
-          : slugify(card.title) || card.title.slice(0, 64);
+      const id = slugifyBlockOrCardId(
+        card.id && card.id.length > 0 ? card.id : undefined,
+        card.title,
+        'card',
+      );
       cards.push({
         id,
         title: card.title,
@@ -190,21 +197,7 @@ ${capture.extractedTextSample ?? ''}`,
     shots,
   );
 
-  let blocks = raw.blocks.slice(0, maxBlocks).map((b) => {
-    const blockId = slugify(b.id || b.title);
-    const cards = b.cards.slice(0, maxCardsPerBlock).map((c) => ({
-      id: slugify(c.id || c.title),
-      title: c.title,
-      description: c.description,
-      sourceRegion: c.sourceRegion,
-    }));
-    return ContentBlockSchema.parse({
-      id: blockId,
-      title: b.title,
-      description: b.description,
-      cards,
-    });
-  });
+  let blocks = mapVisionBlocksRaw(raw.blocks, { maxBlocks, maxCardsPerBlock });
 
   if (capture.sourceUrl) {
     blocks = annotateBlocksWithPage(blocks, capture.sourceUrl, capture.pageTitle);
@@ -220,6 +213,8 @@ ${capture.extractedTextSample ?? ''}`,
   }
 
   blocks = sanitizeContentStructure(blocks);
+  blocks = ensureUniqueBlockAndCardIds(blocks);
+  validateContentStructure(blocks);
   writeStructureAudit(paths, auditContentStructure(blocks));
 
   writeContentFromBlocks(paths, blocks, { maxBlocks, maxCardsPerBlock });

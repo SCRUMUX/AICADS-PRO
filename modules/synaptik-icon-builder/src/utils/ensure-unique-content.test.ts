@@ -1,6 +1,12 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { ensureUniqueBlockAndCardIds, slugifyBlockOrCardId } from './ensure-unique-content.js';
+import { flattenBlocksToCards } from '../pipeline/content-structure.js';
+import {
+  ensureUniqueBlockAndCardIds,
+  mapVisionBlocksRaw,
+  safeCardFileSlug,
+  slugifyBlockOrCardId,
+} from './ensure-unique-content.js';
 import type { ContentBlock } from '../types/index.js';
 
 describe('ensureUniqueBlockAndCardIds', () => {
@@ -38,5 +44,50 @@ describe('slugifyBlockOrCardId', () => {
     const id = slugifyBlockOrCardId(undefined, 'Урожай', 'card');
     assert.ok(id.startsWith('card-'));
     assert.notEqual(id, 'icon');
+  });
+});
+
+describe('mapVisionBlocksRaw', () => {
+  it('assigns unique non-icon ids for Cyrillic-only vision output', () => {
+    const blocks = mapVisionBlocksRaw([
+      {
+        title: 'Мероприятия',
+        cards: [{ title: 'Карточка A' }, { title: 'Карточка B' }],
+      },
+      {
+        title: 'Контроль',
+        cards: [{ title: 'Карточка C' }],
+      },
+    ]);
+    const cardIds = blocks.flatMap((b) => b.cards.map((c) => c.id));
+    assert.equal(new Set(cardIds).size, cardIds.length);
+    for (const id of cardIds) {
+      assert.ok(id);
+      assert.ok(id.length > 0);
+      assert.notEqual(id, 'icon');
+    }
+  });
+});
+
+describe('flattenBlocksToCards', () => {
+  it('never emits empty card id', () => {
+    const blocks: ContentBlock[] = [
+      {
+        id: 'block-1',
+        title: 'Block',
+        cards: [{ id: '', title: 'Только кириллица' }],
+      },
+    ];
+    const flat = flattenBlocksToCards(ensureUniqueBlockAndCardIds(blocks));
+    assert.ok(flat[0].id.length > 0);
+    assert.notEqual(flat[0].id, 'icon');
+  });
+});
+
+describe('safeCardFileSlug', () => {
+  it('falls back to hash slug when cardId slugifies to icon', () => {
+    const slug = safeCardFileSlug('icon');
+    assert.ok(slug.startsWith('card-'));
+    assert.notEqual(slug, 'icon');
   });
 });

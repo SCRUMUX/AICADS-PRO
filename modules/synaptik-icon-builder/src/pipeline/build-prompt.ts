@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { readJsonFile } from '../fs-json.js';
-import { slugify, type SessionPaths } from '../paths.js';
+import type { SessionPaths } from '../paths.js';
+import { safeCardFileSlug } from '../utils/ensure-unique-content.js';
 import {
   ContentCardsFileSchema,
   SelectionsFileSchema,
@@ -170,7 +171,7 @@ export function runBuildPrompt(
   });
 
   fs.mkdirSync(paths.promptsDir, { recursive: true });
-  const slug = slugify(cardId);
+  const slug = safeCardFileSlug(cardId);
   fs.writeFileSync(path.join(paths.promptsDir, `${slug}.txt`), built.text, 'utf8');
   fs.writeFileSync(
     path.join(paths.promptsDir, `${slug}.debug.json`),

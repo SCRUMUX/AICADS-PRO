@@ -8,7 +8,9 @@ import {
   type IconSetStyleId,
 } from '../icon-set-styles/index.js';
 import { readJsonFile, writeJsonFile } from '../fs-json.js';
-import { slugify, type SessionPaths } from '../paths.js';
+import type { SessionPaths } from '../paths.js';
+import { safeCardFileSlug } from '../utils/ensure-unique-content.js';
+import { resolveConceptsForCard } from './resolve-concepts.js';
 import { readCardSemantic } from '../semantic/interpret.js';
 import { ANTI_PATTERN_PROMPT_RULES, hasAntiPattern } from '../semantic/anti-patterns.js';
 import {
@@ -98,7 +100,7 @@ async function writeConceptSet(
     }),
     generatedAt: new Date().toISOString(),
   });
-  writeJsonFile(path.join(paths.conceptsDir, `${slugify(card.id)}.json`), set);
+  writeJsonFile(path.join(paths.conceptsDir, `${safeCardFileSlug(card.id)}.json`), set);
 }
 
 export async function runConcepts(
@@ -158,7 +160,7 @@ ${buildCardPromptLines(chunk, count, paths)}`,
     const letters = ['A', 'B', 'C', 'D', 'E'].slice(0, count);
 
     for (const card of chunk) {
-      const entry = raw.byCardId?.[card.id];
+      const entry = resolveConceptsForCard(raw.byCardId, card);
       const concepts = (entry?.concepts ?? []).slice(0, count).map((c, idx) => {
         const rawVo = (c.visualObject ?? c.iconSubject ?? c.description ?? '').trim();
         const label = (c.label ?? letters[idx]).trim();
@@ -242,6 +244,6 @@ export function getConceptSetForCard(
   paths: SessionPaths,
   cardId: string,
 ): IconConceptSet {
-  const file = path.join(paths.conceptsDir, `${slugify(cardId)}.json`);
+  const file = path.join(paths.conceptsDir, `${safeCardFileSlug(cardId)}.json`);
   return readJsonFile(file, IconConceptSetSchema);
 }

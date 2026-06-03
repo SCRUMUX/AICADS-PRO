@@ -4,9 +4,9 @@ import {
 } from '../adapters/vision/index.js';
 import { readJsonFile, writeJsonFile, fileExists } from '../fs-json.js';
 import { slugify, type SessionPaths } from '../paths.js';
+import { ensureUniqueBlockAndCardIds, mapVisionBlocksRaw } from '../utils/ensure-unique-content.js';
 import {
   CaptureReportSchema,
-  ContentBlockSchema,
   ContentCardsFileSchema,
   ContentStructureFileSchema,
   StyleDNASchema,
@@ -23,6 +23,7 @@ import {
 import {
   auditContentStructure,
   sanitizeContentStructure,
+  validateContentStructure,
   writeStructureAudit,
 } from './validate-content-structure.js';
 
@@ -57,6 +58,7 @@ const COMBINED_SYSTEM = `You analyze a marketing website for an icon generation 
 
 BLOCK = major section (e.g. product name). CARD = small feature inside the block (icon target).
 Do not list block titles as cards. background must be "white".
+block.description = section intro; card.description = feature subtitle/body (not the block title).
 siteVisualStyle describes the marketing site only — icon render style is chosen separately, never photorealistic for icons.`;
 
 export async function runCombinedAnalyze(
@@ -135,18 +137,7 @@ ${capture.extractedTextSample ?? ''}`,
   manifest.projectSlug = projectSlug;
   writeJsonFile(paths.manifest, manifest);
 
-  let blocks = raw.blocks.slice(0, maxBlocks).map((b) =>
-    ContentBlockSchema.parse({
-      id: slugify(b.id || b.title),
-      title: b.title,
-      description: b.description,
-      cards: b.cards.slice(0, maxCardsPerBlock).map((c) => ({
-        id: slugify(c.id || c.title),
-        title: c.title,
-        description: c.description,
-      })),
-    }),
-  );
+  let blocks = mapVisionBlocksRaw(raw.blocks, { maxBlocks, maxCardsPerBlock });
 
   if (capture.sourceUrl) {
     blocks = annotateBlocksWithPage(blocks, capture.sourceUrl, capture.pageTitle);
@@ -162,6 +153,8 @@ ${capture.extractedTextSample ?? ''}`,
   }
 
   blocks = sanitizeContentStructure(blocks);
+  blocks = ensureUniqueBlockAndCardIds(blocks);
+  validateContentStructure(blocks);
   const audit = auditContentStructure(blocks);
   writeStructureAudit(paths, audit);
 
