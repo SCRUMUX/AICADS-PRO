@@ -3,6 +3,15 @@
 All notable changes to @ai-ds/core are documented here.
 Format follows [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Architecture
+
+- **Ecosystem docs** — [docs/ecosystem-map.md](docs/ecosystem-map.md) (which repo/folder to open) and [docs/block-promotion.md](docs/block-promotion.md) (child → parent block workflow).
+- **Child project model** — `damiat-landing` migrated to `@ai-ds/core` + `site/product/` (`@damiat/product`); vendored `core/` deprecated.
+- **Login / Case / Admin parity** — generic `LoginPageTemplate`, `CaseStudiesBlock`, `CaseDetailPageTemplate`, `AdminPageTemplate` already match Damiat UX; product-specific pages stay in child repos.
+- **Package exports** — `@ai-ds/core/blocks/_shared/*`, PRO block paths, and deep imports for consumer product layers.
+
 ## [0.7.6] — 2026-05-26
 
 > **ContactHero form fields** — inputs blend with glass panel (no opaque field fill).

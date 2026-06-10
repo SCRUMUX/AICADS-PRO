@@ -233,6 +233,7 @@ function MinimalFooter({ columns, copyright, socialLinks }: FooterBlockProps) {
 export const FooterBlock: React.FC<FooterBlockProps> = ({
   variant = 'minimal',
   className,
+  showTopDivider = true,
   ...props
 }) => {
   const isEnterprise = variant === 'enterprise';
@@ -248,7 +249,9 @@ export const FooterBlock: React.FC<FooterBlockProps> = ({
     >
       {isEnterprise ? (
         <>
-          <div className={FOOTER_TOP_DIVIDER_CLASS} style={FOOTER_TOP_DIVIDER_STYLE} aria-hidden="true" />
+          {showTopDivider ? (
+            <div className={FOOTER_TOP_DIVIDER_CLASS} style={FOOTER_TOP_DIVIDER_STYLE} aria-hidden="true" />
+          ) : null}
           <EnterpriseFooter variant={variant} {...props} />
         </>
       ) : (

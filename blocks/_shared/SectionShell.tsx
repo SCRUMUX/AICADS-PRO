@@ -11,7 +11,7 @@ export type SectionAppearance = 'base' | 'surface' | 'muted' | 'brand' | 'invers
 export interface SectionShellProps extends React.HTMLAttributes<HTMLElement> {
   /** Named spacing recipe — enforces vertical rhythm across blocks. */
   recipe: SpacingRecipeId;
-  as?: 'section' | 'div' | 'footer' | 'header' | 'nav';
+  as?: 'section' | 'div' | 'footer' | 'header' | 'nav' | 'main';
   /** Full-bleed background treatment on the outer section. */
   appearance?: SectionAppearance;
   /** Cortel-style scroll parallax on brand sections. */

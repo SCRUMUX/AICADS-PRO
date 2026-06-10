@@ -45,5 +45,7 @@ export interface FooterBlockProps {
   copyright?: string;
   socialLinks?: FooterSocialLink[];
   showBackToTop?: boolean;
+  /** Enterprise variant — top hairline above footer chrome (default true). */
+  showTopDivider?: boolean;
   className?: string;
 }

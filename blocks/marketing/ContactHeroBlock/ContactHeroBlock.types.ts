@@ -24,5 +24,7 @@ export interface ContactHeroBlockProps {
   defaultValues?: Partial<ContactHeroFormValues>;
   onSubmit?: (values: ContactHeroFormValues) => void;
   onChange?: (values: ContactHeroFormValues) => void;
+  /** Inside BrandPhotoHeroSection — skip parallax shell and bottom gradient. */
+  embeddedInPhotoHero?: boolean;
   className?: string;
 }

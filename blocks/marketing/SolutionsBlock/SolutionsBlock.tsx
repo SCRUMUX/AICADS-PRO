@@ -88,6 +88,48 @@ function SolutionsShowcaseBlock({
   );
 }
 
+function SolutionsGridBlock({
+  title,
+  solutions,
+  viewAll,
+  className,
+}: Extract<SolutionsBlockProps, { variant: 'grid' }>) {
+  const viewAllLabel = viewAll?.label ?? 'Смотреть все паттерны';
+
+  return (
+    <SectionShell
+      recipe="section.solutions"
+      appearance="muted"
+      className={className}
+      aria-label="Related solutions"
+    >
+      {title ? (
+        <h2 className="m-0 mb-[var(--space-section-content-m)] font-medium text-style-h1 text-[var(--color-text-primary)] min-[1024px]:mb-[var(--space-64)]">
+          {title}
+        </h2>
+      ) : null}
+
+      <div className={cn(SOLUTIONS_DESKTOP_GRID_CLASS, 'hidden min-[1024px]:grid grid-cols-3')}>
+        {solutions.map((item) => (
+          <SolutionCard key={item.id ?? `${item.client}-${item.title}`} {...item} />
+        ))}
+      </div>
+
+      <div className={cn(SOLUTIONS_SCROLL_STRIP_CLASS, 'min-[1024px]:hidden')}>
+        {solutions.map((item) => (
+          <SolutionCard key={item.id ?? `${item.client}-${item.title}`} {...item} />
+        ))}
+      </div>
+
+      {viewAll ? (
+        <div className="mt-[var(--space-section-content-m)]">
+          <BlockAction label={viewAllLabel} href={viewAll.href} appearance="outline" size="lg" />
+        </div>
+      ) : null}
+    </SectionShell>
+  );
+}
+
 function SolutionsCatalogBlock({
   items,
   className,
@@ -115,6 +157,11 @@ export const SolutionsBlock: React.FC<SolutionsBlockProps> = (props) => {
   if (props.variant === 'catalog') {
     if (props.items.length === 0) return null;
     return <SolutionsCatalogBlock {...props} />;
+  }
+
+  if (props.variant === 'grid') {
+    if (!props.solutions || props.solutions.length === 0) return null;
+    return <SolutionsGridBlock {...props} />;
   }
 
   if (!props.solutions || props.solutions.length === 0) return null;

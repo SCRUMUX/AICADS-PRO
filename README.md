@@ -1,6 +1,8 @@
 # @ai-ds/core v0.7.6
 
-**AICADS PRO** — token-driven React design system: 57+ primitives (buttons, forms, modals) and 24 marketing blocks (Hero, Navbar, Solutions, FAQ…).
+**AICADS PRO** — single canonical repository for the design system: 57+ primitives, 40+ marketing blocks, Synaptik AI icon builder, and Storybook kit.
+
+> One repo to clone → `npm run storybook` shows the full catalog. Product repos (e.g. damiat-landing) install this package via git tag. See [docs/ecosystem-map.md](./docs/ecosystem-map.md) and [docs/block-promotion.md](./docs/block-promotion.md).
 
 **Why:** one token-driven UI for products and AI page assembly. Behavior engines (Radix, vaul, sonner) stay behind the semantic API — your app never imports them directly.
 

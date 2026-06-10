@@ -59,6 +59,8 @@ export interface HeroBlockProps {
   secondaryAction?: HeroBlockAction;
   /** When true (enterprise above-fold), stage fills remaining viewport height. */
   fillViewport?: boolean;
+  /** Skip outer SectionShell — parent provides section chrome (case detail photo hero). */
+  embedded?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -266,6 +268,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   primaryAction,
   secondaryAction,
   fillViewport = false,
+  embedded = false,
   className,
   style,
 }) => {
@@ -369,6 +372,14 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
         paddingBottom: 'var(--solutions-hero-pb)',
       }
     : undefined;
+
+  if (embedded) {
+    return (
+      <div className={cn('flex w-full min-w-0 flex-col', className)} style={style}>
+        {copy}
+      </div>
+    );
+  }
 
   return (
     <SectionShell

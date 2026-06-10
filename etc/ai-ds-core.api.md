@@ -53,13 +53,251 @@ export type AccordionSize = 'sm' | 'md' | 'lg';
 export type AccordionState = 'open' | 'closed';
 
 // @public (undocumented)
+export interface AdminAnchorItem {
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    label: string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "AdminContentDraftBase" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface AdminCaseDraft extends AdminContentDraftBase {
+    // Warning: (ae-forgotten-export) The symbol "AdminStatPair" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    businessStats: AdminStatPair[];
+    // (undocumented)
+    heroBreadcrumbs: string[];
+    // (undocumented)
+    heroSubtitle?: string;
+    // (undocumented)
+    heroTitle: string;
+    // Warning: (ae-forgotten-export) The symbol "AdminHighlightPair" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    highlights: AdminHighlightPair[];
+    // (undocumented)
+    implementedIntro?: string;
+    // (undocumented)
+    implementedItems: string[];
+    // (undocumented)
+    kind: 'case';
+    // (undocumented)
+    leadParagraphs: string[];
+    // Warning: (ae-forgotten-export) The symbol "AdminNarrativeSection" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    narrativeSections: AdminNarrativeSection[];
+    // (undocumented)
+    trailParagraphs: string[];
+}
+
+// @public (undocumented)
+export type AdminContentDraft = AdminCaseDraft | AdminEventDraft;
+
+// @public (undocumented)
+export const AdminContentEditorBlock: React_2.FC<AdminContentEditorBlockProps>;
+
+// @public (undocumented)
+export interface AdminContentEditorBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    draft: AdminContentDraft;
+    // (undocumented)
+    onBack: () => void;
+    // (undocumented)
+    onChange: (draft: AdminContentDraft) => void;
+    // (undocumented)
+    onDelete: (id: string) => void;
+    // (undocumented)
+    onPublish: (draft: AdminContentDraft) => void;
+    // (undocumented)
+    onSave: (draft: AdminContentDraft) => void;
+}
+
+// @public (undocumented)
+export type AdminContentKind = 'case' | 'event';
+
+// @public (undocumented)
+export const AdminContentListBlock: React_2.FC<AdminContentListBlockProps>;
+
+// @public (undocumented)
+export interface AdminContentListBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    items: AdminContentDraft[];
+    // (undocumented)
+    kind: AdminContentKind;
+    // (undocumented)
+    onCreate: () => void;
+    // (undocumented)
+    onDelete: (id: string) => void;
+    // (undocumented)
+    onEdit: (id: string) => void;
+}
+
+// @public (undocumented)
+export const AdminContentWorkspaceBlock: React_2.FC<AdminContentWorkspaceBlockProps>;
+
+// @public (undocumented)
+export interface AdminContentWorkspaceBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    initialSelectedId?: string;
+    // (undocumented)
+    initialView?: 'list' | 'edit';
+    // (undocumented)
+    items: AdminContentDraft[];
+    // (undocumented)
+    kind: AdminContentKind;
+    // (undocumented)
+    onItemsChange: (items: AdminContentDraft[]) => void;
+}
+
+// @public (undocumented)
+export type AdminEditorSectionId = 'general' | 'navigation' | 'hero' | 'intro' | 'stats' | 'implemented' | 'sections' | 'event-card' | 'event-body' | 'publish';
+
+// @public (undocumented)
+export interface AdminEventDraft extends AdminContentDraftBase {
+    // (undocumented)
+    date: string;
+    // (undocumented)
+    eventTitle: string;
+    // (undocumented)
+    format: 'online' | 'offline' | 'hybrid';
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    kind: 'event';
+    // (undocumented)
+    location?: string;
+    // (undocumented)
+    paragraphs: string[];
+}
+
+// @public (undocumented)
+export const AdminPageTemplate: React_2.FC<AdminPageTemplateProps>;
+
+// @public (undocumented)
+export interface AdminPageTemplateProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    defaultSection?: AdminSectionId;
+    // (undocumented)
+    initialCases: AdminCaseDraft[];
+    // (undocumented)
+    initialContentSelectedId?: string;
+    initialContentView?: 'list' | 'edit';
+    // (undocumented)
+    initialEvents: AdminEventDraft[];
+    // (undocumented)
+    initialPartners: AdminPartnerRecord[];
+    // (undocumented)
+    initialUsers: AdminUserRecord[];
+    // (undocumented)
+    logo?: AppShellBlockProps['logo'];
+    // (undocumented)
+    nav: AppShellBlockProps['nav'];
+    // (undocumented)
+    storageLabel: string;
+    // (undocumented)
+    userLabel: string;
+}
+
+// @public (undocumented)
+export interface AdminPartnerRecord {
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    imageSrc?: string;
+    // (undocumented)
+    name: string;
+}
+
+// @public (undocumented)
+export const AdminPartnersWorkspaceBlock: React_2.FC<AdminPartnersWorkspaceBlockProps>;
+
+// @public (undocumented)
+export interface AdminPartnersWorkspaceBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    onPartnersChange: (partners: AdminPartnerRecord[]) => void;
+    // (undocumented)
+    partners: AdminPartnerRecord[];
+}
+
+// @public (undocumented)
+export type AdminPublishStatus = 'draft' | 'published';
+
+// @public (undocumented)
+export type AdminSectionId = 'cases' | 'events' | 'users' | 'partners';
+
+// @public (undocumented)
+export interface AdminUserRecord {
+    // (undocumented)
+    email: string;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    lastLogin?: string;
+    // (undocumented)
+    organization: string;
+    // (undocumented)
+    passwordStatus: 'active' | 'pending' | 'expired';
+    // (undocumented)
+    role: string;
+}
+
+// @public (undocumented)
+export const AdminUsersWorkspaceBlock: React_2.FC<AdminUsersWorkspaceBlockProps>;
+
+// @public (undocumented)
+export interface AdminUsersWorkspaceBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    onUsersChange: (users: AdminUserRecord[]) => void;
+    // (undocumented)
+    users: AdminUserRecord[];
+}
+
+// @public (undocumented)
 export const aicadsEnterpriseHeroDemoContent: HeroBlockProps;
 
 // @public
 export const aicadsEnterpriseHeroMedia: JSX_2.Element;
 
+// @public (undocumented)
+export const aicadsProAdminArgs: AdminPageTemplateProps;
+
+// @public (undocumented)
+export const aicadsProAdminNav: AppShellNavItem[];
+
+// @public (undocumented)
+export const aicadsProCaseDetailArgs: CaseDetailPageTemplateProps;
+
+// @public (undocumented)
+export const aicadsProCaseStudiesContent: CaseStudiesBlockProps;
+
 // @public
 export const aicadsProEnterpriseLandingArgs: LandingPageTemplateProps;
+
+// @public (undocumented)
+export const aicadsProLoginArgs: {
+    login: LoginBlockProps;
+};
+
+// @public (undocumented)
+export const aicadsProLoginContent: LoginBlockProps;
 
 // @public
 export const aicadsProNavbarFixture: NavbarBlockProps;
@@ -74,6 +312,7 @@ export type AlertAppearance = 'warning' | 'info' | 'danger' | 'success';
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
     // (undocumented)
     appearance?: AlertAppearance;
+    closeAriaLabel?: string;
     // (undocumented)
     iconLeft?: React.ReactNode;
     // (undocumented)
@@ -98,6 +337,39 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
 
 // @public (undocumented)
 export type AlertVariant = 'basic' | 'leftBorder' | 'topBorder' | 'solid';
+
+// @public (undocumented)
+export const AppShellBlock: React_2.FC<AppShellBlockProps>;
+
+// @public (undocumented)
+export interface AppShellBlockProps {
+    // (undocumented)
+    activeId: string;
+    // (undocumented)
+    children: React_2.ReactNode;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    logo?: React_2.ReactNode;
+    // (undocumented)
+    nav: AppShellNavItem[];
+    // (undocumented)
+    onNavigate?: (id: string) => void;
+    // (undocumented)
+    storageLabel: string;
+    // (undocumented)
+    userLabel: string;
+}
+
+// @public (undocumented)
+export interface AppShellNavItem {
+    // (undocumented)
+    icon?: React_2.ReactNode;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    label: string;
+}
 
 // @public (undocumented)
 export const Autocomplete: React_2.ForwardRefExoticComponent<AutocompleteProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -425,6 +697,223 @@ export type CardState = 'base' | 'hover' | 'focus' | 'disabled';
 export type CardVariant = 'base' | 'outlined' | 'elevated' | 'filled';
 
 // @public (undocumented)
+export const CaseDetailPageTemplate: React_2.FC<CaseDetailPageTemplateProps>;
+
+// @public (undocumented)
+export interface CaseDetailPageTemplateProps {
+    // (undocumented)
+    anchorNav: Pick<CaseStudyAnchorNavProps, 'items'>;
+    // (undocumented)
+    businessResults: CaseStudyInlineStatsBlockProps;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    closingBackgroundImage?: string;
+    // (undocumented)
+    contactHero: ContactHeroBlockProps;
+    // (undocumented)
+    footer: FooterBlockProps;
+    // (undocumented)
+    hero: HeroBlockProps;
+    // (undocumented)
+    heroBackgroundImage?: string;
+    // (undocumented)
+    implemented: CaseStudyImplementedBlockProps;
+    // (undocumented)
+    intro: CaseStudyIntroBlockProps;
+    // (undocumented)
+    narrative: CaseStudySectionsBlockProps;
+    // (undocumented)
+    navbar: NavbarBlockProps;
+    // (undocumented)
+    relatedProjects: Extract<SolutionsBlockProps, {
+        variant: 'grid';
+    }>;
+}
+
+// @public (undocumented)
+export const CaseStudiesBlock: React_2.FC<CaseStudiesBlockProps>;
+
+// @public (undocumented)
+export interface CaseStudiesBlockProps {
+    // (undocumented)
+    cases: CaseStudyItem[];
+    // (undocumented)
+    className?: string;
+    embeddedInPhotoHero?: boolean;
+    // (undocumented)
+    showNavigation?: boolean;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    viewAll?: CaseStudiesViewAllAction;
+}
+
+// @public (undocumented)
+export interface CaseStudiesViewAllAction {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label?: string;
+}
+
+// @public (undocumented)
+export const CaseStudyAnchorNav: React_2.FC<CaseStudyAnchorNavProps>;
+
+// @public (undocumented)
+export interface CaseStudyAnchorNavProps {
+    // (undocumented)
+    activeId?: string;
+    // (undocumented)
+    className?: string;
+    // Warning: (ae-forgotten-export) The symbol "CaseStudyAnchorItem" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    items: CaseStudyAnchorItem[];
+    // (undocumented)
+    onNavigate?: (id: string) => void;
+}
+
+// @public (undocumented)
+export const CaseStudyArticleSplit: React_2.FC<CaseStudyArticleSplitProps>;
+
+// @public (undocumented)
+export interface CaseStudyArticleSplitProps {
+    // (undocumented)
+    children: React_2.ReactNode;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    nav: Pick<CaseStudyAnchorNavProps, 'items'>;
+}
+
+// @public (undocumented)
+export const CaseStudyContactBlock: React_2.FC<CaseStudyContactBlockProps>;
+
+// @public (undocumented)
+export interface CaseStudyContactBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    consentLabel?: React_2.ReactNode;
+    // (undocumented)
+    defaultValues?: Partial<CaseStudyContactFormValues>;
+    // (undocumented)
+    description?: string;
+    // Warning: (ae-forgotten-export) The symbol "CaseStudyContactFormLabels" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    labels?: CaseStudyContactFormLabels;
+    // (undocumented)
+    onChange?: (values: CaseStudyContactFormValues) => void;
+    // (undocumented)
+    onSubmit?: (values: CaseStudyContactFormValues) => void;
+    // (undocumented)
+    submitLabel?: string;
+    // (undocumented)
+    title?: string;
+    // Warning: (ae-forgotten-export) The symbol "CaseStudyContactFormValues" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    values?: Partial<CaseStudyContactFormValues>;
+}
+
+// @public (undocumented)
+export const CaseStudyImplementedBlock: React_2.FC<CaseStudyImplementedBlockProps>;
+
+// @public (undocumented)
+export interface CaseStudyImplementedBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    intro?: string;
+    // (undocumented)
+    items: string[];
+    // (undocumented)
+    sectionId?: string;
+    // (undocumented)
+    title?: string;
+}
+
+// @public (undocumented)
+export const CaseStudyInlineStatsBlock: React_2.FC<CaseStudyInlineStatsBlockProps>;
+
+// @public (undocumented)
+export interface CaseStudyInlineStatsBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    sectionId?: string;
+    // Warning: (ae-forgotten-export) The symbol "CaseStudyInlineStat" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    stats: CaseStudyInlineStat[];
+    // (undocumented)
+    title?: string;
+}
+
+// @public (undocumented)
+export const CaseStudyIntroBlock: React_2.FC<CaseStudyIntroBlockProps>;
+
+// @public (undocumented)
+export interface CaseStudyIntroBlockProps {
+    // (undocumented)
+    className?: string;
+    embedded?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "CaseStudyHighlight" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    highlights?: CaseStudyHighlight[];
+    leadParagraphs?: string[];
+    // @deprecated (undocumented)
+    paragraphs?: string[];
+    trailParagraphs?: string[];
+}
+
+// @public (undocumented)
+export interface CaseStudyItem {
+    cover?: React_2.ReactNode;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    imageAlt?: string;
+    imageObjectPosition?: string;
+    // (undocumented)
+    imageSrc?: string;
+    meta: string;
+    // (undocumented)
+    stats: CaseStudyStat[];
+    // (undocumented)
+    title: string;
+}
+
+// @public (undocumented)
+export const CaseStudySectionsBlock: React_2.FC<CaseStudySectionsBlockProps>;
+
+// @public (undocumented)
+export interface CaseStudySectionsBlockProps {
+    // (undocumented)
+    className?: string;
+    embedded?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "CaseStudySection" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    sections: CaseStudySection[];
+}
+
+// @public (undocumented)
+export interface CaseStudyStat {
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    value: string;
+}
+
+// @public (undocumented)
 export const Checkbox: React_2.ForwardRefExoticComponent<CheckboxProps & React_2.RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
@@ -619,6 +1108,7 @@ export interface ContactHeroBlockProps {
     defaultValues?: Partial<ContactHeroFormValues>;
     // (undocumented)
     description?: string;
+    embeddedInPhotoHero?: boolean;
     // (undocumented)
     labels?: ContactHeroFormLabels;
     // (undocumented)
@@ -1024,6 +1514,7 @@ export interface FeatureItem {
     // (undocumented)
     description: string;
     icon?: React_2.ReactNode;
+    iconSlug?: string;
     // (undocumented)
     title: string;
 }
@@ -1041,6 +1532,10 @@ export interface FeaturesBlockProps {
     eyebrow?: string;
     // (undocumented)
     features: FeatureItem[];
+    // Warning: (ae-forgotten-export) The symbol "GeneratedIconManifestEntry" needs to be exported by the entry point index.d.ts
+    generatedIcons?: Record<string, GeneratedIconManifestEntry>;
+    // (undocumented)
+    generatedIconSize?: number;
     // (undocumented)
     subtitle?: string;
     // (undocumented)
@@ -1085,6 +1580,7 @@ export interface FooterBlockProps {
     navLinks?: FooterLink[];
     // (undocumented)
     showBackToTop?: boolean;
+    showTopDivider?: boolean;
     // (undocumented)
     socialLinks?: FooterSocialLink[];
     variant?: 'minimal' | 'enterprise';
@@ -1369,6 +1865,7 @@ export interface HeroBlockProps {
     breadcrumbs?: HeroBreadcrumbItem[];
     // (undocumented)
     className?: string;
+    embedded?: boolean;
     fillViewport?: boolean;
     media?: React_2.ReactNode;
     // (undocumented)
@@ -1735,6 +2232,89 @@ export function loadLayoutSpec(spec: unknown): ResolveResult;
 
 // @public
 export function loadLayoutSpecPartial(spec: unknown): ResolveResult;
+
+// @public (undocumented)
+export const LoginBlock: React_2.FC<LoginBlockProps>;
+
+// @public (undocumented)
+export interface LoginBlockProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    defaultValues?: Partial<LoginFormValues>;
+    // (undocumented)
+    errorMessage?: string;
+    // (undocumented)
+    forgotPasswordHref?: string;
+    // (undocumented)
+    forgotPasswordLabel?: string;
+    // (undocumented)
+    labels?: LoginFormLabels;
+    // (undocumented)
+    legalLinks?: LoginLegalLink[];
+    // (undocumented)
+    logo?: React_2.ReactNode;
+    // (undocumented)
+    onChange?: (values: LoginFormValues) => void;
+    // (undocumented)
+    onSubmit?: (values: LoginFormValues) => void;
+    // (undocumented)
+    registrationHint?: React_2.ReactNode;
+    // (undocumented)
+    rememberMeLabel?: string;
+    // (undocumented)
+    submitLabel?: string;
+    // (undocumented)
+    subtitle?: string;
+    // (undocumented)
+    title?: string;
+    // (undocumented)
+    values?: Partial<LoginFormValues>;
+}
+
+// @public (undocumented)
+export interface LoginFormLabels {
+    // (undocumented)
+    password?: string;
+    // (undocumented)
+    username?: string;
+}
+
+// @public (undocumented)
+export interface LoginFormValues {
+    // (undocumented)
+    password: string;
+    // (undocumented)
+    rememberMe: boolean;
+    // (undocumented)
+    username: string;
+}
+
+// @public (undocumented)
+export interface LoginLegalLink {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    label: string;
+}
+
+// @public (undocumented)
+export const LoginPageTemplate: React_2.FC<LoginPageTemplateProps>;
+
+// @public (undocumented)
+export interface LoginPageTemplateProps extends LoginBlockProps {
+    brandBackgroundImage?: string;
+    // (undocumented)
+    brandGrainIntensity?: PhotoHeroBackdropProps['grainIntensity'];
+    // (undocumented)
+    brandImageParallaxFactor?: PhotoHeroBackdropProps['imageParallaxFactor'];
+    // Warning: (ae-forgotten-export) The symbol "PhotoHeroBackdropProps" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    brandPhotoTone?: PhotoHeroBackdropProps['photoTone'];
+    // (undocumented)
+    className?: string;
+}
 
 // @public (undocumented)
 export const LogoCloudBlock: React_2.FC<LogoCloudBlockProps>;
@@ -2773,9 +3353,10 @@ export const SolutionsBlock: React_2.FC<SolutionsBlockProps>;
 
 // Warning: (ae-forgotten-export) The symbol "SolutionsShowcaseBlockProps" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "SolutionsCatalogBlockProps" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "SolutionsGridBlockProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type SolutionsBlockProps = SolutionsShowcaseBlockProps | SolutionsCatalogBlockProps;
+export type SolutionsBlockProps = SolutionsShowcaseBlockProps | SolutionsCatalogBlockProps | SolutionsGridBlockProps;
 
 // @public (undocumented)
 export interface SolutionsViewAllAction {
@@ -2844,7 +3425,7 @@ export interface SpacingRecipe {
 }
 
 // @public (undocumented)
-export type SpacingRecipeId = 'section.hero' | 'section.hero.page' | 'section.features' | 'section.pricing' | 'section.cta' | 'section.footer' | 'section.navbar' | 'section.logos' | 'section.stats' | 'section.testimonials' | 'section.faq' | 'section.steps' | 'section.newsletter' | 'section.events' | 'section.services' | 'section.solutions' | 'section.trust' | 'section.support' | 'section.showcase-panel' | 'section.blog' | 'section.partners' | 'section.contact-hero' | 'section.why-us' | 'section.choose-us' | 'section.process' | 'section.app-shell';
+export type SpacingRecipeId = 'section.hero' | 'section.hero.page' | 'section.features' | 'section.pricing' | 'section.cta' | 'section.footer' | 'section.navbar' | 'section.logos' | 'section.stats' | 'section.testimonials' | 'section.faq' | 'section.steps' | 'section.newsletter' | 'section.events' | 'section.services' | 'section.solutions' | 'section.trust' | 'section.support' | 'section.showcase-panel' | 'section.blog' | 'section.partners' | 'section.contact-hero' | 'section.why-us' | 'section.choose-us' | 'section.process' | 'section.app-shell' | 'section.auth.login' | 'section.case-studies' | 'section.case-intro' | 'section.case-sections' | 'section.case-contact' | 'section.case-article';
 
 // @public (undocumented)
 export type SpacingSide = 'top' | 'right' | 'bottom' | 'left' | 'x' | 'y' | 'all';

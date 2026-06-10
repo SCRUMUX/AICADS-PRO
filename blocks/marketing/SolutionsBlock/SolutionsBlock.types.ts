@@ -50,4 +50,16 @@ interface SolutionsCatalogBlockProps {
   className?: string;
 }
 
-export type SolutionsBlockProps = SolutionsShowcaseBlockProps | SolutionsCatalogBlockProps;
+/** Case detail «related projects» — equal grid, no mosaic spans. */
+interface SolutionsGridBlockProps {
+  variant: 'grid';
+  title?: string;
+  solutions: SolutionItem[];
+  viewAll?: SolutionsViewAllAction;
+  className?: string;
+}
+
+export type SolutionsBlockProps =
+  | SolutionsShowcaseBlockProps
+  | SolutionsCatalogBlockProps
+  | SolutionsGridBlockProps;

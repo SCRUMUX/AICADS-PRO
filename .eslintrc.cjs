@@ -41,6 +41,7 @@ module.exports = {
     'node_modules/',
     'storybook-static/',
     'figma-plugin/figma-ai-ds-code.js',
+    'modules/synaptik-icon-builder/ui/',
   ],
   rules: {
     // Default: behavior libs are forbidden everywhere.

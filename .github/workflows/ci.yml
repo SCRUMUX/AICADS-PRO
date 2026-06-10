@@ -112,6 +112,10 @@ jobs:
       - name: Install root deps
         run: npm ci
 
+      - name: Install Synaptik CLI deps
+        working-directory: modules/synaptik-icon-builder
+        run: npm ci
+
       - name: Build Synaptik CLI
         working-directory: modules/synaptik-icon-builder
         run: npm run build

@@ -15,3 +15,6 @@ export { BlockAction, type BlockActionProps } from './BlockAction';
 export { BlockSectionHeader, type BlockSectionHeaderProps } from './BlockSectionHeader';
 export { FeatureCard, type FeatureCardProps } from './FeatureCard';
 export { BlockGrid, type BlockGridProps } from './BlockGrid';
+export { BrandPhotoHeroSection, type BrandPhotoHeroSectionProps } from './BrandPhotoHeroSection';
+export { MarketingAboveFold, type MarketingAboveFoldProps } from './MarketingAboveFold';
+export { PhotoHeroBackdrop, type PhotoHeroBackdropProps } from './PhotoHeroBackdrop';
