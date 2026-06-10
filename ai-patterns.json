@@ -266,6 +266,20 @@
       "uxReference": "cortel.cloud",
       "whenToUse": "Case study showcase — muted band, 2-row mosaic grid (3 equal + 6/3/3), mobile scroll strip, inverse hover reveal with brand gradient cover"
     },
+    "marketing.solutions.grid": {
+      "block": "SolutionsBlock",
+      "recipe": "section.solutions",
+      "category": "marketing",
+      "primitives": [
+        "Card",
+        "Button",
+        "Badge",
+        "SectionHeader"
+      ],
+      "storyReference": "Blocks/Marketing/SolutionsBlock",
+      "uxReference": "cortel.cloud/importozameshhenie-vmware-podderzhka-i-obsluzhivanie-spacevm",
+      "whenToUse": "Case detail related projects — equal 3-col SolutionCard grid with category/client/date meta, no mosaic spans"
+    },
     "marketing.solutions.catalog": {
       "block": "SolutionsBlock",
       "recipe": "section.solutions",
@@ -418,6 +432,117 @@
       "storyReference": "Blocks/Marketing/FooterBlock",
       "uxReference": "cortel.cloud",
       "whenToUse": "Brand footer after contact hero — gradient divider, logo column, 3-col nav/contacts/legal grid, back-to-top"
+    },
+    "marketing.auth.login": {
+      "block": "LoginBlock",
+      "recipe": "section.auth.login",
+      "category": "marketing",
+      "primitives": [
+        "Input",
+        "Button",
+        "Checkbox",
+        "Link",
+        "Alert"
+      ],
+      "storyReference": "Blocks/Marketing/LoginBlock",
+      "uxReference": "console.cortel.cloud",
+      "whenToUse": "Auth login — Cortel console split-screen: brand decor panel + white form panel, login/password, remember+forgot row, submit, registration hint, legal footer links"
+    },
+    "marketing.case-studies.band": {
+      "block": "CaseStudiesBlock",
+      "recipe": "section.case-studies",
+      "category": "marketing",
+      "primitives": ["Card", "SectionHeader", "Button"],
+      "storyReference": "Blocks/Marketing/CaseStudiesBlock",
+      "whenToUse": "Case studies carousel/grid band — metric cards with client stories, optional view-all"
+    },
+    "marketing.case-detail.intro": {
+      "block": "CaseStudyIntroBlock",
+      "recipe": "section.case-intro",
+      "category": "marketing",
+      "primitives": ["Paragraph"],
+      "storyReference": "Blocks/Marketing/CaseStudyIntroBlock",
+      "whenToUse": "Case study intro — lead prose + brand highlight metric pairs"
+    },
+    "marketing.case-detail.inline-stats": {
+      "block": "CaseStudyInlineStatsBlock",
+      "recipe": "section.case-article",
+      "category": "marketing",
+      "primitives": ["Card"],
+      "storyReference": "Blocks/Marketing/CaseStudyInlineStatsBlock",
+      "whenToUse": "Case study business results — gray stat cards in article column"
+    },
+    "marketing.case-detail.implemented": {
+      "block": "CaseStudyImplementedBlock",
+      "recipe": "section.case-article",
+      "category": "marketing",
+      "primitives": ["Paragraph", "List"],
+      "storyReference": "Blocks/Marketing/CaseStudyImplementedBlock",
+      "whenToUse": "Case study delivered scope — intro + bullet list of implemented items"
+    },
+    "marketing.case-detail.sections": {
+      "block": "CaseStudySectionsBlock",
+      "recipe": "section.case-sections",
+      "category": "marketing",
+      "primitives": ["Paragraph", "List"],
+      "storyReference": "Blocks/Marketing/CaseStudySectionsBlock",
+      "whenToUse": "Case study narrative — titled sections with prose, bullets, and quotes"
+    },
+    "marketing.case-detail.anchor-nav": {
+      "block": "CaseStudyAnchorNav",
+      "recipe": "section.case-article",
+      "category": "marketing",
+      "primitives": ["Link"],
+      "storyReference": "Blocks/Marketing/CaseStudyAnchorNav",
+      "whenToUse": "Case study sticky anchor nav — scroll-spy section links in article split"
+    },
+    "marketing.case-detail.contact": {
+      "block": "CaseStudyContactBlock",
+      "recipe": "section.case-contact",
+      "category": "marketing",
+      "primitives": ["Input", "Button", "Textarea"],
+      "storyReference": "Blocks/Marketing/CaseStudyContactBlock",
+      "whenToUse": "Case study contact CTA — split copy + form on surface band"
+    },
+    "marketing.app-shell": {
+      "block": "AppShellBlock",
+      "recipe": "section.app-shell",
+      "category": "marketing",
+      "primitives": [],
+      "storyReference": "Blocks/Marketing/AppShellBlock",
+      "whenToUse": "Dashboard app shell — fixed sidebar nav + top bar (context label, user) + scrollable main; mobile horizontal nav pills"
+    },
+    "marketing.admin.content-list": {
+      "block": "AdminContentListBlock",
+      "recipe": "section.app-shell",
+      "category": "marketing",
+      "primitives": ["Input", "Button", "Table", "Chip"],
+      "storyReference": "Screens/AICADS PRO Admin",
+      "whenToUse": "Admin content index — searchable table of case studies or events with create/edit/delete actions"
+    },
+    "marketing.admin.content-editor": {
+      "block": "AdminContentEditorBlock",
+      "recipe": "section.app-shell",
+      "category": "marketing",
+      "primitives": ["Input", "Textarea", "Select", "Button"],
+      "storyReference": "Screens/AICADS PRO Admin",
+      "whenToUse": "Shared schema editor — anchor-nav sections for case study or event drafts"
+    },
+    "marketing.admin.users": {
+      "block": "AdminUsersWorkspaceBlock",
+      "recipe": "section.app-shell",
+      "category": "marketing",
+      "primitives": ["Table", "Modal", "Input", "Select", "Button", "Toast"],
+      "storyReference": "Screens/AICADS PRO Admin",
+      "whenToUse": "Admin user management — generate/change/send passwords, add users (front-only mock)"
+    },
+    "marketing.admin.partners": {
+      "block": "AdminPartnersWorkspaceBlock",
+      "recipe": "section.app-shell",
+      "category": "marketing",
+      "primitives": ["FileUpload", "Input", "Button", "Toast"],
+      "storyReference": "Screens/AICADS PRO Admin",
+      "whenToUse": "Partner asset grid — upload logo, name, link; front-only CRUD"
     }
   },
   "pageTemplates": {
@@ -476,6 +601,45 @@
       "component": "LandingPageTemplate",
       "fixtureReference": "aicadsProNavbarFixture",
       "notes": "Use LandingPageTemplate with navbar.overlay=true; hero.appearance auto-coerces to brand when overlay is set."
+    },
+    "marketing.admin.default": {
+      "description": "AICADS PRO admin console — case studies/events editor, users, partner assets",
+      "sections": [
+        "marketing.app-shell",
+        "marketing.admin.content-list",
+        "marketing.admin.content-editor",
+        "marketing.admin.users",
+        "marketing.admin.partners"
+      ],
+      "component": "AdminPageTemplate",
+      "fixtureReference": "aicadsProAdminArgs",
+      "notes": "Storybook: Screens/AICADS PRO Admin. Front-only local state; shared schema editor for cases and events; password modals + partner logo CRUD. No API or routing."
+    },
+    "marketing.auth.login.default": {
+      "description": "AICADS PRO login — Cortel console split-screen, brand decor left + white form right",
+      "sections": [
+        "marketing.auth.login"
+      ],
+      "component": "LoginPageTemplate",
+      "fixtureReference": "aicadsProLoginArgs",
+      "notes": "Storybook: Screens/AICADS PRO Login. Split 50/50 desktop; login + password, remember/forgot row, registration hint, legal footer."
+    },
+    "marketing.case-detail.default": {
+      "description": "AICADS PRO case detail — Cortel long-read with anchor nav and landing closing band",
+      "sections": [
+        "marketing.hero.page",
+        "marketing.case-detail.intro",
+        "marketing.case-detail.anchor-nav",
+        "marketing.case-detail.inline-stats",
+        "marketing.case-detail.implemented",
+        "marketing.case-detail.sections",
+        "marketing.solutions.grid",
+        "marketing.contact.hero",
+        "marketing.footer.enterprise"
+      ],
+      "component": "CaseDetailPageTemplate",
+      "fixtureReference": "aicadsProCaseDetailArgs",
+      "notes": "Storybook: Screens/AICADS PRO Case Detail. Photo-hero above-fold + overlay navbar, white intro with brand highlight metrics, sticky anchor nav + split body, related projects grid, BrandPhotoHeroSection closing with contact + footer."
     }
   }
 }

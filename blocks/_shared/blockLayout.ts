@@ -895,3 +895,410 @@ export const FAQ_ENTERPRISE_ANSWER_CLASS = cn(
   'desktop:px-[var(--space-inset-xl)] desktop:pb-[var(--space-inset-xl)] desktop:pt-[var(--space-8)]',
   '[&_a]:text-[var(--color-brand-primary)] [&_a]:no-underline [&_a]:hover:underline',
 );
+
+/** Auth login — Cortel console: split brand decor + white form panel. */
+export const LOGIN_PAGE_SPLIT_CLASS = cn(
+  'flex min-h-screen w-full min-w-0 flex-col',
+  'min-[1024px]:flex-row',
+);
+
+export const LOGIN_BRAND_PANEL_CLASS = cn(
+  'relative hidden min-h-[var(--space-240)] overflow-hidden',
+  'bg-[var(--color-brand-primary)] text-[var(--color-text-on-brand)]',
+  'min-[1024px]:flex min-[1024px]:min-h-screen min-[1024px]:min-w-0 min-[1024px]:flex-1',
+);
+
+export const LOGIN_FORM_PANEL_CLASS = cn(
+  'flex min-h-screen min-w-0 flex-1 flex-col',
+  'bg-[var(--color-surface-1)] text-[var(--color-text-primary)]',
+);
+
+export const LOGIN_FORM_INNER_CLASS = cn(
+  'flex w-full min-w-0 flex-1 flex-col justify-center',
+  'px-[var(--space-inset-l)] py-[var(--space-section-y-l)]',
+  'min-[1024px]:px-[var(--space-60)] min-[1024px]:py-[var(--space-section-y-xl)]',
+);
+
+export const LOGIN_FORM_COLUMN_CLASS = cn(
+  'mx-auto w-full min-w-0 max-w-[var(--space-480)]',
+);
+
+export const LOGIN_FORM_HEADER_CLASS = cn(
+  'mb-[var(--space-section-content-m)] flex w-full min-w-0 flex-col items-start',
+  'gap-[var(--space-section-stack-s)]',
+);
+
+export const LOGIN_FORM_STACK_CLASS = cn(
+  'flex w-full min-w-0 flex-col gap-[var(--space-section-stack-m)]',
+);
+
+export const LOGIN_REMEMBER_FORGOT_ROW_CLASS = cn(
+  'flex w-full min-w-0 items-center justify-between gap-[var(--space-section-stack-m)]',
+);
+
+export const LOGIN_REGISTRATION_HINT_CLASS = cn(
+  'm-0 text-style-body-sm text-[var(--color-text-secondary)]',
+);
+
+export const LOGIN_LEGAL_FOOTER_CLASS = cn(
+  'mt-auto flex w-full min-w-0 flex-wrap items-center justify-center gap-[var(--space-section-stack-m)]',
+  'border-t border-solid border-[var(--color-border-base)]',
+  'px-[var(--space-inset-l)] py-[var(--space-section-stack-m)]',
+  'min-[1024px]:px-[var(--space-60)]',
+);
+
+/** @deprecated Use LOGIN_PAGE_SPLIT_CLASS — kept for import stability. */
+export const LOGIN_PAGE_CENTER_CLASS = LOGIN_FORM_INNER_CLASS;
+
+/** @deprecated Split layout — form is flat on white panel, no card shell. */
+export const LOGIN_CARD_CLASS = LOGIN_FORM_COLUMN_CLASS;
+
+/** @deprecated Use LOGIN_FORM_HEADER_CLASS */
+export const LOGIN_CARD_HEADER_CLASS = LOGIN_FORM_HEADER_CLASS;
+
+/** Case study detail — unified long-read article stack (Cortel case page). */
+export const CASE_STUDY_ARTICLE_STACK_CLASS = cn(
+  'flex w-full min-w-0 flex-col',
+  'gap-[var(--space-section-content-l)]',
+);
+
+/** Case study — desktop split: sticky anchor nav + content column. */
+export const CASE_STUDY_ARTICLE_SPLIT_CLASS = cn(
+  'grid w-full min-w-0',
+  'grid-cols-1 gap-[var(--space-section-content-l)]',
+  'min-[1024px]:grid-cols-[minmax(0,var(--space-280))_minmax(0,1fr)]',
+  'min-[1024px]:items-start min-[1024px]:gap-[var(--space-section-content-l)]',
+);
+
+export const CASE_STUDY_ARTICLE_CONTENT_STACK_CLASS = cn(
+  'flex w-full min-w-0 max-w-[var(--space-800)] flex-col',
+  'gap-[var(--space-section-content-l)]',
+);
+
+export const CASE_STUDY_ANCHOR_NAV_STICKY_CLASS = cn(
+  'hidden min-[1024px]:block',
+  'sticky z-[calc(var(--z-header)-2)] self-start',
+  'top-[var(--navbar-chrome-height,0px)]',
+  'pt-[var(--space-section-stack-s)]',
+);
+
+export const CASE_STUDY_ANCHOR_LIST_CLASS = cn(
+  'm-0 flex list-none flex-col gap-[var(--space-section-stack-s)] p-0',
+);
+
+/** Side nav link — case-study anchor nav, app-shell sidebar, admin editor. */
+export const BLOCK_SIDE_NAV_LINK_CLASS = cn(
+  'block rounded-[var(--radius-section)] px-[var(--space-inset-m)] py-[var(--space-section-stack-s)]',
+  'text-left text-style-body text-[var(--color-text-secondary)] no-underline',
+  'transition-colors duration-150',
+  'hover:text-[var(--color-text-primary)]',
+);
+
+export const BLOCK_SIDE_NAV_LINK_ACTIVE_CLASS = cn(
+  BLOCK_SIDE_NAV_LINK_CLASS,
+  'bg-[var(--color-surface-2)] font-medium text-[var(--color-text-primary)]',
+);
+
+export const CASE_STUDY_ANCHOR_LINK_CLASS = cn(BLOCK_SIDE_NAV_LINK_CLASS, 'w-full');
+
+export const CASE_STUDY_ANCHOR_LINK_ACTIVE_CLASS = cn(
+  BLOCK_SIDE_NAV_LINK_ACTIVE_CLASS,
+  'w-full',
+);
+
+/** Compact gray stat card — case study inline stats. */
+export const BLOCK_COMPACT_STAT_CARD_CLASS = cn(
+  BLOCK_CARD_COMPACT_CLASS,
+  BLOCK_CARD_COMPACT_INSET_CLASS,
+  'flex min-w-0 flex-col gap-[var(--space-section-stack-s)]',
+  'bg-[var(--color-surface-2)]',
+);
+
+export const CASE_STUDY_STAT_CARD_CLASS = BLOCK_COMPACT_STAT_CARD_CLASS;
+
+/** Case study inline stats — 2-col grid inside article column. */
+export const CASE_STUDY_INLINE_STATS_GRID_CLASS = cn(
+  'grid w-full min-w-0',
+  'grid-cols-1 gap-[var(--space-section-content-m)]',
+  'min-[768px]:grid-cols-2 min-[768px]:gap-x-[var(--space-section-content-l)]',
+);
+
+export const CASE_STUDY_INLINE_STAT_VALUE_CLASS = cn(
+  'm-0 font-semibold text-style-h2 text-[var(--color-text-primary)]',
+);
+
+export const CASE_STUDY_INLINE_STAT_LABEL_CLASS = cn(
+  'm-0 text-style-body-lg text-[var(--color-text-secondary)]',
+);
+
+export const BLOCK_COMPACT_STAT_VALUE_CLASS = CASE_STUDY_INLINE_STAT_VALUE_CLASS;
+export const BLOCK_COMPACT_STAT_LABEL_CLASS = CASE_STUDY_INLINE_STAT_LABEL_CLASS;
+
+/** Case study detail — intro prose column (Cortel long-read). */
+export const CASE_STUDY_PROSE_CLASS = cn(
+  'flex w-full min-w-0 max-w-[var(--space-800)] flex-col',
+  'gap-[var(--space-section-stack-m)]',
+);
+
+export const CASE_STUDY_PROSE_PARAGRAPH_CLASS = cn(
+  'm-0 text-style-body-lg text-[var(--color-text-secondary)]',
+  'min-[1024px]:text-style-body-xl',
+);
+
+/** Case study intro — highlight metric pairs below prose. */
+export const CASE_STUDY_HIGHLIGHTS_GRID_CLASS = cn(
+  'grid w-full min-w-0 max-w-[var(--space-800)]',
+  'grid-cols-1 gap-[var(--space-section-content-m)]',
+  'min-[768px]:grid-cols-2 min-[768px]:gap-x-[var(--space-section-content-l)]',
+);
+
+export const CASE_STUDY_HIGHLIGHT_CELL_CLASS = cn(
+  'flex min-w-0 flex-col gap-[var(--space-section-stack-s)]',
+);
+
+export const CASE_STUDY_HIGHLIGHT_LABEL_CLASS = cn(
+  'm-0 text-style-body text-[var(--color-text-secondary)]',
+);
+
+export const CASE_STUDY_HIGHLIGHT_VALUE_CLASS = cn(
+  'm-0 font-semibold text-style-h3 text-[var(--color-brand-primary)]',
+  'min-[1024px]:text-style-h2',
+);
+
+/** Case study narrative sections stack. */
+export const CASE_STUDY_SECTIONS_STACK_CLASS = cn(
+  'flex w-full min-w-0 flex-col',
+  'gap-[var(--space-section-content-l)]',
+);
+
+export const CASE_STUDY_SECTION_TITLE_CLASS = cn(
+  'm-0 font-medium text-style-h2 text-[var(--color-text-primary)]',
+);
+
+export const CASE_STUDY_SECTION_BODY_CLASS = cn(
+  'flex flex-col gap-[var(--space-section-stack-m)]',
+);
+
+export const CASE_STUDY_SECTION_PARAGRAPH_CLASS = CASE_STUDY_PROSE_PARAGRAPH_CLASS;
+
+export const CASE_STUDY_BULLETS_CLASS = cn(
+  'm-0 flex flex-col gap-[var(--space-section-stack-s)] pl-[var(--space-inset-m)]',
+  'text-style-body-lg text-[var(--color-text-secondary)] min-[1024px]:text-style-body-xl',
+  'list-disc marker:text-[var(--color-brand-primary)]',
+);
+
+export const CASE_STUDY_QUOTE_CLASS = cn(
+  'relative m-0 border-0 border-l-[var(--space-4)] border-solid border-[var(--color-brand-primary)]',
+  'py-[var(--space-section-stack-s)] pl-[var(--space-inset-l)]',
+  'text-style-body-lg italic text-[var(--color-text-primary)]',
+  'min-[1024px]:text-style-body-xl',
+);
+
+export const CASE_STUDY_QUOTE_ATTRIBUTION_CLASS = cn(
+  'mt-[var(--space-section-stack-m)] not-italic text-style-body-sm text-[var(--color-text-secondary)]',
+);
+
+/** Case study contact — surface split + white form card override. */
+export const CASE_STUDY_CONTACT_SPLIT_CLASS = CONTACT_HERO_SPLIT_CLASS;
+
+export const CASE_STUDY_CONTACT_COPY_CLASS = CONTACT_HERO_COPY_CLASS;
+
+export const CASE_STUDY_CONTACT_DESCRIPTION_CLASS = cn(
+  'mt-[var(--space-section-stack-m)] text-balance text-style-body-lg text-[var(--color-text-secondary)]',
+  'min-[1024px]:mt-[var(--space-section-content-m)] min-[1024px]:max-w-[var(--space-440)]',
+);
+
+export const CASE_STUDY_CONTACT_FORM_WRAP_CLASS = cn(
+  CONTACT_HERO_FORM_COLUMN_CLASS,
+  '[&_form]:rounded-[var(--radius-section)]',
+  '[&_form]:border [&_form]:border-solid [&_form]:border-[var(--color-border-base)]',
+  '[&_form]:bg-[var(--color-surface-1)]',
+  '[&_form]:shadow-elevation-1',
+  '[&_form]:backdrop-blur-none',
+  '[&_label]:text-[var(--color-text-secondary)] [&_label]:opacity-100',
+  'min-[1024px]:[&_form]:rounded-[var(--radius-large)]',
+);
+
+/** App shell — dashboard sidebar + main (console / admin). */
+export const APP_SHELL_ROOT_CLASS = cn(
+  'flex min-h-[100svh] w-full bg-[var(--color-surface-1)]',
+);
+
+/** Shared header row — sidebar logo + main topbar (same height and inset). */
+export const APP_SHELL_CHROME_ROW_CLASS = cn(
+  'flex shrink-0 items-center',
+  'min-h-[var(--space-48)]',
+  'py-[var(--space-inset-m)]',
+);
+
+export const APP_SHELL_SIDEBAR_CLASS = cn(
+  'hidden min-h-[100svh] min-[1024px]:flex',
+  'w-[var(--space-280)] shrink-0 flex-col',
+  'border-r border-solid border-[var(--color-border-base)]',
+  'bg-[var(--color-surface-1)]',
+);
+
+export const APP_SHELL_SIDEBAR_HEADER_CLASS = cn(
+  APP_SHELL_CHROME_ROW_CLASS,
+  'border-b border-solid border-[var(--color-border-base)]',
+  'px-[var(--space-inset-l)]',
+);
+
+export const APP_SHELL_SIDEBAR_LOGO_CLASS = cn(
+  'm-0 font-semibold text-style-h4 text-[var(--color-brand-primary)]',
+);
+
+export const APP_SHELL_SIDEBAR_NAV_CLASS = cn(
+  'm-0 flex list-none flex-col gap-[var(--space-section-stack-s)] p-0',
+  'px-[var(--space-inset-l)] py-[var(--space-inset-m)]',
+);
+
+export const APP_SHELL_MAIN_WRAP_CLASS = cn(
+  'flex min-h-[100svh] min-w-0 flex-1 flex-col',
+);
+
+export const APP_SHELL_TOPBAR_CLASS = cn(
+  APP_SHELL_CHROME_ROW_CLASS,
+  'justify-between gap-[var(--space-section-content-m)]',
+  'border-b border-solid border-[var(--color-border-base)]',
+  'bg-[var(--color-surface-1)] px-[var(--space-inset-l)]',
+);
+
+export const APP_SHELL_TOPBAR_CONTEXT_CLASS = cn(
+  'm-0 min-w-0 font-medium text-style-h4 text-[var(--color-text-primary)]',
+);
+
+export const APP_SHELL_TOPBAR_USER_CLASS = cn(
+  'shrink-0 text-style-body-sm text-[var(--color-text-secondary)]',
+);
+
+export const APP_SHELL_MOBILE_NAV_CLASS = cn(
+  'flex shrink-0 overflow-x-auto min-[1024px]:hidden',
+  'gap-[var(--space-section-stack-s)]',
+  'border-b border-solid border-[var(--color-border-base)]',
+  'px-[var(--space-inset-l)] py-[var(--space-inset-s)]',
+);
+
+export const APP_SHELL_MOBILE_NAV_LIST_CLASS = cn(
+  'm-0 flex list-none gap-[var(--space-section-stack-s)] p-0',
+);
+
+export const APP_SHELL_NAV_ICON_ROW_CLASS = cn(
+  'inline-flex items-center gap-[var(--space-section-stack-s)]',
+);
+
+export const APP_SHELL_NAV_LINK_CLASS = cn(BLOCK_SIDE_NAV_LINK_CLASS, 'whitespace-nowrap');
+
+export const APP_SHELL_NAV_LINK_ACTIVE_CLASS = cn(
+  BLOCK_SIDE_NAV_LINK_ACTIVE_CLASS,
+  'whitespace-nowrap',
+);
+
+export const APP_SHELL_MAIN_CLASS = cn(
+  'flex min-h-0 flex-1 flex-col min-w-0 overflow-y-auto',
+);
+
+export const APP_SHELL_MAIN_INNER_CLASS = cn(
+  'flex min-h-0 w-full flex-1 flex-col',
+  'gap-[var(--space-content-s)]',
+  'px-[var(--space-inset-l)] py-[var(--space-inset-m)]',
+);
+
+/** Admin panel — app-shell workspaces (content, users, partner assets). */
+export const ADMIN_WORKSPACE_CLASS = cn(
+  'flex w-full min-w-0 flex-col gap-[var(--space-section-content-m)]',
+);
+
+export const ADMIN_TOOLBAR_CLASS = cn(
+  'flex w-full min-w-0 flex-wrap items-center justify-between gap-[var(--space-section-content-m)]',
+);
+
+export const ADMIN_TOOLBAR_TITLE_CLASS = cn(
+  'm-0 font-medium text-style-h4 text-[var(--color-text-primary)]',
+);
+
+export const ADMIN_TOOLBAR_ACTIONS_CLASS = cn(
+  'flex min-w-0 flex-wrap items-center gap-[var(--space-section-stack-s)]',
+);
+
+export const ADMIN_TABLE_WRAP_CLASS = cn('w-full min-w-0 overflow-x-auto');
+
+export const ADMIN_EDITOR_SPLIT_CLASS = cn(
+  'grid w-full min-w-0',
+  'grid-cols-1 gap-[var(--space-section-content-m)]',
+  'min-[1024px]:grid-cols-[var(--space-240)_minmax(0,1fr)] min-[1024px]:gap-[var(--space-section-content-l)]',
+);
+
+export const ADMIN_EDITOR_NAV_STICKY_CLASS = cn(
+  'min-[1024px]:sticky min-[1024px]:self-start',
+  'min-[1024px]:top-[var(--space-section-stack-m)]',
+);
+
+export const ADMIN_EDITOR_NAV_LIST_CLASS = cn(
+  'm-0 flex list-none flex-col gap-[var(--space-section-stack-s)] p-0',
+  'max-[1023px]:flex-row max-[1023px]:overflow-x-auto max-[1023px]:pb-[var(--space-inset-s)]',
+);
+
+export const ADMIN_EDITOR_NAV_LINK_CLASS = cn(
+  BLOCK_SIDE_NAV_LINK_CLASS,
+  'whitespace-nowrap max-[1023px]:shrink-0',
+);
+
+export const ADMIN_EDITOR_NAV_LINK_ACTIVE_CLASS = cn(
+  BLOCK_SIDE_NAV_LINK_ACTIVE_CLASS,
+  'whitespace-nowrap max-[1023px]:shrink-0',
+);
+
+export const ADMIN_EDITOR_FORM_PANEL_CLASS = cn(
+  BLOCK_CARD_STANDARD_SHELL_CLASS,
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'flex min-w-0 flex-col gap-[var(--space-section-content-m)]',
+  'bg-[var(--color-surface-1)]',
+);
+
+export const ADMIN_FORM_STACK_CLASS = cn(
+  'flex w-full min-w-0 flex-col gap-[var(--space-section-stack-m)]',
+);
+
+export const ADMIN_FORM_SECTION_TITLE_CLASS = cn(
+  'm-0 font-medium text-style-h4 text-[var(--color-text-primary)]',
+);
+
+export const ADMIN_FORM_FIELD_LABEL_CLASS = cn(
+  'mb-[var(--space-6)] block text-style-body font-medium text-[var(--color-text-secondary)]',
+);
+
+export const ADMIN_REPEATABLE_ITEM_CLASS = cn(
+  BLOCK_CARD_STANDARD_SHELL_CLASS,
+  BLOCK_CARD_STANDARD_INSET_CLASS,
+  'flex min-w-0 flex-col gap-[var(--space-section-stack-m)]',
+  'bg-[var(--color-surface-2)]',
+);
+
+export const ADMIN_REPEATABLE_ACTIONS_CLASS = cn(
+  'flex flex-wrap items-center gap-[var(--space-section-stack-s)]',
+);
+
+export const ADMIN_PARTNER_GRID_CLASS = cn(
+  'grid w-full min-w-0',
+  'grid-cols-2 gap-[var(--space-section-content-m)]',
+  'min-[768px]:grid-cols-3 min-[1024px]:grid-cols-4',
+);
+
+export const ADMIN_PARTNER_TILE_CLASS = cn(
+  BLOCK_CARD_COMPACT_CLASS,
+  BLOCK_CARD_COMPACT_INSET_CLASS,
+  'relative flex min-w-0 flex-col gap-[var(--space-section-stack-s)]',
+  'bg-[var(--color-surface-2)]',
+);
+
+export const ADMIN_PARTNER_LOGO_CLASS = cn(
+  'mx-auto h-[var(--space-48)] w-full max-w-[var(--space-120)] object-contain',
+);
+
+export const ADMIN_EMPTY_STATE_CLASS = cn(
+  'flex w-full min-w-0 flex-col items-center justify-center gap-[var(--space-section-stack-m)]',
+  'rounded-[var(--radius-section)] border border-dashed border-[var(--color-border-base)]',
+  'bg-[var(--color-surface-2)] px-[var(--space-inset-l)] py-[var(--space-section-content-l)]',
+  'text-center text-style-body text-[var(--color-text-secondary)]',
+);

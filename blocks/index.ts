@@ -110,6 +110,76 @@ export type { ProcessBlockProps, ProcessStepItem } from './marketing/ProcessBloc
 export { LandingPageTemplate } from './marketing/LandingPageTemplate';
 export type { LandingPageTemplateProps } from './marketing/LandingPageTemplate';
 
+export { LoginBlock } from './marketing/LoginBlock';
+export type { LoginBlockProps, LoginFormLabels, LoginFormValues, LoginLegalLink } from './marketing/LoginBlock';
+
+export { LoginPageTemplate } from './marketing/LoginPageTemplate';
+export type { LoginPageTemplateProps } from './marketing/LoginPageTemplate';
+
+export { CaseStudiesBlock } from './marketing/CaseStudiesBlock';
+export type {
+  CaseStudiesBlockProps,
+  CaseStudyItem,
+  CaseStudyStat,
+  CaseStudiesViewAllAction,
+} from './marketing/CaseStudiesBlock';
+
+export { CaseStudyIntroBlock } from './marketing/CaseStudyIntroBlock';
+export type { CaseStudyIntroBlockProps } from './marketing/CaseStudyIntroBlock';
+
+export { CaseStudyInlineStatsBlock } from './marketing/CaseStudyInlineStatsBlock';
+export type { CaseStudyInlineStatsBlockProps } from './marketing/CaseStudyInlineStatsBlock';
+
+export { CaseStudyImplementedBlock } from './marketing/CaseStudyImplementedBlock';
+export type { CaseStudyImplementedBlockProps } from './marketing/CaseStudyImplementedBlock';
+
+export { CaseStudySectionsBlock } from './marketing/CaseStudySectionsBlock';
+export type { CaseStudySectionsBlockProps } from './marketing/CaseStudySectionsBlock';
+
+export { CaseStudyAnchorNav } from './marketing/CaseStudyAnchorNav';
+export type { CaseStudyAnchorNavProps } from './marketing/CaseStudyAnchorNav';
+
+export { CaseStudyArticleSplit } from './marketing/CaseStudyArticleSplit';
+export type { CaseStudyArticleSplitProps } from './marketing/CaseStudyArticleSplit';
+
+export { CaseStudyContactBlock } from './marketing/CaseStudyContactBlock';
+export type { CaseStudyContactBlockProps } from './marketing/CaseStudyContactBlock';
+
+export { CaseDetailPageTemplate } from './marketing/CaseDetailPageTemplate';
+export type { CaseDetailPageTemplateProps } from './marketing/CaseDetailPageTemplate';
+
+export { AppShellBlock } from './marketing/AppShellBlock';
+export type { AppShellBlockProps, AppShellNavItem } from './marketing/AppShellBlock';
+
+export { AdminContentListBlock } from './marketing/AdminContentListBlock';
+export type { AdminContentListBlockProps } from './marketing/AdminContentListBlock';
+
+export { AdminContentEditorBlock } from './marketing/AdminContentEditorBlock';
+export type {
+  AdminContentEditorBlockProps,
+  AdminAnchorItem,
+  AdminCaseDraft,
+  AdminContentDraft,
+  AdminContentKind,
+  AdminEditorSectionId,
+  AdminEventDraft,
+  AdminPartnerRecord,
+  AdminPublishStatus,
+  AdminUserRecord,
+} from './marketing/AdminContentEditorBlock';
+
+export { AdminContentWorkspaceBlock } from './marketing/AdminContentWorkspaceBlock';
+export type { AdminContentWorkspaceBlockProps } from './marketing/AdminContentWorkspaceBlock';
+
+export { AdminUsersWorkspaceBlock } from './marketing/AdminUsersWorkspaceBlock';
+export type { AdminUsersWorkspaceBlockProps } from './marketing/AdminUsersWorkspaceBlock';
+
+export { AdminPartnersWorkspaceBlock } from './marketing/AdminPartnersWorkspaceBlock';
+export type { AdminPartnersWorkspaceBlockProps } from './marketing/AdminPartnersWorkspaceBlock';
+
+export { AdminPageTemplate } from './marketing/AdminPageTemplate';
+export type { AdminPageTemplateProps, AdminSectionId } from './marketing/AdminPageTemplate';
+
 /** Enterprise landing demo fixtures — reference payloads for consumer apps. */
 export {
   aicadsEnterpriseHeroDemoContent,
@@ -117,3 +187,7 @@ export {
   withEnterpriseHeroMedia,
 } from './marketing/marketingDemoContent';
 export { aicadsProEnterpriseLandingArgs } from './marketing/enterpriseLandingFixtures';
+export { aicadsProAdminArgs, aicadsProAdminNav } from './marketing/aicadsProAdminFixtures';
+export { aicadsProLoginArgs, aicadsProLoginContent } from './marketing/aicadsProLoginFixtures';
+export { aicadsProCaseDetailArgs } from './marketing/aicadsProCaseDetailFixtures';
+export { aicadsProCaseStudiesContent } from './marketing/aicadsProCaseStudiesFixtures';

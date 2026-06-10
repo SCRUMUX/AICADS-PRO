@@ -31,7 +31,13 @@ export type SpacingRecipeId =
   | 'section.why-us'
   | 'section.choose-us'
   | 'section.process'
-  | 'section.app-shell';
+  | 'section.app-shell'
+  | 'section.auth.login'
+  | 'section.case-studies'
+  | 'section.case-intro'
+  | 'section.case-sections'
+  | 'section.case-contact'
+  | 'section.case-article';
 
 export type RecipeMaxWidth = 'mobile' | 'tablet' | 'desktop' | 'full';
 
@@ -173,6 +179,36 @@ export const SPACING_RECIPES: Record<SpacingRecipeId, SpacingRecipe> = {
     sectionPaddingY: 'var(--space-layout-s)',
     innerGap: 'var(--space-content-s)',
     maxWidth: 'full',
+  },
+  'section.auth.login': {
+    sectionPaddingY: 'var(--space-layout-s)',
+    innerGap: 'var(--space-content-s)',
+    maxWidth: 'full',
+  },
+  'section.case-studies': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.case-intro': {
+    sectionPaddingY: 'var(--space-section-y-m)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.case-sections': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.case-contact': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
+  },
+  'section.case-article': {
+    sectionPaddingY: 'var(--space-section-y-l)',
+    innerGap: 'var(--space-section-content-l)',
+    maxWidth: 'desktop',
   },
 };
 
