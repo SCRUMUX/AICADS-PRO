@@ -40,6 +40,10 @@ jobs:
       - name: Public API surface check
         run: npm run api:check
 
+      - name: Install Synaptik CLI deps
+        working-directory: modules/synaptik-icon-builder
+        run: npm ci
+
       - name: Synaptik generated-icons registry check
         run: node scripts/check-synaptik-registry.mjs
 
