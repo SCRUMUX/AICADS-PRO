@@ -30,6 +30,7 @@ import { runRepairStructure } from '../pipeline/repair-structure.js';
 import { setCardSkipped } from '../pipeline/toggle-card-skipped.js';
 import type { ConceptLetter } from '../types/index.js';
 import { MVP_DEFAULTS } from '../types/index.js';
+import type { IconSetStyleId } from '../icon-set-styles/index.js';
 import {
   DEFAULT_ICON_SET_STYLE_ID,
   parseIconSetStyleId,

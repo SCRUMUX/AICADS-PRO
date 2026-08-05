@@ -7,7 +7,6 @@
       "name": "Co2PoteriMassyPriKhranenii",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/co2-poteri-massy-pri-khranenii"
     },
     {
@@ -16,7 +15,6 @@
       "name": "DannyeVPlatformu",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/dannye-v-platformu"
     },
     {
@@ -25,7 +23,6 @@
       "name": "DinamikaPoMesyatsam",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/dinamika-po-mesyatsam"
     },
     {
@@ -34,7 +31,6 @@
       "name": "EtilenKhranenieIDozarivanie",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/etilen-khranenie-i-dozarivanie"
     },
     {
@@ -43,7 +39,6 @@
       "name": "IzmerenieMikroklimata",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/izmerenie-mikroklimata"
     },
     {
@@ -52,7 +47,6 @@
       "name": "MikroklimatUsloviyaKhraneniya",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/mikroklimat-usloviya-khraneniya"
     },
     {
@@ -61,7 +55,6 @@
       "name": "NevernyjMomentProdazhi",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/nevernyj-moment-prodazhi"
     },
     {
@@ -70,7 +63,6 @@
       "name": "NevernyyMomentProdazhi",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/nevernyy-moment-prodazhi"
     },
     {
@@ -79,7 +71,6 @@
       "name": "Ozonirovanie",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/ozonirovanie"
     },
     {
@@ -88,7 +79,6 @@
       "name": "ParametryStoimosti",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/parametry-stoimosti"
     },
     {
@@ -97,7 +87,6 @@
       "name": "ParametryUrozhaya",
       "category": "Analytics",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/parametry-urozhaya"
     },
     {
@@ -106,7 +95,6 @@
       "name": "Poteri1217",
       "category": "Business",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/poteri-12-17"
     },
     {
@@ -115,7 +103,6 @@
       "name": "ProrastanieISozrevanie",
       "category": "Performance",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/prorastanie-i-sozrevanie"
     },
     {
@@ -124,7 +111,6 @@
       "name": "SokhranostUrozhaya",
       "category": "AgroTech",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/sokhranost-urozhaya"
     },
     {
@@ -133,7 +119,6 @@
       "name": "UsushkaIPorcha",
       "category": "Performance",
       "style": "Damiat",
-      "styleLabel": "Damiat",
       "relativePath": "agriculture-technology/usushka-i-porcha"
     }
   ]

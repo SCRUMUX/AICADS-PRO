@@ -39,17 +39,17 @@
         "state": "base"
       },
       "style": {
-        "background": "color_brand_primary",
-        "textColor": "color_text_on_brand",
-        "borderColor": "color_brand_primary",
-        "iconColor": "color_icon_on_brand"
+        "background": "color_accent_primary",
+        "textColor": "color_text_on_accent",
+        "borderColor": "color_accent_primary",
+        "iconColor": "color_icon_on_accent"
       },
       "tailwindClasses": [
-        "bg-[var(--color-brand-primary)]",
-        "text-[var(--color-text-on-brand)]",
-        "[--icon-color:var(--color-icon-on-brand)]",
+        "bg-[var(--color-accent-primary)]",
+        "text-[var(--color-text-on-accent)]",
+        "[--icon-color:var(--color-icon-on-accent)]",
         "border",
-        "border-[var(--color-brand-primary)]"
+        "border-[var(--color-accent-primary)]"
       ]
     },
     {
@@ -58,17 +58,17 @@
         "state": "hover"
       },
       "style": {
-        "background": "color_brand_hover",
-        "textColor": "color_text_on_brand",
-        "borderColor": "color_brand_hover",
-        "iconColor": "color_icon_on_brand"
+        "background": "color_accent_hover",
+        "textColor": "color_text_on_accent",
+        "borderColor": "color_accent_hover",
+        "iconColor": "color_icon_on_accent"
       },
       "tailwindClasses": [
-        "bg-[var(--color-brand-hover)]",
-        "text-[var(--color-text-on-brand)]",
-        "[--icon-color:var(--color-icon-on-brand)]",
+        "bg-[var(--color-accent-hover)]",
+        "text-[var(--color-text-on-accent)]",
+        "[--icon-color:var(--color-icon-on-accent)]",
         "border",
-        "border-[var(--color-brand-hover)]"
+        "border-[var(--color-accent-hover)]"
       ]
     },
     {
@@ -77,17 +77,17 @@
         "state": "active"
       },
       "style": {
-        "background": "color_brand_pressed",
-        "textColor": "color_text_on_brand",
-        "borderColor": "color_brand_pressed",
-        "iconColor": "color_icon_on_brand"
+        "background": "color_accent_pressed",
+        "textColor": "color_text_on_accent",
+        "borderColor": "color_accent_pressed",
+        "iconColor": "color_icon_on_accent"
       },
       "tailwindClasses": [
-        "bg-[var(--color-brand-pressed)]",
-        "text-[var(--color-text-on-brand)]",
-        "[--icon-color:var(--color-icon-on-brand)]",
+        "bg-[var(--color-accent-pressed)]",
+        "text-[var(--color-text-on-accent)]",
+        "[--icon-color:var(--color-icon-on-accent)]",
         "border",
-        "border-[var(--color-brand-pressed)]"
+        "border-[var(--color-accent-pressed)]"
       ]
     },
     {
@@ -96,18 +96,18 @@
         "state": "disabled"
       },
       "style": {
-        "background": "color_brand_primary",
-        "textColor": "color_text_on_brand",
-        "borderColor": "color_brand_primary",
-        "iconColor": "color_icon_on_brand",
+        "background": "color_accent_primary",
+        "textColor": "color_text_on_accent",
+        "borderColor": "color_accent_primary",
+        "iconColor": "color_icon_on_accent",
         "opacityToken": "opacity_disabled"
       },
       "tailwindClasses": [
-        "bg-[var(--color-brand-primary)]",
-        "text-[var(--color-text-on-brand)]",
-        "[--icon-color:var(--color-icon-on-brand)]",
+        "bg-[var(--color-accent-primary)]",
+        "text-[var(--color-text-on-accent)]",
+        "[--icon-color:var(--color-icon-on-accent)]",
         "border",
-        "border-[var(--color-brand-primary)]",
+        "border-[var(--color-accent-primary)]",
         "opacity-[var(--opacity-disabled)]"
       ]
     },
@@ -215,14 +215,14 @@
       },
       "style": {
         "background": "transparent",
-        "textColor": "color_brand_primary",
-        "iconColor": "color_brand_primary",
+        "textColor": "color_accent_primary",
+        "iconColor": "color_accent_primary",
         "borderSide": "none"
       },
       "tailwindClasses": [
         "bg-transparent",
-        "text-[var(--color-brand-primary)]",
-        "[--icon-color:var(--color-brand-primary)]",
+        "text-[var(--color-accent-primary)]",
+        "[--icon-color:var(--color-accent-primary)]",
         "border",
         "border-transparent"
       ]
@@ -234,14 +234,14 @@
       },
       "style": {
         "background": "transparent",
-        "textColor": "color_brand_primary",
-        "iconColor": "color_brand_primary",
+        "textColor": "color_accent_hover",
+        "iconColor": "color_accent_hover",
         "borderSide": "none"
       },
       "tailwindClasses": [
         "bg-transparent",
-        "text-[var(--color-brand-primary)]",
-        "[--icon-color:var(--color-brand-primary)]",
+        "text-[var(--color-accent-hover)]",
+        "[--icon-color:var(--color-accent-hover)]",
         "border",
         "border-transparent"
       ]

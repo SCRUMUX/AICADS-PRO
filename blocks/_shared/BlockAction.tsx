@@ -15,7 +15,7 @@ export interface BlockActionProps {
 
 const LINK_APPEARANCE: Record<NonNullable<BlockActionProps['appearance']>, string> = {
   brand:
-    'bg-[var(--color-brand-primary)] text-[var(--color-text-on-brand)] border border-transparent hover:bg-[var(--color-brand-hover)]',
+    'bg-[var(--color-accent-primary)] text-[var(--color-text-on-accent,var(--color-text-on-brand))] border border-transparent hover:bg-[var(--color-accent-hover)]',
   outline:
     'bg-transparent text-[var(--color-text-primary)] border border-[var(--color-border-base)] hover:bg-[var(--color-surface-2)]',
   base:

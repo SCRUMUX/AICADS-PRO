@@ -344,6 +344,43 @@ export function fallbackStyleBlock(dna: StyleDNA, iconSetStyleId?: IconSetStyleI
 
 
 
+/** Catalog / preset sessions — no website screenshots or vision palette step. */
+export function writePresetStyleBible(
+  paths: SessionPaths,
+  iconSetStyleId: IconSetStyleId,
+  opts: { paletteLine?: string; styleAnchor?: string } = {},
+): IconStyleBible {
+  const preset = getIconSetStyle(iconSetStyleId);
+  writeManifestStyleId(paths, iconSetStyleId);
+
+  const paletteLine =
+    opts.paletteLine?.trim() || '#8B939A, #C4CAD0, #E6E9EC, #2E3A46';
+  const styleAnchor =
+    opts.styleAnchor?.trim() || 'Precast reinforced concrete products icon set';
+  const styleBlock = assembleStyleBlockFromPreset(preset, paletteLine, styleAnchor);
+
+  const bible = IconStyleBibleSchema.parse({
+    iconSetStyleId,
+    presetVersion: ICON_SET_STYLE_PRESET_VERSION,
+    styleBlock,
+    forbiddenStyles: [...DEFAULT_FORBIDDEN_STYLES],
+    styleAnchor,
+    aesthetic: `${preset.labelEn} icon set`,
+    materialsLine: preset.materialsLine,
+    paletteLine,
+    renderMode: preset.renderModeLine,
+    paletteForIcons: paletteLine.split(',').map((s) => s.trim()).filter(Boolean),
+    materialsAllowed: ['concrete', 'matte painted surfaces'],
+    materialsForbidden: [],
+    generatedAt: new Date().toISOString(),
+  });
+
+  writeJsonFile(paths.iconStyleBible, bible);
+  return bible;
+}
+
+
+
 export async function runIconStyleBible(
 
   paths: SessionPaths,

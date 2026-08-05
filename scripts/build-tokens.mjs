@@ -46,8 +46,11 @@ function shadowLayer(layer) {
   const color = layer.color ?? '#000000';
   if (layer.colorToken) {
     const cssVar = toCssName(layer.colorToken);
-    if (layer.colorToken === 'color_brand_primary' && layer.opacity === 35) {
-      return `0px ${layer.y}px ${layer.blur}px ${layer.spread}px color-mix(in srgb, var(${cssVar}) 35%, transparent)`;
+    if (
+      (layer.colorToken === 'color_brand_primary' || layer.colorToken === 'color_accent_primary')
+      && (layer.opacity === 35 || layer.opacity === 20)
+    ) {
+      return `0px ${layer.y}px ${layer.blur}px ${layer.spread}px color-mix(in srgb, var(${cssVar}) ${layer.opacity}%, transparent)`;
     }
     return `0px ${layer.y}px ${layer.blur}px ${layer.spread}px var(${cssVar})`;
   }
@@ -141,19 +144,41 @@ for (const key of sortKeys(tokens.ratio)) {
 
 lines.push('');
 lines.push('  /* Typography */');
-lines.push("  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;");
-lines.push("  --font-family-mono: 'Roboto Mono', 'SF Mono', 'Monaco', monospace;");
-const fontSizes = { 8: 8, 10: 10, 12: 12, 14: 14, 16: 16, 18: 18, 20: 20, 24: 24, 32: 32 };
+const fontFamilies = tokens.typography?.fontFamilies ?? {};
+const baseFont = fontFamilies.base ?? 'Manrope';
+const headingFont = fontFamilies.heading ?? baseFont;
+const monoFont = fontFamilies.mono ?? 'JetBrains Mono';
+lines.push(`  --font-family-base: '${baseFont}', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;`);
+lines.push(`  --font-family-heading: '${headingFont}', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;`);
+lines.push(`  --font-family-mono: '${monoFont}', 'SF Mono', 'Monaco', monospace;`);
+const fontSizes = {
+  8: 8,
+  10: 10,
+  12: 12,
+  14: 14,
+  16: 16,
+  18: 18,
+  20: 20,
+  24: 24,
+  32: 32,
+  ...(tokens.typography?.fontSizes ?? {}),
+};
 for (const [k, v] of Object.entries(fontSizes)) {
   lines.push(`  --font-size-${k}: ${v}px;`);
 }
-const lineHeights = { 12: 12, 16: 16, 20: 20, 24: 24, 28: 28, 32: 32, 40: 40 };
+const lineHeights = { 12: 12, 16: 16, 20: 20, 24: 24, 28: 28, 32: 32, 40: 40, 48: 48, 64: 64 };
 for (const [k, v] of Object.entries(lineHeights)) {
   lines.push(`  --line-height-${k}: ${v}px;`);
 }
-lines.push('  --font-weight-regular: 400;');
-lines.push('  --font-weight-medium: 500;');
-lines.push('  --font-weight-semibold: 600;');
+const fontWeights = tokens.typography?.fontWeights ?? {
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+};
+for (const [k, v] of Object.entries(fontWeights)) {
+  lines.push(`  --font-weight-${k}: ${v};`);
+}
 
 lines.push('');
 lines.push('  /* Layout / Grid */');
@@ -177,6 +202,32 @@ lines.push('  --z-toast: 70;');
 lines.push('');
 lines.push('  /* Effect / opacity */');
 lines.push(`  --opacity-disabled: ${(tokens.effect.opacity_disabled ?? 50) / 100};`);
+
+if (tokens.shadow && typeof tokens.shadow === 'object') {
+  lines.push('');
+  lines.push('  /* Shadow scale */');
+  for (const key of sortKeys(tokens.shadow)) {
+    lines.push(`  ${toCssName(key)}: ${tokens.shadow[key]};`);
+  }
+}
+
+if (tokens.motion && typeof tokens.motion === 'object') {
+  lines.push('');
+  lines.push('  /* Motion */');
+  for (const key of sortKeys(tokens.motion)) {
+    lines.push(`  ${toCssName(key)}: ${tokens.motion[key]};`);
+  }
+}
+
+if (tokens.industrial && typeof tokens.industrial === 'object') {
+  lines.push('');
+  lines.push('  /* Industrial Premium surfaces / effects */');
+  for (const key of sortKeys(tokens.industrial)) {
+    lines.push(`  ${toCssName(key)}: ${tokens.industrial[key]};`);
+  }
+  lines.push('  --effect-divider-gradient: linear-gradient(90deg, transparent, rgba(232, 154, 24, 0.4), transparent);');
+}
+
 lines.push('}');
 lines.push('');
 

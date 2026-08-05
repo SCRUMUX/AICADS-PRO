@@ -26,7 +26,32 @@ function resolvePackageRoots(mode, storybookDir, projectRoot) {
   if (mode === 'monorepo') {
     return [path.resolve(storybookDir, '../..'), projectRoot];
   }
-  return [projectRoot, path.join(projectRoot, 'node_modules/@ai-ds/core')];
+  return [projectRoot, resolveCoreRoot(projectRoot)];
+}
+
+/** Resolves @ai-ds/core root — works with file:../../AICADS-PRO symlinks on Windows. */
+function resolveCoreRoot(projectRoot) {
+  try {
+    const req = createRequire(path.join(projectRoot, 'package.json'));
+    return path.dirname(req.resolve('@ai-ds/core/package.json'));
+  } catch {
+    return path.join(projectRoot, 'node_modules/@ai-ds/core');
+  }
+}
+
+function applyCoreAliases(alias, coreRoot) {
+  alias['@ai-ds/core/tokens/industrial'] = path.join(
+    coreRoot,
+    'config/css-variables/industrial-surfaces.css',
+  );
+  alias['@ai-ds/core/tokens'] = path.join(coreRoot, 'config/css-variables/tokens.css');
+  alias['@ai-ds/core/storybook/engine-styles'] = path.join(coreRoot, 'storybook/engine-styles.ts');
+  alias['@ai-ds/core/storybook/createPreview'] = path.join(coreRoot, 'storybook/createPreview.tsx');
+  alias['@ai-ds/core/storybook/marketingViewports'] = path.join(
+    coreRoot,
+    'storybook/marketingViewports.ts',
+  );
+  alias['@ai-ds/core/storybook/index.css'] = path.join(coreRoot, 'storybook/index.css');
 }
 
 function aliasEngineStyles(alias, importId, roots, resolveCss) {
@@ -127,15 +152,7 @@ export function createMainConfig(opts) {
 
       if (mode === 'monorepo') {
         const repoRoot = path.resolve(storybookDir, '../..');
-        alias['@ai-ds/core/tokens'] = path.join(repoRoot, 'config/css-variables/tokens.css');
-        alias['@ai-ds/core/storybook/engine-styles'] = path.join(
-          repoRoot,
-          'storybook/engine-styles.ts',
-        );
-        alias['@ai-ds/core/storybook/createPreview'] = path.join(
-          repoRoot,
-          'storybook/createPreview.tsx',
-        );
+        applyCoreAliases(alias, repoRoot);
         cfg.server = cfg.server ?? {};
         cfg.server.fs = cfg.server.fs ?? {};
         cfg.server.fs.allow = [
@@ -149,23 +166,11 @@ export function createMainConfig(opts) {
       }
 
       if (mode === 'consumer') {
-        const coreRoot = path.join(projectRoot, 'node_modules/@ai-ds/core');
-        alias['@ai-ds/core/tokens'] = path.join(coreRoot, 'config/css-variables/tokens.css');
-        alias['@ai-ds/core/storybook/engine-styles'] = path.join(
-          coreRoot,
-          'storybook/engine-styles.ts',
-        );
-        alias['@ai-ds/core/storybook/createPreview'] = path.join(
-          coreRoot,
-          'storybook/createPreview.tsx',
-        );
-        alias['@ai-ds/core/storybook/marketingViewports'] = path.join(
-          coreRoot,
-          'storybook/marketingViewports.ts',
-        );
+        const coreRoot = resolveCoreRoot(projectRoot);
+        applyCoreAliases(alias, coreRoot);
         cfg.server = cfg.server ?? {};
         cfg.server.fs = cfg.server.fs ?? {};
-        cfg.server.fs.allow = [...(cfg.server.fs.allow ?? []), coreRoot];
+        cfg.server.fs.allow = [...(cfg.server.fs.allow ?? []), coreRoot, projectRoot];
         if (iconsCatalogDir) {
           cfg.server.fs.allow = [...cfg.server.fs.allow, iconsCatalogDir];
         }

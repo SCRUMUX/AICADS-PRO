@@ -86,47 +86,70 @@
     "color": {
       "primitives": {
         "core_white": "#FFFFFF",
-        "core_gray_90": "#161E28",
-        "core_gray_5": "#E2EBFF",
-        "core_gray_87": "#1B2B47",
-        "core_gray_80": "#1A2330",
-        "core_gray_75": "#243041",
-        "core_gray_5_alt": "#F7F8FA",
-        "core_gray_70": "#2A3547",
-        "core_gray_85": "#1B2B47",
-        "core_gray_20": "#EDF2F8",
-        "core_gray_10": "#F3F4F6",
-        "core_gray_95": "#353535",
-        "core_gray_10_alt": "#E6EEF8",
+        "core_gray_90": "#101417",
+        "core_gray_5": "#F5F6F7",
+        "core_gray_87": "#171D22",
+        "core_gray_80": "#181F25",
+        "core_gray_75": "#202932",
+        "core_gray_5_alt": "#F7F8F9",
+        "core_gray_70": "#27323C",
+        "core_gray_85": "#1E262C",
+        "core_gray_20": "#EEF2F5",
+        "core_gray_10": "#ECEEF0",
+        "core_gray_95": "#1F2933",
+        "core_gray_10_alt": "#F5F7FA",
         "core_gray_60": "#6B7280",
-        "core_gray_50": "#9AA6B2",
+        "core_gray_50": "#9CA7B3",
         "core_gray_40": "#9CA3AF",
-        "core_blue_50": "#5B9CFF",
-        "core_blue_60": "#4A8AE6",
-        "core_blue_70": "#3578D4",
-        "core_blue_5": "#E7F0FF",
-        "core_violet_50": "#6B5BFF",
+        "core_blue_50": "#2E3A46",
+        "core_blue_60": "#24303B",
+        "core_blue_70": "#1A232C",
+        "core_blue_5": "#EEF2F5",
+        "core_violet_50": "#E89A18",
         "core_gray_15": "#E5E7EB",
-        "core_gray_25": "#CBD5E1",
-        "core_gray_65": "#485B76",
-        "core_green_50": "#1DB954",
-        "core_green_5": "#D9F5E5",
-        "core_green_99": "#11261B",
-        "core_yellow_50": "#FFB020",
-        "core_yellow_5": "#FAECD1",
+        "core_gray_25": "#DCE3EA",
+        "core_gray_65": "#485563",
+        "core_green_50": "#2E8B57",
+        "core_green_5": "#E6F6EC",
+        "core_green_99": "#0F2418",
+        "core_yellow_50": "#E89A18",
+        "core_yellow_5": "#FFF3DA",
         "core_yellow_99": "#2A210E",
-        "core_red_50": "#FF4D4F",
-        "core_red_5": "#FEE5E5",
+        "core_red_50": "#D94841",
+        "core_red_5": "#FDEBE9",
         "core_red_99": "#2A1314",
-        "core_cyan_50": "#06B6D4",
-        "core_cyan_5": "#D9F5F5",
-        "core_teal_10": "#14B8A6",
-        "core_rose_60": "#E11D48",
-        "core_ui_hover_bg": "#EEF2FF"
+        "core_cyan_50": "#3A78B8",
+        "core_cyan_5": "#E8F1FA",
+        "core_teal_10": "#2E8B57",
+        "core_rose_60": "#D94841",
+        "core_ui_hover_bg": "#EEF2F5",
+        "core_brand_5": "#F8F9FA",
+        "core_brand_10": "#EEF2F5",
+        "core_brand_20": "#DCE3EA",
+        "core_brand_40": "#64748B",
+        "core_brand_50": "#2E3A46",
+        "core_brand_60": "#24303B",
+        "core_brand_70": "#1A232C",
+        "core_brand_80": "#11181F",
+        "core_accent_5": "#FFF8EA",
+        "core_accent_10": "#FFEFCB",
+        "core_accent_20": "#FFD87A",
+        "core_accent_40": "#F6B73C",
+        "core_accent_50": "#E89A18",
+        "core_accent_60": "#C87C0A",
+        "core_accent_70": "#9D5F00",
+        "core_bg_base_light": "#FCFCFB",
+        "core_text_secondary_dark": "#C8D0D9",
+        "core_border_light": "rgba(46, 58, 70, 0.12)",
+        "core_border_strong_light": "rgba(46, 58, 70, 0.22)",
+        "core_divider_light": "rgba(46, 58, 70, 0.08)",
+        "core_border_dark": "rgba(255, 255, 255, 0.08)",
+        "core_border_strong_dark": "rgba(255, 255, 255, 0.14)",
+        "core_divider_dark": "rgba(255, 255, 255, 0.06)"
       },
       "backgroundSurface": {
         "color_bg_base": {
-          "light": "core_white",
+          "light": "core_bg_base_light",
           "dark": "core_gray_90"
         },
         "color_bg_muted": {
@@ -157,7 +180,7 @@
         },
         "color_text_secondary": {
           "light": "core_gray_65",
-          "dark": "core_gray_50"
+          "dark": "core_text_secondary_dark"
         },
         "color_text_muted": {
           "light": "core_gray_60",
@@ -170,70 +193,94 @@
         "color_text_on_brand": {
           "light": "core_white",
           "dark": "core_white"
+        },
+        "color_text_on_accent": {
+          "light": "core_white",
+          "dark": "core_white"
         }
       },
       "brandLinkFocus": {
         "color_brand_primary": {
-          "light": "core_blue_50",
-          "dark": "core_blue_50"
+          "light": "core_brand_50",
+          "dark": "core_brand_50"
         },
         "color_brand_hover": {
-          "light": "core_blue_60",
-          "dark": "core_blue_60"
+          "light": "core_brand_60",
+          "dark": "core_brand_60"
         },
         "color_brand_pressed": {
-          "light": "core_blue_70",
-          "dark": "core_blue_70"
+          "light": "core_brand_70",
+          "dark": "core_brand_70"
         },
         "color_brand_muted": {
-          "light": "core_blue_5",
-          "dark": "core_gray_80"
+          "light": "core_brand_10",
+          "dark": "core_brand_80"
         },
         "color_brand_hover_bg": {
-          "light": "core_ui_hover_bg",
-          "dark": "core_gray_80"
+          "light": "core_brand_10",
+          "dark": "core_brand_80"
         },
         "color_brand_subtle": {
-          "light": "core_blue_5",
-          "dark": "core_gray_80"
+          "light": "core_brand_5",
+          "dark": "core_brand_80"
         },
         "color_link_default": {
-          "light": "core_blue_50",
-          "dark": "core_blue_50"
+          "light": "core_brand_50",
+          "dark": "core_accent_40"
         },
         "color_link_hover": {
-          "light": "core_blue_60",
-          "dark": "core_blue_60"
+          "light": "core_accent_50",
+          "dark": "core_accent_40"
         },
         "color_link_visited": {
-          "light": "core_violet_50",
-          "dark": "core_violet_50"
+          "light": "core_brand_40",
+          "dark": "core_brand_40"
         },
         "color_focus_outline": {
-          "light": "core_blue_50",
-          "dark": "core_blue_50"
+          "light": "core_accent_40",
+          "dark": "core_accent_40"
         },
         "color_active": {
-          "light": "core_violet_50",
-          "dark": "core_violet_50"
+          "light": "core_accent_50",
+          "dark": "core_accent_50"
+        },
+        "color_accent_primary": {
+          "light": "core_accent_50",
+          "dark": "core_accent_50"
+        },
+        "color_accent_hover": {
+          "light": "core_accent_60",
+          "dark": "core_accent_60"
+        },
+        "color_accent_pressed": {
+          "light": "core_accent_70",
+          "dark": "core_accent_70"
+        },
+        "color_accent_muted": {
+          "light": "core_accent_5",
+          "dark": "core_brand_80"
+        },
+        "color_accent_subtle": {
+          "light": "core_accent_10",
+          "dark": "core_brand_80"
         }
       },
       "borderDivide": {
         "color_border_base": {
-          "light": "core_gray_15",
-          "dark": "core_gray_75"
+          "light": "core_border_light",
+          "dark": "core_border_dark"
         },
         "color_border_strong": {
-          "light": "core_gray_25",
-          "dark": "core_gray_65"
+          "light": "core_border_strong_light",
+          "dark": "core_border_strong_dark"
         },
         "color_border_disabled": {
-          "light": "core_gray_15",
-          "dark": "core_gray_65"
+          "light": "core_border_light",
+          "dark": "core_border_dark"
         },
         "color_divider": {
-          "light": "core_gray_15",
-          "dark": "core_gray_80"
+          "light": "core_divider_light",
+          "dark": "core_divider_dark"
         }
       },
       "semanticStates": {
@@ -324,8 +371,8 @@
           "dark": "core_gray_10_alt"
         },
         "color_icon_on_outline": {
-          "light": "core_blue_50",
-          "dark": "core_blue_50"
+          "light": "core_brand_50",
+          "dark": "core_accent_40"
         },
         "color_icon_on_success": {
           "light": "core_white",
@@ -336,6 +383,10 @@
           "dark": "core_gray_10_alt"
         },
         "color_icon_on_danger": {
+          "light": "core_white",
+          "dark": "core_white"
+        },
+        "color_icon_on_accent": {
           "light": "core_white",
           "dark": "core_white"
         }
@@ -352,28 +403,28 @@
       },
       "dataVisualization": {
         "color_viz_categorical_1": {
-          "light": "core_blue_50",
-          "dark": "core_blue_50"
+          "light": "core_brand_50",
+          "dark": "core_brand_40"
         },
         "color_viz_categorical_2": {
-          "light": "core_cyan_50",
-          "dark": "core_cyan_50"
+          "light": "core_accent_50",
+          "dark": "core_accent_40"
         },
         "color_viz_categorical_3": {
           "light": "core_red_50",
           "dark": "core_red_50"
         },
         "color_viz_categorical_4": {
-          "light": "core_yellow_50",
-          "dark": "core_yellow_50"
+          "light": "core_accent_40",
+          "dark": "core_accent_40"
         },
         "color_viz_categorical_5": {
           "light": "core_green_50",
           "dark": "core_green_50"
         },
         "color_viz_categorical_6": {
-          "light": "core_violet_50",
-          "dark": "core_violet_50"
+          "light": "core_accent_60",
+          "dark": "core_accent_60"
         },
         "color_viz_categorical_7": {
           "light": "core_teal_10",
@@ -388,65 +439,87 @@
     "typography": {
       "textStyles": {
         "Text/Heading/H1": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 24,
           "lineHeight": 32,
           "fontWeight": 600
         },
         "Text/Heading/H2": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 20,
           "lineHeight": 28,
           "fontWeight": 600
         },
         "Text/Heading/H3": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 18,
           "lineHeight": 24,
           "fontWeight": 600
         },
         "Text/Heading/H4": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 16,
           "lineHeight": 24,
           "fontWeight": 600
         },
         "Text/Body/Base": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 14,
           "lineHeight": 20,
           "fontWeight": 400
         },
         "Text/Body/Strong": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 14,
           "lineHeight": 20,
           "fontWeight": 600
         },
         "Text/Body/SM": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 12,
           "lineHeight": 16,
           "fontWeight": 400
         },
         "Text/Body/LG": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 16,
           "lineHeight": 24,
           "fontWeight": 400
         },
         "Text/Caption/Base": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 12,
           "lineHeight": 16,
           "fontWeight": 500
         },
         "Text/Caption/XS": {
-          "fontFamily": "Inter",
+          "fontFamily": "Manrope",
           "fontSize": 10,
           "lineHeight": 12,
           "fontWeight": 500
         }
+      },
+      "fontFamilies": {
+        "base": "Manrope",
+        "heading": "Manrope",
+        "mono": "JetBrains Mono"
+      },
+      "fontWeights": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "fontSizes": {
+        "12": 12,
+        "14": 14,
+        "16": 16,
+        "18": 18,
+        "20": 20,
+        "24": 24,
+        "32": 32,
+        "40": 40,
+        "56": 56
       }
     },
     "space": {
@@ -521,7 +594,8 @@
         "space_480": 480,
         "space_600": 600,
         "space_640": 640,
-        "space_800": 800
+        "space_800": 800,
+        "space_48": 48
       },
       "semantic": {
         "space_layout_xs": "space_1",
@@ -724,24 +798,27 @@
         "radius_8": 8,
         "radius_12": 12,
         "radius_16": 16,
-        "radius_full": 9999
+        "radius_full": 9999,
+        "radius_10": 10
       },
       "semantic": {
         "radius_none": "radius_0",
         "radius_subtle": "radius_1",
-        "radius_default": "radius_2",
-        "radius_medium": "radius_4",
-        "radius_large": "radius_6",
-        "radius_xl": "radius_8",
+        "radius_default": "radius_4",
+        "radius_medium": "radius_6",
+        "radius_large": "radius_8",
+        "radius_xl": "radius_12",
         "radius_2xl": "radius_12",
         "radius_3xl": "radius_16",
         "radius_section": "radius_16",
         "radius_pill": "radius_full",
-        "radius_button": "radius_pill"
+        "radius_button": "radius_4",
+        "radius_card": "radius_6",
+        "radius_input": "radius_4"
       }
     },
     "ratio": {
-      "ratio_square": 1.0,
+      "ratio_square": 1,
       "ratio_4_3": 0.75,
       "ratio_16_9": 0.5625,
       "ratio_3_2": 0.6667,
@@ -757,47 +834,31 @@
       "effect_elevation_1": [
         {
           "x": 0,
-          "y": 1,
-          "blur": 3,
+          "y": 2,
+          "blur": 6,
           "spread": 0,
           "color": "#000000",
-          "opacity": 12
+          "opacity": 3
         }
       ],
       "effect_elevation_2": [
         {
           "x": 0,
           "y": 4,
-          "blur": 8,
+          "blur": 12,
           "spread": 0,
           "color": "#000000",
-          "opacity": 12
-        },
-        {
-          "x": 0,
-          "y": 2,
-          "blur": 4,
-          "spread": 0,
-          "color": "#000000",
-          "opacity": 8
+          "opacity": 5
         }
       ],
       "effect_elevation_3": [
         {
           "x": 0,
           "y": 8,
-          "blur": 16,
+          "blur": 24,
           "spread": 0,
           "color": "#000000",
-          "opacity": 14
-        },
-        {
-          "x": 0,
-          "y": 4,
-          "blur": 6,
-          "spread": 0,
-          "color": "#000000",
-          "opacity": 10
+          "opacity": 7
         }
       ],
       "effect_elevation_glow": [
@@ -806,9 +867,9 @@
           "y": 0,
           "blur": 12,
           "spread": 0,
-          "color": "#5B9CFF",
-          "colorToken": "color_brand_primary",
-          "opacity": 35
+          "color": "#E89A18",
+          "colorToken": "color_accent_primary",
+          "opacity": 20
         }
       ],
       "effect_focus_brand": [
@@ -816,10 +877,9 @@
           "x": 0,
           "y": 0,
           "blur": 0,
-          "spread": 1,
-          "color": "#5B9CFF",
-          "colorToken": "color_brand_primary",
-          "opacity": 100
+          "spread": 3,
+          "color": "#E89A18",
+          "opacity": 25
         }
       ],
       "effect_focus_danger": [
@@ -876,7 +936,7 @@
         }
       ],
       "effect_blur_background": {
-        "backdropBlur": 8,
+        "backdropBlur": 12,
         "unit": "px",
         "backgroundFill": "#FFFFFF",
         "backgroundOpacity": 20
@@ -885,7 +945,7 @@
         "backdropBlur": 8,
         "unit": "px",
         "backgroundFillToken": "color_surface_1",
-        "backgroundOpacity": 88
+        "backgroundOpacity": 65
       },
       "effect_glass_scrim": {
         "backdropBlur": 8,
@@ -963,6 +1023,25 @@
       "modal": 50,
       "tooltip": 60,
       "toast": 70
+    },
+    "motion": {
+      "motion_fast": "120ms",
+      "motion_normal": "220ms",
+      "motion_slow": "400ms",
+      "easing_default": "cubic-bezier(0.22, 0.61, 0.36, 1)"
+    },
+    "shadow": {
+      "shadow_xs": "0 2px 6px rgba(0,0,0,.03)",
+      "shadow_sm": "0 4px 12px rgba(0,0,0,.05)",
+      "shadow_md": "0 8px 24px rgba(0,0,0,.07)",
+      "shadow_lg": "0 16px 48px rgba(0,0,0,.08)",
+      "shadow_xl": "0 32px 80px rgba(0,0,0,.10)"
+    },
+    "industrial": {
+      "effect_noise_opacity": 0.025,
+      "effect_grid_opacity": 0.04,
+      "effect_border_highlight": "rgba(232,154,24,.25)",
+      "effect_glass_opacity": 0.65
     }
   },
   "components": [
@@ -2658,10 +2737,21 @@
     {
       "name": "@UI/DropdownItem",
       "description": "DropdownItem: пункт меню для Popover/Submenu. Оси: size (sm/md/lg) × itemType (default/primary/danger). Каждый вариант всегда содержит все 4 слота: Icon (left), Label, Badge, Icon (right). Видимость слотов управляется BOOLEAN props. Icon (right) — chevron или check через INSTANCE_SWAP. Используется в @UI/Dropdown через instance swap.",
-      "variantProps": ["size", "itemType"],
+      "variantProps": [
+        "size",
+        "itemType"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "itemType": ["default", "primary", "danger"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "itemType": [
+          "default",
+          "primary",
+          "danger"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -2677,7 +2767,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "textStyle": "Text/Body/SM",
             "itemPaddingX": "space_button_x_sm",
@@ -2686,7 +2778,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "itemPaddingX": "space_button_x_md",
             "itemPaddingY": "space_button_y_md",
@@ -2694,7 +2788,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "textStyle": "Text/Body/LG",
             "itemPaddingX": "space_button_x_lg",
@@ -2703,21 +2799,27 @@
           }
         },
         {
-          "when": { "itemType": "default" },
+          "when": {
+            "itemType": "default"
+          },
           "style": {
             "itemTextColor": "color_text_primary",
             "itemIconColor": "color_icon_on_base"
           }
         },
         {
-          "when": { "itemType": "primary" },
+          "when": {
+            "itemType": "primary"
+          },
           "style": {
             "itemTextColor": "color_brand_primary",
             "itemIconColor": "color_brand_primary"
           }
         },
         {
-          "when": { "itemType": "danger" },
+          "when": {
+            "itemType": "danger"
+          },
           "style": {
             "itemTextColor": "color_danger_base",
             "itemIconColor": "color_danger_base"
@@ -2728,10 +2830,20 @@
     {
       "name": "@UI/Dropdown",
       "description": "Dropdown: универсальное выпадающее меню. closed/open, size. Trigger (closed): опционально Icon (left), Label, Badge, TagRow (выбранные значения), Chevron — булевы пропы как у Input. Popover — 5 слотов (instance swap DropdownItem). Submenu — отдельная панель справа, выравнивается по родительскому пункту (withSubmenu).",
-      "variantProps": ["state", "size"],
+      "variantProps": [
+        "state",
+        "size"
+      ],
       "variantAxes": {
-        "state": ["closed", "open"],
-        "size": ["sm", "md", "lg"]
+        "state": [
+          "closed",
+          "open"
+        ],
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ]
       },
       "variants": [],
       "popoverSlotCount": 5,
@@ -2750,14 +2862,18 @@
           }
         },
         {
-          "when": { "state": "closed" },
+          "when": {
+            "state": "closed"
+          },
           "style": {
             "borderColor": "color_border_base",
             "borderSide": "all"
           }
         },
         {
-          "when": { "state": "open" },
+          "when": {
+            "state": "open"
+          },
           "style": {
             "borderColor": "color_brand_primary",
             "borderSide": "all",
@@ -2787,7 +2903,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "minWidth": "space_container_compact_min",
             "maxWidth": "space_container_compact_max",
@@ -2801,7 +2919,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "minWidth": "space_container_content_min",
             "maxWidth": "space_container_content_max",
@@ -2814,7 +2934,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "minWidth": "space_container_wide_min",
             "maxWidth": "space_container_wide_max",
@@ -5480,10 +5602,21 @@
     {
       "name": "@UI/AutocompleteItem",
       "description": "AutocompleteItem: пункт выпадающего списка автокомплита. Оси: size (sm/md/lg) × itemType (default/primary/danger). Всегда 7 слотов в DOM: Checkbox, Icon Left, Label, Badge 1, Badge 2, Badge 3, Icon Right. Видимость через BOOLEAN props. Используется в @UI/Autocomplete через instance swap.",
-      "variantProps": ["size", "itemType"],
+      "variantProps": [
+        "size",
+        "itemType"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "itemType": ["default", "primary", "danger"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "itemType": [
+          "default",
+          "primary",
+          "danger"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -5499,7 +5632,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "textStyle": "Text/Body/SM",
             "itemPaddingX": "space_button_x_sm",
@@ -5510,7 +5645,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "textStyle": "Text/Body/Base",
             "itemPaddingX": "space_button_x_md",
@@ -5521,7 +5658,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "textStyle": "Text/Body/LG",
             "itemPaddingX": "space_button_x_lg",
@@ -5532,21 +5671,27 @@
           }
         },
         {
-          "when": { "itemType": "default" },
+          "when": {
+            "itemType": "default"
+          },
           "style": {
             "itemTextColor": "color_text_primary",
             "itemIconColor": "color_icon_on_base"
           }
         },
         {
-          "when": { "itemType": "primary" },
+          "when": {
+            "itemType": "primary"
+          },
           "style": {
             "itemTextColor": "color_brand_primary",
             "itemIconColor": "color_brand_primary"
           }
         },
         {
-          "when": { "itemType": "danger" },
+          "when": {
+            "itemType": "danger"
+          },
           "style": {
             "itemTextColor": "color_danger_base",
             "itemIconColor": "color_danger_base"
@@ -5557,10 +5702,20 @@
     {
       "name": "@UI/Autocomplete",
       "description": "Autocomplete: поле ввода с выпадающим списком значений по вхождению. state: closed/open. size: sm/md/lg. Trigger: Input-like поле с иконкой поиска, TagRow для выбранных значений. Popover: 10 слотов AutocompleteItem, FILL по ширине. В open-состоянии input в фокусе.",
-      "variantProps": ["state", "size"],
+      "variantProps": [
+        "state",
+        "size"
+      ],
       "variantAxes": {
-        "state": ["closed", "open"],
-        "size": ["sm", "md", "lg"]
+        "state": [
+          "closed",
+          "open"
+        ],
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ]
       },
       "variants": [],
       "popoverSlotCount": 10,
@@ -5589,7 +5744,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "textStyle": "Text/Body/SM",
             "paddingX": "space_button_x_sm",
@@ -5603,7 +5760,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "textStyle": "Text/Body/Base",
             "paddingX": "space_button_x_md",
@@ -5617,7 +5776,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "textStyle": "Text/Body/LG",
             "paddingX": "space_button_x_lg",
@@ -5631,14 +5792,18 @@
           }
         },
         {
-          "when": { "state": "closed" },
+          "when": {
+            "state": "closed"
+          },
           "style": {
             "borderColor": "color_border_base",
             "borderSide": "all"
           }
         },
         {
-          "when": { "state": "open" },
+          "when": {
+            "state": "open"
+          },
           "style": {
             "borderColor": "color_brand_primary",
             "borderSide": "all",
@@ -5650,10 +5815,23 @@
     {
       "name": "@UI/Spinner",
       "description": "Spinner: индикатор загрузки. 5 размеров (xs/sm/md/lg/xl) совпадают с CircularProgress. 3 варианта (brand/base/inherit). Дуга ~270° окружности без лейбла.",
-      "variantProps": ["size", "appearance"],
+      "variantProps": [
+        "size",
+        "appearance"
+      ],
       "variantAxes": {
-        "size": ["xs", "sm", "md", "lg", "xl"],
-        "appearance": ["brand", "base", "inherit"]
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "appearance": [
+          "brand",
+          "base",
+          "inherit"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -5665,21 +5843,27 @@
           }
         },
         {
-          "when": { "appearance": "brand" },
+          "when": {
+            "appearance": "brand"
+          },
           "style": {
             "trackColor": "color_surface_3",
             "fillColor": "color_brand_primary"
           }
         },
         {
-          "when": { "appearance": "base" },
+          "when": {
+            "appearance": "base"
+          },
           "style": {
             "trackColor": "color_surface_3",
             "fillColor": "color_text_muted"
           }
         },
         {
-          "when": { "appearance": "inherit" },
+          "when": {
+            "appearance": "inherit"
+          },
           "style": {
             "trackColor": "color_text_on_brand",
             "fillColor": "color_text_on_brand",
@@ -5687,40 +5871,78 @@
           }
         },
         {
-          "when": { "size": "xs" },
-          "style": { "boxSize": "space_circular_xs" }
+          "when": {
+            "size": "xs"
+          },
+          "style": {
+            "boxSize": "space_circular_xs"
+          }
         },
         {
-          "when": { "size": "sm" },
-          "style": { "boxSize": "space_circular_sm" }
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "boxSize": "space_circular_sm"
+          }
         },
         {
-          "when": { "size": "md" },
-          "style": { "boxSize": "space_circular_md" }
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "boxSize": "space_circular_md"
+          }
         },
         {
-          "when": { "size": "lg" },
-          "style": { "boxSize": "space_circular_lg" }
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "boxSize": "space_circular_lg"
+          }
         },
         {
-          "when": { "size": "xl" },
-          "style": { "boxSize": "space_circular_xl" }
+          "when": {
+            "size": "xl"
+          },
+          "style": {
+            "boxSize": "space_circular_xl"
+          }
         }
       ]
     },
     {
       "name": "@UI/Chip",
       "description": "Chip: фильтр/тег с возможностью удаления. 2 варианта (base/brand), 3 размера (sm/md/lg), 3 состояния (base/selected/disabled). Иконка close видима по умолчанию. Опционально: иконка слева. Использует те же size-токены что Tag.",
-      "variantProps": ["appearance", "size", "state"],
+      "variantProps": [
+        "appearance",
+        "size",
+        "state"
+      ],
       "variantAxes": {
-        "appearance": ["base", "brand"],
-        "size": ["sm", "md", "lg"],
-        "state": ["base", "selected", "disabled"]
+        "appearance": [
+          "base",
+          "brand"
+        ],
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "base",
+          "selected",
+          "disabled"
+        ]
       },
       "variants": [],
       "variantRules": [
         {
-          "when": { "appearance": "base", "state": "base" },
+          "when": {
+            "appearance": "base",
+            "state": "base"
+          },
           "style": {
             "background": "color_surface_2",
             "textColor": "color_text_primary",
@@ -5729,7 +5951,10 @@
           }
         },
         {
-          "when": { "appearance": "base", "state": "selected" },
+          "when": {
+            "appearance": "base",
+            "state": "selected"
+          },
           "style": {
             "background": "color_brand_primary",
             "textColor": "color_text_on_brand",
@@ -5738,7 +5963,10 @@
           }
         },
         {
-          "when": { "appearance": "base", "state": "disabled" },
+          "when": {
+            "appearance": "base",
+            "state": "disabled"
+          },
           "style": {
             "background": "color_surface_2",
             "textColor": "color_text_primary",
@@ -5748,7 +5976,10 @@
           }
         },
         {
-          "when": { "appearance": "brand", "state": "base" },
+          "when": {
+            "appearance": "brand",
+            "state": "base"
+          },
           "style": {
             "background": "color_brand_primary",
             "textColor": "color_text_on_brand",
@@ -5757,7 +5988,10 @@
           }
         },
         {
-          "when": { "appearance": "brand", "state": "selected" },
+          "when": {
+            "appearance": "brand",
+            "state": "selected"
+          },
           "style": {
             "background": "color_brand_hover_bg",
             "textColor": "color_brand_primary",
@@ -5766,7 +6000,10 @@
           }
         },
         {
-          "when": { "appearance": "brand", "state": "disabled" },
+          "when": {
+            "appearance": "brand",
+            "state": "disabled"
+          },
           "style": {
             "background": "color_brand_primary",
             "textColor": "color_text_on_brand",
@@ -5776,7 +6013,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_tag_x_sm",
             "paddingY": "space_tag_y_sm",
@@ -5786,7 +6025,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_tag_x_md",
             "paddingY": "space_tag_y_md",
@@ -5796,7 +6037,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_tag_x_lg",
             "paddingY": "space_tag_y_lg",
@@ -5810,10 +6053,21 @@
     {
       "name": "@UI/Table/HeaderCell",
       "description": "Ячейка заголовка таблицы. Опционально: иконка слева, лейбл (grow), sort-иконка справа. Состояния сортировки: none, asc, desc. Размеры sm/md/lg.",
-      "variantProps": ["size", "sort"],
+      "variantProps": [
+        "size",
+        "sort"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "sort": ["none", "asc", "desc"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "sort": [
+          "none",
+          "asc",
+          "desc"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -5828,21 +6082,27 @@
           }
         },
         {
-          "when": { "sort": "asc" },
+          "when": {
+            "sort": "asc"
+          },
           "style": {
             "textColor": "color_text_primary",
             "sortIconColor": "color_brand_primary"
           }
         },
         {
-          "when": { "sort": "desc" },
+          "when": {
+            "sort": "desc"
+          },
           "style": {
             "textColor": "color_text_primary",
             "sortIconColor": "color_brand_primary"
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_table_cell_x_sm",
             "paddingY": "space_table_cell_y_sm",
@@ -5853,7 +6113,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_table_cell_x_md",
             "paddingY": "space_table_cell_y_md",
@@ -5864,7 +6126,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_table_cell_x_lg",
             "paddingY": "space_table_cell_y_lg",
@@ -5879,10 +6143,23 @@
     {
       "name": "@UI/Table/Cell",
       "description": "Ячейка данных таблицы. Опционально: иконка слева, текст (grow), badge, tag, иконка-действие справа. Размеры sm/md/lg. Тип: text, badge, tag, actions, numeric.",
-      "variantProps": ["size", "type"],
+      "variantProps": [
+        "size",
+        "type"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "type": ["text", "badge", "tag", "actions", "numeric"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "type": [
+          "text",
+          "badge",
+          "tag",
+          "actions",
+          "numeric"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -5896,21 +6173,27 @@
           }
         },
         {
-          "when": { "type": "numeric" },
+          "when": {
+            "type": "numeric"
+          },
           "style": {
             "textAlign": "right",
             "textColor": "color_text_primary"
           }
         },
         {
-          "when": { "type": "actions" },
+          "when": {
+            "type": "actions"
+          },
           "style": {
             "iconColor": "color_icon_on_base",
             "textColor": "color_text_muted"
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_table_cell_x_sm",
             "paddingY": "space_table_cell_y_sm",
@@ -5921,7 +6204,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_table_cell_x_md",
             "paddingY": "space_table_cell_y_md",
@@ -5932,7 +6217,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_table_cell_x_lg",
             "paddingY": "space_table_cell_y_lg",
@@ -5947,15 +6234,29 @@
     {
       "name": "@UI/Table/Row",
       "description": "Строка данных таблицы. Состояния: base, hover, selected, disabled. Опционально: checkbox слева. 4 Cell-слота. Размеры sm/md/lg.",
-      "variantProps": ["size", "state"],
+      "variantProps": [
+        "size",
+        "state"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "state": ["base", "hover", "selected", "disabled"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "base",
+          "hover",
+          "selected",
+          "disabled"
+        ]
       },
       "variants": [],
       "variantRules": [
         {
-          "when": { "state": "base" },
+          "when": {
+            "state": "base"
+          },
           "style": {
             "background": "color_bg_base",
             "borderColor": "color_divider",
@@ -5963,7 +6264,9 @@
           }
         },
         {
-          "when": { "state": "hover" },
+          "when": {
+            "state": "hover"
+          },
           "style": {
             "background": "color_surface_2",
             "borderColor": "color_divider",
@@ -5971,7 +6274,9 @@
           }
         },
         {
-          "when": { "state": "selected" },
+          "when": {
+            "state": "selected"
+          },
           "style": {
             "background": "color_brand_muted",
             "borderColor": "color_brand_primary",
@@ -5979,7 +6284,9 @@
           }
         },
         {
-          "when": { "state": "disabled" },
+          "when": {
+            "state": "disabled"
+          },
           "style": {
             "background": "color_bg_disabled",
             "borderColor": "color_border_base",
@@ -5988,25 +6295,43 @@
           }
         },
         {
-          "when": { "size": "sm" },
-          "style": { "minHeight": "space_table_row_h_sm" }
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "minHeight": "space_table_row_h_sm"
+          }
         },
         {
-          "when": { "size": "md" },
-          "style": { "minHeight": "space_table_row_h_md" }
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "minHeight": "space_table_row_h_md"
+          }
         },
         {
-          "when": { "size": "lg" },
-          "style": { "minHeight": "space_table_row_h_lg" }
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "minHeight": "space_table_row_h_lg"
+          }
         }
       ]
     },
     {
       "name": "@UI/Table/HeaderRow",
       "description": "Строка заголовков таблицы. 4 HeaderCell-слота. Нижний border-divider. Размеры sm/md/lg.",
-      "variantProps": ["size"],
+      "variantProps": [
+        "size"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6018,31 +6343,56 @@
           }
         },
         {
-          "when": { "size": "sm" },
-          "style": { "minHeight": "space_table_row_h_sm" }
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "minHeight": "space_table_row_h_sm"
+          }
         },
         {
-          "when": { "size": "md" },
-          "style": { "minHeight": "space_table_row_h_md" }
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "minHeight": "space_table_row_h_md"
+          }
         },
         {
-          "when": { "size": "lg" },
-          "style": { "minHeight": "space_table_row_h_lg" }
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "minHeight": "space_table_row_h_lg"
+          }
         }
       ]
     },
     {
       "name": "@UI/Table",
       "description": "Таблица: HeaderRow + 4 Row. Варианты: size (sm/md/lg), appearance (base/striped/bordered). Внешний бордер radius_medium. Опирается на @UI/Table/HeaderRow и @UI/Table/Row.",
-      "variantProps": ["size", "appearance"],
+      "variantProps": [
+        "size",
+        "appearance"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "appearance": ["base", "striped", "bordered"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "appearance": [
+          "base",
+          "striped",
+          "bordered"
+        ]
       },
       "variants": [],
       "variantRules": [
         {
-          "when": { "appearance": "base" },
+          "when": {
+            "appearance": "base"
+          },
           "style": {
             "background": "color_bg_base",
             "borderColor": "color_border_base",
@@ -6051,7 +6401,9 @@
           }
         },
         {
-          "when": { "appearance": "striped" },
+          "when": {
+            "appearance": "striped"
+          },
           "style": {
             "background": "color_bg_base",
             "borderColor": "color_border_base",
@@ -6060,7 +6412,9 @@
           }
         },
         {
-          "when": { "appearance": "bordered" },
+          "when": {
+            "appearance": "bordered"
+          },
           "style": {
             "background": "color_bg_base",
             "borderColor": "color_border_strong",
@@ -6069,16 +6423,28 @@
           }
         },
         {
-          "when": { "size": "sm" },
-          "style": { "minWidth": "space_table_min_sm" }
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "minWidth": "space_table_min_sm"
+          }
         },
         {
-          "when": { "size": "md" },
-          "style": { "minWidth": "space_table_min_md" }
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "minWidth": "space_table_min_md"
+          }
         },
         {
-          "when": { "size": "lg" },
-          "style": { "minWidth": "space_table_min_lg" }
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "minWidth": "space_table_min_lg"
+          }
         }
       ]
     },
@@ -6087,12 +6453,36 @@
       "description": "Изображение с aspect ratio, fallback, placeholder и skeleton. Оси: size (sm/md/lg) × ratio (1:1/4:3/16:9/3:2) × state (loading/loaded/error/empty) = 48 вариантов. Плюс layout=hero-full / hero-half для фона секции лендинга (без скругления, на весь экран / пол экрана). Referencing node: 143:34702.",
       "figmaNodeId": "143:34702",
       "defaultContent": "",
-      "variantProps": ["layout", "size", "ratio", "state"],
+      "variantProps": [
+        "layout",
+        "size",
+        "ratio",
+        "state"
+      ],
       "variantAxes": {
-        "layout": ["image", "hero-full", "hero-half"],
-        "size":   ["xs", "sm", "md", "lg"],
-        "ratio":  ["1:1", "4:3", "16:9", "3:2"],
-        "state":  ["loading", "loaded", "error", "empty"]
+        "layout": [
+          "image",
+          "hero-full",
+          "hero-half"
+        ],
+        "size": [
+          "xs",
+          "sm",
+          "md",
+          "lg"
+        ],
+        "ratio": [
+          "1:1",
+          "4:3",
+          "16:9",
+          "3:2"
+        ],
+        "state": [
+          "loading",
+          "loaded",
+          "error",
+          "empty"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6105,21 +6495,84 @@
             "ratioValue": 0.75
           }
         },
-
-        { "when": { "layout": "image" }, "style": {} },
-
-        { "when": { "size": "xs" }, "style": { "widthPx": 120, "borderRadius": "radius_medium"  } },
-        { "when": { "size": "sm" }, "style": { "widthPx": 200, "borderRadius": "radius_medium"  } },
-        { "when": { "size": "md" }, "style": { "widthPx": 320, "borderRadius": "radius_medium"  } },
-        { "when": { "size": "lg" }, "style": { "widthPx": 480, "borderRadius": "radius_large"   } },
-
-        { "when": { "ratio": "1:1"  }, "style": { "ratioValue": 1.0    } },
-        { "when": { "ratio": "4:3"  }, "style": { "ratioValue": 0.75   } },
-        { "when": { "ratio": "16:9" }, "style": { "ratioValue": 0.5625 } },
-        { "when": { "ratio": "3:2"  }, "style": { "ratioValue": 0.6667 } },
-
         {
-          "when": { "layout": "hero-full" },
+          "when": {
+            "layout": "image"
+          },
+          "style": {}
+        },
+        {
+          "when": {
+            "size": "xs"
+          },
+          "style": {
+            "widthPx": 120,
+            "borderRadius": "radius_medium"
+          }
+        },
+        {
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "widthPx": 200,
+            "borderRadius": "radius_medium"
+          }
+        },
+        {
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "widthPx": 320,
+            "borderRadius": "radius_medium"
+          }
+        },
+        {
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "widthPx": 480,
+            "borderRadius": "radius_large"
+          }
+        },
+        {
+          "when": {
+            "ratio": "1:1"
+          },
+          "style": {
+            "ratioValue": 1
+          }
+        },
+        {
+          "when": {
+            "ratio": "4:3"
+          },
+          "style": {
+            "ratioValue": 0.75
+          }
+        },
+        {
+          "when": {
+            "ratio": "16:9"
+          },
+          "style": {
+            "ratioValue": 0.5625
+          }
+        },
+        {
+          "when": {
+            "ratio": "3:2"
+          },
+          "style": {
+            "ratioValue": 0.6667
+          }
+        },
+        {
+          "when": {
+            "layout": "hero-full"
+          },
           "style": {
             "widthPx": 1920,
             "ratioValue": 0.5625,
@@ -6128,7 +6581,9 @@
           }
         },
         {
-          "when": { "layout": "hero-half" },
+          "when": {
+            "layout": "hero-half"
+          },
           "style": {
             "widthPx": 960,
             "ratioValue": 1.125,
@@ -6138,11 +6593,28 @@
             "heroMode": true
           }
         },
-
-        { "when": { "state": "loading" }, "style": { "background": "color_surface_3", "shimmer": true  } },
-        { "when": { "state": "loaded"  }, "style": { "background": "color_surface_2", "imageFill": true } },
         {
-          "when": { "state": "error" },
+          "when": {
+            "state": "loading"
+          },
+          "style": {
+            "background": "color_surface_3",
+            "shimmer": true
+          }
+        },
+        {
+          "when": {
+            "state": "loaded"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "imageFill": true
+          }
+        },
+        {
+          "when": {
+            "state": "error"
+          },
           "style": {
             "background": "color_surface_2",
             "iconName": "exclamation-diamond-fill",
@@ -6152,28 +6624,85 @@
           }
         },
         {
-          "when": { "state": "empty" },
+          "when": {
+            "state": "empty"
+          },
           "style": {
             "background": "color_surface_2",
             "iconName": "image",
             "iconColor": "color_text_muted"
           }
         },
-
-        { "when": { "layout": "hero-full", "state": "loading" }, "style": { "background": "color_surface_3", "shimmer": true } },
-        { "when": { "layout": "hero-full", "state": "loaded"  }, "style": { "background": "color_surface_2", "imageFill": true, "imageFitMode": "CROP" } },
-        { "when": { "layout": "hero-half", "state": "loading" }, "style": { "background": "color_surface_3", "shimmer": true } },
-        { "when": { "layout": "hero-half", "state": "loaded"  }, "style": { "background": "color_surface_2", "imageFill": true, "imageFitMode": "CROP" } }
+        {
+          "when": {
+            "layout": "hero-full",
+            "state": "loading"
+          },
+          "style": {
+            "background": "color_surface_3",
+            "shimmer": true
+          }
+        },
+        {
+          "when": {
+            "layout": "hero-full",
+            "state": "loaded"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "imageFill": true,
+            "imageFitMode": "CROP"
+          }
+        },
+        {
+          "when": {
+            "layout": "hero-half",
+            "state": "loading"
+          },
+          "style": {
+            "background": "color_surface_3",
+            "shimmer": true
+          }
+        },
+        {
+          "when": {
+            "layout": "hero-half",
+            "state": "loaded"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "imageFill": true,
+            "imageFitMode": "CROP"
+          }
+        }
       ]
     },
     {
       "name": "@UI/ListItem",
       "description": "Строка списка. Оси: size (sm/md/lg) × interaction (base/hover/selected/disabled) × variant (iconNav/iconMeta/avatarContact/checkboxSelect). Итого 3×4×4=48 вариантов. iconNav — иконка слева + chevron справа (настройки, навигация). iconMeta — иконка слева + badge/meta справа (уведомления). avatarContact — аватар слева + meta справа (контакты). checkboxSelect — чекбокс слева + switch справа (мультивыбор). Boolean props: Leading Icon, Leading Avatar, Leading Checkbox, Subtitle, Trailing Chevron, Trailing Badge, Trailing Meta, Trailing Action, Divider.",
-      "variantProps": ["size", "interaction", "variant"],
+      "variantProps": [
+        "size",
+        "interaction",
+        "variant"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "interaction": ["base", "hover", "selected", "disabled"],
-        "variant": ["iconNav", "iconMeta", "avatarContact", "checkboxSelect"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "interaction": [
+          "base",
+          "hover",
+          "selected",
+          "disabled"
+        ],
+        "variant": [
+          "iconNav",
+          "iconMeta",
+          "avatarContact",
+          "checkboxSelect"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6198,7 +6727,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_list_item_x_sm",
             "paddingY": "space_list_item_y_sm",
@@ -6209,7 +6740,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_list_item_x_md",
             "paddingY": "space_list_item_y_md",
@@ -6220,7 +6753,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_list_item_x_lg",
             "paddingY": "space_list_item_y_lg",
@@ -6231,7 +6766,9 @@
           }
         },
         {
-          "when": { "interaction": "base" },
+          "when": {
+            "interaction": "base"
+          },
           "style": {
             "background": "color_bg_base",
             "textColor": "color_text_primary",
@@ -6240,7 +6777,9 @@
           }
         },
         {
-          "when": { "interaction": "hover" },
+          "when": {
+            "interaction": "hover"
+          },
           "style": {
             "background": "color_surface_2",
             "textColor": "color_text_primary",
@@ -6249,7 +6788,9 @@
           }
         },
         {
-          "when": { "interaction": "selected" },
+          "when": {
+            "interaction": "selected"
+          },
           "style": {
             "background": "color_brand_muted",
             "textColor": "color_brand_primary",
@@ -6259,15 +6800,27 @@
           }
         },
         {
-          "when": { "interaction": "selected", "size": "sm" },
-          "style": { "textStyle": "Text/Body/SM" }
+          "when": {
+            "interaction": "selected",
+            "size": "sm"
+          },
+          "style": {
+            "textStyle": "Text/Body/SM"
+          }
         },
         {
-          "when": { "interaction": "selected", "size": "lg" },
-          "style": { "textStyle": "Text/Body/LG" }
+          "when": {
+            "interaction": "selected",
+            "size": "lg"
+          },
+          "style": {
+            "textStyle": "Text/Body/LG"
+          }
         },
         {
-          "when": { "interaction": "disabled" },
+          "when": {
+            "interaction": "disabled"
+          },
           "style": {
             "background": "color_bg_disabled",
             "textColor": "color_text_disabled",
@@ -6278,40 +6831,58 @@
           }
         },
         {
-          "when": { "variant": "iconNav" },
+          "when": {
+            "variant": "iconNav"
+          },
           "style": {
             "leadingType": "icon",
             "trailingType": "chevron"
           }
         },
         {
-          "when": { "variant": "iconMeta" },
+          "when": {
+            "variant": "iconMeta"
+          },
           "style": {
             "leadingType": "icon",
             "trailingType": "badge"
           }
         },
         {
-          "when": { "variant": "avatarContact" },
+          "when": {
+            "variant": "avatarContact"
+          },
           "style": {
             "leadingType": "avatar",
             "trailingType": "meta"
           }
         },
         {
-          "when": { "variant": "checkboxSelect" },
+          "when": {
+            "variant": "checkboxSelect"
+          },
           "style": {
             "leadingType": "checkbox",
             "trailingType": "action"
           }
         },
         {
-          "when": { "interaction": "selected", "variant": "iconMeta" },
-          "style": { "metaColor": "color_brand_primary" }
+          "when": {
+            "interaction": "selected",
+            "variant": "iconMeta"
+          },
+          "style": {
+            "metaColor": "color_brand_primary"
+          }
         },
         {
-          "when": { "interaction": "selected", "variant": "avatarContact" },
-          "style": { "metaColor": "color_brand_primary" }
+          "when": {
+            "interaction": "selected",
+            "variant": "avatarContact"
+          },
+          "style": {
+            "metaColor": "color_brand_primary"
+          }
         }
       ]
     },
@@ -6319,11 +6890,28 @@
       "name": "@UI/EmptyState",
       "description": "EmptyState: пустое состояние с иконкой, заголовком, описанием и CTA. Оси: size (sm/md/lg) × appearance (base/info/success/warning/danger) × layout (vertical/horizontal). Boolean props: Icon, Title, Description, CTA, SecondaryAction. Применение: пустые списки, ошибки загрузки, онбординг.",
       "defaultContent": "No data found. Try adjusting your filters or adding new items.",
-      "variantProps": ["size", "appearance", "layout"],
+      "variantProps": [
+        "size",
+        "appearance",
+        "layout"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "appearance": ["base", "info", "success", "warning", "danger"],
-        "layout": ["vertical", "horizontal"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "appearance": [
+          "base",
+          "info",
+          "success",
+          "warning",
+          "danger"
+        ],
+        "layout": [
+          "vertical",
+          "horizontal"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6354,7 +6942,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_inset_m",
             "paddingY": "space_inset_m",
@@ -6371,7 +6961,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_inset_l",
             "paddingY": "space_inset_l",
@@ -6388,7 +6980,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_inset_xl",
             "paddingY": "space_inset_xl",
@@ -6405,7 +6999,9 @@
           }
         },
         {
-          "when": { "appearance": "base" },
+          "when": {
+            "appearance": "base"
+          },
           "style": {
             "background": "color_surface_2",
             "iconColor": "color_icon_on_base",
@@ -6413,7 +7009,9 @@
           }
         },
         {
-          "when": { "appearance": "info" },
+          "when": {
+            "appearance": "info"
+          },
           "style": {
             "background": "color_info_surface",
             "iconColor": "color_info_base",
@@ -6421,7 +7019,9 @@
           }
         },
         {
-          "when": { "appearance": "success" },
+          "when": {
+            "appearance": "success"
+          },
           "style": {
             "background": "color_success_surface",
             "iconColor": "color_success_base",
@@ -6429,7 +7029,9 @@
           }
         },
         {
-          "when": { "appearance": "warning" },
+          "when": {
+            "appearance": "warning"
+          },
           "style": {
             "background": "color_warning_surface",
             "iconColor": "color_warning_base",
@@ -6437,7 +7039,9 @@
           }
         },
         {
-          "when": { "appearance": "danger" },
+          "when": {
+            "appearance": "danger"
+          },
           "style": {
             "background": "color_danger_surface",
             "iconColor": "color_danger_base",
@@ -6445,7 +7049,9 @@
           }
         },
         {
-          "when": { "layout": "vertical" },
+          "when": {
+            "layout": "vertical"
+          },
           "style": {
             "layoutDirection": "VERTICAL",
             "primaryAxisAlignItems": "CENTER",
@@ -6454,7 +7060,9 @@
           }
         },
         {
-          "when": { "layout": "horizontal" },
+          "when": {
+            "layout": "horizontal"
+          },
           "style": {
             "layoutDirection": "HORIZONTAL",
             "primaryAxisAlignItems": "MIN",
@@ -6463,26 +7071,51 @@
           }
         },
         {
-          "when": { "layout": "horizontal", "size": "sm" },
-          "style": { "gap": "space_empty_state_gap_sm" }
+          "when": {
+            "layout": "horizontal",
+            "size": "sm"
+          },
+          "style": {
+            "gap": "space_empty_state_gap_sm"
+          }
         },
         {
-          "when": { "layout": "horizontal", "size": "md" },
-          "style": { "gap": "space_empty_state_gap_md" }
+          "when": {
+            "layout": "horizontal",
+            "size": "md"
+          },
+          "style": {
+            "gap": "space_empty_state_gap_md"
+          }
         },
         {
-          "when": { "layout": "horizontal", "size": "lg" },
-          "style": { "gap": "space_empty_state_gap_lg" }
+          "when": {
+            "layout": "horizontal",
+            "size": "lg"
+          },
+          "style": {
+            "gap": "space_empty_state_gap_lg"
+          }
         }
       ]
     },
     {
       "name": "@UI/Skeleton/Page",
       "description": "Skeleton / Page: шаблон-заглушка для полной страницы. Содержит nav-бар, hero-блок, строку тегов и сетку из 3 карточек-плейсхолдеров. Оси: size (sm/md/lg) × shimmer (true/false). Shimmer = анимированный градиент surface_3→surface_2→surface_3. Строки переменной ширины имитируют реальный контент.",
-      "variantProps": ["size", "shimmer"],
+      "variantProps": [
+        "size",
+        "shimmer"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "shimmer": ["true", "false"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "shimmer": [
+          "true",
+          "false"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6507,7 +7140,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_inset_s",
             "paddingY": "space_inset_s",
@@ -6521,7 +7156,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_inset_m",
             "paddingY": "space_inset_m",
@@ -6535,7 +7172,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_inset_l",
             "paddingY": "space_inset_l",
@@ -6549,22 +7188,40 @@
           }
         },
         {
-          "when": { "shimmer": "true" },
-          "style": { "shimmer": true }
+          "when": {
+            "shimmer": "true"
+          },
+          "style": {
+            "shimmer": true
+          }
         },
         {
-          "when": { "shimmer": "false" },
-          "style": { "shimmer": false }
+          "when": {
+            "shimmer": "false"
+          },
+          "style": {
+            "shimmer": false
+          }
         }
       ]
     },
     {
       "name": "@UI/Skeleton/List",
       "description": "Skeleton / List: шаблон-заглушка для списка (4 строки). Каждая строка: circle (аватар/иконка) + line (label, переменная ширина) + line (meta, фикс. ширина). Divider между строками. Оси: size (sm/md/lg) × shimmer (true/false).",
-      "variantProps": ["size", "shimmer"],
+      "variantProps": [
+        "size",
+        "shimmer"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "shimmer": ["true", "false"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "shimmer": [
+          "true",
+          "false"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6583,14 +7240,21 @@
             "lineH": "space_skeleton_line_h_md",
             "circleD": "space_skeleton_circle_md",
             "rowCount": 4,
-            "labelWidths": [0.75, 0.5, 0.65, 0.45],
+            "labelWidths": [
+              0.75,
+              0.5,
+              0.65,
+              0.45
+            ],
             "metaWidth": 48,
             "minWidth": "space_container_content_min",
             "maxWidth": "space_container_content_max"
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_list_item_x_sm",
             "paddingY": "space_list_item_y_sm",
@@ -6604,7 +7268,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_list_item_x_md",
             "paddingY": "space_list_item_y_md",
@@ -6618,7 +7284,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_list_item_x_lg",
             "paddingY": "space_list_item_y_lg",
@@ -6632,22 +7300,40 @@
           }
         },
         {
-          "when": { "shimmer": "true" },
-          "style": { "shimmer": true }
+          "when": {
+            "shimmer": "true"
+          },
+          "style": {
+            "shimmer": true
+          }
         },
         {
-          "when": { "shimmer": "false" },
-          "style": { "shimmer": false }
+          "when": {
+            "shimmer": "false"
+          },
+          "style": {
+            "shimmer": false
+          }
         }
       ]
     },
     {
       "name": "@UI/Skeleton/Card",
       "description": "Skeleton / Card: шаблон-заглушка для карточки. Структура (сверху вниз): медиа-блок (rect), строка заголовка, 2 строки описания, строка действий. Оси: size (sm/md/lg) × shimmer (true/false).",
-      "variantProps": ["size", "shimmer"],
+      "variantProps": [
+        "size",
+        "shimmer"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "shimmer": ["true", "false"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "shimmer": [
+          "true",
+          "false"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6673,7 +7359,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_inset_s",
             "paddingY": "space_inset_s",
@@ -6686,7 +7374,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_inset_m",
             "paddingY": "space_inset_m",
@@ -6699,7 +7389,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_inset_l",
             "paddingY": "space_inset_l",
@@ -6712,22 +7404,40 @@
           }
         },
         {
-          "when": { "shimmer": "true" },
-          "style": { "shimmer": true }
+          "when": {
+            "shimmer": "true"
+          },
+          "style": {
+            "shimmer": true
+          }
         },
         {
-          "when": { "shimmer": "false" },
-          "style": { "shimmer": false }
+          "when": {
+            "shimmer": "false"
+          },
+          "style": {
+            "shimmer": false
+          }
         }
       ]
     },
     {
       "name": "@UI/Skeleton/Table",
       "description": "Skeleton / Table: шаблон-заглушка для таблицы. Структура: 1 header-строка (bg=color_surface_3) + 4 data-строки. 4 колонки с переменной шириной ячеек. Зеркалит размерный ряд @UI/Table. Оси: size (sm/md/lg) × shimmer (true/false).",
-      "variantProps": ["size", "shimmer"],
+      "variantProps": [
+        "size",
+        "shimmer"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "shimmer": ["true", "false"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "shimmer": [
+          "true",
+          "false"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6747,13 +7457,25 @@
             "lineH": "space_skeleton_line_h_md",
             "colCount": 4,
             "rowCount": 4,
-            "colWidths": [0.15, 0.35, 0.25, 0.25],
-            "cellLineWidths": [0.7, 0.6, 0.8, 0.5],
+            "colWidths": [
+              0.15,
+              0.35,
+              0.25,
+              0.25
+            ],
+            "cellLineWidths": [
+              0.7,
+              0.6,
+              0.8,
+              0.5
+            ],
             "minWidth": "space_table_min_md"
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_table_cell_x_sm",
             "paddingY": "space_table_cell_y_sm",
@@ -6763,7 +7485,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_table_cell_x_md",
             "paddingY": "space_table_cell_y_md",
@@ -6773,7 +7497,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_table_cell_x_lg",
             "paddingY": "space_table_cell_y_lg",
@@ -6783,23 +7509,46 @@
           }
         },
         {
-          "when": { "shimmer": "true" },
-          "style": { "shimmer": true }
+          "when": {
+            "shimmer": "true"
+          },
+          "style": {
+            "shimmer": true
+          }
         },
         {
-          "when": { "shimmer": "false" },
-          "style": { "shimmer": false }
+          "when": {
+            "shimmer": "false"
+          },
+          "style": {
+            "shimmer": false
+          }
         }
       ]
     },
     {
       "name": "@UI/Skeleton/Chart",
       "description": "Skeleton / Chart: шаблон-заглушка для области графика. Структура: строка заголовка, строка метрики (крупная), строка легенды, область графика. chartType: bar (5 прямоугольников разной высоты) | line (горизонтальная волна + area) | donut (кольцо). Оси: size (sm/md/lg) × shimmer (true/false) × chartType (bar/line/donut).",
-      "variantProps": ["size", "shimmer", "chartType"],
+      "variantProps": [
+        "size",
+        "shimmer",
+        "chartType"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "shimmer": ["true", "false"],
-        "chartType": ["bar", "line", "donut"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "shimmer": [
+          "true",
+          "false"
+        ],
+        "chartType": [
+          "bar",
+          "line",
+          "donut"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6819,7 +7568,13 @@
             "lineH": "space_skeleton_line_h_md",
             "barCount": 5,
             "barWidthPct": 0.12,
-            "barHeights": [0.6, 0.85, 0.45, 0.95, 0.7],
+            "barHeights": [
+              0.6,
+              0.85,
+              0.45,
+              0.95,
+              0.7
+            ],
             "legendDotD": 8,
             "legendCount": 3,
             "minWidth": "space_container_content_min",
@@ -6827,7 +7582,9 @@
           }
         },
         {
-          "when": { "size": "sm" },
+          "when": {
+            "size": "sm"
+          },
           "style": {
             "paddingX": "space_inset_s",
             "paddingY": "space_inset_s",
@@ -6840,7 +7597,9 @@
           }
         },
         {
-          "when": { "size": "md" },
+          "when": {
+            "size": "md"
+          },
           "style": {
             "paddingX": "space_inset_m",
             "paddingY": "space_inset_m",
@@ -6853,7 +7612,9 @@
           }
         },
         {
-          "when": { "size": "lg" },
+          "when": {
+            "size": "lg"
+          },
           "style": {
             "paddingX": "space_inset_l",
             "paddingY": "space_inset_l",
@@ -6866,34 +7627,68 @@
           }
         },
         {
-          "when": { "shimmer": "true" },
-          "style": { "shimmer": true }
+          "when": {
+            "shimmer": "true"
+          },
+          "style": {
+            "shimmer": true
+          }
         },
         {
-          "when": { "shimmer": "false" },
-          "style": { "shimmer": false }
+          "when": {
+            "shimmer": "false"
+          },
+          "style": {
+            "shimmer": false
+          }
         },
         {
-          "when": { "chartType": "bar" },
-          "style": { "chartMode": "bar" }
+          "when": {
+            "chartType": "bar"
+          },
+          "style": {
+            "chartMode": "bar"
+          }
         },
         {
-          "when": { "chartType": "line" },
-          "style": { "chartMode": "line", "areaOpacity": 0.15 }
+          "when": {
+            "chartType": "line"
+          },
+          "style": {
+            "chartMode": "line",
+            "areaOpacity": 0.15
+          }
         },
         {
-          "when": { "chartType": "donut" },
-          "style": { "chartMode": "donut", "donutInnerRadius": 0.55 }
+          "when": {
+            "chartType": "donut"
+          },
+          "style": {
+            "chartMode": "donut",
+            "donutInnerRadius": 0.55
+          }
         }
       ]
     },
     {
       "name": "@UI/Select",
       "description": "Native-style select dropdown. 3 sizes (sm/md/lg), states base/hover/focus/disabled. Chevron icon on the right.",
-      "variantProps": ["size", "state"],
+      "variantProps": [
+        "size",
+        "state"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "state": ["base", "hover", "focus", "disabled"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "base",
+          "hover",
+          "focus",
+          "disabled"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6906,22 +7701,104 @@
             "iconRight": "chevron-down"
           }
         },
-        { "when": { "state": "base" }, "style": { "background": "color_surface_2", "textColor": "color_text_primary", "borderColor": "color_border_base", "iconColor": "color_icon_on_base" } },
-        { "when": { "state": "hover" }, "style": { "background": "color_surface_3", "textColor": "color_text_primary", "borderColor": "color_border_strong", "iconColor": "color_icon_on_base" } },
-        { "when": { "state": "focus" }, "style": { "background": "color_surface_2", "textColor": "color_text_primary", "borderColor": "color_brand_primary", "iconColor": "color_brand_primary" } },
-        { "when": { "state": "disabled" }, "style": { "background": "color_surface_2", "textColor": "color_text_muted", "borderColor": "color_border_base", "iconColor": "color_text_muted", "opacity": 0.5 } },
-        { "when": { "size": "sm" }, "style": { "height": "space_input_sm", "paddingX": "space_input_inset_x_sm", "textStyle": "Text/Body/SM", "iconSize": 14 } },
-        { "when": { "size": "md" }, "style": { "height": "space_input_md", "paddingX": "space_input_inset_x_md", "textStyle": "Text/Body/MD", "iconSize": 16 } },
-        { "when": { "size": "lg" }, "style": { "height": "space_input_lg", "paddingX": "space_input_inset_x_lg", "textStyle": "Text/Body/LG", "iconSize": 18 } }
+        {
+          "when": {
+            "state": "base"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "textColor": "color_text_primary",
+            "borderColor": "color_border_base",
+            "iconColor": "color_icon_on_base"
+          }
+        },
+        {
+          "when": {
+            "state": "hover"
+          },
+          "style": {
+            "background": "color_surface_3",
+            "textColor": "color_text_primary",
+            "borderColor": "color_border_strong",
+            "iconColor": "color_icon_on_base"
+          }
+        },
+        {
+          "when": {
+            "state": "focus"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "textColor": "color_text_primary",
+            "borderColor": "color_brand_primary",
+            "iconColor": "color_brand_primary"
+          }
+        },
+        {
+          "when": {
+            "state": "disabled"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "textColor": "color_text_muted",
+            "borderColor": "color_border_base",
+            "iconColor": "color_text_muted",
+            "opacity": 0.5
+          }
+        },
+        {
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "height": "space_input_sm",
+            "paddingX": "space_input_inset_x_sm",
+            "textStyle": "Text/Body/SM",
+            "iconSize": 14
+          }
+        },
+        {
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "height": "space_input_md",
+            "paddingX": "space_input_inset_x_md",
+            "textStyle": "Text/Body/MD",
+            "iconSize": 16
+          }
+        },
+        {
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "height": "space_input_lg",
+            "paddingX": "space_input_inset_x_lg",
+            "textStyle": "Text/Body/LG",
+            "iconSize": 18
+          }
+        }
       ]
     },
     {
       "name": "@UI/RangeSlider",
       "description": "Dual-thumb range slider for min/max value selection. 3 sizes (sm/md/lg), states base/hover/disabled.",
-      "variantProps": ["size", "state"],
+      "variantProps": [
+        "size",
+        "state"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "state": ["base", "hover", "disabled"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "base",
+          "hover",
+          "disabled"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6935,21 +7812,84 @@
             "borderRadius": "radius_full"
           }
         },
-        { "when": { "state": "base" }, "style": { "fillColor": "color_brand_primary", "thumbBorder": "color_brand_primary" } },
-        { "when": { "state": "hover" }, "style": { "fillColor": "color_brand_hover", "thumbBorder": "color_brand_hover" } },
-        { "when": { "state": "disabled" }, "style": { "fillColor": "color_text_muted", "thumbBorder": "color_text_muted", "opacity": 0.5 } },
-        { "when": { "size": "sm" }, "style": { "trackHeight": 4, "thumbSize": 16 } },
-        { "when": { "size": "md" }, "style": { "trackHeight": 6, "thumbSize": 20 } },
-        { "when": { "size": "lg" }, "style": { "trackHeight": 8, "thumbSize": 24 } }
+        {
+          "when": {
+            "state": "base"
+          },
+          "style": {
+            "fillColor": "color_brand_primary",
+            "thumbBorder": "color_brand_primary"
+          }
+        },
+        {
+          "when": {
+            "state": "hover"
+          },
+          "style": {
+            "fillColor": "color_brand_hover",
+            "thumbBorder": "color_brand_hover"
+          }
+        },
+        {
+          "when": {
+            "state": "disabled"
+          },
+          "style": {
+            "fillColor": "color_text_muted",
+            "thumbBorder": "color_text_muted",
+            "opacity": 0.5
+          }
+        },
+        {
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "trackHeight": 4,
+            "thumbSize": 16
+          }
+        },
+        {
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "trackHeight": 6,
+            "thumbSize": 20
+          }
+        },
+        {
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "trackHeight": 8,
+            "thumbSize": 24
+          }
+        }
       ]
     },
     {
       "name": "@UI/Rating",
       "description": "Star rating component. 3 sizes (sm/md/lg), readonly or interactive, values 0-5.",
-      "variantProps": ["size", "value"],
+      "variantProps": [
+        "size",
+        "value"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "value": ["0", "1", "2", "3", "4", "5"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "value": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6961,18 +7901,49 @@
             "gap": "space_2"
           }
         },
-        { "when": { "size": "sm" }, "style": { "starSize": 16 } },
-        { "when": { "size": "md" }, "style": { "starSize": 20 } },
-        { "when": { "size": "lg" }, "style": { "starSize": 28 } }
+        {
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "starSize": 16
+          }
+        },
+        {
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "starSize": 20
+          }
+        },
+        {
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "starSize": 28
+          }
+        }
       ]
     },
     {
       "name": "@UI/Drawer",
       "description": "Side panel overlay. Slides from left/right. Sizes sm (320px), md (480px), lg (640px). Has close button, header, body.",
-      "variantProps": ["size", "side"],
+      "variantProps": [
+        "size",
+        "side"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "side": ["left", "right"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "side": [
+          "left",
+          "right"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -6988,20 +7959,68 @@
             "padding": "space_page_x"
           }
         },
-        { "when": { "size": "sm" }, "style": { "width": 320 } },
-        { "when": { "size": "md" }, "style": { "width": 480 } },
-        { "when": { "size": "lg" }, "style": { "width": 640 } },
-        { "when": { "side": "left" }, "style": { "origin": "left" } },
-        { "when": { "side": "right" }, "style": { "origin": "right" } }
+        {
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "width": 320
+          }
+        },
+        {
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "width": 480
+          }
+        },
+        {
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "width": 640
+          }
+        },
+        {
+          "when": {
+            "side": "left"
+          },
+          "style": {
+            "origin": "left"
+          }
+        },
+        {
+          "when": {
+            "side": "right"
+          },
+          "style": {
+            "origin": "right"
+          }
+        }
       ]
     },
     {
       "name": "@UI/FileUpload",
       "description": "File upload zone with drag-and-drop. States: idle, hover/dragover, uploading, done, error. Sizes sm/md/lg.",
-      "variantProps": ["size", "state"],
+      "variantProps": [
+        "size",
+        "state"
+      ],
       "variantAxes": {
-        "size": ["sm", "md", "lg"],
-        "state": ["idle", "dragover", "uploading", "done", "error"]
+        "size": [
+          "sm",
+          "md",
+          "lg"
+        ],
+        "state": [
+          "idle",
+          "dragover",
+          "uploading",
+          "done",
+          "error"
+        ]
       },
       "variants": [],
       "variantRules": [
@@ -7016,14 +8035,91 @@
             "padding": "space_card_inset"
           }
         },
-        { "when": { "state": "idle" }, "style": { "background": "color_surface_2", "borderColor": "color_border_base", "textColor": "color_text_secondary", "iconColor": "color_icon_on_base" } },
-        { "when": { "state": "dragover" }, "style": { "background": "color_brand_subtle", "borderColor": "color_brand_primary", "textColor": "color_brand_primary", "iconColor": "color_brand_primary" } },
-        { "when": { "state": "uploading" }, "style": { "background": "color_surface_2", "borderColor": "color_brand_primary", "textColor": "color_text_secondary", "iconColor": "color_brand_primary" } },
-        { "when": { "state": "done" }, "style": { "background": "color_success_subtle", "borderColor": "color_success_base", "textColor": "color_success_base", "iconColor": "color_success_base" } },
-        { "when": { "state": "error" }, "style": { "background": "color_danger_subtle", "borderColor": "color_danger_base", "textColor": "color_danger_base", "iconColor": "color_danger_base" } },
-        { "when": { "size": "sm" }, "style": { "height": 80, "textStyle": "Text/Body/SM", "iconSize": 20 } },
-        { "when": { "size": "md" }, "style": { "height": 120, "textStyle": "Text/Body/MD", "iconSize": 28 } },
-        { "when": { "size": "lg" }, "style": { "height": 180, "textStyle": "Text/Body/LG", "iconSize": 36 } }
+        {
+          "when": {
+            "state": "idle"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "borderColor": "color_border_base",
+            "textColor": "color_text_secondary",
+            "iconColor": "color_icon_on_base"
+          }
+        },
+        {
+          "when": {
+            "state": "dragover"
+          },
+          "style": {
+            "background": "color_brand_subtle",
+            "borderColor": "color_brand_primary",
+            "textColor": "color_brand_primary",
+            "iconColor": "color_brand_primary"
+          }
+        },
+        {
+          "when": {
+            "state": "uploading"
+          },
+          "style": {
+            "background": "color_surface_2",
+            "borderColor": "color_brand_primary",
+            "textColor": "color_text_secondary",
+            "iconColor": "color_brand_primary"
+          }
+        },
+        {
+          "when": {
+            "state": "done"
+          },
+          "style": {
+            "background": "color_success_subtle",
+            "borderColor": "color_success_base",
+            "textColor": "color_success_base",
+            "iconColor": "color_success_base"
+          }
+        },
+        {
+          "when": {
+            "state": "error"
+          },
+          "style": {
+            "background": "color_danger_subtle",
+            "borderColor": "color_danger_base",
+            "textColor": "color_danger_base",
+            "iconColor": "color_danger_base"
+          }
+        },
+        {
+          "when": {
+            "size": "sm"
+          },
+          "style": {
+            "height": 80,
+            "textStyle": "Text/Body/SM",
+            "iconSize": 20
+          }
+        },
+        {
+          "when": {
+            "size": "md"
+          },
+          "style": {
+            "height": 120,
+            "textStyle": "Text/Body/MD",
+            "iconSize": 28
+          }
+        },
+        {
+          "when": {
+            "size": "lg"
+          },
+          "style": {
+            "height": 180,
+            "textStyle": "Text/Body/LG",
+            "iconSize": 36
+          }
+        }
       ]
     }
   ]

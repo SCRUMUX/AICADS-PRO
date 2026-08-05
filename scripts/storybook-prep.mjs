@@ -38,6 +38,12 @@ const installedInNodeModules = scriptDir.includes(
 
 function resolveProjectRoot(arg) {
 
+  if (arg === '.' || arg === './') {
+
+    return process.cwd();
+
+  }
+
   if (arg) {
 
     return path.isAbsolute(arg) ? arg : path.resolve(installedInNodeModules ? process.cwd() : repoRoot, arg);

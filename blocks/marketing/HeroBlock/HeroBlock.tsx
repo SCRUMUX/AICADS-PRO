@@ -80,8 +80,6 @@ function HeroActions({
 }) {
   if (!primaryAction && !secondaryAction) return null;
 
-  const primaryAppearance = enterprise && onBrand ? 'outline' : 'brand';
-
   return (
     <div
       className={cn(BLOCK_ACTIONS_ROW_CLASS, centered && 'justify-center')}
@@ -92,14 +90,9 @@ function HeroActions({
           label={primaryAction.label}
           onClick={primaryAction.onClick}
           href={primaryAction.href}
-          appearance={primaryAppearance}
+          appearance="brand"
           size="lg"
-          onBrand={onBrand}
-          className={
-            enterprise && onBrand
-              ? 'transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-[var(--color-text-on-brand)] hover:bg-[var(--color-text-on-brand)]/14 hover:shadow-elevation-2 active:translate-y-0'
-              : undefined
-          }
+          className={enterprise ? 'industrial-button-motion shadow-[var(--shadow-sm)]' : undefined}
         />
       ) : null}
       {secondaryAction ? (

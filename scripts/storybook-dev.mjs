@@ -23,6 +23,7 @@ for (const arg of cliArgs) {
   const resolved = path.resolve(process.cwd(), arg);
   const looksLikeDir =
     arg === '.' ||
+    arg === './' ||
     arg === '..' ||
     (!arg.startsWith('-') &&
       (fs.existsSync(resolved) || fs.existsSync(path.join(resolved, 'package.json'))));
