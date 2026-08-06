@@ -24,5 +24,7 @@ export interface BlogBlockProps {
   viewAll?: BlogViewAllAction;
   /** Desktop prev/next controls — default true. */
   showNavigation?: boolean;
+  /** Light-on-photo section shell (blog band inside a photo hero/backdrop). */
+  embeddedInPhotoHero?: boolean;
   className?: string;
 }
