@@ -283,10 +283,14 @@ function EnterpriseNavbar(props: NavbarBlockProps) {
   return (
     <>
       <div className="relative isolate z-[var(--z-header)] w-full">
-        {overlay && !pastBrandFold ? (
+        {overlay && !pastBrandFold && showAboveFoldSocial ? (
+          // Only needed to extend the brand wash under the above-fold social
+          // rail (below the nav row) — the nav row itself is covered by the
+          // chrome's own glass background, so this stays out of the way for
+          // photo-backdrop heroes with no social rail.
           <div
             aria-hidden="true"
-            className="pointer-events-none fixed inset-x-0 top-[-1px] z-[calc(var(--z-header)-1)] bg-[var(--color-brand-primary)]"
+            className="pointer-events-none fixed inset-x-0 top-[-1px] z-[calc(var(--z-header)-1)] bg-[color-mix(in_srgb,var(--color-brand-primary)_45%,transparent)]"
             style={{ height: `calc(${aboveFoldBandHeight} + ${NAVBAR_BRAND_BLEED_EXTRA})` }}
           />
         ) : null}

@@ -263,7 +263,10 @@ export const BLOCK_GLASS_CHROME_OVERLAY_CLASS = cn(
 /** Glass chrome — enterprise navbar overlay on brand hero (no border; brand-tinted frost). */
 export const BLOCK_GLASS_CHROME_NAVBAR_OVERLAY_CLASS = cn(
   'backdrop-blur-background',
-  'bg-[color-mix(in_srgb,var(--color-brand-primary)_62%,transparent)]',
+  // Light tint only — genuinely see-through over a photo hero (flat
+  // brand-color heroes still read fine since the blurred backdrop itself
+  // is the brand color in that case).
+  'bg-[color-mix(in_srgb,var(--color-brand-primary)_28%,transparent)]',
 );
 
 /** Glass chrome panel — bordered floating panel over brand/content (showcase preview). */
