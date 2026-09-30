@@ -308,6 +308,15 @@ function emitThemeBlock(selector, mode, includeEffects, effectMode = 'light') {
     lines.push('  --color-surface-active: var(--color-surface-3);');
   }
 
+  const dashboard = tokens.dashboard?.[mode];
+  if (dashboard && typeof dashboard === 'object') {
+    lines.push('');
+    lines.push('  /* Dashboard surfaces / effects */');
+    for (const key of sortKeys(dashboard)) {
+      lines.push(`  ${toCssName(key)}: ${dashboard[key]};`);
+    }
+  }
+
   lines.push('}');
   lines.push('');
 }

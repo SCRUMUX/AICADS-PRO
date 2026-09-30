@@ -1,0 +1,20 @@
+{
+  "name": "@UI/SidebarNav",
+  "description": "Вертикальная навигация: бренд, пункты Link, слот футера. Активный пункт — gradient-brand.",
+  "variantProps": [],
+  "variantAxes": {},
+  "variantRules": [
+    {
+      "when": {},
+      "style": {
+        "background": "color_surface_1",
+        "borderColor": "color_border_base",
+        "borderRadius": "radius_medium"
+      },
+      "tailwindClasses": []
+    }
+  ],
+  "element": "aside",
+  "generatorStrategy": "template",
+  "template": "SidebarNav"
+}

@@ -5,6 +5,21 @@ Format follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.0] — 2026-09-30
+
+> **Dashboard shell** — navy/mint dark canvas, AppShell + SidebarNav, fluid/panel Card, Sparkline.
+
+### Added
+
+- Dark dashboard tokens: navy `--color-bg-base` / surfaces, mint `--color-accent-primary`, blue `--color-brand-primary`, `--radius-panel`, `--space-sidebar`, `--gradient-brand/surface/glow`, `--shadow-card`.
+- `AppShell`, `SidebarNav`, `Sparkline`, `ThemeSwitch` (`data-theme` + localStorage).
+- Card `size="fluid"` (no content max-width) and `variant="panel"` (`--radius-panel` + `--gradient-surface`).
+
+### Changed
+
+- `HeroBlock` `embedded` + `variant="split"` still renders `media`.
+
+
 ### Architecture
 
 - **Ecosystem docs** — [docs/ecosystem-map.md](docs/ecosystem-map.md) (which repo/folder to open) and [docs/block-promotion.md](docs/block-promotion.md) (child → parent block workflow).

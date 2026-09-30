@@ -1,7 +1,7 @@
 {
   "$schema": "https://aicads.dev/schema/ai-manifest-v1.json",
   "name": "@ai-ds/core",
-  "version": "0.7.6",
+  "version": "0.8.0",
   "description": "AICADS semantic AI manifest. Maps each public AICADS primitive to its semantic role, the backing behavior engine, and the contract files that drive its tokenized styling. Consumed by AI code generators, the Figma plugin and Replit-style automated assemblers.",
   "conventions": {
     "publicImport": "import { <Name> } from '@ai-ds/core/components/<Name>'",
@@ -252,6 +252,26 @@
       "role": "display.card",
       "engine": "custom",
       "contract": "Card.contract.json"
+    },
+    "AppShell": {
+      "role": "layout.app-shell",
+      "engine": "custom",
+      "contract": "AppShell.contract.json"
+    },
+    "SidebarNav": {
+      "role": "navigation.sidebar",
+      "engine": "custom",
+      "contract": "SidebarNav.contract.json"
+    },
+    "Sparkline": {
+      "role": "data.sparkline",
+      "engine": "custom",
+      "contract": "Sparkline.contract.json"
+    },
+    "ThemeSwitch": {
+      "role": "form.theme-switch",
+      "engine": "@radix-ui/react-switch",
+      "contract": "ThemeSwitch.contract.json"
     },
     "Image": {
       "role": "display.image",

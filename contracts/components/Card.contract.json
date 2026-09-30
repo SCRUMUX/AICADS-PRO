@@ -1,6 +1,6 @@
 {
   "name": "@UI/Card",
-  "description": "Card: контейнер для контента (заголовок, текст, медиа, действия). Варианты base, outlined, elevated, filled. Размеры sm/md/lg, состояния base/hover/focus/disabled.",
+  "description": "Card: контейнер для контента (заголовок, текст, медиа, действия). Варианты base, outlined, elevated, filled, panel. Размеры sm/md/lg/fluid, состояния base/hover/focus/disabled.",
   "variantProps": [
     "variant",
     "size",
@@ -11,12 +11,14 @@
       "base",
       "outlined",
       "elevated",
-      "filled"
+      "filled",
+      "panel"
     ],
     "size": [
       "sm",
       "md",
-      "lg"
+      "lg",
+      "fluid"
     ],
     "state": [
       "base",
@@ -229,6 +231,58 @@
         "border",
         "border-[var(--color-border-disabled)]",
         "opacity-[var(--opacity-disabled)]"
+      ]
+    },
+    {
+      "when": {
+        "size": "fluid"
+      },
+      "style": {
+        "paddingX": "space_inset_m",
+        "paddingY": "space_inset_m",
+        "gap": "space_6",
+        "titleStyle": "Text/Body/Strong",
+        "contentStyle": "Text/Body/SM"
+      },
+      "tailwindClasses": [
+        "px-[var(--space-inset-m)]",
+        "py-[var(--space-inset-m)]",
+        "gap-[var(--space-6)]",
+        "w-full",
+        "min-w-0",
+        "max-w-none",
+        "[--title-text-class:text-style-body-strong]"
+      ]
+    },
+    {
+      "when": {
+        "variant": "panel"
+      },
+      "style": {
+        "background": "gradient_surface",
+        "borderColor": "color_border_base",
+        "borderSide": "all",
+        "borderRadius": "radius_panel",
+        "elevationToken": "shadow_card"
+      },
+      "tailwindClasses": [
+        "bg-[image:var(--gradient-surface)]",
+        "border",
+        "border-[var(--color-border-base)]",
+        "rounded-[var(--radius-panel)]",
+        "shadow-card"
+      ]
+    },
+    {
+      "when": {
+        "variant": "panel",
+        "state": "hover"
+      },
+      "style": {
+        "background": "gradient_surface"
+      },
+      "tailwindClasses": [
+        "bg-[image:var(--gradient-surface)]"
       ]
     }
   ],

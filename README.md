@@ -1,4 +1,4 @@
-# @ai-ds/core v0.7.6
+# @ai-ds/core v0.8.0
 
 **AICADS PRO** — single canonical repository for the design system: 57+ primitives, 40+ marketing blocks, Synaptik AI icon builder, and Storybook kit.
 
@@ -8,7 +8,7 @@
 
 **Quick start:**
 
-1. `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6`
+1. `npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.8.0`
 2. `import '@ai-ds/core/tokens'`
 3. Browse Storybook: [scrumux.github.io/AICADS-PRO](https://scrumux.github.io/AICADS-PRO/) or run locally (see [Getting started](./docs/getting-started.md))
 4. For landing pages — import blocks from `@ai-ds/core/blocks/*` using the catalog at `@ai-ds/core/patterns`

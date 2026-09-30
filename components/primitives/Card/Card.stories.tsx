@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './Card';
 import { SkeletonCard } from '../SkeletonCard/SkeletonCard';
 
-const VARIANTS = ['base', 'outlined', 'elevated', 'filled'] as const;
-const SIZES    = ['sm', 'md', 'lg'] as const;
+const VARIANTS = ['base', 'outlined', 'elevated', 'filled', 'panel'] as const;
+const SIZES    = ['sm', 'md', 'lg', 'fluid'] as const;
 const STATES   = ['base', 'hover', 'focus', 'disabled'] as const;
 
 const SAMPLE_TITLE       = 'Card title';
@@ -18,7 +18,7 @@ const meta: Meta<typeof Card> = {
       description: {
         component:
           'Card (@UI/Card): контейнер для контента. ' +
-          '4 варианта (base/outlined/elevated/filled), 3 размера (sm/md/lg), 4 состояния. ' +
+          '4 варианта (base/outlined/elevated/filled/panel), 4 размера (sm/md/lg/fluid), 4 состояния. ' +
           'Слоты: title, description, header, footer, children. ' +
           'Figma: 160:75500.',
       },

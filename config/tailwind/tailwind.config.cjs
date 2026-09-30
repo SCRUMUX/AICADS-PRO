@@ -220,6 +220,7 @@ module.exports = {
         'grid-offset-mobile': 'var(--grid-mobile-offset)',
         'grid-offset-tablet': 'var(--grid-tablet-offset)',
         'grid-offset-desktop': 'var(--grid-desktop-offset)',
+        'sidebar': 'var(--space-sidebar)',
       },
       
       // =====================================================================
@@ -236,6 +237,7 @@ module.exports = {
         '2xl': 'var(--radius-2xl)',
         '3xl': 'var(--radius-3xl)',
         'section': 'var(--radius-section)',
+        'panel': 'var(--radius-panel)',
         'pill': 'var(--radius-pill)',
       },
       
@@ -272,6 +274,8 @@ module.exports = {
         'focus-danger': 'var(--effect-focus-danger)',
         'focus-success': 'var(--effect-focus-success)',
         'focus-warning': 'var(--effect-focus-warning)',
+        'card': 'var(--shadow-card)',
+        'brand': 'var(--shadow-brand)',
       },
       
       // =====================================================================

@@ -9,24 +9,28 @@ const SIZE_CLASSES: Record<CardSize, string> = {
   sm: 'px-[var(--space-inset-s)] py-[var(--space-inset-s)] gap-[var(--space-4)] min-w-[var(--space-container-compact-min)] max-w-[var(--space-container-compact-max)]',
   md: 'px-[var(--space-inset-m)] py-[var(--space-inset-m)] gap-[var(--space-6)] min-w-[var(--space-container-content-min)] max-w-[var(--space-container-content-max)]',
   lg: 'px-[var(--space-inset-l)] py-[var(--space-inset-l)] gap-[var(--space-8)] min-w-[var(--space-container-wide-min)] max-w-[var(--space-container-wide-max)]',
+  fluid: 'px-[var(--space-inset-m)] py-[var(--space-inset-m)] gap-[var(--space-6)] w-full min-w-0 max-w-none',
 };
 
 const TITLE_CLASS: Record<CardSize, string> = {
   sm: 'text-style-caption',
   md: 'text-style-body-strong',
   lg: 'text-style-h4',
+  fluid: 'text-style-body-strong',
 };
 
 const CONTENT_GAP: Record<CardSize, string> = {
   sm: 'gap-[var(--space-4)]',
   md: 'gap-[var(--space-6)]',
   lg: 'gap-[var(--space-8)]',
+  fluid: 'gap-[var(--space-6)]',
 };
 
 const CONTENT_CLASS: Record<CardSize, string> = {
   sm: 'text-style-body-xs',
   md: 'text-style-body-sm',
   lg: 'text-style-body',
+  fluid: 'text-style-body-sm',
 };
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
@@ -63,9 +67,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
   const isDisabled = effectiveState === 'disabled' || disabled;
 
   const he = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDisabled) setInternalState('hover');
+    if (!isDisabled && variant !== 'panel') setInternalState('hover');
     onMouseEnter?.(e);
-  }, [isDisabled, onMouseEnter]);
+  }, [isDisabled, onMouseEnter, variant]);
 
   const hl = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDisabled) setInternalState('base');
@@ -92,7 +96,8 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
       ref={ref}
       tabIndex={tabIndex ?? (isDisabled ? undefined : 0)}
       className={cn(
-        'flex flex-col w-full rounded-[var(--radius-medium)] transition-colors duration-150 box-border border-solid border-[var(--border-width-base)]',
+        'flex flex-col w-full transition-colors duration-150 box-border border-solid border-[var(--border-width-base)]',
+        variant === 'panel' ? 'rounded-[var(--radius-panel)]' : 'rounded-[var(--radius-medium)]',
         SIZE_CLASSES[size],
         ...appearanceClasses,
         ...focusBorderClasses,

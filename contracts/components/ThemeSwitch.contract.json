@@ -1,0 +1,16 @@
+{
+  "name": "@UI/ThemeSwitch",
+  "description": "Переключатель data-theme light/dark на Switch. Пишет localStorage.",
+  "variantProps": [],
+  "variantAxes": {},
+  "variantRules": [
+    {
+      "when": {},
+      "style": {},
+      "tailwindClasses": []
+    }
+  ],
+  "element": "span",
+  "generatorStrategy": "template",
+  "template": "ThemeSwitch"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@UI/Sparkline",
+  "description": "SVG sparkline из массива чисел. Stroke accent или brand. Пустой ряд не рисует кривую.",
+  "variantProps": ["stroke"],
+  "variantAxes": {
+    "stroke": ["accent", "brand"]
+  },
+  "variantRules": [
+    {
+      "when": {},
+      "style": {
+        "stroke": "color_accent_primary"
+      },
+      "tailwindClasses": []
+    },
+    {
+      "when": { "stroke": "brand" },
+      "style": {
+        "stroke": "color_brand_primary"
+      },
+      "tailwindClasses": []
+    }
+  ],
+  "element": "svg",
+  "generatorStrategy": "template",
+  "template": "Sparkline"
+}

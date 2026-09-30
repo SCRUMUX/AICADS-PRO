@@ -145,50 +145,63 @@
         "core_divider_light": "rgba(46, 58, 70, 0.08)",
         "core_border_dark": "rgba(255, 255, 255, 0.08)",
         "core_border_strong_dark": "rgba(255, 255, 255, 0.14)",
-        "core_divider_dark": "rgba(255, 255, 255, 0.06)"
+        "core_divider_dark": "rgba(255, 255, 255, 0.06)",
+        "core_navy_99": "#06111f",
+        "core_navy_95": "#0b1a30",
+        "core_navy_90": "#102440",
+        "core_navy_85": "#122b4d",
+        "core_mint_50": "#43efc1",
+        "core_mint_40": "#0aa97e",
+        "core_blue_brand": "#5d86ff",
+        "core_violet_brand": "#6248ff",
+        "core_text_dashboard": "#f5f8ff",
+        "core_text_dashboard_secondary": "#9cb0c9",
+        "core_text_dashboard_muted": "#6f87a7",
+        "core_border_dashboard_dark": "rgba(134, 177, 232, 0.18)",
+        "core_border_dashboard_strong_dark": "rgba(134, 177, 232, 0.28)"
       },
       "backgroundSurface": {
         "color_bg_base": {
           "light": "core_bg_base_light",
-          "dark": "core_gray_90"
+          "dark": "core_navy_99"
         },
         "color_bg_muted": {
           "light": "core_gray_5",
-          "dark": "core_gray_87"
+          "dark": "core_navy_95"
         },
         "color_surface_1": {
           "light": "core_white",
-          "dark": "core_gray_80"
+          "dark": "core_navy_95"
         },
         "color_surface_2": {
           "light": "core_gray_5_alt",
-          "dark": "core_gray_75"
+          "dark": "core_navy_90"
         },
         "color_surface_3": {
           "light": "core_gray_20",
-          "dark": "core_gray_70"
+          "dark": "core_navy_85"
         },
         "color_bg_disabled": {
           "light": "core_gray_10",
-          "dark": "core_gray_85"
+          "dark": "core_navy_90"
         }
       },
       "text": {
         "color_text_primary": {
           "light": "core_gray_95",
-          "dark": "core_gray_10_alt"
+          "dark": "core_text_dashboard"
         },
         "color_text_secondary": {
           "light": "core_gray_65",
-          "dark": "core_text_secondary_dark"
+          "dark": "core_text_dashboard_secondary"
         },
         "color_text_muted": {
           "light": "core_gray_60",
-          "dark": "core_gray_50"
+          "dark": "core_text_dashboard_muted"
         },
         "color_text_disabled": {
           "light": "core_gray_60",
-          "dark": "core_gray_50"
+          "dark": "core_text_dashboard_muted"
         },
         "color_text_on_brand": {
           "light": "core_white",
@@ -202,15 +215,15 @@
       "brandLinkFocus": {
         "color_brand_primary": {
           "light": "core_brand_50",
-          "dark": "core_brand_50"
+          "dark": "core_blue_brand"
         },
         "color_brand_hover": {
           "light": "core_brand_60",
-          "dark": "core_brand_60"
+          "dark": "core_violet_brand"
         },
         "color_brand_pressed": {
           "light": "core_brand_70",
-          "dark": "core_brand_70"
+          "dark": "core_violet_brand"
         },
         "color_brand_muted": {
           "light": "core_brand_10",
@@ -226,11 +239,11 @@
         },
         "color_link_default": {
           "light": "core_brand_50",
-          "dark": "core_accent_40"
+          "dark": "core_mint_50"
         },
         "color_link_hover": {
           "light": "core_accent_50",
-          "dark": "core_accent_40"
+          "dark": "core_blue_brand"
         },
         "color_link_visited": {
           "light": "core_brand_40",
@@ -242,19 +255,19 @@
         },
         "color_active": {
           "light": "core_accent_50",
-          "dark": "core_accent_50"
+          "dark": "core_violet_brand"
         },
         "color_accent_primary": {
           "light": "core_accent_50",
-          "dark": "core_accent_50"
+          "dark": "core_mint_50"
         },
         "color_accent_hover": {
           "light": "core_accent_60",
-          "dark": "core_accent_60"
+          "dark": "core_mint_50"
         },
         "color_accent_pressed": {
           "light": "core_accent_70",
-          "dark": "core_accent_70"
+          "dark": "core_mint_40"
         },
         "color_accent_muted": {
           "light": "core_accent_5",
@@ -268,11 +281,11 @@
       "borderDivide": {
         "color_border_base": {
           "light": "core_border_light",
-          "dark": "core_border_dark"
+          "dark": "core_border_dashboard_dark"
         },
         "color_border_strong": {
           "light": "core_border_strong_light",
-          "dark": "core_border_strong_dark"
+          "dark": "core_border_dashboard_strong_dark"
         },
         "color_border_disabled": {
           "light": "core_border_light",
@@ -595,7 +608,8 @@
         "space_600": 600,
         "space_640": 640,
         "space_800": 800,
-        "space_48": 48
+        "space_48": 48,
+        "space_230": 230
       },
       "semantic": {
         "space_layout_xs": "space_1",
@@ -785,7 +799,8 @@
         "space_button_h_sm": "space_28",
         "space_button_h_md": "space_36",
         "space_button_h_lg": "space_44",
-        "space_switch_thumb_inset": "space_2"
+        "space_switch_thumb_inset": "space_2",
+        "space_sidebar": "space_230"
       }
     },
     "radius": {
@@ -799,7 +814,8 @@
         "radius_12": 12,
         "radius_16": 16,
         "radius_full": 9999,
-        "radius_10": 10
+        "radius_10": 10,
+        "radius_18": 18
       },
       "semantic": {
         "radius_none": "radius_0",
@@ -814,7 +830,8 @@
         "radius_pill": "radius_full",
         "radius_button": "radius_4",
         "radius_card": "radius_6",
-        "radius_input": "radius_4"
+        "radius_input": "radius_4",
+        "radius_panel": "radius_18"
       }
     },
     "ratio": {
@@ -1042,6 +1059,22 @@
       "effect_grid_opacity": 0.04,
       "effect_border_highlight": "rgba(232,154,24,.25)",
       "effect_glass_opacity": 0.65
+    },
+    "dashboard": {
+      "light": {
+        "gradient_brand": "linear-gradient(135deg, #2d57e7, #6342dc)",
+        "gradient_surface": "linear-gradient(180deg, #ffffff, #f7f9fd)",
+        "gradient_glow": "radial-gradient(700px 380px at 55% -5%, rgba(69, 117, 225, 0.12), transparent 68%)",
+        "shadow_card": "0 14px 40px rgba(37, 61, 96, 0.10)",
+        "shadow_brand": "0 10px 26px rgba(65, 65, 190, 0.16)"
+      },
+      "dark": {
+        "gradient_brand": "linear-gradient(135deg, #5d86ff, #6248ff)",
+        "gradient_surface": "linear-gradient(180deg, rgba(18, 36, 64, 0.92), rgba(10, 22, 42, 0.92))",
+        "gradient_glow": "radial-gradient(700px 380px at 55% -5%, rgba(56, 103, 221, 0.19), transparent 68%)",
+        "shadow_card": "0 18px 50px rgba(0, 0, 0, 0.28)",
+        "shadow_brand": "0 12px 34px rgba(83, 70, 255, 0.26)"
+      }
     }
   },
   "components": [

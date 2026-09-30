@@ -138,6 +138,18 @@ export type { TagRowProps } from './primitives/TagRow';
 export { Card } from './primitives/Card';
 export type { CardProps, CardVariant, CardSize, CardState } from './primitives/Card';
 
+export { AppShell } from './primitives/AppShell';
+export type { AppShellProps } from './primitives/AppShell';
+
+export { SidebarNav } from './primitives/SidebarNav';
+export type { SidebarNavProps, SidebarNavItem } from './primitives/SidebarNav';
+
+export { Sparkline } from './primitives/Sparkline';
+export type { SparklineProps, SparklineStroke } from './primitives/Sparkline';
+
+export { ThemeSwitch } from './primitives/ThemeSwitch';
+export type { ThemeSwitchProps } from './primitives/ThemeSwitch';
+
 export { Image } from './primitives/Image';
 export type { ImageProps, ImageLayout, ImageSize, ImageRatio, ImageState } from './primitives/Image';
 

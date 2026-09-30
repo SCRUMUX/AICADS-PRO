@@ -21,7 +21,7 @@ If port 6006 is busy, `scripts/storybook-dev.mjs` frees it automatically and run
 ## 2. Install in your project
 
 ```bash
-npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.8.0
 ```
 
 Import tokens once in your app entry:
@@ -70,7 +70,7 @@ Full checklists: [storybook-parity.md](./storybook-parity.md).
 For product repos that need AI-generated raster icons in Storybook and blocks:
 
 ```bash
-npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.7.6
+npm install git+https://github.com/SCRUMUX/AICADS-PRO.git#v0.8.0
 npm install "github:SCRUMUX/AICADS-PRO#v0.7.6&path:modules/synaptik-icon-builder"
 ```
 
@@ -88,6 +88,8 @@ module.exports = {
 ```
 
 Use AICADS primitives instead (`Modal`, `Drawer`, `CommandPalette`, `Toaster` + `toast()`).
+
+Theme: set `data-theme="dark"` or `data-theme="light"` on `<html>`. Optional `ThemeSwitch` writes the same attribute and `localStorage` (default key `aicads-theme`). Canvas colour is `--color-bg-base`; dashboard panels use `--gradient-surface` and `--radius-panel`.
 
 ## 5. AI page assembly
 

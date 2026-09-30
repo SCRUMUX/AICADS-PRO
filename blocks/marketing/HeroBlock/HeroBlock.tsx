@@ -367,6 +367,16 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
     : undefined;
 
   if (embedded) {
+    if (split) {
+      return (
+        <div className={cn('flex w-full min-w-0 flex-col', className)} style={style}>
+          <div className={BLOCK_SPLIT_CLASS}>
+            {copy}
+            {media ? <div className={BLOCK_HERO_MEDIA_FRAME_CLASS}>{media}</div> : null}
+          </div>
+        </div>
+      );
+    }
     return (
       <div className={cn('flex w-full min-w-0 flex-col', className)} style={style}>
         {copy}

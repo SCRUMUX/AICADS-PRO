@@ -1,0 +1,19 @@
+{
+  "name": "@UI/AppShell",
+  "description": "Каркас приложения: aside + main. Ширина сайдбара --space-sidebar, на mobile колонки складываются.",
+  "variantProps": [],
+  "variantAxes": {},
+  "variantRules": [
+    {
+      "when": {},
+      "style": {
+        "sidebarWidth": "space_sidebar",
+        "background": "color_bg_base"
+      },
+      "tailwindClasses": []
+    }
+  ],
+  "element": "div",
+  "generatorStrategy": "template",
+  "template": "AppShell"
+}
