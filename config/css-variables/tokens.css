@@ -202,9 +202,9 @@
   --space-container-content-min: var(--space-200);
   --space-container-wide-max: var(--space-800);
   --space-container-wide-min: var(--space-280);
-  --space-content-l: var(--space-9);
-  --space-content-m: var(--space-6);
-  --space-content-s: var(--space-4);
+  --space-content-l: var(--space-16);
+  --space-content-m: var(--space-14);
+  --space-content-s: var(--space-12);
   --space-content-xs: var(--space-2);
   --space-control-box-lg: var(--space-24);
   --space-control-box-md: var(--space-20);
@@ -241,9 +241,9 @@
   --space-image-xl-min: var(--space-360);
   --space-image-xs-max: var(--space-160);
   --space-image-xs-min: var(--space-80);
-  --space-inset-l: var(--space-12);
-  --space-inset-m: var(--space-9);
-  --space-inset-s: var(--space-6);
+  --space-inset-l: var(--space-20);
+  --space-inset-m: var(--space-16);
+  --space-inset-s: var(--space-12);
   --space-inset-xl: var(--space-16);
   --space-inset-xs: var(--space-4);
   --space-layout-l: var(--space-6);
@@ -282,7 +282,7 @@
   --space-section-content-xl: var(--space-32);
   --space-section-stack-l: var(--space-24);
   --space-section-stack-m: var(--space-16);
-  --space-section-stack-s: var(--space-12);
+  --space-section-stack-s: var(--space-14);
   --space-section-y-l: var(--space-80);
   --space-section-y-m: var(--space-64);
   --space-section-y-s: var(--space-48);
@@ -426,8 +426,8 @@
 
   /* Layout / Grid */
   --grid-desktop-columns: 12;
-  --grid-desktop-gutter: 24px;
-  --grid-desktop-offset: 80px;
+  --grid-desktop-gutter: 14px;
+  --grid-desktop-offset: 22px;
   --grid-desktop-breakpoint: 1440px;
   --grid-tablet-columns: 8;
   --grid-tablet-gutter: 20px;

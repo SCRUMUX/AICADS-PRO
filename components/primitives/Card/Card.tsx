@@ -9,7 +9,7 @@ const SIZE_CLASSES: Record<CardSize, string> = {
   sm: 'px-[var(--space-inset-s)] py-[var(--space-inset-s)] gap-[var(--space-4)] min-w-[var(--space-container-compact-min)] max-w-[var(--space-container-compact-max)]',
   md: 'px-[var(--space-inset-m)] py-[var(--space-inset-m)] gap-[var(--space-6)] min-w-[var(--space-container-content-min)] max-w-[var(--space-container-content-max)]',
   lg: 'px-[var(--space-inset-l)] py-[var(--space-inset-l)] gap-[var(--space-8)] min-w-[var(--space-container-wide-min)] max-w-[var(--space-container-wide-max)]',
-  fluid: 'px-[var(--space-inset-m)] py-[var(--space-inset-m)] gap-[var(--space-6)] w-full min-w-0 max-w-none',
+  fluid: 'px-[var(--space-inset-m)] py-[var(--space-inset-m)] gap-[var(--space-content-s)] w-full min-w-0 max-w-none',
 };
 
 const TITLE_CLASS: Record<CardSize, string> = {
@@ -23,7 +23,7 @@ const CONTENT_GAP: Record<CardSize, string> = {
   sm: 'gap-[var(--space-4)]',
   md: 'gap-[var(--space-6)]',
   lg: 'gap-[var(--space-8)]',
-  fluid: 'gap-[var(--space-6)]',
+  fluid: 'gap-[var(--space-content-s)]',
 };
 
 const CONTENT_CLASS: Record<CardSize, string> = {

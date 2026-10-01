@@ -5,6 +5,17 @@ Format follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.1] — 2026-10-01
+
+> **Dashboard rhythm** — readable type, concept gutters, card inset.
+
+### Changed
+
+- Desktop grid: gutter 14, offset 22 (AtIn concept v0.2 canvas).
+- Semantic `--space-inset-s/m/l` → 12/16/20; `--space-content-s/m/l` → 12/14/16; `--space-section-stack-s` → 14.
+- Type roles: `display` 40, `body-sm` 14, `caption-xs` 12. Card `fluid` gap uses `--space-content-s`.
+- Dark navy/mint surfaces unchanged.
+
 ## [0.8.0] — 2026-09-30
 
 > **Dashboard shell** — navy/mint dark canvas, AppShell + SidebarNav, fluid/panel Card, Sparkline.

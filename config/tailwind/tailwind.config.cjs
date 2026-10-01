@@ -155,16 +155,16 @@ module.exports = {
         '32': ['var(--font-size-32)', { lineHeight: 'var(--line-height-40)' }],
         
         // Semantic text styles
-        'display': ['var(--font-size-32)', { lineHeight: 'var(--line-height-40)', fontWeight: 'var(--font-weight-semibold)' }],
+        'display': ['var(--font-size-40)', { lineHeight: 'var(--line-height-48)', fontWeight: 'var(--font-weight-semibold)' }],
         'h1': ['var(--font-size-24)', { lineHeight: 'var(--line-height-32)', fontWeight: 'var(--font-weight-semibold)' }],
         'h2': ['var(--font-size-20)', { lineHeight: 'var(--line-height-28)', fontWeight: 'var(--font-weight-semibold)' }],
         'h3': ['var(--font-size-18)', { lineHeight: 'var(--line-height-24)', fontWeight: 'var(--font-weight-semibold)' }],
         'h4': ['var(--font-size-16)', { lineHeight: 'var(--line-height-24)', fontWeight: 'var(--font-weight-semibold)' }],
         'body-base': ['var(--font-size-14)', { lineHeight: 'var(--line-height-20)' }],
-        'body-sm': ['var(--font-size-12)', { lineHeight: 'var(--line-height-16)' }],
-        'body-xs': ['var(--font-size-10)', { lineHeight: 'var(--line-height-12)' }],
+        'body-sm': ['var(--font-size-14)', { lineHeight: 'var(--line-height-20)' }],
+        'body-xs': ['var(--font-size-12)', { lineHeight: 'var(--line-height-16)' }],
         'caption-base': ['var(--font-size-12)', { lineHeight: 'var(--line-height-16)' }],
-        'caption-xs': ['var(--font-size-10)', { lineHeight: 'var(--line-height-12)' }],
+        'caption-xs': ['var(--font-size-12)', { lineHeight: 'var(--line-height-16)' }],
       },
       
       fontWeight: {
@@ -391,8 +391,8 @@ module.exports = {
       addComponents({
         '.text-style-display': {
           fontFamily: 'var(--font-family-base)',
-          fontSize: 'var(--font-size-32)',
-          lineHeight: 'var(--line-height-40)',
+          fontSize: 'var(--font-size-40)',
+          lineHeight: 'var(--line-height-48)',
           fontWeight: 'var(--font-weight-semibold)',
         },
         '.text-style-h1': {
@@ -439,14 +439,14 @@ module.exports = {
         },
         '.text-style-body-sm': {
           fontFamily: 'var(--font-family-base)',
-          fontSize: 'var(--font-size-12)',
-          lineHeight: 'var(--line-height-16)',
+          fontSize: 'var(--font-size-14)',
+          lineHeight: 'var(--line-height-20)',
           fontWeight: 'var(--font-weight-regular)',
         },
         '.text-style-body-xs': {
           fontFamily: 'var(--font-family-base)',
-          fontSize: 'var(--font-size-10)',
-          lineHeight: 'var(--line-height-12)',
+          fontSize: 'var(--font-size-12)',
+          lineHeight: 'var(--line-height-16)',
           fontWeight: 'var(--font-weight-regular)',
         },
         '.text-style-caption': {
@@ -457,8 +457,8 @@ module.exports = {
         },
         '.text-style-caption-xs': {
           fontFamily: 'var(--font-family-base)',
-          fontSize: 'var(--font-size-10)',
-          lineHeight: 'var(--line-height-12)',
+          fontSize: 'var(--font-size-12)',
+          lineHeight: 'var(--line-height-16)',
           fontWeight: 'var(--font-weight-medium)',
         },
         '.text-style-mono': {
